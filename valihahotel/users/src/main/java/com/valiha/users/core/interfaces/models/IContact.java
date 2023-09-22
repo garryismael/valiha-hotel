@@ -11,6 +11,8 @@ public interface IContact {
 
   String getMessage();
 
+  boolean clientIsValid();
+
   boolean subjectIsValid();
 
   boolean messageIsValid();

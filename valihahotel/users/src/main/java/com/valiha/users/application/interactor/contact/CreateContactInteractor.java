@@ -10,6 +10,7 @@ import com.valiha.users.core.entities.model.Client;
 import com.valiha.users.core.entities.model.Contact;
 import com.valiha.users.core.interfaces.factory.ClientFactory;
 import com.valiha.users.core.interfaces.factory.ContactFactory;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CreateContactInteractor implements CreateContactUseCase {
@@ -33,16 +34,16 @@ public class CreateContactInteractor implements CreateContactUseCase {
 
   @Override
   public ContactResponseDto execute(ContactRequestDto requestDto) {
-    Client client = requestDto.getClient() != null ?
-      this.clientFactory.create(
+    Map<String, String> errors = new HashMap<>();
+    Client client = requestDto.getClient() != null
+      ? this.clientFactory.create(
           null,
           requestDto.getClient().getFirstName(),
           requestDto.getClient().getLastName(),
           requestDto.getClient().getPhoneNumber(),
           requestDto.getClient().getEmail()
-        ) : null;
-
-    Map<String, String> errors = client.validate();
+        )
+      : new Client();
 
     Contact contact =
       this.contactFactory.create(

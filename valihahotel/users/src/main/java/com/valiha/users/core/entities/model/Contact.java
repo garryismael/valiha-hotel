@@ -1,5 +1,6 @@
 package com.valiha.users.core.entities.model;
 
+import com.valiha.users.core.constants.ContactValidator;
 import com.valiha.users.core.interfaces.models.IContact;
 import com.valiha.users.core.interfaces.validator.InputValidator;
 import java.util.HashMap;
@@ -53,6 +54,11 @@ public class Contact implements IContact, InputValidator {
   }
 
   @Override
+  public boolean clientIsValid() {
+    return this.client != null;
+  }
+
+  @Override
   public boolean subjectIsValid() {
     return this.subject != null;
   }
@@ -66,6 +72,12 @@ public class Contact implements IContact, InputValidator {
   public Map<String, String> validate() {
     Map<String, String> errors = new HashMap<>();
 
+    if (!clientIsValid()) {
+      errors.put(
+        ContactValidator.KEY_CLIENT,
+        ContactValidator.INVALID_CLIENT_ERROR
+      );
+    }
     if (!subjectIsValid()) {
       errors.put("subject", "subject invalid");
     }
