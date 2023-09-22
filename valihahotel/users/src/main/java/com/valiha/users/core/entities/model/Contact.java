@@ -72,18 +72,20 @@ public class Contact implements IContact, InputValidator {
   public Map<String, String> validate() {
     Map<String, String> errors = new HashMap<>();
 
-    if (!clientIsValid()) {
-      errors.put(
-        ContactValidator.KEY_CLIENT,
-        ContactValidator.INVALID_CLIENT_ERROR
-      );
-    }
+    errors = client.validate();
+
     if (!subjectIsValid()) {
-      errors.put("subject", "subject invalid");
+      errors.put(
+        ContactValidator.KEY_SUBJECT,
+        ContactValidator.INVALID_SUBJECT_ERROR
+      );
     }
 
     if (!messageIsValid()) {
-      errors.put("message", "message invalid");
+      errors.put(
+        ContactValidator.KEY_MESSAGE,
+        ContactValidator.INVALID_MESSAGE_ERROR
+      );
     }
     return errors;
   }

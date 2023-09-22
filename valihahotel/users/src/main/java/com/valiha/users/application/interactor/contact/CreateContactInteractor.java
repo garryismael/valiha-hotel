@@ -4,6 +4,7 @@ import com.valiha.users.application.dto.contact.ContactRequestDto;
 import com.valiha.users.application.dto.contact.ContactResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
 import com.valiha.users.application.repository.ContactRepository;
+import com.valiha.users.application.repository.GenericRepository;
 import com.valiha.users.application.useCase.contact.CreateContactUseCase;
 import com.valiha.users.core.constants.ContactValidator;
 import com.valiha.users.core.entities.model.Client;
@@ -16,17 +17,20 @@ import java.util.Map;
 public class CreateContactInteractor implements CreateContactUseCase {
 
   private final ContactRepository contactRepository;
+  private final GenericRepository<Client> clientRepository;
   private final GenericPresenter<ContactResponseDto> contactPresenter;
   private final ContactFactory contactFactory;
   private final ClientFactory clientFactory;
 
   public CreateContactInteractor(
     ContactRepository contactRepository,
+    GenericRepository<Client> clientRepository,
     GenericPresenter<ContactResponseDto> contactPresenter,
     ContactFactory contactFactory,
     ClientFactory clientFactory
   ) {
     this.contactRepository = contactRepository;
+    this.clientRepository = clientRepository;
     this.contactPresenter = contactPresenter;
     this.contactFactory = contactFactory;
     this.clientFactory = clientFactory;
@@ -62,7 +66,17 @@ public class CreateContactInteractor implements CreateContactUseCase {
       );
     }
 
-    contact = this.contactRepository.save(contact);
+    client = this.clientRepository.save(client);
+
+    contact =
+      this.contactRepository.save(
+          contactFactory.create(
+            null,
+            client,
+            contact.getSubject(),
+            contact.getMessage()
+          )
+        );
 
     return this.contactPresenter.prepareSuccessView(
         ContactResponseDto.from(contact)
