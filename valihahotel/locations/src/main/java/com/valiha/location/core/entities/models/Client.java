@@ -9,14 +9,12 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Client implements IClient, InputValidator {
 
   private String id;
@@ -24,6 +22,49 @@ public class Client implements IClient, InputValidator {
   private String lastName;
   private String email;
   private String phoneNumber;
+
+  public class Builder {
+
+    private final Client client;
+
+    public Builder(Client client) {
+      this.client = client;
+    }
+
+    public Builder id(String value) {
+      this.client.id = value;
+      return this;
+    }
+
+    public Builder firstName(String value) {
+      firstName = value;
+      return this;
+    }
+
+    public Builder lastName(String value) {
+      lastName = value;
+      return this;
+    }
+
+    public Builder phoneNumber(String value) {
+      phoneNumber = value;
+      return this;
+    }
+
+    public Builder email(String value) {
+      email = value;
+      return this;
+    }
+
+    public Client build() {
+      return this.client;
+    }
+  }
+
+  public static Builder builder() {
+    Client client = new Client();
+    return client.new Builder(client);
+  }
 
   @Override
   public boolean firstNameIsValid() {

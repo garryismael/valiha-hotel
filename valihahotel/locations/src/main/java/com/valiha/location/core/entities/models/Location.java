@@ -7,14 +7,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Location implements ILocation, InputValidator {
 
   private String id;
@@ -26,6 +24,69 @@ public class Location implements ILocation, InputValidator {
   private Client client;
   private Car car;
   private Payment payment;
+
+  public class Builder {
+
+    private final Location location;
+
+    public Builder(Location location) {
+      this.location = location;
+    }
+
+    public Builder id(String id) {
+      this.location.id = id;
+      return this;
+    }
+
+    public Builder state(String state) {
+      this.location.state = state;
+      return this;
+    }
+
+    public Builder start(Date start) {
+      this.location.start = start;
+      return this;
+    }
+
+    public Builder end(Date end) {
+      this.location.end = end;
+      return this;
+    }
+
+    public Builder destination(String destination) {
+      this.location.destination = destination;
+      return this;
+    }
+
+    public Builder reason(String reason) {
+      this.location.reason = reason;
+      return this;
+    }
+
+    public Builder client(Client client) {
+      this.location.client = client;
+      return this;
+    }
+
+    public Builder car(Car car) {
+      this.location.car = car;
+      return this;
+    }
+
+    public Builder payment(Payment payment) {
+      this.location.payment = payment;
+      return this;
+    }
+
+    public Location build() {
+      return this.location;
+    }
+  }
+
+  public static Builder builder() {
+    Location location = new Location();
+    return location.new Builder(location);
+  }
 
   @Override
   public boolean stateIsValid() {
