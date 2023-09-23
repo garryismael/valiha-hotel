@@ -15,7 +15,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>blogs</module>
         <module>reservations</module>
         <module>notifications</module>
         <module>payments</module>
