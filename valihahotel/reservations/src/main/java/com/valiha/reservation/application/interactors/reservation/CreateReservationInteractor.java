@@ -104,10 +104,7 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
 
     PaymentResponseDto paymentResponseDto =
       this.paymentService.create(
-          new PaymentRequestDto(
-            payment.getDiscount(),
-            PaymentState.PENDING.value()
-          )
+          new PaymentRequestDto(payment.getDiscount(), payment.getState())
         );
 
     ClientResponseDto clientResponseDto =
@@ -129,7 +126,18 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
         paymentResponseDto.getState()
       );
 
-    reservation = this.reservationRepository.create(reservation);
+    reservation =
+      reservationFactory.create(
+        null,
+        reservation.getCheckIn(),
+        reservation.getCheckOut(),
+        reservation.getState(),
+        reservation.isParking(),
+        room,
+        client,
+        payment
+      );
+    reservation = this.reservationRepository.save(reservation);
 
     return this.reservationPresenter.prepareSuccessView(
         ReservationResponseDto.from(reservation)

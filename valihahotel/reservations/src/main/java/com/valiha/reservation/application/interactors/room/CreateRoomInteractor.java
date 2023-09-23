@@ -59,7 +59,7 @@ public class CreateRoomInteractor implements RoomCreateUseCase {
         );
     }
 
-    room = this.roomRepository.create(room);
+    room = this.roomRepository.save(room);
 
     return this.roomPresenter.prepareSuccessView(RoomResponseDto.from(room));
   }

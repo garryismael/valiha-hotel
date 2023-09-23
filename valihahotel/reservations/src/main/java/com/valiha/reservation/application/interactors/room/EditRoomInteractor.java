@@ -100,7 +100,7 @@ public class EditRoomInteractor implements RoomEditUseCase {
         );
     }
 
-    room = this.roomRepository.create(room);
+    room = this.roomRepository.save(room);
 
     return this.roomPresenter.prepareSuccessView(RoomResponseDto.from(room));
   }

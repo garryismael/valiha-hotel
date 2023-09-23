@@ -16,7 +16,7 @@ public class MongoRoomRepositoryImpl implements GenericRepository<Room> {
   }
 
   @Override
-  public Room create(Room room) {
+  public Room save(Room room) {
     RoomDataMapper dataMapper =
       this.roomRepository.save(RoomDataMapper.from(room));
     return RoomDataMapper.toRoom(dataMapper);

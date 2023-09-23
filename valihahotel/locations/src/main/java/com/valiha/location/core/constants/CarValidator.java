@@ -21,6 +21,7 @@ public class CarValidator {
   public static final String INVALID_PLACE_ERROR = "place invalid";
   public static final String INVALID_YEAR_ERROR = "year invalid";
   public static final String INVALID_PRICE_ERROR = "price invalid";
+  public static final String UPLOAD_IMAGE_ERROR = "cannot upload image";
 
   // Car Error Message
   public static final String CAR_NOT_FOUND_ERROR = "car not found";

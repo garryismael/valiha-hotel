@@ -1,13 +1,13 @@
 package com.valiha.reservation.infrastructure.service;
 
-import java.util.List;
-
 import com.valiha.reservation.application.repository.GenericRepository;
 import com.valiha.reservation.core.entities.models.Category;
 import com.valiha.reservation.infrastructure.data.CategoryDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoCategoryRepository;
+import java.util.List;
 
-public class MongoCategoryRepositoryImpl implements GenericRepository<Category> {
+public class MongoCategoryRepositoryImpl
+  implements GenericRepository<Category> {
 
   private final MongoCategoryRepository categoryRepository;
 
@@ -18,7 +18,7 @@ public class MongoCategoryRepositoryImpl implements GenericRepository<Category> 
   }
 
   @Override
-  public Category create(Category category) {
+  public Category save(Category category) {
     var dataMapper = CategoryDataMapper.from(category);
     dataMapper = this.categoryRepository.save(dataMapper);
     return CategoryDataMapper.toCategory(dataMapper);

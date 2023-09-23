@@ -62,7 +62,7 @@ public class CreateCategoryInteractor implements CategoryCreateUseCase {
           errors
         );
     }
-    category = this.categoryRepository.create(category);
+    category = this.categoryRepository.save(category);
     return this.categoryPresenter.prepareSuccessView(
         CategoryResponseDto.from(category)
       );
