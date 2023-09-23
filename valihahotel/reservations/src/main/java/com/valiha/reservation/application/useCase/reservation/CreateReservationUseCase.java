@@ -1,7 +1,8 @@
 package com.valiha.reservation.application.useCase.reservation;
 
-import com.valiha.reservation.core.entities.models.Reservation;
+import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
+import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
 
 public interface CreateReservationUseCase {
-  Reservation execute();
+  ReservationResponseDto execute(ReservationRequestDto requestDto);
 }

@@ -44,7 +44,7 @@ public class CategoryController {
     CategoryRequestDto dto,
     @RequestPart("image") Mono<FilePart> file
   ) {
-    return this.categoryService.setup(dto, file);
+    return this.categoryService.createCategory(dto, file);
   }
 
   @GetMapping

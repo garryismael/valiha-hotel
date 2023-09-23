@@ -1,29 +1,82 @@
 package com.valiha.reservation.core.entities.models;
 
+import com.valiha.reservation.core.constant.AppReservation;
 import com.valiha.reservation.core.constant.ReservationValidator;
 import com.valiha.reservation.core.interfaces.validator.InputValidator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
 public class Reservation implements InputValidator {
 
   private String id;
   private Date checkIn;
   private Date checkOut;
   private String state;
-  private boolean useParking;
+  private boolean parking;
   private Room room;
   private Client client;
   private Payment payment;
+
+  public class Builder {
+
+    private final Reservation reservation;
+
+    public Builder(Reservation reservation) {
+      this.reservation = reservation;
+    }
+
+    public Builder id(String id) {
+      reservation.id = id;
+      return this;
+    }
+
+    public Builder checkIn(Date checkIn) {
+      reservation.checkIn = checkIn;
+      return this;
+    }
+
+    public Builder checkOut(Date checkOut) {
+      reservation.checkOut = checkOut;
+      return this;
+    }
+
+    public Builder state(String state) {
+      reservation.state = state;
+      return this;
+    }
+
+    public Builder parking(boolean parking) {
+      reservation.parking = parking;
+      return this;
+    }
+
+    public Builder room(Room room) {
+      reservation.room = room;
+      return this;
+    }
+
+    public Builder client(Client client) {
+      reservation.client = client;
+      return this;
+    }
+
+    public Builder payment(Payment payment) {
+      reservation.payment = payment;
+      return this;
+    }
+
+    public Reservation build() {
+      return this.reservation;
+    }
+  }
+
+  public static Builder builder() {
+    Reservation reservation = new Reservation();
+    return reservation.new Builder(reservation);
+  }
 
   public boolean checkInIsValid() {
     return (
@@ -42,7 +95,7 @@ public class Reservation implements InputValidator {
   }
 
   public boolean stateIsValid() {
-    return this.state != null;
+    return this.state != null && AppReservation.STATES.contains(state);
   }
 
   public boolean roomIsValid() {
@@ -94,6 +147,8 @@ public class Reservation implements InputValidator {
         ReservationValidator.KEY_CLIENT,
         ReservationValidator.INVALID_CLIENT_ERROR
       );
+    } else {
+      errors.putAll(client.validate());
     }
 
     if (!paymentIsValid()) {
@@ -101,6 +156,8 @@ public class Reservation implements InputValidator {
         ReservationValidator.KEY_PAYMENT,
         ReservationValidator.INVALID_PAYMENT_ERROR
       );
+    } else {
+      errors.putAll(payment.validate());
     }
 
     return errors;

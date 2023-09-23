@@ -2,7 +2,6 @@ package com.valiha.users.infrastructure.services;
 
 import com.valiha.users.application.dto.blog.BlogRequestDto;
 import com.valiha.users.application.dto.blog.BlogResponseDto;
-import com.valiha.users.application.service.StorageService;
 import com.valiha.users.application.useCase.blog.CreateBlogUseCase;
 import com.valiha.users.application.useCase.blog.EditBlogUseCase;
 import java.io.File;
@@ -20,8 +19,7 @@ public class BlogService {
 
   public BlogService(
     CreateBlogUseCase createUseCase,
-    EditBlogUseCase editUseCase,
-    StorageService storageService
+    EditBlogUseCase editUseCase
   ) {
     this.createUseCase = createUseCase;
     this.editUseCase = editUseCase;

@@ -7,15 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
 public class Client implements InputValidator {
 
   private String id;
@@ -23,6 +17,49 @@ public class Client implements InputValidator {
   private String lastName;
   private String phoneNumber;
   private String email;
+
+  public class Builder {
+
+    private final Client client;
+
+    public Builder(Client client) {
+      this.client = client;
+    }
+
+    public Builder id(String value) {
+      this.client.id = value;
+      return this;
+    }
+
+    public Builder firstName(String value) {
+      firstName = value;
+      return this;
+    }
+
+    public Builder lastName(String value) {
+      lastName = value;
+      return this;
+    }
+
+    public Builder phoneNumber(String value) {
+      phoneNumber = value;
+      return this;
+    }
+
+    public Builder email(String value) {
+      email = value;
+      return this;
+    }
+
+    public Client build() {
+      return this.client;
+    }
+  }
+
+  public static Builder builder() {
+    Client client = new Client();
+    return client.new Builder(client);
+  }
 
   public boolean firstNameIsValid() {
     return this.firstName != null && this.firstName.trim().length() > 3;

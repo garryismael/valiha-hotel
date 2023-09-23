@@ -4,15 +4,9 @@ import com.valiha.reservation.core.constant.CategoryValidator;
 import com.valiha.reservation.core.interfaces.validator.InputValidator;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
 public class Category implements InputValidator {
 
   private String id;
@@ -22,6 +16,59 @@ public class Category implements InputValidator {
   private int bigBed;
   private int smallBed;
   private String image;
+
+  public class Builder {
+
+    private final Category category;
+
+    public Builder(Category category) {
+      this.category = category;
+    }
+
+    public Builder id(String id) {
+      this.category.id = id;
+      return this;
+    }
+
+    public Builder title(String title) {
+      this.category.title = title;
+      return this;
+    }
+
+    public Builder adult(int adult) {
+      this.category.adult = adult;
+      return this;
+    }
+
+    public Builder kid(int kid) {
+      this.category.kid = kid;
+      return this;
+    }
+
+    public Builder bigBed(int bigBed) {
+      this.category.bigBed = bigBed;
+      return this;
+    }
+
+    public Builder smallBed(int smallBed) {
+      this.category.smallBed = smallBed;
+      return this;
+    }
+
+    public Builder image(String image) {
+      this.category.image = image;
+      return this;
+    }
+
+    public Category build() {
+      return this.category;
+    }
+  }
+
+  public static Builder builder() {
+    Category category = new Category();
+    return category.new Builder(category);
+  }
 
   public boolean titleIsValid() {
     return title != null && title.trim().length() > 3;

@@ -5,15 +5,9 @@ import com.valiha.reservation.core.constant.RoomValidator;
 import com.valiha.reservation.core.interfaces.validator.InputValidator;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 public class Room implements InputValidator {
 
   private String id;
@@ -22,6 +16,54 @@ public class Room implements InputValidator {
   private int price;
   private String image;
   private Category category;
+
+  public class Builder {
+
+    private final Room room;
+
+    public Builder(Room room) {
+      this.room = room;
+    }
+
+    public Builder id(String id) {
+      this.room.id = id;
+      return this;
+    }
+
+    public Builder title(String title) {
+      this.room.title = title;
+      return this;
+    }
+
+    public Builder type(String type) {
+      this.room.type = type;
+      return this;
+    }
+
+    public Builder price(int price) {
+      this.room.price = price;
+      return this;
+    }
+
+    public Builder image(String image) {
+      this.room.image = image;
+      return this;
+    }
+
+    public Builder category(Category category) {
+      this.room.category = category;
+      return this;
+    }
+
+    public Room build() {
+      return this.room;
+    }
+  }
+
+  public static Builder builder() {
+    Room room = new Room();
+    return room.new Builder(room);
+  }
 
   public boolean titleIsValid() {
     return title != null && title.trim().length() > 2;
