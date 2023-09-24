@@ -3,14 +3,18 @@ package com.valiha.location.infrastructure.data;
 import com.valiha.location.core.entities.models.Location;
 import java.util.Date;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value = "locations")
-@Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Document(value = "locations")
 public class LocationDataMapper {
 
   private String id;

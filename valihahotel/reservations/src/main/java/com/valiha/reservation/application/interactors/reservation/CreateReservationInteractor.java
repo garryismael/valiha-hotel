@@ -8,6 +8,7 @@ import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.service.GenericService;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
 import com.valiha.reservation.core.constant.AppReservation;
@@ -26,7 +27,7 @@ import java.util.Map;
 
 public class CreateReservationInteractor implements CreateReservationUseCase {
 
-  private final GenericRepository<Reservation> reservationRepository;
+  private final ReservationRepository reservationRepository;
   private final GenericRepository<Room> roomRepository;
   private final GenericService<ClientResponseDto, ClientRequestDto> clientService;
   private final GenericService<PaymentResponseDto, PaymentRequestDto> paymentService;
@@ -36,7 +37,7 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
   private final ReservationFactory reservationFactory;
 
   public CreateReservationInteractor(
-    GenericRepository<Reservation> reservationRepository,
+    ReservationRepository reservationRepository,
     GenericRepository<Room> roomRepository,
     GenericService<ClientResponseDto, ClientRequestDto> clientService,
     GenericService<PaymentResponseDto, PaymentRequestDto> paymentService,

@@ -3,11 +3,15 @@ package com.valiha.location.infrastructure.data;
 import com.valiha.location.application.dto.payment.PaymentResponseDto;
 import com.valiha.location.core.entities.models.Payment;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PaymentDataMapper {
 
   private String id;

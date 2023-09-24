@@ -2,13 +2,17 @@ package com.valiha.location.infrastructure.data;
 
 import com.valiha.location.core.entities.models.Car;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value = "cars")
-@Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Document(value = "cars")
 public class CarDataMapper {
 
   private String id;

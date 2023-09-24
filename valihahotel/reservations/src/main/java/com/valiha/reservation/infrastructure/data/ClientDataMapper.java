@@ -3,11 +3,15 @@ package com.valiha.reservation.infrastructure.data;
 import com.valiha.reservation.application.dto.client.ClientResponseDto;
 import com.valiha.reservation.core.entities.models.Client;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ClientDataMapper {
 
   private String id;

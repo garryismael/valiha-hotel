@@ -1,5 +1,12 @@
 package com.valiha.location.presentation.config;
 
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -51,5 +58,39 @@ public class WebSecurity {
       (oauth2 -> oauth2.jwt(Customizer.withDefaults()))
     );
     return http.build();
+  }
+
+  @Bean
+  OpenAPI openAPI() {
+    return new OpenAPI()
+      .addSecurityItem(
+        new SecurityRequirement().addList("Bearer Authentication")
+      )
+      .components(
+        new Components()
+          .addSecuritySchemes("Bearer Authentication", createAPIKeyScheme())
+      )
+      .info(
+        new Info()
+          .title("User Service API")
+          .description("Micro service of User of Valiha Hotel")
+          .version("1.0")
+          .contact(
+            new Contact()
+              .name("Garry")
+              .email("tahinjanaharygarry@gmail.com")
+              .url("tahinjanaharygarry@gmail.com")
+          )
+          .license(
+            new License().name("Owned by Valiha Hotel").url("valihahotel.com")
+          )
+      );
+  }
+
+  private SecurityScheme createAPIKeyScheme() {
+    return new SecurityScheme()
+      .type(SecurityScheme.Type.HTTP)
+      .bearerFormat("JWT")
+      .scheme("bearer");
   }
 }

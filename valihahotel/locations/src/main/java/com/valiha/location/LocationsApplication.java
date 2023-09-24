@@ -60,6 +60,8 @@ public class LocationsApplication {
       return (
         !className.endsWith("Dto") &&
         !className.endsWith("ApiErrorException") &&
+        !className.endsWith("PaymentState") &&
+        !className.endsWith("LocationState") &&
         !className.endsWith("ErrorResponse")
       );
     };
