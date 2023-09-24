@@ -51,7 +51,7 @@ public class LocationsApplication {
       beanRegistry
     );
     beanDefinitionScanner.addIncludeFilter(removeModelAndEntitiesFilter());
-    beanDefinitionScanner.scan("com.valiha.users");
+    beanDefinitionScanner.scan("com.valiha.location");
   }
 
   static TypeFilter removeModelAndEntitiesFilter() {
