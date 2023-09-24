@@ -29,7 +29,7 @@ public class CategoryResponseDto {
       .id(category.getId())
       .title(category.getTitle())
       .adult(category.getAdult())
-      .kid(category.getAdult())
+      .kid(category.getKid())
       .bigBed(category.getBigBed())
       .smallBed(category.getSmallBed())
       .image(category.getImage())

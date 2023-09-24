@@ -12,13 +12,4 @@ public interface CategoryFactory {
     int smallBed,
     String image
   );
-
-  Category create(
-    String title,
-    int adult,
-    int kid,
-    int bigBed,
-    int smallBed,
-    String image
-  );
 }

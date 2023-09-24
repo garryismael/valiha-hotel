@@ -26,24 +26,4 @@ public class CategoryFactoryImpl implements CategoryFactory {
       .image(image)
       .build();
   }
-
-  @Override
-  public Category create(
-    String title,
-    int adult,
-    int kid,
-    int bigBed,
-    int smallBed,
-    String image
-  ) {
-    return Category
-      .builder()
-      .title(title)
-      .adult(adult)
-      .kid(kid)
-      .bigBed(bigBed)
-      .smallBed(smallBed)
-      .image(image)
-      .build();
-  }
 }

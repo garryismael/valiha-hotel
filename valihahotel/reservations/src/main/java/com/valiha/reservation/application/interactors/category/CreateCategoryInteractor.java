@@ -46,6 +46,7 @@ public class CreateCategoryInteractor implements CategoryCreateUseCase {
 
     Category category =
       this.categoryFactory.create(
+          null,
           requestDto.getTitle(),
           requestDto.getAdult(),
           requestDto.getKid(),
