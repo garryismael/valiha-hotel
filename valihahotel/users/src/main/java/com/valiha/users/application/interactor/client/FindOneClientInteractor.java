@@ -4,7 +4,7 @@ import com.valiha.users.application.dto.client.ClientResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
 import com.valiha.users.application.repository.ClientRepository;
 import com.valiha.users.application.useCase.client.FindOneClientUseCase;
-import com.valiha.users.core.constants.BlogValidator;
+import com.valiha.users.core.constants.ClientValidator;
 import com.valiha.users.core.entities.model.Client;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +28,12 @@ public class FindOneClientInteractor implements FindOneClientUseCase {
     Client client = this.clientRepository.findOneById(id);
 
     if (client == null) {
-      errors.put(BlogValidator.KEY_ID, BlogValidator.BLOG_NOT_FOUND_ERROR);
+      errors.put(
+        ClientValidator.KEY_ID,
+        ClientValidator.CLIENT_NOT_FOUND_ERROR
+      );
       return clientPresenter.prepareResourceNotFoundView(
-        BlogValidator.KEY_ID,
+        ClientValidator.KEY_ID,
         errors
       );
     }
