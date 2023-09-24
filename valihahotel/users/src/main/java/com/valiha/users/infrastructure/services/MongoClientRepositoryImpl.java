@@ -1,13 +1,13 @@
 package com.valiha.users.infrastructure.services;
 
-import com.valiha.users.application.repository.GenericRepository;
+import com.valiha.users.application.repository.ClientRepository;
 import com.valiha.users.core.entities.model.Client;
 import com.valiha.users.infrastructure.data.ClientDataMapper;
 import com.valiha.users.infrastructure.repository.MongoClientRepository;
 import java.util.List;
 import java.util.Optional;
 
-public class MongoClientRepositoryImpl implements GenericRepository<Client> {
+public class MongoClientRepositoryImpl implements ClientRepository {
 
   private final MongoClientRepository clientRepository;
 
@@ -41,6 +41,15 @@ public class MongoClientRepositoryImpl implements GenericRepository<Client> {
   @Override
   public List<Client> findAll() {
     List<ClientDataMapper> dataMappers = this.clientRepository.findAll();
+    return dataMappers
+      .stream()
+      .map(MongoClientRepositoryImpl::toClient)
+      .toList();
+  }
+
+  @Override
+  public List<Client> findAllByIds(List<String> ids) {
+    List<ClientDataMapper> dataMappers = this.clientRepository.findAllById(ids);
     return dataMappers
       .stream()
       .map(MongoClientRepositoryImpl::toClient)
