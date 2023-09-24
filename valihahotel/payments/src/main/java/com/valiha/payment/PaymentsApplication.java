@@ -58,6 +58,7 @@ public class PaymentsApplication {
       return (
         !className.endsWith("Dto") &&
         !className.endsWith("ApiErrorException") &&
+        !className.endsWith("PaymentState") &&
         !className.endsWith("ErrorResponse")
       );
     };
