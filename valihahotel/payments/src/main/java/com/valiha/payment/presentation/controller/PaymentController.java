@@ -10,6 +10,7 @@ import com.valiha.payment.application.useCase.payment.FindOnePaymentUseCase;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,12 +57,15 @@ public class PaymentController {
   }
 
   @GetMapping("/{id}")
-  public PaymentResponseDto findOne(String id) {
+  public PaymentResponseDto findOne(@PathVariable String id) {
     return this.findOneUseCase.execute(id);
   }
 
   @PutMapping("/{id}")
-  public PaymentResponseDto edit(String id, PaymentRequestDto requestDto) {
+  public PaymentResponseDto edit(
+    @PathVariable String id,
+    @RequestBody PaymentRequestDto requestDto
+  ) {
     return this.editUseCase.execute(id, requestDto);
   }
 }

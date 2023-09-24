@@ -7,6 +7,7 @@ import com.valiha.reservation.application.useCase.category.CategoryGetUseCase;
 import com.valiha.reservation.application.useCase.category.CategoryRemoveUseCase;
 import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +40,7 @@ public class CategoryController {
     this.removeUseCase = removeUseCase;
   }
 
-  @PostMapping
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public Mono<CategoryResponseDto> createCategory(
     CategoryRequestDto dto,
     @RequestPart("image") Mono<FilePart> file
@@ -57,7 +58,7 @@ public class CategoryController {
     return this.getUseCase.execute(id);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public Mono<CategoryResponseDto> editCategory(
     @PathVariable("id") String id,
     CategoryRequestDto requestDto,

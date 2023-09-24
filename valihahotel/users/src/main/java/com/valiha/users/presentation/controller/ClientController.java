@@ -47,13 +47,13 @@ public class ClientController {
   }
 
   @GetMapping("/{id}")
-  public ClientResponseDto findOne(@PathVariable("id") String id) {
+  public ClientResponseDto findOne(@PathVariable String id) {
     return this.findOneUseCase.execute(id);
   }
 
   @PutMapping("/{id}")
   public ClientResponseDto update(
-    @PathVariable("id") String id,
+    @PathVariable String id,
     @RequestBody ClientRequestDto requestDto
   ) {
     return this.updateUseCase.execute(id, requestDto);

@@ -6,6 +6,7 @@ import com.valiha.users.application.useCase.blog.DeleteBlogUseCase;
 import com.valiha.users.application.useCase.blog.FindAllBlogsUseCase;
 import com.valiha.users.application.useCase.blog.FindOneBlogUseCase;
 import com.valiha.users.infrastructure.services.BlogService;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.security.Principal;
 import java.util.List;
 import org.springframework.http.MediaType;
@@ -49,14 +50,14 @@ public class BlogController {
   }
 
   @GetMapping("/{id}")
-  public BlogResponseDto getBlog(@PathVariable("id") String id) {
+  public BlogResponseDto getBlog(@PathVariable String id) {
     return findOneUseCase.execute(id);
   }
 
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public Mono<BlogResponseDto> create(
     @AuthenticationPrincipal OAuth2User oauthPrincipal,
-    BlogRequestDto requestDto,
+    @RequestBody BlogRequestDto requestDto,
     @RequestPart(name = "image") Mono<FilePart> monoFilePart,
     Principal principal
   ) {
@@ -65,15 +66,15 @@ public class BlogController {
 
   @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public Mono<BlogResponseDto> updateBlog(
-    @PathVariable("id") String id,
-    BlogRequestDto requestDto,
+    @PathVariable String id,
+    @RequestBody BlogRequestDto requestDto,
     @RequestPart(name = "image", required = false) Mono<FilePart> filePartMono
   ) {
     return this.blogService.editBlog(id, requestDto, filePartMono);
   }
 
   @DeleteMapping("/{id}")
-  public void deleteBlog(@PathVariable("id") String id) {
+  public void deleteBlog(@PathVariable String id) {
     this.deleteUseCase.execute(id);
   }
 }

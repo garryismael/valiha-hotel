@@ -48,7 +48,7 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public UserResponseDto getUser(@PathVariable("id") String id) {
+  public UserResponseDto getUser(@PathVariable String id) {
     return findOneUseCase.execute(id);
   }
 
@@ -59,7 +59,7 @@ public class UserController {
 
   @PutMapping("/{id}")
   public UserResponseDto update(
-    @PathVariable("id") String id,
+    @PathVariable String id,
     @RequestBody UserCommonDto request
   ) {
     return updateUseCase.execute(id, request);

@@ -49,12 +49,12 @@ public class ContactController {
   }
 
   @GetMapping("/{id}")
-  public ContactResponseDto findOne(@PathVariable("id") String id) {
+  public ContactResponseDto findOne(@PathVariable String id) {
     return this.findOneUseCase.execute(id);
   }
 
   @DeleteMapping("/{id}")
-  public void delete(@PathVariable("id") String id) {
+  public void delete(@PathVariable String id) {
     this.deleteUseCase.execute(id);
   }
 }

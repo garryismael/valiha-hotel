@@ -7,12 +7,14 @@ import com.valiha.reservation.application.useCase.room.RoomFindAllUseCase;
 import com.valiha.reservation.application.useCase.room.RoomGetUseCase;
 import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,9 +41,9 @@ public class RoomController {
     this.deleteUseCase = deleteUseCase;
   }
 
-  @PostMapping
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public Mono<RoomResponseDto> createRoom(
-    RoomRequestDto dto,
+    @RequestBody RoomRequestDto dto,
     @RequestPart("image") Mono<FilePart> file
   ) {
     return this.reservationService.create(dto, file);
@@ -57,10 +59,10 @@ public class RoomController {
     return this.getUseCase.execute(id);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public Mono<RoomResponseDto> editRoom(
-    @PathVariable("id") String id,
-    RoomRequestDto dto,
+    @PathVariable String id,
+    @RequestBody RoomRequestDto dto,
     @RequestPart(name = "image", required = false) Mono<FilePart> file
   ) {
     return this.reservationService.update(id, dto, file);
