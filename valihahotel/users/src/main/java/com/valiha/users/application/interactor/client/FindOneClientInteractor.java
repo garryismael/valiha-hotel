@@ -2,7 +2,7 @@ package com.valiha.users.application.interactor.client;
 
 import com.valiha.users.application.dto.client.ClientResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
-import com.valiha.users.application.repository.GenericRepository;
+import com.valiha.users.application.repository.ClientRepository;
 import com.valiha.users.application.useCase.client.FindOneClientUseCase;
 import com.valiha.users.core.constants.BlogValidator;
 import com.valiha.users.core.entities.model.Client;
@@ -11,11 +11,11 @@ import java.util.Map;
 
 public class FindOneClientInteractor implements FindOneClientUseCase {
 
-  private final GenericRepository<Client> clientRepository;
+  private final ClientRepository clientRepository;
   private final GenericPresenter<ClientResponseDto> clientPresenter;
 
   public FindOneClientInteractor(
-    GenericRepository<Client> clientRepository,
+    ClientRepository clientRepository,
     GenericPresenter<ClientResponseDto> clientPresenter
   ) {
     this.clientRepository = clientRepository;

@@ -3,7 +3,7 @@ package com.valiha.users.application.interactor.client;
 import com.valiha.users.application.dto.client.ClientRequestDto;
 import com.valiha.users.application.dto.client.ClientResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
-import com.valiha.users.application.repository.GenericRepository;
+import com.valiha.users.application.repository.ClientRepository;
 import com.valiha.users.application.useCase.client.EditClientUseCase;
 import com.valiha.users.core.constants.ClientValidator;
 import com.valiha.users.core.entities.model.Client;
@@ -13,12 +13,12 @@ import java.util.Map;
 
 public class EditClientInteractor implements EditClientUseCase {
 
-  private final GenericRepository<Client> clientRepository;
+  private final ClientRepository clientRepository;
   private final GenericPresenter<ClientResponseDto> clientPresenter;
   private final ClientFactory clientFactory;
 
   public EditClientInteractor(
-    GenericRepository<Client> clientRepository,
+    ClientRepository clientRepository,
     GenericPresenter<ClientResponseDto> clientPresenter,
     ClientFactory clientFactory
   ) {
