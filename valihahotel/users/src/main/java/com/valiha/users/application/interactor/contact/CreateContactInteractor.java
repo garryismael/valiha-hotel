@@ -3,8 +3,8 @@ package com.valiha.users.application.interactor.contact;
 import com.valiha.users.application.dto.contact.ContactRequestDto;
 import com.valiha.users.application.dto.contact.ContactResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
+import com.valiha.users.application.repository.ClientRepository;
 import com.valiha.users.application.repository.ContactRepository;
-import com.valiha.users.application.repository.GenericRepository;
 import com.valiha.users.application.useCase.contact.CreateContactUseCase;
 import com.valiha.users.core.constants.ContactValidator;
 import com.valiha.users.core.entities.model.Client;
@@ -17,14 +17,14 @@ import java.util.Map;
 public class CreateContactInteractor implements CreateContactUseCase {
 
   private final ContactRepository contactRepository;
-  private final GenericRepository<Client> clientRepository;
+  private final ClientRepository clientRepository;
   private final GenericPresenter<ContactResponseDto> contactPresenter;
   private final ContactFactory contactFactory;
   private final ClientFactory clientFactory;
 
   public CreateContactInteractor(
     ContactRepository contactRepository,
-    GenericRepository<Client> clientRepository,
+    ClientRepository clientRepository,
     GenericPresenter<ContactResponseDto> contactPresenter,
     ContactFactory contactFactory,
     ClientFactory clientFactory
