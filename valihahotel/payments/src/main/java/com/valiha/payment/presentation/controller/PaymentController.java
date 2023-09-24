@@ -7,8 +7,13 @@ import com.valiha.payment.application.useCase.payment.EditPaymentUseCase;
 import com.valiha.payment.application.useCase.payment.FindAllPaymentsByIdsUseCase;
 import com.valiha.payment.application.useCase.payment.FindAllPaymentsUseCase;
 import com.valiha.payment.application.useCase.payment.FindOnePaymentUseCase;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,23 +40,28 @@ public class PaymentController {
     this.findOneUseCase = findOneUseCase;
   }
 
-  public PaymentResponseDto create(PaymentRequestDto requestDto) {
+  @PostMapping
+  public PaymentResponseDto create(@RequestBody PaymentRequestDto requestDto) {
     return this.createUseCase.execute(requestDto);
   }
 
+  @GetMapping
+  public List<PaymentResponseDto> findAll() {
+    return this.findAllUseCase.execute();
+  }
+
+  @GetMapping("/ids")
+  public List<PaymentResponseDto> findAllByIds(@RequestParam List<String> ids) {
+    return this.findAllByIdsUseCase.execute(ids);
+  }
+
+  @GetMapping("/{id}")
   public PaymentResponseDto findOne(String id) {
     return this.findOneUseCase.execute(id);
   }
 
+  @PutMapping("/{id}")
   public PaymentResponseDto edit(String id, PaymentRequestDto requestDto) {
     return this.editUseCase.execute(id, requestDto);
-  }
-
-  public List<PaymentResponseDto> findAll(PaymentRequestDto requestDto) {
-    return this.findAllUseCase.execute();
-  }
-
-  public List<PaymentResponseDto> findAllByIds(List<String> ids) {
-    return this.findAllByIdsUseCase.execute(ids);
   }
 }

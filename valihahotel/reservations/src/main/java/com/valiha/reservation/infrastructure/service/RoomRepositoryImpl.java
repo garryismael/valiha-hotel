@@ -7,11 +7,11 @@ import com.valiha.reservation.infrastructure.repository.MongoRoomRepository;
 import java.util.List;
 import java.util.Optional;
 
-public class MongoRoomRepositoryImpl implements GenericRepository<Room> {
+public class RoomRepositoryImpl implements GenericRepository<Room> {
 
   private final MongoRoomRepository roomRepository;
 
-  public MongoRoomRepositoryImpl(MongoRoomRepository roomRepository) {
+  public RoomRepositoryImpl(MongoRoomRepository roomRepository) {
     this.roomRepository = roomRepository;
   }
 

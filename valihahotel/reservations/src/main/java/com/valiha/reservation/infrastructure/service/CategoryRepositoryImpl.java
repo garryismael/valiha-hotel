@@ -6,14 +6,11 @@ import com.valiha.reservation.infrastructure.data.CategoryDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoCategoryRepository;
 import java.util.List;
 
-public class MongoCategoryRepositoryImpl
-  implements GenericRepository<Category> {
+public class CategoryRepositoryImpl implements GenericRepository<Category> {
 
   private final MongoCategoryRepository categoryRepository;
 
-  public MongoCategoryRepositoryImpl(
-    MongoCategoryRepository categoryRepository
-  ) {
+  public CategoryRepositoryImpl(MongoCategoryRepository categoryRepository) {
     this.categoryRepository = categoryRepository;
   }
 

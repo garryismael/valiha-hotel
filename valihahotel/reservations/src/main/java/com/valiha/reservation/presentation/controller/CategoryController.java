@@ -5,7 +5,7 @@ import com.valiha.reservation.application.dto.category.CategoryResponseDto;
 import com.valiha.reservation.application.useCase.category.CategoryFindAllUseCase;
 import com.valiha.reservation.application.useCase.category.CategoryGetUseCase;
 import com.valiha.reservation.application.useCase.category.CategoryRemoveUseCase;
-import com.valiha.reservation.infrastructure.service.CategoryService;
+import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,18 +22,18 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/categories")
 public class CategoryController {
 
-  private final CategoryService categoryService;
+  private final ReservationService reservationService;
   private final CategoryFindAllUseCase findAllUseCase;
   private final CategoryGetUseCase getUseCase;
   private final CategoryRemoveUseCase removeUseCase;
 
   public CategoryController(
-    CategoryService categoryService,
+    ReservationService reservationService,
     CategoryFindAllUseCase findAllUseCase,
     CategoryGetUseCase getUseCase,
     CategoryRemoveUseCase removeUseCase
   ) {
-    this.categoryService = categoryService;
+    this.reservationService = reservationService;
     this.findAllUseCase = findAllUseCase;
     this.getUseCase = getUseCase;
     this.removeUseCase = removeUseCase;
@@ -44,7 +44,7 @@ public class CategoryController {
     CategoryRequestDto dto,
     @RequestPart("image") Mono<FilePart> file
   ) {
-    return this.categoryService.createCategory(dto, file);
+    return this.reservationService.create(dto, file);
   }
 
   @GetMapping
@@ -63,7 +63,7 @@ public class CategoryController {
     CategoryRequestDto requestDto,
     @RequestPart(name = "image", required = false) Mono<FilePart> image
   ) {
-    return this.categoryService.update(id, requestDto, image);
+    return this.reservationService.update(id, requestDto, image);
   }
 
   @DeleteMapping("/{id}")

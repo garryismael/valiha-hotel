@@ -5,7 +5,7 @@ import com.valiha.reservation.application.dto.room.RoomResponseDto;
 import com.valiha.reservation.application.useCase.room.RoomDeleteUseCase;
 import com.valiha.reservation.application.useCase.room.RoomFindAllUseCase;
 import com.valiha.reservation.application.useCase.room.RoomGetUseCase;
-import com.valiha.reservation.infrastructure.service.RoomService;
+import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,18 +22,18 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/rooms")
 public class RoomController {
 
-  private final RoomService roomService;
+  private final ReservationService reservationService;
   private final RoomFindAllUseCase findAllUseCase;
   private final RoomGetUseCase getUseCase;
   private final RoomDeleteUseCase deleteUseCase;
 
   public RoomController(
-    RoomService roomService,
+    ReservationService reservationService,
     RoomGetUseCase getUseCase,
     RoomFindAllUseCase findAllUseCase,
     RoomDeleteUseCase deleteUseCase
   ) {
-    this.roomService = roomService;
+    this.reservationService = reservationService;
     this.findAllUseCase = findAllUseCase;
     this.getUseCase = getUseCase;
     this.deleteUseCase = deleteUseCase;
@@ -44,7 +44,7 @@ public class RoomController {
     RoomRequestDto dto,
     @RequestPart("image") Mono<FilePart> file
   ) {
-    return this.roomService.create(dto, file);
+    return this.reservationService.create(dto, file);
   }
 
   @GetMapping
@@ -63,7 +63,7 @@ public class RoomController {
     RoomRequestDto dto,
     @RequestPart(name = "image", required = false) Mono<FilePart> file
   ) {
-    return this.roomService.update(id, dto, file);
+    return this.reservationService.update(id, dto, file);
   }
 
   @DeleteMapping("/{id}")

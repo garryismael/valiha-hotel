@@ -2,19 +2,31 @@ package com.valiha.reservation.infrastructure.service;
 
 import com.valiha.reservation.application.dto.client.ClientRequestDto;
 import com.valiha.reservation.application.dto.client.ClientResponseDto;
-import com.valiha.reservation.application.service.ClientService;
-import com.valiha.reservation.infrastructure.repository.ApiClientRepository;
+import com.valiha.reservation.application.service.GenericService;
+import com.valiha.reservation.infrastructure.repository.ApiClientService;
+import java.util.List;
 
-public class ClientServiceImpl implements ClientService {
+public class ClientServiceImpl
+  implements GenericService<ClientResponseDto, ClientRequestDto> {
 
-  private final ApiClientRepository clientRepository;
+  private final ApiClientService clientService;
 
-  public ClientServiceImpl(ApiClientRepository clientRepository) {
-    this.clientRepository = clientRepository;
+  public ClientServiceImpl(ApiClientService clientService) {
+    this.clientService = clientService;
   }
 
   @Override
-  public ClientResponseDto create(ClientRequestDto dto) {
-    return this.clientRepository.create(dto);
+  public ClientResponseDto create(ClientRequestDto requestDto) {
+    return clientService.create(requestDto);
+  }
+
+  @Override
+  public List<ClientResponseDto> findAllByIds(List<String> ids) {
+    return clientService.findAllByIds(ids);
+  }
+
+  @Override
+  public ClientResponseDto findOneById(String id) {
+    return clientService.findOneById(id);
   }
 }

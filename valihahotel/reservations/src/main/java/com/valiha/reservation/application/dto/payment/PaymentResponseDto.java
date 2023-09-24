@@ -1,6 +1,7 @@
 package com.valiha.reservation.application.dto.payment;
 
 import com.valiha.reservation.core.entities.models.Payment;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,5 +24,9 @@ public class PaymentResponseDto {
       .discount(payment.getDiscount())
       .state(payment.getState())
       .build();
+  }
+
+  public static List<PaymentResponseDto> from(List<Payment> payments) {
+    return payments.stream().map(PaymentResponseDto::from).toList();
   }
 }

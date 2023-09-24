@@ -7,6 +7,7 @@ import com.valiha.reservation.core.constant.AppReservation;
 import com.valiha.reservation.core.entities.models.Reservation;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -48,5 +49,11 @@ public class ReservationResponseDto {
       .client(ClientResponseDto.from(reservation.getClient()))
       .payment(PaymentResponseDto.from(reservation.getPayment()))
       .build();
+  }
+
+  public static List<ReservationResponseDto> from(
+    List<Reservation> reservations
+  ) {
+    return reservations.stream().map(ReservationResponseDto::from).toList();
   }
 }
