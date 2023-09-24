@@ -60,6 +60,8 @@ public class ReservationsApplication {
       return (
         !className.endsWith("Dto") &&
         !className.endsWith("ApiErrorException") &&
+        !className.endsWith("ReservationState") &&
+        !className.endsWith("PaymentState") &&
         !className.endsWith("ErrorResponse")
       );
     };
