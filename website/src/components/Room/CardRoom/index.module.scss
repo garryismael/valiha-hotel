@@ -17,11 +17,6 @@
     @apply transition-all duration-400 ease-in-out hover:scale-105 overflow-hidden;
 }
 
-.btn {
-    @apply px-8 py-3 text-white shadow-lg bg-reddish-orange-500;
-    @apply hover:bg-bright-red-500 font-poppins;
-}
-
 .cardInfo {
     color: #777;
 }

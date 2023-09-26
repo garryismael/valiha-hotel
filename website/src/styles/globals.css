@@ -19,11 +19,23 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  transition: font-size 0.4s ease-in-out;
+}
+
+.btn, .btn-orange {
+  @apply px-8 py-3
+}
+
+.btn-orange {
+  @apply text-white shadow-lg bg-reddish-orange-500;
+  @apply hover:bg-bright-red-500;
+}
+
+.btn-outline-orange {
+  @apply border border-reddish-orange-500;
+  @apply text-reddish-orange-500;
+}
+
+.border-dark {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
