@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 export const HeroSection = () => {
   return (
@@ -19,7 +18,7 @@ export const HeroSection = () => {
           <button className="btn btn-outline-orange">Contactez-nous</button>
         </div>
       </div>
-      <div className="relative w-[500px] h-[750px]">
+      <div className="relative w-[500px] h-[750px] z-1">
         <Image
           alt="hero image"
           src="/assets/img/valiha.webp"
