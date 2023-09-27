@@ -1,14 +1,18 @@
 "use client";
 
+import useStickyHeader from "@/hooks/header";
 import Image from "next/image";
 import Link from "next/link";
+import styles from './index.module.css';
 
 const TopNavigation = () => {
+  const [sticky] = useStickyHeader();
+
   return (
-    <header className="bg-white fixed top-0 w-full border-dark z-50">
+    <header className={`header__nav ${sticky}`}>
       <nav className="container mx-auto px-6 py-3">
-        <div className="flex justify-between items-center">
-          <Link href="#" className="text-2xl font-bold text-gray-800">
+        <div className="flex justify-between items-center text-dark-muted-500 font-bold">
+          <Link href="#" className="text-2xl font-extrabold ">
             <Image
               src="/assets/img/logo.png"
               alt="logo"
@@ -17,54 +21,46 @@ const TopNavigation = () => {
               className="h-14"
             />
           </Link>
-          <div className="hidden md:flex items-center space-x-5">
+          <div className="hidden md:flex items-center space-x-10">
             <Link
               href="#"
-              className="text-gray-800 hover:text-reddish-orange-400"
+              className="hover:text-reddish-orange-500 hover:border-t-2 py-9 px-5 hover:border-reddish-orange-500"
             >
               Accueil
             </Link>
             <Link
               href="#"
-              className="text-gray-800 hover:text-reddish-orange-400"
+              className=" hover:text-reddish-orange-400"
             >
               Réservation
             </Link>
             <Link
               href="#"
-              className="text-gray-800 hover:text-reddish-orange-400"
+              className=" hover:text-reddish-orange-400"
             >
               Blog
             </Link>
             <Link
               href="#"
-              className="text-gray-800 hover:text-reddish-orange-400"
+              className=" hover:text-reddish-orange-400"
             >
               Hébergement
             </Link>
             <Link
               href="#"
-              className="text-gray-800 hover:text-reddish-orange-400"
+              className=" hover:text-reddish-orange-400"
             >
               Location de voitures
             </Link>
-          </div>
-          <div className="flex gap-4">
             <Link
               href="#"
-              className="bg-reddish-orange-500 text-white px-4 py-2 rounded-md"
+              className=" hover:text-reddish-orange-400"
             >
-              Se connecter
-            </Link>
-            <Link
-              href="#"
-              className="border border-reddish-orange-500 hover text-reddish-orange-500 px-4 py-2 rounded-md"
-            >
-              Créer un compte
+              Contact
             </Link>
           </div>
           <div className="md:hidden flex items-center">
-            <button className="text-gray-800 focus:outline-none">
+            <button className=" focus:outline-none">
               <svg
                 className="w-6 h-6"
                 fill="none"

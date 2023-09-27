@@ -22,6 +22,18 @@ body {
   transition: font-size 0.4s ease-in-out;
 }
 
+.header__nav {
+  @apply bg-transparent fixed top-0 w-full z-50 h-24 flex items-center;
+}
+
+.header__nav.active {
+  @apply bg-dark-muted-500;
+}
+
+.header__nav.active a {
+  @apply text-white;
+}
+
 .btn, .btn-orange {
   @apply px-8 py-3
 }

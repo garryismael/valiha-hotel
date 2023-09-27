@@ -16,9 +16,7 @@ export default function RootLayout({
     <html lang="en" className="font-poppins">
       <body>
         <TopNavigation />
-        <div className="w-full mt-28">
-          <div className="container mx-auto px-6 py-3">{children}</div>
-        </div>
+        <main>{children}</main>
       </body>
     </html>
   );

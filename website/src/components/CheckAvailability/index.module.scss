@@ -1,5 +1,10 @@
-.input {
-    input {
-        height: 40px;  
-    }
+.form {
+    @apply absolute;
+    @apply py-16 shadow-lg left-0 right-0 -bottom-8;
+}
+
+.inputs {
+    @apply bg-white;
+    @apply container mx-auto flex flex-col md:flex-row items-center justify-center rounded-full gap-2 relative;
+    box-shadow: 0 1px 13.5px 1.5px rgba(46,49,108,.08);
 }

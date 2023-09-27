@@ -1,1 +1,16 @@
 syntax="proto3";
+
+service PaymentService {
+    rpc create(stream PaymentRequestDto) returns(stream PaymentResponseDto);
+}
+
+message PaymentRequestDto {
+    int64 id=1;
+    int32 discount=2;
+    string state=3;
+}
+
+message PaymentResponseDto {
+    int32 discount=1;
+    string state=2;
+}
