@@ -1,4 +1,5 @@
 @import '@fontsource/poppins';
+@import 'react-datepicker/dist/react-datepicker.css';
 
 @tailwind base;
 @tailwind components;

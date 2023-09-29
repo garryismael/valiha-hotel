@@ -1,56 +1,61 @@
 "use client";
-import { Input, Select, SelectItem } from "@nextui-org/react";
-import { FaCalendarCheck, FaHouse } from "react-icons/fa6";
-import styles from "./index.module.scss";
-import ReactDatepicker from "react-datepicker";
+import {
+  Select,
+  SelectItem
+} from "@nextui-org/react";
 import { useState } from "react";
-
+import DatePicker from "react-datepicker";
+import { FaCalendarDays, FaHouse } from "react-icons/fa6";
+import DropdownAvailability from "../DropdownAvailability";
+import styles from "./index.module.scss";
 
 const CheckAvailability = () => {
   const hotelTypes = ["hotel-with-kitchen", "hotel-without-breakfast"];
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
   return (
     <form className={styles.form}>
-      <div className={styles.inputs}>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-2 w-10/12 pl-16">
+      <div className={styles.inputContainer}>
+        <div className={styles.inputs}>
           <Select
-            labelPlacement="outside"
-            label="Hotel Type"
             placeholder="Hotel Type"
+            color="default"
             radius="none"
-            startContent={<FaHouse />}
+            startContent={<FaHouse size={24} />}
+            classNames={{
+              trigger: "!bg-transparent shadow-none",
+              value: "text-xl"
+            }}
           >
             {hotelTypes.map((hotelType) => (
-              <SelectItem key={hotelType} value={hotelType}>
+              <SelectItem key={hotelType} value={hotelType} classNames={{
+                base: "!text-xl",
+                wrapper: "!text-xl",
+                title: "!text-xl",
+                description: "!text-xl"
+              }}>
                 {hotelType}
               </SelectItem>
             ))}
           </Select>
-          <Input
-            type="date"
-            label="Check In"
-            placeholder="Check In Date"
-            labelPlacement="outside"
-            className={styles.input}
-            radius="none"
-            color="default"
-            classNames={{input: "bg-red-200"}}
-            startContent={
-              <FaCalendarCheck/>
-            }
-          />
-          
-          <Input
-            type="date"
-            label="Check Out"
-            placeholder="Check Out Date"
-            labelPlacement="outside"
-            className="py-2"
-            radius="none"
-            startContent={
-              <FaCalendarCheck/>
-            }
-          />
+          <div className="flex items-center gap-3">
+            <FaCalendarDays size={24} />
+            <DatePicker
+              selected={startDate}
+              dateFormat="dd/MM/yyyy"
+              onChange={(date) => setStartDate(date)}
+              className="text-xl outline-none"
+            />
+          </div>
+          <div className="flex items-center gap-3">
+            <FaCalendarDays size={24} />
+            <DatePicker
+              selected={startDate}
+              dateFormat="dd/MM/yyyy"
+              onChange={(date) => setStartDate(date)}
+              className="text-xl outline-none bg"
+            />
+          </div>
+          <DropdownAvailability />
         </div>
         <button
           type="button"
