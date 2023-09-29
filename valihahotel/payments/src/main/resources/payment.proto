@@ -1,16 +1,25 @@
 syntax="proto3";
 
 service PaymentService {
-    rpc create(stream PaymentRequestDto) returns(stream PaymentResponseDto);
+    rpc create(stream PaymentRequest) returns(stream PaymentResponse);
+    rpc findAllByIds(stream PaymentIdsRequest) return (stream PaymentListResponse);
 }
 
-message PaymentRequestDto {
+message PaymentRequest {
+    int32 discount=1;
+    string state=2;
+}
+
+message PaymentResponse {
     int64 id=1;
     int32 discount=2;
     string state=3;
 }
 
-message PaymentResponseDto {
-    int32 discount=1;
-    string state=2;
+message PaymentIdsRequest {
+    repeated string ids=1;
+}
+
+message PaymentListResponse {
+    repeated PaymentResponse=1;
 }
