@@ -17,7 +17,7 @@ public class UserValidator {
     "phone number invalid";
   public static final String INVALID_EMAIL_ERROR = "email invalid";
   public static final String EMAIL_EXISTS_ERROR = "email exists";
-  public static final String INVALID_PASSWORD_ERROR = "email invalid";
+  public static final String INVALID_PASSWORD_ERROR = "password invalid";
 
   // Contact Error Message
   public static final String USER_NOT_FOUND_ERROR = "user not found";
