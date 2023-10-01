@@ -4,8 +4,8 @@ import com.valiha.reservation.application.dto.reservation.CommonReservationReque
 import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
-import com.valiha.reservation.application.repository.GenericRepository;
 import com.valiha.reservation.application.repository.ReservationRepository;
+import com.valiha.reservation.application.repository.RoomRepository;
 import com.valiha.reservation.application.useCase.reservation.EditReservationUseCase;
 import com.valiha.reservation.core.constant.AppReservation;
 import com.valiha.reservation.core.constant.ReservationValidator;
@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
 public class EditReservationInteractor implements EditReservationUseCase {
 
   private final ReservationRepository reservationRepository;
-  private final GenericRepository<Room> roomRepository;
+  private final RoomRepository roomRepository;
   private final GenericPresenter<ReservationResponseDto> reservationPresenter;
   private final ReservationFactory reservationFactory;
 
