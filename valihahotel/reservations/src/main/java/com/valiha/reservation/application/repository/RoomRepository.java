@@ -12,7 +12,13 @@ public interface RoomRepository {
 
   List<Room> findAll();
 
-  List<Room> findByIds(List<String> ids);
+  List<Room> findAllBy(
+    String hotelType,
+    int adult,
+    int kid,
+    int room,
+    List<String> ids
+  );
 
   void deleteById(String id);
 }

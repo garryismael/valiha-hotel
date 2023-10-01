@@ -45,7 +45,8 @@ public class FindAvailableRoomsInteractor implements FindAvailableRoomsUseCase {
       .map(reservation -> reservation.getRoom().getId())
       .toList();
 
-    List<Room> rooms = this.roomRepository.findByIds(roomIds);
+    List<Room> rooms =
+      this.roomRepository.findAllBy(hotelType, adult, kid, room, roomIds);
     List<RoomResponseDto> responseDtos = RoomResponseDto.fromList(rooms);
     return this.roomPresenter.prepareSuccessView(responseDtos);
   }

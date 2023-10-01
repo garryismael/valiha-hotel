@@ -51,10 +51,14 @@ public class RoomRepositoryImpl implements RoomRepository {
   }
 
   @Override
-  public List<Room> findByIds(List<String> ids) {
+  public List<Room> findAllBy(
+    String hotelType,
+    int adult,
+    int kid,
+    int room,
+    List<String> ids
+  ) {
     // TODO Auto-generated method stub
-    throw new UnsupportedOperationException(
-      "Unimplemented method 'findAllByIds'"
-    );
+    throw new UnsupportedOperationException("Unimplemented method 'findAllBy'");
   }
 }
