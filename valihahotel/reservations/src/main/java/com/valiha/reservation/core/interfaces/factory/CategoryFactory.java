@@ -6,6 +6,7 @@ public interface CategoryFactory {
   Category create(
     String id,
     String title,
+    String type,
     int adult,
     int kid,
     int bigBed,

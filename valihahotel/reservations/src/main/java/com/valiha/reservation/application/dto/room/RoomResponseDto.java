@@ -16,7 +16,6 @@ public class RoomResponseDto {
 
   private String id;
   private String title;
-  private String type;
   private int price;
   private String image;
   private CategoryResponseDto category;
@@ -26,7 +25,6 @@ public class RoomResponseDto {
       .builder()
       .id(room.getId())
       .title(room.getTitle())
-      .type(room.getType())
       .price(room.getPrice())
       .image(room.getImage())
       .category(CategoryResponseDto.from(room.getCategory()))

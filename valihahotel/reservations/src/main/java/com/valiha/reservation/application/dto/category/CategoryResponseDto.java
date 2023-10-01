@@ -17,6 +17,7 @@ public class CategoryResponseDto {
 
   private String id;
   private String title;
+  private String type;
   private int adult;
   private int kid;
   private int bigBed;
@@ -28,6 +29,7 @@ public class CategoryResponseDto {
       .builder()
       .id(category.getId())
       .title(category.getTitle())
+      .type(category.getType())
       .adult(category.getAdult())
       .kid(category.getKid())
       .bigBed(category.getBigBed())

@@ -68,6 +68,7 @@ public class EditCategoryInteractor implements CategoryEditUseCase {
       this.categoryFactory.create(
           id,
           requestDto.getTitle(),
+          requestDto.getType(),
           requestDto.getAdult(),
           requestDto.getKid(),
           requestDto.getBigBed(),

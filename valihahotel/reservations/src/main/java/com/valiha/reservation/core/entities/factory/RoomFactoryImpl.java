@@ -10,7 +10,6 @@ public class RoomFactoryImpl implements RoomFactory {
   public Room create(
     String id,
     String title,
-    String type,
     int price,
     String image,
     Category category
@@ -19,25 +18,6 @@ public class RoomFactoryImpl implements RoomFactory {
       .builder()
       .id(id)
       .title(title)
-      .type(type)
-      .price(price)
-      .image(image)
-      .category(category)
-      .build();
-  }
-
-  @Override
-  public Room create(
-    String title,
-    String type,
-    int price,
-    String image,
-    Category category
-  ) {
-    return Room
-      .builder()
-      .title(title)
-      .type(type)
       .price(price)
       .image(image)
       .category(category)

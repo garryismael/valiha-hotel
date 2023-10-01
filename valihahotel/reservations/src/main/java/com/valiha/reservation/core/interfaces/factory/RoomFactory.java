@@ -7,15 +7,6 @@ public interface RoomFactory {
   Room create(
     String id,
     String title,
-    String type,
-    int price,
-    String image,
-    Category category
-  );
-
-  Room create(
-    String title,
-    String type,
     int price,
     String image,
     Category category

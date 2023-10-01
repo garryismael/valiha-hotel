@@ -1,7 +1,5 @@
 package com.valiha.reservation.core.constant;
 
-import java.util.List;
-
 public class RoomValidator {
 
   /**
@@ -22,10 +20,7 @@ public class RoomValidator {
    *
    */
   public static final String KEY_TITLE = "title";
-  /**
-   *
-   */
-  public static final String KEY_TYPE = "type";
+
   /**
    *
    */
@@ -49,23 +44,11 @@ public class RoomValidator {
   /**
    *
    */
-  public static final String INVALID_TYPE = "Invalid Type";
-  /**
-   *
-   */
   public static final String INVALID_PRICE = "Invalid Price";
   /**
    *
    */
   public static final String INVALID_CATEGORY = "Invalid Category";
-
-  /**
-   *
-   */
-  public static final List<String> ROOM_TYPES = List.of(
-    "hotel-with-breakfast",
-    "appartement-with-kitchen"
-  );
 
   /**
    *

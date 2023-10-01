@@ -1,5 +1,7 @@
 package com.valiha.reservation.core.constant;
 
+import java.util.List;
+
 public class CategoryValidator {
 
   /**
@@ -18,6 +20,10 @@ public class CategoryValidator {
    *
    */
   public static final String CATEGORY_NOT_FOUND_MESSAGE = "Category Not Found";
+  /**
+   *
+   */
+  public static final String KEY_TYPE = "type";
 
   /**
    *
@@ -29,6 +35,10 @@ public class CategoryValidator {
    *
    */
   public static final String INVALID_TITLE = "invalid title";
+  /**
+   *
+   */
+  public static final String INVALID_TYPE = "Invalid Type";
   /**
    *
    */
@@ -74,4 +84,12 @@ public class CategoryValidator {
    *
    */
   public static final String UPLOAD_ERROR = "upload failed";
+
+  /**
+   *
+   */
+  public static final List<String> ROOM_TYPES = List.of(
+    "hotel-with-breakfast",
+    "appartement-with-kitchen"
+  );
 }

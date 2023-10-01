@@ -20,6 +20,7 @@ public class CategoryDataMapper {
   private String id;
 
   private String title;
+  private String type;
   private int adult;
   private int kid;
   private int bigBed;
@@ -31,6 +32,7 @@ public class CategoryDataMapper {
       .builder()
       .id(dataMapper.getId())
       .title(dataMapper.getTitle())
+      .type(dataMapper.getType())
       .adult(dataMapper.getAdult())
       .kid(dataMapper.getKid())
       .bigBed(dataMapper.getBigBed())
@@ -50,6 +52,7 @@ public class CategoryDataMapper {
       .builder()
       .id(category.getId())
       .title(category.getTitle())
+      .type(category.getType())
       .adult(category.getAdult())
       .kid(category.getKid())
       .bigBed(category.getBigBed())

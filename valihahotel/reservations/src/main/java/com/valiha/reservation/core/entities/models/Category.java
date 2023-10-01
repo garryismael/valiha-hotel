@@ -11,6 +11,7 @@ public class Category implements InputValidator {
 
   private String id;
   private String title;
+  private String type;
   private int adult;
   private int kid;
   private int bigBed;
@@ -32,6 +33,11 @@ public class Category implements InputValidator {
 
     public Builder title(String title) {
       this.category.title = title;
+      return this;
+    }
+
+    public Builder type(String type) {
+      this.category.type = type;
       return this;
     }
 
@@ -74,6 +80,10 @@ public class Category implements InputValidator {
     return title != null && title.trim().length() > 3;
   }
 
+  public boolean typeIsValid() {
+    return type != null && CategoryValidator.ROOM_TYPES.contains(type);
+  }
+
   public boolean adultIsValid() {
     return adult > 0;
   }
@@ -96,6 +106,10 @@ public class Category implements InputValidator {
 
     if (!titleIsValid()) {
       errors.put(CategoryValidator.KEY_TITLE, CategoryValidator.INVALID_TITLE);
+    }
+
+    if (!typeIsValid()) {
+      errors.put(CategoryValidator.KEY_TYPE, CategoryValidator.INVALID_TYPE);
     }
 
     if (!adultIsValid()) {

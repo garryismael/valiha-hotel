@@ -12,7 +12,6 @@ public class Room implements InputValidator {
 
   private String id;
   private String title;
-  private String type;
   private int price;
   private String image;
   private Category category;
@@ -32,11 +31,6 @@ public class Room implements InputValidator {
 
     public Builder title(String title) {
       this.room.title = title;
-      return this;
-    }
-
-    public Builder type(String type) {
-      this.room.type = type;
       return this;
     }
 
@@ -69,10 +63,6 @@ public class Room implements InputValidator {
     return title != null && title.trim().length() > 2;
   }
 
-  public boolean typeIsValid() {
-    return type != null && RoomValidator.ROOM_TYPES.contains(type);
-  }
-
   public boolean priceIsValid() {
     return price >= 0;
   }
@@ -86,10 +76,6 @@ public class Room implements InputValidator {
     Map<String, String> errors = new HashMap<>();
     if (!titleIsValid()) {
       errors.put(RoomValidator.KEY_TITLE, RoomValidator.INVALID_TITLE);
-    }
-
-    if (!typeIsValid()) {
-      errors.put(RoomValidator.KEY_TYPE, RoomValidator.INVALID_TYPE);
     }
 
     if (!priceIsValid()) {

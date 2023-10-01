@@ -10,7 +10,6 @@ import lombok.Setter;
 public class RoomRequestDto {
 
   private String title;
-  private String type;
   private int price;
   private String categoryId;
 }

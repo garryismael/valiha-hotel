@@ -4,6 +4,7 @@ import com.valiha.reservation.application.dto.room.RoomRequestDto;
 import com.valiha.reservation.application.dto.room.RoomResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.RoomRepository;
 import com.valiha.reservation.application.useCase.room.RoomCreateUseCase;
 import com.valiha.reservation.core.constant.RoomValidator;
 import com.valiha.reservation.core.entities.models.Category;
@@ -12,25 +13,15 @@ import com.valiha.reservation.core.interfaces.factory.RoomFactory;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CreateRoomInteractor implements RoomCreateUseCase {
 
   private final RoomFactory roomFactory;
-  private final GenericRepository<Room> roomRepository;
+  private final RoomRepository roomRepository;
   private final GenericRepository<Category> categoryRepository;
   private final GenericPresenter<RoomResponseDto> roomPresenter;
-
-  public CreateRoomInteractor(
-    RoomFactory roomFactory,
-    GenericRepository<Room> roomRepository,
-    GenericRepository<Category> categoryRepository,
-    GenericPresenter<RoomResponseDto> roomPresenter
-  ) {
-    this.roomFactory = roomFactory;
-    this.roomRepository = roomRepository;
-    this.categoryRepository = categoryRepository;
-    this.roomPresenter = roomPresenter;
-  }
 
   @Override
   public RoomResponseDto execute(RoomRequestDto requestDto, File image) {
@@ -43,8 +34,8 @@ public class CreateRoomInteractor implements RoomCreateUseCase {
 
     Room room =
       this.roomFactory.create(
+          null,
           requestDto.getTitle(),
-          requestDto.getType(),
           requestDto.getPrice(),
           image.getName(),
           category

@@ -9,6 +9,7 @@ public class CategoryFactoryImpl implements CategoryFactory {
   public Category create(
     String id,
     String title,
+    String type,
     int adult,
     int kid,
     int bigBed,
@@ -19,6 +20,7 @@ public class CategoryFactoryImpl implements CategoryFactory {
       .builder()
       .id(id)
       .title(title)
+      .type(type)
       .adult(adult)
       .kid(kid)
       .bigBed(bigBed)

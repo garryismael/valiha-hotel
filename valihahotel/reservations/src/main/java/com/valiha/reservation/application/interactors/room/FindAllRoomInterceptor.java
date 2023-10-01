@@ -6,19 +6,13 @@ import com.valiha.reservation.application.repository.GenericRepository;
 import com.valiha.reservation.application.useCase.room.RoomFindAllUseCase;
 import com.valiha.reservation.core.entities.models.Room;
 import java.util.List;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class FindAllRoomInterceptor implements RoomFindAllUseCase {
 
   private final GenericRepository<Room> roomRepository;
   private final GenericPresenter<RoomResponseDto> roomPresenter;
-
-  public FindAllRoomInterceptor(
-    GenericRepository<Room> roomRepository,
-    GenericPresenter<RoomResponseDto> roomPresenter
-  ) {
-    this.roomRepository = roomRepository;
-    this.roomPresenter = roomPresenter;
-  }
 
   @Override
   public List<RoomResponseDto> execute() {

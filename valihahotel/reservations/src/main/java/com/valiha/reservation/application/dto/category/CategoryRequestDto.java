@@ -10,6 +10,7 @@ import lombok.Setter;
 public class CategoryRequestDto {
 
   private String title;
+  private String type;
   private int adult;
   private int kid;
   private int bigBed;

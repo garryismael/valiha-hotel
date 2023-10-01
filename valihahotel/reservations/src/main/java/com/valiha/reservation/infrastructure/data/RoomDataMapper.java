@@ -21,7 +21,6 @@ public class RoomDataMapper {
   private String id;
 
   private String title;
-  private String type;
   private int price;
   private String image;
 
@@ -33,7 +32,6 @@ public class RoomDataMapper {
       .builder()
       .id(dataMapper.getId())
       .title(dataMapper.getTitle())
-      .type(dataMapper.getType())
       .price(dataMapper.getPrice())
       .image(dataMapper.getImage())
       .category(CategoryDataMapper.toCategory(dataMapper.getCategory()))
@@ -49,7 +47,6 @@ public class RoomDataMapper {
       .builder()
       .id(room.getId())
       .title(room.getTitle())
-      .type(room.getType())
       .price(room.getPrice())
       .image(room.getImage())
       .category(CategoryDataMapper.from(room.getCategory()))

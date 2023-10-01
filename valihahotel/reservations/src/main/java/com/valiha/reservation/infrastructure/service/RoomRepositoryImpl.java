@@ -1,13 +1,13 @@
 package com.valiha.reservation.infrastructure.service;
 
-import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.RoomRepository;
 import com.valiha.reservation.core.entities.models.Room;
 import com.valiha.reservation.infrastructure.data.RoomDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoRoomRepository;
 import java.util.List;
 import java.util.Optional;
 
-public class RoomRepositoryImpl implements GenericRepository<Room> {
+public class RoomRepositoryImpl implements RoomRepository {
 
   private final MongoRoomRepository roomRepository;
 
@@ -48,5 +48,13 @@ public class RoomRepositoryImpl implements GenericRepository<Room> {
     RoomDataMapper dataMapper =
       this.roomRepository.save(RoomDataMapper.from(entity));
     return RoomDataMapper.toRoom(dataMapper);
+  }
+
+  @Override
+  public List<Room> findByIds(List<String> ids) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException(
+      "Unimplemented method 'findAllByIds'"
+    );
   }
 }

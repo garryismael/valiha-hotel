@@ -4,6 +4,7 @@ import com.valiha.reservation.application.dto.room.RoomRequestDto;
 import com.valiha.reservation.application.dto.room.RoomResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.RoomRepository;
 import com.valiha.reservation.application.service.StorageService;
 import com.valiha.reservation.application.useCase.room.RoomEditUseCase;
 import com.valiha.reservation.core.constant.CategoryValidator;
@@ -15,28 +16,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class EditRoomInteractor implements RoomEditUseCase {
 
   private final RoomFactory roomFactory;
-  private final GenericRepository<Room> roomRepository;
+  private final RoomRepository roomRepository;
   private final GenericRepository<Category> categoryRepository;
   private final GenericPresenter<RoomResponseDto> roomPresenter;
   private final StorageService storageService;
-
-  public EditRoomInteractor(
-    RoomFactory roomFactory,
-    GenericRepository<Room> roomRepository,
-    GenericRepository<Category> categoryRepository,
-    GenericPresenter<RoomResponseDto> roomPresenter,
-    StorageService storageService
-  ) {
-    this.roomFactory = roomFactory;
-    this.roomRepository = roomRepository;
-    this.categoryRepository = categoryRepository;
-    this.roomPresenter = roomPresenter;
-    this.storageService = storageService;
-  }
 
   @Override
   public RoomResponseDto execute(
@@ -85,7 +74,6 @@ public class EditRoomInteractor implements RoomEditUseCase {
       this.roomFactory.create(
           id,
           requestDto.getTitle(),
-          requestDto.getType(),
           requestDto.getPrice(),
           image,
           category

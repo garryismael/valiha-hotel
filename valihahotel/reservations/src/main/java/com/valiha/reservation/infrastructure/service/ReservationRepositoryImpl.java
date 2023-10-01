@@ -10,6 +10,7 @@ import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.infrastructure.data.ReservationDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoReservationRepository;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -109,5 +110,13 @@ public class ReservationRepositoryImpl implements ReservationRepository {
   @Override
   public void deleteById(String id) {
     this.reservationRepository.deleteById(id);
+  }
+
+  @Override
+  public List<Reservation> findAvailability(Date checkIn, Date checkOut) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException(
+      "Unimplemented method 'findAllByDates'"
+    );
   }
 }
