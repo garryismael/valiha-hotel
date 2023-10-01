@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.security.Principal;
 import java.util.List;
 import org.springframework.http.MediaType;
-import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,9 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping(value = "/blogs")
@@ -55,22 +54,22 @@ public class BlogController {
   }
 
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public Mono<BlogResponseDto> create(
+  public BlogResponseDto create(
     @AuthenticationPrincipal OAuth2User oauthPrincipal,
     @RequestBody BlogRequestDto requestDto,
-    @RequestPart(name = "image") Mono<FilePart> monoFilePart,
+    @RequestParam(name = "image") MultipartFile multipartFile,
     Principal principal
   ) {
-    return blogService.createBlog(requestDto, monoFilePart, principal);
+    return blogService.createBlog(requestDto, multipartFile, principal);
   }
 
   @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public Mono<BlogResponseDto> updateBlog(
+  public BlogResponseDto updateBlog(
     @PathVariable String id,
     @RequestBody BlogRequestDto requestDto,
-    @RequestPart(name = "image", required = false) Mono<FilePart> filePartMono
+    @RequestParam(name = "image", required = false) MultipartFile multipartFile
   ) {
-    return this.blogService.editBlog(id, requestDto, filePartMono);
+    return this.blogService.editBlog(id, requestDto, multipartFile);
   }
 
   @DeleteMapping("/{id}")

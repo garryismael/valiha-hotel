@@ -8,16 +8,15 @@ import com.valiha.reservation.application.useCase.room.RoomGetUseCase;
 import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
 import org.springframework.http.MediaType;
-import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/rooms")
@@ -41,11 +40,11 @@ public class RoomController {
   }
 
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public Mono<RoomResponseDto> createRoom(
+  public RoomResponseDto createRoom(
     RoomRequestDto dto,
-    @RequestPart("image") Mono<FilePart> file
+    @RequestParam("image") MultipartFile multipartFile
   ) {
-    return this.reservationService.create(dto, file);
+    return this.reservationService.create(dto, multipartFile);
   }
 
   @GetMapping
@@ -59,12 +58,12 @@ public class RoomController {
   }
 
   @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public Mono<RoomResponseDto> editRoom(
+  public RoomResponseDto editRoom(
     @PathVariable String id,
     RoomRequestDto dto,
-    @RequestPart(name = "image", required = false) Mono<FilePart> file
+    @RequestParam(name = "image", required = false) MultipartFile multipartFile
   ) {
-    return this.reservationService.update(id, dto, file);
+    return this.reservationService.update(id, dto, multipartFile);
   }
 
   @DeleteMapping("/{id}")

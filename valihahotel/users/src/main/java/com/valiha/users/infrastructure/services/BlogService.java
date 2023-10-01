@@ -8,9 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.security.Principal;
-import org.springframework.http.codec.multipart.FilePart;
-import org.springframework.web.bind.annotation.RequestPart;
-import reactor.core.publisher.Mono;
+import org.springframework.web.multipart.MultipartFile;
 
 public class BlogService {
 
@@ -25,39 +23,44 @@ public class BlogService {
     this.editUseCase = editUseCase;
   }
 
-  public Mono<BlogResponseDto> createBlog(
+  public BlogResponseDto createBlog(
     BlogRequestDto requestDto,
-    @RequestPart Mono<FilePart> filePartMono,
+    MultipartFile multipartFile,
     Principal principal
   ) {
-    return filePartMono
-      .flatMap(this::convertFilePartToFile)
-      .flatMap(file ->
-        Mono.just(createUseCase.execute(requestDto, file, principal.getName()))
-      );
+    return createUseCase.execute(
+      requestDto,
+      convertFilePartToFile(multipartFile),
+      principal.getName()
+    );
   }
 
-  public Mono<BlogResponseDto> editBlog(
+  public BlogResponseDto editBlog(
     String id,
     BlogRequestDto requestDto,
-    @RequestPart Mono<FilePart> filePartMono
+    MultipartFile multipartFile
   ) {
-    return filePartMono
-      .flatMap(this::convertFilePartToFile)
-      .flatMap(file -> Mono.just(editUseCase.execute(id, requestDto, file)))
-      .switchIfEmpty(Mono.just(editUseCase.execute(id, requestDto, null)));
+    return editUseCase.execute(
+      id,
+      requestDto,
+      convertFilePartToFile(multipartFile)
+    );
   }
 
-  private Mono<File> convertFilePartToFile(FilePart filePart) {
+  private File convertFilePartToFile(MultipartFile multipartFile) {
     try {
       // Create a temporary file
-      File tempFile = File.createTempFile("upload-", "-" + filePart.filename());
+      File tempFile = File.createTempFile(
+        "upload-",
+        "-" + multipartFile.getOriginalFilename()
+      );
 
       // Copy the content of the FilePart to the temporary file
       Path tempFilePath = tempFile.toPath();
-      return filePart.transferTo(tempFilePath).thenReturn(tempFile);
+      multipartFile.transferTo(tempFilePath);
+      return tempFile;
     } catch (IOException e) {
-      return Mono.error(e);
+      return null;
     }
   }
 }

@@ -8,8 +8,7 @@ import com.valiha.reservation.application.useCase.category.CategoryCreateUseCase
 import com.valiha.reservation.application.useCase.category.CategoryEditUseCase;
 import com.valiha.reservation.application.useCase.room.RoomCreateUseCase;
 import com.valiha.reservation.application.useCase.room.RoomEditUseCase;
-import org.springframework.http.codec.multipart.FilePart;
-import reactor.core.publisher.Mono;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ReservationService {
 
@@ -30,49 +29,47 @@ public class ReservationService {
     this.categoryEditUseCase = categoryEditUseCase;
   }
 
-  public Mono<RoomResponseDto> create(
+  public RoomResponseDto create(
     RoomRequestDto requestDto,
-    Mono<FilePart> filePartMono
+    MultipartFile multipartFile
   ) {
-    return filePartMono
-      .flatMap(fp -> StorageServiceImpl.convertToMonoFile(fp))
-      .flatMap(file -> Mono.just(roomCreateUseCase.execute(requestDto, file)));
+    return roomCreateUseCase.execute(
+      requestDto,
+      StorageServiceImpl.convertToFile(multipartFile)
+    );
   }
 
-  public Mono<CategoryResponseDto> create(
+  public CategoryResponseDto create(
     CategoryRequestDto requestDto,
-    Mono<FilePart> filePartMono
+    MultipartFile multipartFile
   ) {
-    return filePartMono
-      .flatMap(fp -> StorageServiceImpl.convertToMonoFile(fp))
-      .flatMap(file ->
-        Mono.just(categoryCreateUseCase.execute(requestDto, file))
-      );
+    return categoryCreateUseCase.execute(
+      requestDto,
+      StorageServiceImpl.convertToFile(multipartFile)
+    );
   }
 
-  public Mono<RoomResponseDto> update(
+  public RoomResponseDto update(
     String id,
     RoomRequestDto requestDto,
-    Mono<FilePart> filePartMono
+    MultipartFile multipartFile
   ) {
-    return filePartMono
-      .flatMap(fp -> StorageServiceImpl.convertToMonoFile(fp))
-      .flatMap(file -> Mono.just(roomEditUseCase.execute(id, requestDto, file)))
-      .switchIfEmpty(Mono.just(roomEditUseCase.execute(id, requestDto, null)));
+    return roomEditUseCase.execute(
+      id,
+      requestDto,
+      StorageServiceImpl.convertToFile(multipartFile)
+    );
   }
 
-  public Mono<CategoryResponseDto> update(
+  public CategoryResponseDto update(
     String id,
     CategoryRequestDto requestDto,
-    Mono<FilePart> filePartMono
+    MultipartFile multipartFile
   ) {
-    return filePartMono
-      .flatMap(fp -> StorageServiceImpl.convertToMonoFile(fp))
-      .flatMap(file ->
-        Mono.just(categoryEditUseCase.execute(id, requestDto, file))
-      )
-      .switchIfEmpty(
-        Mono.just(categoryEditUseCase.execute(id, requestDto, null))
-      );
+    return categoryEditUseCase.execute(
+      id,
+      requestDto,
+      StorageServiceImpl.convertToFile(multipartFile)
+    );
   }
 }

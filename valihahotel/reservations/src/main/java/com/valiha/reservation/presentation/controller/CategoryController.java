@@ -8,16 +8,15 @@ import com.valiha.reservation.application.useCase.category.CategoryRemoveUseCase
 import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
 import org.springframework.http.MediaType;
-import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/categories")
@@ -41,11 +40,11 @@ public class CategoryController {
   }
 
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public Mono<CategoryResponseDto> createCategory(
+  public CategoryResponseDto createCategory(
     CategoryRequestDto dto,
-    @RequestPart("image") Mono<FilePart> file
+    @RequestParam("image") MultipartFile multipartFile
   ) {
-    return this.reservationService.create(dto, file);
+    return this.reservationService.create(dto, multipartFile);
   }
 
   @GetMapping
@@ -59,12 +58,12 @@ public class CategoryController {
   }
 
   @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public Mono<CategoryResponseDto> editCategory(
+  public CategoryResponseDto editCategory(
     @PathVariable("id") String id,
     CategoryRequestDto requestDto,
-    @RequestPart(name = "image", required = false) Mono<FilePart> image
+    @RequestParam(name = "image", required = false) MultipartFile multipartFile
   ) {
-    return this.reservationService.update(id, requestDto, image);
+    return this.reservationService.update(id, requestDto, multipartFile);
   }
 
   @DeleteMapping("/{id}")

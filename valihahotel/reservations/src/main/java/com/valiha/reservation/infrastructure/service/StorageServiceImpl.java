@@ -8,24 +8,27 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.codec.multipart.FilePart;
-import reactor.core.publisher.Mono;
+import org.springframework.web.multipart.MultipartFile;
 
 public class StorageServiceImpl implements StorageService {
 
   @Value("${upload.directory}")
   private String UPLOAD_DIRECTORY;
 
-  public static Mono<File> convertToMonoFile(FilePart filePart) {
+  public static File convertToFile(MultipartFile multipartFile) {
     try {
       // Create a temporary file
-      File tempFile = File.createTempFile("upload-", "-" + filePart.filename());
+      File tempFile = File.createTempFile(
+        "upload-",
+        "-" + multipartFile.getOriginalFilename()
+      );
 
       // Copy the content of the FilePart to the temporary file
       Path tempFilePath = tempFile.toPath();
-      return filePart.transferTo(tempFilePath).thenReturn(tempFile);
+      multipartFile.transferTo(tempFilePath);
+      return tempFile;
     } catch (IOException e) {
-      return Mono.error(e);
+      return null;
     }
   }
 
