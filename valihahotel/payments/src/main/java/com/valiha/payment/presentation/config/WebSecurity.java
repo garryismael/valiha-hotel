@@ -10,11 +10,9 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.config.web.server.ServerHttpSecurity.CorsSpec;
-import org.springframework.security.config.web.server.ServerHttpSecurity.CsrfSpec;
-import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
@@ -28,31 +26,17 @@ public class WebSecurity {
   };
 
   @Bean
-  SecurityWebFilterChain filterChain(ServerHttpSecurity http) throws Exception {
-    Customizer<CsrfSpec> customizer = new Customizer<CsrfSpec>() {
-      @Override
-      public void customize(CsrfSpec t) {
-        t.disable();
-      }
-    };
-
-    Customizer<CorsSpec> cors = new Customizer<CorsSpec>() {
-      @Override
-      public void customize(CorsSpec c) {
-        c.disable();
-      }
-    };
-
+  SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http
-      .csrf(customizer)
-      .cors(cors)
-      .authorizeExchange(exchange ->
-        exchange
-          .pathMatchers(AUTH_WHITELIST)
+      .csrf(c -> c.disable())
+      .cors(c -> c.disable())
+      .authorizeHttpRequests(authz -> {
+        authz
+          .requestMatchers(AUTH_WHITELIST)
           .permitAll()
-          .anyExchange()
-          .authenticated()
-      );
+          .anyRequest()
+          .authenticated();
+      });
 
     http.oauth2ResourceServer(
       (oauth2 -> oauth2.jwt(Customizer.withDefaults()))
