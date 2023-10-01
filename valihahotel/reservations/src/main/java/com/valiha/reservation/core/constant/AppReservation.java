@@ -10,7 +10,8 @@ public class AppReservation {
     ReservationState.PENDING.value(),
     ReservationState.CONFIRMED.value(),
     ReservationState.CANCELED.value(),
-    ReservationState.NO_SHOW.value()
+    ReservationState.NO_SHOW.value(),
+    ReservationState.PAID.value()
   );
 
   public static final List<String> PAYMENT_STATES = List.of(

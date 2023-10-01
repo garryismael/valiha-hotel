@@ -9,7 +9,11 @@ import java.util.Optional;
 
 public class PaymentRepositoryImpl implements PaymentRepository {
 
-  MongoPaymentRepository paymentRepository;
+  private final MongoPaymentRepository paymentRepository;
+
+  public PaymentRepositoryImpl(MongoPaymentRepository paymentRepository) {
+    this.paymentRepository = paymentRepository;
+  }
 
   @Override
   public Payment create(Payment payment) {

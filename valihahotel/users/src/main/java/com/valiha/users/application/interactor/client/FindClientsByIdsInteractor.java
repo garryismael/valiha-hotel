@@ -5,6 +5,7 @@ import com.valiha.users.application.presenter.GenericPresenter;
 import com.valiha.users.application.repository.ClientRepository;
 import com.valiha.users.application.useCase.client.FindClientsByIdsUseCase;
 import com.valiha.users.core.entities.model.Client;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindClientsByIdsInteractor implements FindClientsByIdsUseCase {
@@ -22,6 +23,9 @@ public class FindClientsByIdsInteractor implements FindClientsByIdsUseCase {
 
   @Override
   public List<ClientResponseDto> execute(List<String> ids) {
+    if (ids == null) {
+      ids = new ArrayList<>();
+    }
     List<Client> clients = this.clientRepository.findAllByIds(ids);
 
     return this.clientPresenter.prepareSuccessView(

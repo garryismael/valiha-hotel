@@ -24,7 +24,9 @@ import com.valiha.reservation.core.interfaces.factory.PaymentFactory;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CreateReservationInteractor implements CreateReservationUseCase {
 
   private final ReservationRepository reservationRepository;
@@ -35,26 +37,6 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
   private final ClientFactory clientFactory;
   private final PaymentFactory paymentFactory;
   private final ReservationFactory reservationFactory;
-
-  public CreateReservationInteractor(
-    ReservationRepository reservationRepository,
-    GenericRepository<Room> roomRepository,
-    GenericService<ClientResponseDto, ClientRequestDto> clientService,
-    GenericService<PaymentResponseDto, PaymentRequestDto> paymentService,
-    GenericPresenter<ReservationResponseDto> reservationPresenter,
-    ClientFactory clientFactory,
-    PaymentFactory paymentFactory,
-    ReservationFactory reservationFactory
-  ) {
-    this.reservationRepository = reservationRepository;
-    this.roomRepository = roomRepository;
-    this.clientService = clientService;
-    this.paymentService = paymentService;
-    this.reservationPresenter = reservationPresenter;
-    this.clientFactory = clientFactory;
-    this.paymentFactory = paymentFactory;
-    this.reservationFactory = reservationFactory;
-  }
 
   @Override
   public ReservationResponseDto execute(ReservationRequestDto requestDto) {
@@ -105,7 +87,11 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
 
     PaymentResponseDto paymentResponseDto =
       this.paymentService.create(
-          new PaymentRequestDto(payment.getDiscount(), payment.getState())
+          PaymentRequestDto
+            .builder()
+            .discount(payment.getDiscount())
+            .state(payment.getState())
+            .build()
         );
 
     ClientResponseDto clientResponseDto =

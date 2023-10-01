@@ -5,6 +5,7 @@ import com.valiha.payment.application.presenter.GenericPresenter;
 import com.valiha.payment.application.repository.PaymentRepository;
 import com.valiha.payment.application.useCase.payment.FindAllPaymentsByIdsUseCase;
 import com.valiha.payment.core.entities.models.Payment;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindAllPaymentsByIdsInteractor
@@ -23,6 +24,9 @@ public class FindAllPaymentsByIdsInteractor
 
   @Override
   public List<PaymentResponseDto> execute(List<String> ids) {
+    if (ids == null) {
+      ids = new ArrayList<>();
+    }
     List<Payment> payments = this.paymentRepository.findAllByIds(ids);
 
     return this.paymentPresenter.prepareSuccessView(

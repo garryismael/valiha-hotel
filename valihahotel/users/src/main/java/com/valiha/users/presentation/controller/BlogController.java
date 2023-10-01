@@ -7,7 +7,6 @@ import com.valiha.users.application.useCase.blog.FindAllBlogsUseCase;
 import com.valiha.users.application.useCase.blog.FindOneBlogUseCase;
 import com.valiha.users.infrastructure.services.BlogService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import java.security.Principal;
 import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,10 +53,9 @@ public class BlogController {
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public BlogResponseDto create(
     @RequestBody BlogRequestDto requestDto,
-    @RequestParam(name = "image") MultipartFile multipartFile,
-    Principal principal
+    @RequestParam(name = "image") MultipartFile multipartFile
   ) {
-    return blogService.create(requestDto, multipartFile, principal);
+    return blogService.create(requestDto, multipartFile);
   }
 
   @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

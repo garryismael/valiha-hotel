@@ -5,5 +5,5 @@ import com.valiha.users.application.dto.blog.BlogResponseDto;
 import java.io.File;
 
 public interface CreateBlogUseCase {
-  BlogResponseDto execute(BlogRequestDto requestDto, File image, String userId);
+  BlogResponseDto execute(BlogRequestDto requestDto, File image);
 }

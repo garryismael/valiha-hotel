@@ -60,9 +60,13 @@ public class ReservationsApplication {
       return (
         !className.endsWith("Dto") &&
         !className.endsWith("ApiErrorException") &&
+        !className.endsWith("ApiErrorDecoder") &&
         !className.endsWith("ReservationState") &&
         !className.endsWith("PaymentState") &&
-        !className.endsWith("ErrorResponse")
+        !className.endsWith("ErrorResponse") &&
+        !className.endsWith("FeignConfig") &&
+        !className.endsWith("OAuthClientCredentialsFeignManager") &&
+        !className.endsWith("FeignExceptionHandler")
       );
     };
   }

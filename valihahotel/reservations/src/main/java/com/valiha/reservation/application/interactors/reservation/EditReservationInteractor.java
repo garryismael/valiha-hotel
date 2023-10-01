@@ -14,25 +14,15 @@ import com.valiha.reservation.core.entities.models.Room;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class EditReservationInteractor implements EditReservationUseCase {
 
   private final ReservationRepository reservationRepository;
   private final GenericRepository<Room> roomRepository;
   private final GenericPresenter<ReservationResponseDto> reservationPresenter;
   private final ReservationFactory reservationFactory;
-
-  public EditReservationInteractor(
-    ReservationRepository reservationRepository,
-    GenericRepository<Room> roomRepository,
-    GenericPresenter<ReservationResponseDto> reservationPresenter,
-    ReservationFactory reservationFactory
-  ) {
-    this.reservationRepository = reservationRepository;
-    this.roomRepository = roomRepository;
-    this.reservationPresenter = reservationPresenter;
-    this.reservationFactory = reservationFactory;
-  }
 
   @Override
   public ReservationResponseDto execute(

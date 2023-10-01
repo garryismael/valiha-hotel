@@ -1,8 +1,9 @@
 package com.valiha.reservation.core.constant;
 
 public enum ReservationState {
-  CONFIRMED("confirmed"),
   PENDING("pending"),
+  CONFIRMED("confirmed"),
+  PAID("paid"),
   CANCELED("canceled"),
   NO_SHOW("no_show");
 

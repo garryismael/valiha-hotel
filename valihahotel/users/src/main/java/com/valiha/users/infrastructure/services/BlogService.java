@@ -7,31 +7,22 @@ import com.valiha.users.application.useCase.blog.EditBlogUseCase;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.security.Principal;
+import lombok.AllArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+@AllArgsConstructor
 public class BlogService {
 
   private final CreateBlogUseCase createUseCase;
   private final EditBlogUseCase editUseCase;
 
-  public BlogService(
-    CreateBlogUseCase createUseCase,
-    EditBlogUseCase editUseCase
-  ) {
-    this.createUseCase = createUseCase;
-    this.editUseCase = editUseCase;
-  }
-
   public BlogResponseDto create(
     BlogRequestDto requestDto,
-    MultipartFile multipartFile,
-    Principal principal
+    MultipartFile multipartFile
   ) {
     return createUseCase.execute(
       requestDto,
-      convertFilePartToFile(multipartFile),
-      principal.getName()
+      convertFilePartToFile(multipartFile)
     );
   }
 

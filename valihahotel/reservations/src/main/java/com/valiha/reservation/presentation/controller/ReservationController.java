@@ -9,6 +9,7 @@ import com.valiha.reservation.application.useCase.reservation.EditReservationUse
 import com.valiha.reservation.application.useCase.reservation.FindAllReservationsUseCase;
 import com.valiha.reservation.application.useCase.reservation.FindOneReservationUseCase;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/reservations")
+@AllArgsConstructor
 public class ReservationController {
 
   private final CreateReservationUseCase createUseCase;
@@ -27,20 +29,6 @@ public class ReservationController {
   private final EditReservationUseCase editUseCase;
   private final FindAllReservationsUseCase findAllUseCase;
   private final FindOneReservationUseCase findOneUseCase;
-
-  public ReservationController(
-    CreateReservationUseCase createUseCase,
-    DeleteReservationUseCase deleteUseCase,
-    EditReservationUseCase editUseCase,
-    FindAllReservationsUseCase findAllUseCase,
-    FindOneReservationUseCase findOneUseCase
-  ) {
-    this.createUseCase = createUseCase;
-    this.deleteUseCase = deleteUseCase;
-    this.editUseCase = editUseCase;
-    this.findAllUseCase = findAllUseCase;
-    this.findOneUseCase = findOneUseCase;
-  }
 
   @PostMapping
   public ReservationResponseDto create(

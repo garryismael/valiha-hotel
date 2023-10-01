@@ -5,6 +5,7 @@ import com.valiha.users.application.dto.blog.BlogResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
 import com.valiha.users.application.repository.GenericRepository;
 import com.valiha.users.application.repository.UserRepository;
+import com.valiha.users.application.service.AuthService;
 import com.valiha.users.application.service.StorageService;
 import com.valiha.users.application.useCase.blog.CreateBlogUseCase;
 import com.valiha.users.core.constants.BlogValidator;
@@ -20,37 +21,32 @@ import java.util.Map;
 public class CreateBlogInteractor implements CreateBlogUseCase {
 
   private final GenericRepository<Blog> blogRepository;
-  private final UserRepository userRepository;
   private final StorageService storageService;
   private final BlogFactory blogFactory;
   private final GenericPresenter<BlogResponseDto> blogPresenter;
+  private final AuthService authService;
 
   public CreateBlogInteractor(
     GenericRepository<Blog> blogRepository,
     UserRepository userRepository,
     StorageService storageService,
     BlogFactory blogFactory,
-    GenericPresenter<BlogResponseDto> blogPresenter
+    GenericPresenter<BlogResponseDto> blogPresenter,
+    AuthService authService
   ) {
     this.blogRepository = blogRepository;
-    this.userRepository = userRepository;
     this.storageService = storageService;
     this.blogFactory = blogFactory;
     this.blogPresenter = blogPresenter;
+    this.authService = authService;
   }
 
   @Override
-  public BlogResponseDto execute(
-    BlogRequestDto requestDto,
-    File file,
-    String userId
-  ) {
+  public BlogResponseDto execute(BlogRequestDto requestDto, File file) {
     Map<String, String> errors = new HashMap<>();
-    User user = null;
     String image = null;
 
-    user = userRepository.findOneById(userId);
-
+    User user = authService.getUser();
     if (user == null) {
       errors.put(UserValidator.KEY_ID, UserValidator.USER_NOT_FOUND_ERROR);
     }

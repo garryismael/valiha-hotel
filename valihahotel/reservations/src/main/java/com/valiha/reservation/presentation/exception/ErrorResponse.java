@@ -2,28 +2,16 @@ package com.valiha.reservation.presentation.exception;
 
 import java.time.OffsetDateTime;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class ErrorResponse {
 
   private String traceId;
   private OffsetDateTime timestamp;
+  private String message;
   private int status;
   private Map<String, String> errors;
-  private String message;
-
-  public ErrorResponse(
-    String message,
-    String traceId,
-    OffsetDateTime timestamp,
-    int status,
-    Map<String, String> errors
-  ) {
-    this.message = message;
-    this.traceId = traceId;
-    this.timestamp = timestamp;
-    this.status = status;
-    this.errors = errors;
-  }
 
   public String getMessage() {
     return message;

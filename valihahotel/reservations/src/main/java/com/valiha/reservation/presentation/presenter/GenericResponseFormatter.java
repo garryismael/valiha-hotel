@@ -25,8 +25,8 @@ public class GenericResponseFormatter<T> implements GenericPresenter<T> {
   public T prepareInvalidDataView(String message, Map<String, String> errors) {
     ErrorResponse errorResponse = new ErrorResponse(
       message,
-      UUID.randomUUID().toString(),
       OffsetDateTime.now(),
+      UUID.randomUUID().toString(),
       HttpStatus.BAD_REQUEST.value(),
       errors
     );
@@ -40,8 +40,8 @@ public class GenericResponseFormatter<T> implements GenericPresenter<T> {
   ) {
     ErrorResponse errorResponse = new ErrorResponse(
       message,
-      UUID.randomUUID().toString(),
       OffsetDateTime.now(),
+      UUID.randomUUID().toString(),
       HttpStatus.NOT_FOUND.value(),
       errors
     );
