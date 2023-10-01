@@ -8,9 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class GatewayConfig {
-    @Bean
-    DiscoveryClientRouteDefinitionLocator discoveryClientRouteDefinitionLocator(
-            ReactiveDiscoveryClient rdc, DiscoveryLocatorProperties dlp) {
-        return new DiscoveryClientRouteDefinitionLocator(rdc, dlp);
-    }
+
+  @Bean
+  DiscoveryClientRouteDefinitionLocator discoveryClientRouteDefinitionLocator(
+    ReactiveDiscoveryClient rdc,
+    DiscoveryLocatorProperties dlp
+  ) {
+    return new DiscoveryClientRouteDefinitionLocator(rdc, dlp);
+  }
 }
