@@ -57,7 +57,7 @@ public class CreateContactInteractor implements CreateContactUseCase {
           requestDto.getMessage()
         );
 
-    errors.putAll(contact.validate());
+    errors = contact.validate();
 
     if (!errors.isEmpty()) {
       return contactPresenter.prepareInvalidDataView(
