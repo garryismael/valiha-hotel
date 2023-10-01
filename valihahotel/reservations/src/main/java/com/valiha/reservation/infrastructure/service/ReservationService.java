@@ -57,7 +57,9 @@ public class ReservationService {
     return roomEditUseCase.execute(
       id,
       requestDto,
-      StorageServiceImpl.convertToFile(multipartFile)
+      multipartFile.isEmpty()
+        ? null
+        : StorageServiceImpl.convertToFile(multipartFile)
     );
   }
 
@@ -69,7 +71,9 @@ public class ReservationService {
     return categoryEditUseCase.execute(
       id,
       requestDto,
-      StorageServiceImpl.convertToFile(multipartFile)
+      multipartFile.isEmpty()
+        ? null
+        : StorageServiceImpl.convertToFile(multipartFile)
     );
   }
 }

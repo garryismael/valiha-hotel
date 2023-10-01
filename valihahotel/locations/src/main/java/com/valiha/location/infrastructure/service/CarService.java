@@ -40,7 +40,7 @@ public class CarService {
     return editUseCase.execute(
       id,
       requestDto,
-      convertFilePartToFile(multipartFile)
+      multipartFile.isEmpty() ? null : convertFilePartToFile(multipartFile)
     );
   }
 

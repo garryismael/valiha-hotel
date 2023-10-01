@@ -23,7 +23,7 @@ public class BlogService {
     this.editUseCase = editUseCase;
   }
 
-  public BlogResponseDto createBlog(
+  public BlogResponseDto create(
     BlogRequestDto requestDto,
     MultipartFile multipartFile,
     Principal principal
@@ -35,7 +35,7 @@ public class BlogService {
     );
   }
 
-  public BlogResponseDto editBlog(
+  public BlogResponseDto edit(
     String id,
     BlogRequestDto requestDto,
     MultipartFile multipartFile
@@ -43,7 +43,7 @@ public class BlogService {
     return editUseCase.execute(
       id,
       requestDto,
-      convertFilePartToFile(multipartFile)
+      multipartFile.isEmpty() ? null : convertFilePartToFile(multipartFile)
     );
   }
 

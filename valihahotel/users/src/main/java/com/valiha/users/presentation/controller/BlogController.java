@@ -60,7 +60,7 @@ public class BlogController {
     @RequestParam(name = "image") MultipartFile multipartFile,
     Principal principal
   ) {
-    return blogService.createBlog(requestDto, multipartFile, principal);
+    return blogService.create(requestDto, multipartFile, principal);
   }
 
   @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -69,7 +69,7 @@ public class BlogController {
     @RequestBody BlogRequestDto requestDto,
     @RequestParam(name = "image", required = false) MultipartFile multipartFile
   ) {
-    return this.blogService.editBlog(id, requestDto, multipartFile);
+    return this.blogService.edit(id, requestDto, multipartFile);
   }
 
   @DeleteMapping("/{id}")
