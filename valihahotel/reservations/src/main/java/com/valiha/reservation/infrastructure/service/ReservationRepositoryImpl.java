@@ -15,22 +15,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class ReservationRepositoryImpl implements ReservationRepository {
 
   private final MongoReservationRepository reservationRepository;
   private final GenericService<PaymentResponseDto, PaymentRequestDto> paymentService;
   private final GenericService<ClientResponseDto, ClientRequestDto> clientService;
-
-  public ReservationRepositoryImpl(
-    MongoReservationRepository reservationRepository,
-    GenericService<PaymentResponseDto, PaymentRequestDto> paymentService,
-    GenericService<ClientResponseDto, ClientRequestDto> clientService
-  ) {
-    this.reservationRepository = reservationRepository;
-    this.paymentService = paymentService;
-    this.clientService = clientService;
-  }
 
   @Override
   public Reservation save(Reservation reservation) {
