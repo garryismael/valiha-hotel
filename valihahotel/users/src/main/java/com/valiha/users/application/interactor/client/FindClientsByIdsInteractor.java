@@ -22,7 +22,7 @@ public class FindClientsByIdsInteractor implements FindClientsByIdsUseCase {
 
   @Override
   public List<ClientResponseDto> execute(List<String> ids) {
-    List<Client> clients = this.clientRepository.findAll();
+    List<Client> clients = this.clientRepository.findAllByIds(ids);
 
     return this.clientPresenter.prepareSuccessView(
         ClientResponseDto.from(clients)
