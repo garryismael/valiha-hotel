@@ -3,12 +3,12 @@
 }
 
 .room__category {
-    @apply text-3xl font-semibold;
+    @apply text-medium font-semibold;
     @apply text-dark-muted-500 hover:text-reddish-orange-500;
 }
 
 .card__image {
-    @apply relative w-[400px] max-sm:w-full h-[550px] overflow-hidden;
+    @apply relative w-full max-sm:w-full h-[550px] overflow-hidden;
     @apply  rounded-tl-lg rounded-tr-lg ;
 }
 

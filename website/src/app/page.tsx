@@ -1,3 +1,4 @@
+import { CategoryResponseDto } from "@/application/dto/category/category-response";
 import { FindAllCategoriesInterceptor } from "@/application/interactors/category/find-all-categories";
 import { FindAllCategoriesUseCase } from "@/application/use-cases/category/find-all-categories-use-case";
 import CategorySection from "@/components/Category/CategorySection";
@@ -9,7 +10,6 @@ export default async function Home() {
     FindAllCategoriesInterceptor
   );
   const categories = await findAllUseCase.execute();
-
   return (
     <>
       <HeroSection />

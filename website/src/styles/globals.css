@@ -52,3 +52,7 @@ body {
 .border-dark {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.title {
+  @apply text-4xl font-bold my-4;
+}

@@ -1,4 +1,3 @@
-"use client";
 import { CategoryResponseDto } from "@/application/dto/category/category-response";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,11 +12,11 @@ type Props = {
 export default function CategoryCard({ category }: Props) {
   return (
     <div
-      className={`shadow-xl rounded-lg inline-block w-[420px] max-sm:w-full`}
+      className={`shadow-md rounded-lg inline-block w-[420px] max-sm:w-full`}
     >
       <div className={styles.card__image}>
         <Image
-          src={category.getImage()}
+          src={category.image}
           alt="category room"
           fill={true}
           className={styles.room__image}
@@ -25,14 +24,14 @@ export default function CategoryCard({ category }: Props) {
       </div>
       <div className="pb-6 mt-5 ml-2">
         <Link href="#" className={styles.room__category}>
-          {category.getType()}
+          {category.type}
         </Link>
         <div className="flex items-start">
           <div className="pr-4">
             <div className="flex items-center gap-1">
               <MdOutlineBed className={styles.cardInfo} />
               <span className="font-semibold text-reddish-orange-500">
-                {category.getBigBed()}
+                {category.bigBed}
               </span>
             </div>
             <span className={styles.cardInfo}>Grand(s) lit(s)</span>
@@ -41,7 +40,7 @@ export default function CategoryCard({ category }: Props) {
             <div className="flex items-center gap-1">
               <MdOutlineBed className={styles.cardInfo} />
               <span className="font-semibold text-reddish-orange-500">
-                {category.getSmallBed()}
+                {category.smallBed}
               </span>
             </div>
             <span className={styles.cardInfo}>Petit(s) lit(s)</span>

@@ -10,8 +10,8 @@ export type CategoryProps = {
 
 function CategorySection({ categories }: CategoryProps) {
   return (
-    <section>
-      <h1>Nos Chambres Et Appartements</h1>
+    <section className="container mx-auto">
+      <h1 className="title">Nos Chambres Et Appartements</h1>
       <CategoryList categories={categories} />
     </section>
   );

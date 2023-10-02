@@ -18,7 +18,6 @@ const CheckAvailability = () => {
       <div className={styles.inputContainer}>
         <div className={styles.inputs}>
           <Select
-            label="Hotel Type"
             aria-label="Hotel Type"
             placeholder="Hotel Type"
             color="default"

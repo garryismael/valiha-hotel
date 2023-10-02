@@ -1,5 +1,7 @@
 import axios, { AxiosInstance } from "axios";
+import { singleton } from "tsyringe";
 
+@singleton()
 export class HttpClient {
   private http: AxiosInstance;
 
