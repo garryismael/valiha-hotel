@@ -105,10 +105,9 @@ public class ReservationRepositoryImpl implements ReservationRepository {
   }
 
   @Override
-  public List<Reservation> findAvailability(Date checkIn, Date checkOut) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException(
-      "Unimplemented method 'findAllByDates'"
-    );
+  public boolean isDateRangeAvailable(Date checkIn, Date checkOut) {
+    List<ReservationDataMapper> dataMappers =
+      this.reservationRepository.findOverlappingReservations(checkOut, checkIn);
+    return dataMappers.isEmpty();
   }
 }

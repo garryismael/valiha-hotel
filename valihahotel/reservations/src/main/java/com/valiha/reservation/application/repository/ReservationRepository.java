@@ -13,7 +13,7 @@ public interface ReservationRepository {
 
   List<Reservation> findAll();
 
-  List<Reservation> findAvailability(Date checkIn, Date checkOut);
+  boolean isDateRangeAvailable(Date checkIn, Date checkOut);
 
   void deleteById(String id);
 }

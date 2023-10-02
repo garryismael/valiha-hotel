@@ -37,13 +37,10 @@ public class FindAvailableRoomsInteractor implements FindAvailableRoomsUseCase {
     int kid = requestDto.getKid();
     int room = requestDto.getRoom();
 
-    List<Reservation> reservations =
-      this.reservationRepository.findAvailability(checkIn, checkOut);
+    boolean available =
+      this.reservationRepository.isDateRangeAvailable(checkIn, checkOut);
 
-    List<String> roomIds = reservations
-      .stream()
-      .map(reservation -> reservation.getRoom().getId())
-      .toList();
+    List<String> roomIds = List.of();
 
     List<Room> rooms =
       this.roomRepository.findAllBy(hotelType, adult, kid, room, roomIds);
