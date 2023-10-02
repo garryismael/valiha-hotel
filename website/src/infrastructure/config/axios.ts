@@ -1,7 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import {injectable} from "tsyringe";
 
-@injectable()
 export class HttpClient {
   private http: AxiosInstance;
 
