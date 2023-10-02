@@ -1,5 +1,4 @@
 import "reflect-metadata";
-
 import TopNavigation from "@/components/TopNavigation";
 import "@/styles/globals.css";
 import type { Metadata } from "next";

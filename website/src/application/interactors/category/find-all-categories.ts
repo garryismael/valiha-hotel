@@ -1,12 +1,17 @@
 import { CategoryResponseDto } from "@/application/dto/category/category-response";
-import { CategoryService } from "@/application/service/category";
+import * as category from "@/application/service/category";
 import { FindAllCategoriesUseCase } from "@/application/use-cases/category/find-all-categories-use-case";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 export class FindAllCategoriesInterceptor implements FindAllCategoriesUseCase {
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    @inject("CategoryServiceImpl")
+    private categoryService: category.CategoryService
+  ) {}
 
-  execute(): CategoryResponseDto[] {
-    const categories = this.categoryService.findAll();
+  async execute(): Promise<CategoryResponseDto[]> {
+    const categories = await this.categoryService.findAll();
     return categories.map(
       (category) =>
         new CategoryResponseDto(

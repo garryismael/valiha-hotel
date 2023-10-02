@@ -12,11 +12,14 @@ import styles from "./index.module.scss";
 const CheckAvailability = () => {
   const hotelTypes = ["hotel-with-kitchen", "hotel-without-breakfast"];
   const [startDate, setStartDate] = useState<Date | null>(new Date());
+  
   return (
     <form className={styles.form}>
       <div className={styles.inputContainer}>
         <div className={styles.inputs}>
           <Select
+            label="Hotel Type"
+            aria-label="Hotel Type"
             placeholder="Hotel Type"
             color="default"
             radius="none"

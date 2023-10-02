@@ -1,9 +1,8 @@
 "use client";
-
+import "reflect-metadata";
 import useStickyHeader from "@/hooks/header";
 import Image from "next/image";
 import Link from "next/link";
-import styles from './index.module.css';
 
 const TopNavigation = () => {
   const [sticky] = useStickyHeader();
