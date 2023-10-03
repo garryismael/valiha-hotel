@@ -16,6 +16,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lombok.AllArgsConstructor;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 @AllArgsConstructor
 public class ReservationRepositoryImpl implements ReservationRepository {
@@ -23,6 +26,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
   private final MongoReservationRepository reservationRepository;
   private final GenericService<PaymentResponseDto, PaymentRequestDto> paymentService;
   private final GenericService<ClientResponseDto, ClientRequestDto> clientService;
+  private final MongoTemplate mongoTemplate;
 
   @Override
   public Reservation save(Reservation reservation) {
@@ -105,9 +109,28 @@ public class ReservationRepositoryImpl implements ReservationRepository {
   }
 
   @Override
-  public boolean isDateRangeAvailable(Date checkIn, Date checkOut) {
-    List<ReservationDataMapper> dataMappers =
-      this.reservationRepository.findOverlappingReservations(checkOut, checkIn);
-    return dataMappers.isEmpty();
+  public List<Reservation> findReservationsWithinDateRange(
+    Date startDate,
+    Date endDate
+  ) {
+    Criteria checkInCriteria = Criteria
+      .where("checkIn")
+      .lte(startDate)
+      .and("checkOut")
+      .gte(startDate);
+    Criteria checkOutCriteria = Criteria
+      .where("checkIn")
+      .lte(endDate)
+      .and("checkOut")
+      .gte(endDate);
+    Criteria overlappingCriteria = Criteria
+      .where("checkIn")
+      .gte(startDate)
+      .and("checkOut")
+      .lte(endDate);
+    Criteria reservationDateRangeCriteria = new Criteria()
+      .orOperator(checkInCriteria, checkOutCriteria, overlappingCriteria);
+    Query query = new Query(reservationDateRangeCriteria);
+    return mongoTemplate.find(query, Reservation.class);
   }
 }

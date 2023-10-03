@@ -12,5 +12,4 @@ public class AvailableRoomRequestDto {
   private String checkOut;
   private int adult;
   private int kid;
-  private int room;
 }

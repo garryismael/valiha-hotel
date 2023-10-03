@@ -6,14 +6,16 @@ import com.valiha.reservation.infrastructure.data.RoomDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoRoomRepository;
 import java.util.List;
 import java.util.Optional;
+import lombok.AllArgsConstructor;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
+@AllArgsConstructor
 public class RoomRepositoryImpl implements RoomRepository {
 
   private final MongoRoomRepository roomRepository;
-
-  public RoomRepositoryImpl(MongoRoomRepository roomRepository) {
-    this.roomRepository = roomRepository;
-  }
+  private final MongoTemplate mongoTemplate;
 
   @Override
   public Room save(Room room) {
@@ -51,14 +53,26 @@ public class RoomRepositoryImpl implements RoomRepository {
   }
 
   @Override
-  public List<Room> findAllBy(
-    String hotelType,
+  public List<Room> findRoomsByCategoryTypeAndExcludeIdsAndCriteria(
+    String categoryType,
     int adult,
     int kid,
-    int room,
-    List<String> ids
+    List<String> excludedRoomIds
   ) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'findAllBy'");
+    Criteria criteria = Criteria
+      .where("category.type")
+      .is(categoryType)
+      .and("_id")
+      .nin(excludedRoomIds)
+      .and("category.adult")
+      .gte(adult)
+      .and("category.kid")
+      .gte(kid);
+    Query query = new Query(criteria);
+    List<RoomDataMapper> dataMappers = mongoTemplate.find(
+      query,
+      RoomDataMapper.class
+    );
+    return RoomDataMapper.toRoomList(dataMappers);
   }
 }

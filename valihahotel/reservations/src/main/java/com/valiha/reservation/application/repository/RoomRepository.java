@@ -12,13 +12,11 @@ public interface RoomRepository {
 
   List<Room> findAll();
 
-  List<Room> findAllBy(
-    String hotelType,
+  List<Room> findRoomsByCategoryTypeAndExcludeIdsAndCriteria(
+    String categoryType,
     int adult,
     int kid,
-    int room,
-    List<String> ids
+    List<String> excludedRoomIds
   );
-
   void deleteById(String id);
 }

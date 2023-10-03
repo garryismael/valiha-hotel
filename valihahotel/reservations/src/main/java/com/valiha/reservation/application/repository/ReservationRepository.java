@@ -13,7 +13,10 @@ public interface ReservationRepository {
 
   List<Reservation> findAll();
 
-  boolean isDateRangeAvailable(Date checkIn, Date checkOut);
+  List<Reservation> findReservationsWithinDateRange(
+    Date checkIn,
+    Date checkOut
+  );
 
   void deleteById(String id);
 }
