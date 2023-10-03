@@ -8,6 +8,7 @@ import com.valiha.location.application.dto.payment.PaymentRequestDto;
 import com.valiha.location.application.dto.payment.PaymentResponseDto;
 import com.valiha.location.application.presenter.GenericPresenter;
 import com.valiha.location.application.repository.GenericRepository;
+import com.valiha.location.application.repository.LocationRepository;
 import com.valiha.location.application.service.GenericService;
 import com.valiha.location.application.useCase.location.CreateLocationUseCase;
 import com.valiha.location.core.constants.AppLocation;
@@ -23,10 +24,12 @@ import com.valiha.location.core.interfaces.factory.LocationFactory;
 import com.valiha.location.core.interfaces.factory.PaymentFactory;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CreateLocationInteractor implements CreateLocationUseCase {
 
-  private final GenericRepository<Location> locationRepository;
+  private final LocationRepository locationRepository;
   private final GenericRepository<Car> carRepository;
   private final GenericService<ClientResponseDto, ClientRequestDto> clientService;
   private final GenericService<PaymentResponseDto, PaymentRequestDto> paymentService;
@@ -34,26 +37,6 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
   private final LocationFactory locationFactory;
   private final ClientFactory clientFactory;
   private final PaymentFactory paymentFactory;
-
-  public CreateLocationInteractor(
-    GenericRepository<Location> locationRepository,
-    GenericRepository<Car> carRepository,
-    GenericService<ClientResponseDto, ClientRequestDto> clientService,
-    GenericService<PaymentResponseDto, PaymentRequestDto> paymentService,
-    GenericPresenter<LocationResponseDto> locationPresenter,
-    LocationFactory locationFactory,
-    ClientFactory clientFactory,
-    PaymentFactory paymentFactory
-  ) {
-    this.locationRepository = locationRepository;
-    this.carRepository = carRepository;
-    this.clientService = clientService;
-    this.paymentService = paymentService;
-    this.locationPresenter = locationPresenter;
-    this.locationFactory = locationFactory;
-    this.clientFactory = clientFactory;
-    this.paymentFactory = paymentFactory;
-  }
 
   @Override
   public LocationResponseDto execute(LocationRequestDto requestDto) {

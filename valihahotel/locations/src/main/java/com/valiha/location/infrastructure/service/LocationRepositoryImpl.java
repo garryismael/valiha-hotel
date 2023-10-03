@@ -4,7 +4,7 @@ import com.valiha.location.application.dto.client.ClientRequestDto;
 import com.valiha.location.application.dto.client.ClientResponseDto;
 import com.valiha.location.application.dto.payment.PaymentRequestDto;
 import com.valiha.location.application.dto.payment.PaymentResponseDto;
-import com.valiha.location.application.repository.GenericRepository;
+import com.valiha.location.application.repository.LocationRepository;
 import com.valiha.location.application.service.GenericService;
 import com.valiha.location.core.entities.models.Location;
 import com.valiha.location.infrastructure.data.CarDataMapper;
@@ -13,26 +13,23 @@ import com.valiha.location.infrastructure.data.LocationDataMapper;
 import com.valiha.location.infrastructure.data.PaymentDataMapper;
 import com.valiha.location.infrastructure.repository.MongoLocationRepository;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lombok.AllArgsConstructor;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
-public class LocationRepositoryImpl implements GenericRepository<Location> {
+@AllArgsConstructor
+public class LocationRepositoryImpl implements LocationRepository {
 
   private final MongoLocationRepository locationRepository;
   private final GenericService<PaymentResponseDto, PaymentRequestDto> paymentService;
   private final GenericService<ClientResponseDto, ClientRequestDto> clientService;
-
-  public LocationRepositoryImpl(
-    MongoLocationRepository locationRepository,
-    GenericService<PaymentResponseDto, PaymentRequestDto> paymentService,
-    GenericService<ClientResponseDto, ClientRequestDto> clientService
-  ) {
-    this.locationRepository = locationRepository;
-    this.paymentService = paymentService;
-    this.clientService = clientService;
-  }
+  private final MongoTemplate mongoTemplate;
 
   @Override
   public Location save(Location entity) {
@@ -69,6 +66,46 @@ public class LocationRepositoryImpl implements GenericRepository<Location> {
   @Override
   public List<Location> findAll() {
     List<LocationDataMapper> dataMappers = this.locationRepository.findAll();
+    return toLocations(dataMappers);
+  }
+
+  @Override
+  public List<Location> findLocationsWithinDateRange(
+    Date startDate,
+    Date endDate
+  ) {
+    Criteria startCriteria = Criteria
+      .where("start")
+      .lte(startDate)
+      .and("end")
+      .gte(startDate);
+    Criteria endCriteria = Criteria
+      .where("start")
+      .lte(endDate)
+      .and("end")
+      .gte(endDate);
+    Criteria overlappingCriteria = Criteria
+      .where("start")
+      .gte(startDate)
+      .and("end")
+      .lte(endDate);
+    Criteria locationDateRangeCriteria = new Criteria()
+      .orOperator(startCriteria, endCriteria, overlappingCriteria);
+    Query query = new Query(locationDateRangeCriteria);
+    List<LocationDataMapper> dataMappers = mongoTemplate.find(
+      query,
+      LocationDataMapper.class
+    );
+
+    return toLocations(dataMappers);
+  }
+
+  @Override
+  public void deleteById(String id) {
+    this.locationRepository.deleteById(id);
+  }
+
+  private List<Location> toLocations(List<LocationDataMapper> dataMappers) {
     List<String> clientIds = new ArrayList<>();
     List<String> paymentIds = new ArrayList<>();
 
@@ -91,11 +128,6 @@ public class LocationRepositoryImpl implements GenericRepository<Location> {
         return toLocation(dataMapper, clientResponseDto, paymentResponseDto);
       })
       .collect(Collectors.toList());
-  }
-
-  @Override
-  public void deleteById(String id) {
-    this.locationRepository.deleteById(id);
   }
 
   private Location toLocation(

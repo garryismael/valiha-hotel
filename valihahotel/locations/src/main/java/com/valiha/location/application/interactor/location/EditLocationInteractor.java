@@ -13,25 +13,15 @@ import com.valiha.location.core.entities.models.Location;
 import com.valiha.location.core.interfaces.factory.LocationFactory;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class EditLocationInteractor implements EditLocationUseCase {
 
   private final GenericRepository<Location> locationRepository;
   private final GenericRepository<Car> carRepository;
   private final LocationFactory locationFactory;
   private final GenericPresenter<LocationResponseDto> locationPresenter;
-
-  public EditLocationInteractor(
-    GenericRepository<Location> locationRepository,
-    GenericRepository<Car> carRepository,
-    LocationFactory locationFactory,
-    GenericPresenter<LocationResponseDto> locationPresenter
-  ) {
-    this.locationRepository = locationRepository;
-    this.carRepository = carRepository;
-    this.locationFactory = locationFactory;
-    this.locationPresenter = locationPresenter;
-  }
 
   @Override
   public LocationResponseDto execute(

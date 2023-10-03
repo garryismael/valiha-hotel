@@ -74,33 +74,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     List<ReservationDataMapper> dataMappers =
       this.reservationRepository.findAll();
 
-    List<String> clientIds = new ArrayList<>();
-    List<String> paymentIds = new ArrayList<>();
-
-    dataMappers.forEach(dataMapper -> {
-      clientIds.add(dataMapper.getClientId());
-      paymentIds.add(dataMapper.getPaymentId());
-    });
-
-    List<ClientResponseDto> clientResponseDtos =
-      this.clientService.findAllByIds(clientIds);
-
-    List<PaymentResponseDto> paymentResponseDtos =
-      this.paymentService.findAllByIds(paymentIds);
-
-    return IntStream
-      .range(0, dataMappers.size())
-      .mapToObj(i -> {
-        ClientResponseDto clientResponseDto = clientResponseDtos.get(i);
-        PaymentResponseDto paymentResponseDto = paymentResponseDtos.get(i);
-        ReservationDataMapper dataMapper = dataMappers.get(i);
-        return ReservationDataMapper.toReservation(
-          dataMapper,
-          clientResponseDto,
-          paymentResponseDto
-        );
-      })
-      .collect(Collectors.toList());
+    return toReservations(dataMappers);
   }
 
   @Override
@@ -131,6 +105,43 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     Criteria reservationDateRangeCriteria = new Criteria()
       .orOperator(checkInCriteria, checkOutCriteria, overlappingCriteria);
     Query query = new Query(reservationDateRangeCriteria);
-    return mongoTemplate.find(query, Reservation.class);
+    List<ReservationDataMapper> dataMappers = mongoTemplate.find(
+      query,
+      ReservationDataMapper.class
+    );
+
+    return toReservations(dataMappers);
+  }
+
+  private List<Reservation> toReservations(
+    List<ReservationDataMapper> dataMappers
+  ) {
+    List<String> clientIds = new ArrayList<>();
+    List<String> paymentIds = new ArrayList<>();
+
+    dataMappers.forEach(dataMapper -> {
+      clientIds.add(dataMapper.getClientId());
+      paymentIds.add(dataMapper.getPaymentId());
+    });
+
+    List<ClientResponseDto> clientResponseDtos =
+      this.clientService.findAllByIds(clientIds);
+
+    List<PaymentResponseDto> paymentResponseDtos =
+      this.paymentService.findAllByIds(paymentIds);
+
+    return IntStream
+      .range(0, dataMappers.size())
+      .mapToObj(i -> {
+        ClientResponseDto clientResponseDto = clientResponseDtos.get(i);
+        PaymentResponseDto paymentResponseDto = paymentResponseDtos.get(i);
+        ReservationDataMapper dataMapper = dataMappers.get(i);
+        return ReservationDataMapper.toReservation(
+          dataMapper,
+          clientResponseDto,
+          paymentResponseDto
+        );
+      })
+      .collect(Collectors.toList());
   }
 }

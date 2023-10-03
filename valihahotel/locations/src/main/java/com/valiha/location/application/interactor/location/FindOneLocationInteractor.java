@@ -2,25 +2,19 @@ package com.valiha.location.application.interactor.location;
 
 import com.valiha.location.application.dto.location.LocationResponseDto;
 import com.valiha.location.application.presenter.GenericPresenter;
-import com.valiha.location.application.repository.GenericRepository;
+import com.valiha.location.application.repository.LocationRepository;
 import com.valiha.location.application.useCase.location.FindOneLocationUseCase;
 import com.valiha.location.core.constants.LocationValidator;
 import com.valiha.location.core.entities.models.Location;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class FindOneLocationInteractor implements FindOneLocationUseCase {
 
-  private final GenericRepository<Location> locationRepository;
+  private final LocationRepository locationRepository;
   private final GenericPresenter<LocationResponseDto> locationPresenter;
-
-  public FindOneLocationInteractor(
-    GenericRepository<Location> locationRepository,
-    GenericPresenter<LocationResponseDto> locationPresenter
-  ) {
-    this.locationRepository = locationRepository;
-    this.locationPresenter = locationPresenter;
-  }
 
   @Override
   public LocationResponseDto execute(String id) {
