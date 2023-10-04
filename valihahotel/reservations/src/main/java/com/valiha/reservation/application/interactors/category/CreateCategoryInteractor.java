@@ -13,25 +13,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CreateCategoryInteractor implements CategoryCreateUseCase {
 
   private final CategoryFactory categoryFactory;
   private final GenericRepository<Category> categoryRepository;
   private final GenericPresenter<CategoryResponseDto> categoryPresenter;
   private final StorageService storageService;
-
-  public CreateCategoryInteractor(
-    CategoryFactory categoryFactory,
-    GenericRepository<Category> categoryRepository,
-    GenericPresenter<CategoryResponseDto> categoryPresenter,
-    StorageService storageService
-  ) {
-    this.categoryFactory = categoryFactory;
-    this.categoryRepository = categoryRepository;
-    this.categoryPresenter = categoryPresenter;
-    this.storageService = storageService;
-  }
 
   @Override
   public CategoryResponseDto execute(CategoryRequestDto requestDto, File file) {

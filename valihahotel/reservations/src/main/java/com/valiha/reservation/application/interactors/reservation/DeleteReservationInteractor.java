@@ -8,19 +8,13 @@ import com.valiha.reservation.core.constant.ReservationValidator;
 import com.valiha.reservation.core.entities.models.Reservation;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class DeleteReservationInteractor implements DeleteReservationUseCase {
 
   private final ReservationRepository reservationRepository;
   private final GenericPresenter<ReservationResponseDto> reservationPresenter;
-
-  public DeleteReservationInteractor(
-    ReservationRepository reservationRepository,
-    GenericPresenter<ReservationResponseDto> reservationPresenter
-  ) {
-    this.reservationRepository = reservationRepository;
-    this.reservationPresenter = reservationPresenter;
-  }
 
   @Override
   public void execute(String id) {

@@ -5,14 +5,12 @@ import com.valiha.reservation.core.entities.models.Category;
 import com.valiha.reservation.infrastructure.data.CategoryDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoCategoryRepository;
 import java.util.List;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CategoryRepositoryImpl implements GenericRepository<Category> {
 
   private final MongoCategoryRepository categoryRepository;
-
-  public CategoryRepositoryImpl(MongoCategoryRepository categoryRepository) {
-    this.categoryRepository = categoryRepository;
-  }
 
   @Override
   public Category save(Category category) {

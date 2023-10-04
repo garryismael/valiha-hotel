@@ -5,15 +5,13 @@ import com.valiha.reservation.application.dto.client.ClientResponseDto;
 import com.valiha.reservation.application.service.GenericService;
 import com.valiha.reservation.infrastructure.repository.ApiClientService;
 import java.util.List;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class ClientServiceImpl
   implements GenericService<ClientResponseDto, ClientRequestDto> {
 
   private final ApiClientService clientService;
-
-  public ClientServiceImpl(ApiClientService clientService) {
-    this.clientService = clientService;
-  }
 
   @Override
   public ClientResponseDto create(ClientRequestDto requestDto) {

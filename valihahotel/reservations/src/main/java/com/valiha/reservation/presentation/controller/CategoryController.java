@@ -7,6 +7,7 @@ import com.valiha.reservation.application.useCase.category.CategoryGetUseCase;
 import com.valiha.reservation.application.useCase.category.CategoryRemoveUseCase;
 import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,24 +21,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/categories")
+@AllArgsConstructor
 public class CategoryController {
 
   private final ReservationService reservationService;
   private final CategoryFindAllUseCase findAllUseCase;
   private final CategoryGetUseCase getUseCase;
   private final CategoryRemoveUseCase removeUseCase;
-
-  public CategoryController(
-    ReservationService reservationService,
-    CategoryFindAllUseCase findAllUseCase,
-    CategoryGetUseCase getUseCase,
-    CategoryRemoveUseCase removeUseCase
-  ) {
-    this.reservationService = reservationService;
-    this.findAllUseCase = findAllUseCase;
-    this.getUseCase = getUseCase;
-    this.removeUseCase = removeUseCase;
-  }
 
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public CategoryResponseDto createCategory(

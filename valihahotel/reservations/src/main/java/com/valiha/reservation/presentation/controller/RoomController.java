@@ -1,12 +1,15 @@
 package com.valiha.reservation.presentation.controller;
 
+import com.valiha.reservation.application.dto.room.AvailableRoomRequestDto;
 import com.valiha.reservation.application.dto.room.RoomRequestDto;
 import com.valiha.reservation.application.dto.room.RoomResponseDto;
+import com.valiha.reservation.application.useCase.room.FindAvailableRoomsUseCase;
 import com.valiha.reservation.application.useCase.room.RoomDeleteUseCase;
 import com.valiha.reservation.application.useCase.room.RoomFindAllUseCase;
 import com.valiha.reservation.application.useCase.room.RoomGetUseCase;
 import com.valiha.reservation.infrastructure.service.ReservationService;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,24 +23,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/rooms")
+@AllArgsConstructor
 public class RoomController {
 
   private final ReservationService reservationService;
   private final RoomFindAllUseCase findAllUseCase;
   private final RoomGetUseCase getUseCase;
   private final RoomDeleteUseCase deleteUseCase;
-
-  public RoomController(
-    ReservationService reservationService,
-    RoomGetUseCase getUseCase,
-    RoomFindAllUseCase findAllUseCase,
-    RoomDeleteUseCase deleteUseCase
-  ) {
-    this.reservationService = reservationService;
-    this.findAllUseCase = findAllUseCase;
-    this.getUseCase = getUseCase;
-    this.deleteUseCase = deleteUseCase;
-  }
+  private final FindAvailableRoomsUseCase findAvailableUseCase;
 
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public RoomResponseDto createRoom(
@@ -50,6 +43,13 @@ public class RoomController {
   @GetMapping
   public List<RoomResponseDto> getRooms() {
     return this.findAllUseCase.execute();
+  }
+
+  @GetMapping("/available")
+  public List<RoomResponseDto> findAvailableRoom(
+    AvailableRoomRequestDto requestDto
+  ) {
+    return this.findAvailableUseCase.execute(requestDto);
   }
 
   @GetMapping("/{id}")

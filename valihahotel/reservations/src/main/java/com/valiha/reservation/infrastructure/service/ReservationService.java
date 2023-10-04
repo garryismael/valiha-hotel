@@ -8,26 +8,16 @@ import com.valiha.reservation.application.useCase.category.CategoryCreateUseCase
 import com.valiha.reservation.application.useCase.category.CategoryEditUseCase;
 import com.valiha.reservation.application.useCase.room.RoomCreateUseCase;
 import com.valiha.reservation.application.useCase.room.RoomEditUseCase;
+import lombok.AllArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+@AllArgsConstructor
 public class ReservationService {
 
   private final RoomCreateUseCase roomCreateUseCase;
   private final RoomEditUseCase roomEditUseCase;
   private final CategoryCreateUseCase categoryCreateUseCase;
   private final CategoryEditUseCase categoryEditUseCase;
-
-  public ReservationService(
-    RoomCreateUseCase roomCreateUseCase,
-    RoomEditUseCase roomEditUseCase,
-    CategoryCreateUseCase categoryCreateUseCase,
-    CategoryEditUseCase categoryEditUseCase
-  ) {
-    this.roomCreateUseCase = roomCreateUseCase;
-    this.roomEditUseCase = roomEditUseCase;
-    this.categoryCreateUseCase = categoryCreateUseCase;
-    this.categoryEditUseCase = categoryEditUseCase;
-  }
 
   public RoomResponseDto create(
     RoomRequestDto requestDto,

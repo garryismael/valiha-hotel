@@ -5,15 +5,13 @@ import com.valiha.reservation.application.dto.payment.PaymentResponseDto;
 import com.valiha.reservation.application.service.GenericService;
 import com.valiha.reservation.infrastructure.repository.ApiPaymentService;
 import java.util.List;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class PaymentServiceImpl
   implements GenericService<PaymentResponseDto, PaymentRequestDto> {
 
   private final ApiPaymentService paymentService;
-
-  public PaymentServiceImpl(ApiPaymentService paymentService) {
-    this.paymentService = paymentService;
-  }
 
   @Override
   public PaymentResponseDto create(PaymentRequestDto requestDto) {
