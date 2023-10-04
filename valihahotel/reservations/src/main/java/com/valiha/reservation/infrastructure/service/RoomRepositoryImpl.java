@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.MatchOperation;
+import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 
 @AllArgsConstructor
 public class RoomRepositoryImpl implements RoomRepository {
@@ -59,20 +62,29 @@ public class RoomRepositoryImpl implements RoomRepository {
     int kid,
     List<String> excludedRoomIds
   ) {
-    Criteria criteria = Criteria
-      .where("category.type")
-      .is(categoryType)
-      .and("_id")
-      .nin(excludedRoomIds)
-      .and("category.adult")
-      .gte(adult)
-      .and("category.kid")
-      .gte(kid);
-    Query query = new Query(criteria);
-    List<RoomDataMapper> dataMappers = mongoTemplate.find(
-      query,
+    // Create a match operation to filter by category type
+    MatchOperation matchOperation = Aggregation.match(
+      Criteria
+        .where("category.type")
+        .is(categoryType)
+        .and("_id")
+        .nin(excludedRoomIds)
+        .and("category.adult")
+        .gte(adult)
+        .and("category.kid")
+        .gte(kid)
+    );
+
+    // Define the aggregation
+    Aggregation aggregation = Aggregation.newAggregation(matchOperation);
+
+    // Execute the aggregation
+    AggregationResults<RoomDataMapper> aggregationResults = mongoTemplate.aggregate(
+      aggregation,
+      "rooms",
       RoomDataMapper.class
     );
-    return RoomDataMapper.toRoomList(dataMappers);
+
+    return RoomDataMapper.toRoomList(aggregationResults.getMappedResults());
   }
 }
