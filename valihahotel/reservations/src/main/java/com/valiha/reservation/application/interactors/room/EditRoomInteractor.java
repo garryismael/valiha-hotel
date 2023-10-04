@@ -3,7 +3,7 @@ package com.valiha.reservation.application.interactors.room;
 import com.valiha.reservation.application.dto.room.RoomRequestDto;
 import com.valiha.reservation.application.dto.room.RoomResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
-import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.CategoryRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
 import com.valiha.reservation.application.service.StorageService;
 import com.valiha.reservation.application.useCase.room.RoomEditUseCase;
@@ -23,7 +23,7 @@ public class EditRoomInteractor implements RoomEditUseCase {
 
   private final RoomFactory roomFactory;
   private final RoomRepository roomRepository;
-  private final GenericRepository<Category> categoryRepository;
+  private final CategoryRepository categoryRepository;
   private final GenericPresenter<RoomResponseDto> roomPresenter;
   private final StorageService storageService;
 

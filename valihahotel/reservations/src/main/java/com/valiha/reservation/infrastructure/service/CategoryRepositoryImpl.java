@@ -1,14 +1,15 @@
 package com.valiha.reservation.infrastructure.service;
 
-import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.CategoryRepository;
 import com.valiha.reservation.core.entities.models.Category;
 import com.valiha.reservation.infrastructure.data.CategoryDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoCategoryRepository;
 import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class CategoryRepositoryImpl implements GenericRepository<Category> {
+public class CategoryRepositoryImpl implements CategoryRepository {
 
   private final MongoCategoryRepository categoryRepository;
 
@@ -44,5 +45,18 @@ public class CategoryRepositoryImpl implements GenericRepository<Category> {
   @Override
   public void deleteById(String id) {
     this.categoryRepository.deleteById(id);
+  }
+
+  @Override
+  public Category findOneByTypeAndAdultAndKid(String type, int adult, int kid) {
+    Optional<CategoryDataMapper> optionalDataMapper =
+      this.categoryRepository.findOneByTypeAndAdultGreaterThanEqualAndKidGreaterThanEqual(
+          type,
+          adult,
+          kid
+        );
+    return optionalDataMapper.isPresent()
+      ? CategoryDataMapper.toCategory(optionalDataMapper.get())
+      : null;
   }
 }

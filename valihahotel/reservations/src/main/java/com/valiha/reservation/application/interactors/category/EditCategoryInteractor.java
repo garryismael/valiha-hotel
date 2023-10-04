@@ -3,7 +3,7 @@ package com.valiha.reservation.application.interactors.category;
 import com.valiha.reservation.application.dto.category.CategoryRequestDto;
 import com.valiha.reservation.application.dto.category.CategoryResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
-import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.CategoryRepository;
 import com.valiha.reservation.application.service.StorageService;
 import com.valiha.reservation.application.useCase.category.CategoryEditUseCase;
 import com.valiha.reservation.core.constant.CategoryValidator;
@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class EditCategoryInteractor implements CategoryEditUseCase {
 
-  private final GenericRepository<Category> categoryRepository;
+  private final CategoryRepository categoryRepository;
   private final GenericPresenter<CategoryResponseDto> categoryPresenter;
   private final CategoryFactory categoryFactory;
   private final StorageService storageService;

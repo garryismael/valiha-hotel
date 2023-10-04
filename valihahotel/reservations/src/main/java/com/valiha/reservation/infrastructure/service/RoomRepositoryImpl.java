@@ -1,24 +1,22 @@
 package com.valiha.reservation.infrastructure.service;
 
+import com.valiha.reservation.application.repository.CategoryRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
+import com.valiha.reservation.core.entities.models.Category;
 import com.valiha.reservation.core.entities.models.Room;
 import com.valiha.reservation.infrastructure.data.RoomDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoRoomRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.aggregation.MatchOperation;
-import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
-import org.springframework.data.mongodb.core.query.Criteria;
 
 @AllArgsConstructor
 public class RoomRepositoryImpl implements RoomRepository {
 
   private final MongoRoomRepository roomRepository;
-  private final MongoTemplate mongoTemplate;
+  private final CategoryRepository categoryRepository;
+  private final MongoRoomRepository mongoRoomRepository;
 
   @Override
   public Room save(Room room) {
@@ -62,29 +60,22 @@ public class RoomRepositoryImpl implements RoomRepository {
     int kid,
     List<String> excludedRoomIds
   ) {
-    // Create a match operation to filter by category type
-    MatchOperation matchOperation = Aggregation.match(
-      Criteria
-        .where("category.type")
-        .is(categoryType)
-        .and("_id")
-        .nin(excludedRoomIds)
-        .and("category.adult")
-        .gte(adult)
-        .and("category.kid")
-        .gte(kid)
-    );
+    List<Room> rooms = new ArrayList<>();
+    Category categoryDataMapper =
+      this.categoryRepository.findOneByTypeAndAdultAndKid(
+          categoryType,
+          adult,
+          kid
+        );
 
-    // Define the aggregation
-    Aggregation aggregation = Aggregation.newAggregation(matchOperation);
-
-    // Execute the aggregation
-    AggregationResults<RoomDataMapper> aggregationResults = mongoTemplate.aggregate(
-      aggregation,
-      "rooms",
-      RoomDataMapper.class
-    );
-
-    return RoomDataMapper.toRoomList(aggregationResults.getMappedResults());
+    if (categoryDataMapper != null) {
+      List<RoomDataMapper> dataMappers =
+        this.mongoRoomRepository.findByCategoryAndIdNotIn(
+            categoryDataMapper.getId(),
+            excludedRoomIds
+          );
+      rooms = RoomDataMapper.toRoomList(dataMappers);
+    }
+    return rooms;
   }
 }

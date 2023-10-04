@@ -2,7 +2,7 @@ package com.valiha.reservation.application.interactors.category;
 
 import com.valiha.reservation.application.dto.category.CategoryResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
-import com.valiha.reservation.application.repository.GenericRepository;
+import com.valiha.reservation.application.repository.CategoryRepository;
 import com.valiha.reservation.application.useCase.category.CategoryGetUseCase;
 import com.valiha.reservation.core.constant.CategoryValidator;
 import com.valiha.reservation.core.entities.models.Category;
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class FindOneCategoryInteractor implements CategoryGetUseCase {
 
-  private final GenericRepository<Category> categoryRepository;
+  private final CategoryRepository categoryRepository;
   private final GenericPresenter<CategoryResponseDto> categoryPresenter;
 
   @Override
