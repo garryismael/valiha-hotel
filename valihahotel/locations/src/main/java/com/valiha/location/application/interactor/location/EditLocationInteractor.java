@@ -5,6 +5,7 @@ import com.valiha.location.application.dto.location.LocationRequestDto;
 import com.valiha.location.application.dto.location.LocationResponseDto;
 import com.valiha.location.application.presenter.GenericPresenter;
 import com.valiha.location.application.repository.GenericRepository;
+import com.valiha.location.application.repository.LocationRepository;
 import com.valiha.location.application.useCase.location.EditLocationUseCase;
 import com.valiha.location.core.constants.AppLocation;
 import com.valiha.location.core.constants.LocationValidator;
@@ -18,7 +19,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class EditLocationInteractor implements EditLocationUseCase {
 
-  private final GenericRepository<Location> locationRepository;
+  private final LocationRepository locationRepository;
   private final GenericRepository<Car> carRepository;
   private final LocationFactory locationFactory;
   private final GenericPresenter<LocationResponseDto> locationPresenter;
