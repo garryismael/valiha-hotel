@@ -1,15 +1,11 @@
 package com.valiha.reservation.application.interactors.reservation;
 
 import com.valiha.reservation.application.dto.client.ClientRequestDto;
-import com.valiha.reservation.application.dto.client.ClientResponseDto;
-import com.valiha.reservation.application.dto.payment.PaymentRequestDto;
-import com.valiha.reservation.application.dto.payment.PaymentResponseDto;
 import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
-import com.valiha.reservation.application.service.GenericService;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
 import com.valiha.reservation.core.constant.AppReservation;
 import com.valiha.reservation.core.constant.PaymentState;
@@ -19,6 +15,7 @@ import com.valiha.reservation.core.entities.models.Client;
 import com.valiha.reservation.core.entities.models.Payment;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
+import com.valiha.reservation.core.interfaces.factory.ClientFactory;
 import com.valiha.reservation.core.interfaces.factory.PaymentFactory;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
 import java.util.Date;
@@ -31,9 +28,8 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
 
   private final ReservationRepository reservationRepository;
   private final RoomRepository roomRepository;
-  private final GenericService<ClientResponseDto, ClientRequestDto> clientService;
-  private final GenericService<PaymentResponseDto, PaymentRequestDto> paymentService;
   private final GenericPresenter<ReservationResponseDto> reservationPresenter;
+  private final ClientFactory clientFactory;
   private final PaymentFactory paymentFactory;
   private final ReservationFactory reservationFactory;
 
@@ -57,8 +53,15 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
       PaymentState.PENDING.value()
     );
 
-    Client client = requestDto.getClient() != null
-      ? ClientRequestDto.toClient(requestDto.getClient())
+    ClientRequestDto clientRequestDto = requestDto.getClient();
+    Client client = clientRequestDto != null
+      ? clientFactory.create(
+        null,
+        clientRequestDto.getFirstName(),
+        clientRequestDto.getLastName(),
+        clientRequestDto.getPhoneNumber(),
+        clientRequestDto.getEmail()
+      )
       : new Client();
 
     Reservation reservation = reservationFactory.create(
@@ -94,27 +97,6 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
         );
     }
 
-    PaymentResponseDto paymentResponseDto =
-      this.paymentService.create(PaymentRequestDto.from(payment));
-
-    ClientResponseDto clientResponseDto =
-      this.clientService.create(requestDto.getClient());
-
-    client = ClientResponseDto.toClient(clientResponseDto);
-
-    payment = PaymentResponseDto.toPayment(paymentResponseDto);
-
-    reservation =
-      reservationFactory.create(
-        null,
-        reservation.getCheckIn(),
-        reservation.getCheckOut(),
-        reservation.getState(),
-        reservation.isParking(),
-        room,
-        client,
-        payment
-      );
     reservation = this.reservationRepository.save(reservation);
 
     return this.reservationPresenter.prepareSuccessView(

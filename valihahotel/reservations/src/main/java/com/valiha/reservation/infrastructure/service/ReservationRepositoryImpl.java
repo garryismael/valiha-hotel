@@ -7,6 +7,8 @@ import com.valiha.reservation.application.dto.payment.PaymentResponseDto;
 import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.service.GenericService;
 import com.valiha.reservation.core.entities.models.Reservation;
+import com.valiha.reservation.infrastructure.data.ClientDataMapper;
+import com.valiha.reservation.infrastructure.data.PaymentDataMapper;
 import com.valiha.reservation.infrastructure.data.ReservationDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoReservationRepository;
 import java.util.ArrayList;
@@ -30,7 +32,25 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
   @Override
   public Reservation save(Reservation reservation) {
-    ReservationDataMapper dataMapper = ReservationDataMapper.from(reservation);
+    PaymentResponseDto paymentResponseDto =
+      this.paymentService.create(
+          PaymentRequestDto.from(reservation.getPayment())
+        );
+
+    ClientResponseDto clientResponseDto =
+      this.clientService.create(ClientRequestDto.from(reservation.getClient()));
+
+    ClientDataMapper clientMapper = ClientDataMapper.from(clientResponseDto);
+
+    PaymentDataMapper paymentMapper = PaymentDataMapper.from(
+      paymentResponseDto
+    );
+
+    ReservationDataMapper dataMapper = ReservationDataMapper.from(
+      reservation,
+      clientMapper,
+      paymentMapper
+    );
 
     dataMapper = reservationRepository.save(dataMapper);
 

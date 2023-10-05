@@ -84,6 +84,26 @@ public class ReservationDataMapper {
       .build();
   }
 
+  public static ReservationDataMapper from(
+    Reservation reservation,
+    ClientDataMapper clientDataMapper,
+    PaymentDataMapper paymentDataMapper
+  ) {
+    return ReservationDataMapper
+      .builder()
+      .id(reservation.getId())
+      .checkIn(reservation.getCheckIn())
+      .checkOut(reservation.getCheckOut())
+      .state(reservation.getState())
+      .parking(reservation.isParking())
+      .room(RoomDataMapper.from(reservation.getRoom()))
+      .client(clientDataMapper)
+      .clientId(clientDataMapper.getId())
+      .payment(paymentDataMapper)
+      .paymentId(paymentDataMapper.getId())
+      .build();
+  }
+
   public static List<ReservationDataMapper> from(
     List<Reservation> reservations
   ) {
