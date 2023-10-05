@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,10 +12,13 @@ import styles from "./styles.module.css";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper/modules";
+import SectionService from "../ServiceItem";
+import { LuParkingCircle, LuWifi, LuCoffee } from "react-icons/lu";
 
 export default function ServiceSection() {
   return (
-    <>
+    <section className="my-24">
+      <h1 className="title container mx-auto">Services</h1>
       <Swiper
         slidesPerView={3}
         spaceBetween={0}
@@ -28,20 +32,48 @@ export default function ServiceSection() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img
-            src="https://images.unsplash.com/photo-1584257274862-42aa4f6e5f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
-            alt="img"
+          <SectionService
+            Icon={LuParkingCircle}
+            text="Parking"
+            img="/assets/images/service/img-2.webp"
           />
         </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>
+          <SectionService
+            Icon={LuWifi}
+            text="Wifi"
+            img="/assets/images/service/img-6.webp"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <SectionService
+            Icon={LuCoffee}
+            text="Breakfast"
+            img="/assets/images/service/img-7.webp"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <SectionService
+            Icon={LuParkingCircle}
+            text="Parking"
+            img="/assets/images/service/img-2.webp"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <SectionService
+            Icon={LuWifi}
+            text="Wifi"
+            img="/assets/images/service/img-6.webp"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <SectionService
+            Icon={LuCoffee}
+            text="Breakfast"
+            img="/assets/images/service/img-7.webp"
+          />
+        </SwiperSlide>
       </Swiper>
-    </>
+    </section>
   );
 }

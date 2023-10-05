@@ -9,7 +9,7 @@ const CATEGORY_VALUES = [
     1,
     1,
     0,
-    "https://root.valihahotel.com/uploads/categories/standard.webp"
+    "/statics/2Standard/1.webp"
   ),
   new Category(
     "2",
@@ -19,7 +19,7 @@ const CATEGORY_VALUES = [
     1,
     0,
     2,
-    "https://root.valihahotel.com/uploads/categories/deluxeTwin.webp"
+    "/statics/303Deluxe/1.webp"
   ),
   new Category(
     "3",
@@ -29,7 +29,7 @@ const CATEGORY_VALUES = [
     1,
     1,
     0,
-    "https://root.valihahotel.com/uploads/categories/deluxeDouble.webp"
+    "/statics/305Deluxe/1.webp"
   ),
   new Category(
     "4",
@@ -39,7 +39,7 @@ const CATEGORY_VALUES = [
     1,
     1,
     1,
-    "https://root.valihahotel.com/uploads/categories/triple.webp"
+    "/statics/303Triple/1.webp"
   ),
   new Category(
     "5",
@@ -49,7 +49,7 @@ const CATEGORY_VALUES = [
     2,
     1,
     2,
-    "https://root.valihahotel.com/uploads/categories/familyRoom.webp"
+    "/statics/305Familiale/1.webp"
   ),
   new Category(
     "6",
@@ -59,7 +59,7 @@ const CATEGORY_VALUES = [
     1,
     1,
     1,
-    "https://root.valihahotel.com/uploads/categories/appart.webp"
+    "/statics/3Appart/1.webp"
   ),
 ];
 
