@@ -27,7 +27,7 @@ public class GenericResponseFormatter<T> implements GenericPresenter<T> {
       message,
       OffsetDateTime.now(),
       UUID.randomUUID().toString(),
-      HttpStatus.UNPROCESSABLE_ENTITY.value(),
+      HttpStatus.BAD_REQUEST.value(),
       errors
     );
     throw new ApiErrorException(message, errorResponse);
@@ -57,7 +57,7 @@ public class GenericResponseFormatter<T> implements GenericPresenter<T> {
       message,
       OffsetDateTime.now(),
       UUID.randomUUID().toString(),
-      HttpStatus.BAD_REQUEST.value(),
+      HttpStatus.UNPROCESSABLE_ENTITY.value(),
       errors
     );
     throw new ApiErrorException(message, errorResponse);
