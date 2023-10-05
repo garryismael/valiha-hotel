@@ -10,6 +10,7 @@ public class ReservationValidator {
   public static final String KEY_ROOM = "room";
   public static final String KEY_CLIENT = "client";
   public static final String KEY_PAYMENT = "payment";
+  public static final String RESERVATION_DATE_RANGE = "dateRange";
 
   public static final String INVALID_CHECK_IN_ERROR = "invalid check in ";
   public static final String INVALID_CHECK_OUT_ERROR = "invalid check out";

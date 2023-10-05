@@ -83,12 +83,16 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
 
     if (reservationExists) {
       errors.put(
-        ReservationValidator.INVALID_CHECK_IN_ERROR,
+        ReservationValidator.RESERVATION_DATE_RANGE,
         ReservationValidator.RESERVATION_EXISTS_ERRORS
       );
+      return this.reservationPresenter.prepareInvalidDataView(
+          ReservationValidator.RESERVATION_EXISTS_ERRORS,
+          errors
+        );
     }
 
-    errors.putAll(reservation.validate());
+    errors = reservation.validate();
 
     if (!errors.isEmpty()) {
       return this.reservationPresenter.prepareInvalidDataView(

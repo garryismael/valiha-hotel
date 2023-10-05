@@ -27,7 +27,7 @@ public class GenericResponseFormatter<T> implements GenericPresenter<T> {
       message,
       OffsetDateTime.now(),
       UUID.randomUUID().toString(),
-      HttpStatus.BAD_REQUEST.value(),
+      HttpStatus.UNPROCESSABLE_ENTITY.value(),
       errors
     );
     throw new ApiErrorException(message, errorResponse);
@@ -43,6 +43,21 @@ public class GenericResponseFormatter<T> implements GenericPresenter<T> {
       OffsetDateTime.now(),
       UUID.randomUUID().toString(),
       HttpStatus.NOT_FOUND.value(),
+      errors
+    );
+    throw new ApiErrorException(message, errorResponse);
+  }
+
+  @Override
+  public T prepareInvalidEntityView(
+    String message,
+    Map<String, String> errors
+  ) {
+    ErrorResponse errorResponse = new ErrorResponse(
+      message,
+      OffsetDateTime.now(),
+      UUID.randomUUID().toString(),
+      HttpStatus.BAD_REQUEST.value(),
       errors
     );
     throw new ApiErrorException(message, errorResponse);

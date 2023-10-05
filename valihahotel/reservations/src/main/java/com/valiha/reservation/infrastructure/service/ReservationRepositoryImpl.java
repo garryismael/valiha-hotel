@@ -126,7 +126,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     Date checkOut
   ) {
     List<Criteria> criterias = this.getDateRangeCriterias(checkIn, checkOut);
-    Criteria roomCriteria = Criteria.where("room.$id").is(roomId);
+    Criteria roomCriteria = Criteria.where("room.id").in(roomId);
 
     Criteria reservationCriteria = new Criteria()
       .orOperator(criterias)
