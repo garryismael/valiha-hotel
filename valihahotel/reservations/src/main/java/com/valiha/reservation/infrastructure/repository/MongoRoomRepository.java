@@ -10,4 +10,6 @@ public interface MongoRoomRepository
     String categoryId,
     List<String> ids
   );
+
+  List<RoomDataMapper> findByCategory(String id);
 }

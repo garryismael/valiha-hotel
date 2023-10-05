@@ -5,6 +5,7 @@ import com.valiha.reservation.application.dto.room.RoomRequestDto;
 import com.valiha.reservation.application.dto.room.RoomResponseDto;
 import com.valiha.reservation.application.useCase.room.FindAvailableRoomsUseCase;
 import com.valiha.reservation.application.useCase.room.RoomDeleteUseCase;
+import com.valiha.reservation.application.useCase.room.RoomFindAllByCategoryUseCase;
 import com.valiha.reservation.application.useCase.room.RoomFindAllUseCase;
 import com.valiha.reservation.application.useCase.room.RoomGetUseCase;
 import com.valiha.reservation.infrastructure.service.ReservationService;
@@ -29,6 +30,7 @@ public class RoomController {
 
   private final ReservationService reservationService;
   private final RoomFindAllUseCase findAllUseCase;
+  private final RoomFindAllByCategoryUseCase findByCategoryUseCase;
   private final RoomGetUseCase getUseCase;
   private final RoomDeleteUseCase deleteUseCase;
   private final FindAvailableRoomsUseCase findAvailableUseCase;
@@ -44,6 +46,11 @@ public class RoomController {
   @GetMapping
   public List<RoomResponseDto> getRooms() {
     return this.findAllUseCase.execute();
+  }
+
+  @GetMapping("/categories/{id}")
+  public List<RoomResponseDto> getRoomsByCategory(@PathVariable String id) {
+    return this.findByCategoryUseCase.execute(id);
   }
 
   @GetMapping("/available")

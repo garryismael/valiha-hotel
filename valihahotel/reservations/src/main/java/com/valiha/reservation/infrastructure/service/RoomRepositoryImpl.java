@@ -94,10 +94,9 @@ public class RoomRepositoryImpl implements RoomRepository {
   }
 
   @Override
-  public boolean isAvailableRoom(String id, Date checkIn, Date checkOut) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException(
-      "Unimplemented method 'isAvailableRoom'"
-    );
+  public List<Room> findAllByCategory(String id) {
+    List<RoomDataMapper> roomDataMappers =
+      this.roomRepository.findByCategory(id);
+    return RoomDataMapper.toRoomList(roomDataMappers);
   }
 }

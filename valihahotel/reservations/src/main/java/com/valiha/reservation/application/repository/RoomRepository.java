@@ -21,7 +21,7 @@ public interface RoomRepository {
     int kid
   );
 
-  boolean isAvailableRoom(String id, Date checkIn, Date checkOut);
+  List<Room> findAllByCategory(String id);
 
   void deleteById(String id);
 }
