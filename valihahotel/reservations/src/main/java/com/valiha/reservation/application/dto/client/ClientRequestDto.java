@@ -29,4 +29,14 @@ public class ClientRequestDto {
       .email(responseDto.email)
       .build();
   }
+
+  public static ClientRequestDto from(Client client) {
+    return ClientRequestDto
+      .builder()
+      .firstName(client.getFirstName())
+      .lastName(client.getLastName())
+      .phoneNumber(client.getPhoneNumber())
+      .email(client.getEmail())
+      .build();
+  }
 }
