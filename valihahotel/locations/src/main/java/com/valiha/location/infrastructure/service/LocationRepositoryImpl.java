@@ -74,23 +74,8 @@ public class LocationRepositoryImpl implements LocationRepository {
     Date startDate,
     Date endDate
   ) {
-    Criteria startCriteria = Criteria
-      .where("start")
-      .lte(startDate)
-      .and("end")
-      .gte(startDate);
-    Criteria endCriteria = Criteria
-      .where("start")
-      .lte(endDate)
-      .and("end")
-      .gte(endDate);
-    Criteria overlappingCriteria = Criteria
-      .where("start")
-      .gte(startDate)
-      .and("end")
-      .lte(endDate);
-    Criteria locationDateRangeCriteria = new Criteria()
-      .orOperator(startCriteria, endCriteria, overlappingCriteria);
+    List<Criteria> criterias = getDateRangeCriterias(startDate, endDate);
+    Criteria locationDateRangeCriteria = new Criteria().orOperator(criterias);
     Query query = new Query(locationDateRangeCriteria);
     List<LocationDataMapper> dataMappers = mongoTemplate.find(
       query,
@@ -101,8 +86,32 @@ public class LocationRepositoryImpl implements LocationRepository {
   }
 
   @Override
+  public boolean existsByLocationIdWithinDateRange(
+    String locationId,
+    Date checkIn,
+    Date checkOut
+  ) {
+    List<Criteria> criterias = this.getDateRangeCriterias(checkIn, checkOut);
+    Criteria roomCriteria = Criteria.where("room.id").in(locationId);
+
+    Criteria reservationCriteria = new Criteria()
+      .orOperator(criterias)
+      .andOperator(roomCriteria);
+    Query query = new Query(reservationCriteria);
+    return mongoTemplate.exists(query, LocationDataMapper.class);
+  }
+
+  @Override
   public void deleteById(String id) {
     this.locationRepository.deleteById(id);
+  }
+
+  private List<Criteria> getDateRangeCriterias(Date startDate, Date endDate) {
+    return List.of(
+      Criteria.where("start").lte(startDate).and("end").gte(startDate),
+      Criteria.where("start").lte(endDate).and("end").gte(endDate),
+      Criteria.where("start").gte(startDate).and("end").lte(endDate)
+    );
   }
 
   private List<Location> toLocations(List<LocationDataMapper> dataMappers) {

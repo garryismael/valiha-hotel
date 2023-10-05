@@ -15,5 +15,11 @@ public interface LocationRepository {
 
   List<Location> findLocationsWithinDateRange(Date checkIn, Date checkOut);
 
+  boolean existsByLocationIdWithinDateRange(
+    String locationId,
+    Date checkIn,
+    Date checkOut
+  );
+
   void deleteById(String id);
 }

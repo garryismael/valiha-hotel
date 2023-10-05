@@ -12,6 +12,7 @@ public class LocationValidator {
   public static final String KEY_CLIENT = "client";
   public static final String KEY_CAR = "car";
   public static final String KEY_PAYMENT = "payment";
+  public static final String LOCATION_DATE_RANGE = "dateRange";
 
   // Location Invalid Attribute Error Message
   public static final String INVALID_STATE_ERROR = "state invalid";
@@ -22,6 +23,7 @@ public class LocationValidator {
   public static final String INVALID_CLIENT_ERROR = "invalid client";
   public static final String INVALID_CAR_ERROR = "invalid car";
   public static final String INVALID_PAYMENT_ERROR = "invalid payment";
+  public static final String LOCATION_EXISTS_ERROR = "location exists";
 
   // Location Error Message
   public static final String LOCATION_NOT_FOUND_ERROR = "location not found";

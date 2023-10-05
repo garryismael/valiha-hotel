@@ -22,6 +22,7 @@ import com.valiha.location.core.entities.models.Payment;
 import com.valiha.location.core.interfaces.factory.ClientFactory;
 import com.valiha.location.core.interfaces.factory.LocationFactory;
 import com.valiha.location.core.interfaces.factory.PaymentFactory;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -43,6 +44,14 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
     Map<String, String> errors = new HashMap<>();
 
     Car car = this.carRepository.findOneById(requestDto.getCarId());
+    Date start = LocationRequestDto.convert(
+      requestDto.getStart(),
+      AppLocation.DATE_FORMAT
+    );
+    Date end = LocationRequestDto.convert(
+      requestDto.getEnd(),
+      AppLocation.DATE_FORMAT
+    );
 
     Payment payment = paymentFactory.create(
       null,
@@ -64,20 +73,31 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
       this.locationFactory.create(
           null,
           LocationState.PENDING.value(),
-          LocationRequestDto.convert(
-            requestDto.getStart(),
-            AppLocation.DATE_FORMAT
-          ),
-          LocationRequestDto.convert(
-            requestDto.getEnd(),
-            AppLocation.DATE_FORMAT
-          ),
+          start,
+          end,
           requestDto.getDestination(),
           requestDto.getReason(),
           client,
           car,
           payment
         );
+    boolean locationExists =
+      this.locationRepository.existsByLocationIdWithinDateRange(
+          car.getId(),
+          start,
+          end
+        );
+
+    if (locationExists) {
+      errors.put(
+        LocationValidator.LOCATION_DATE_RANGE,
+        LocationValidator.LOCATION_EXISTS_ERROR
+      );
+      return this.locationPresenter.prepareInvalidDataView(
+          LocationValidator.LOCATION_EXISTS_ERROR,
+          errors
+        );
+    }
 
     errors = location.validate();
 

@@ -10,5 +10,7 @@ public interface GenericPresenter<T> {
 
   T prepareInvalidDataView(String message, Map<String, String> errors);
 
+  T prepareInvalidEntityView(String message, Map<String, String> errors);
+
   T prepareResourceNotFoundView(String message, Map<String, String> errors);
 }

@@ -47,4 +47,19 @@ public class GenericResponseFormatter<T> implements GenericPresenter<T> {
     );
     throw new ApiErrorException(message, errorResponse);
   }
+
+  @Override
+  public T prepareInvalidEntityView(
+    String message,
+    Map<String, String> errors
+  ) {
+    ErrorResponse errorResponse = new ErrorResponse(
+      message,
+      UUID.randomUUID().toString(),
+      OffsetDateTime.now(),
+      HttpStatus.UNPROCESSABLE_ENTITY.value(),
+      errors
+    );
+    throw new ApiErrorException(message, errorResponse);
+  }
 }
