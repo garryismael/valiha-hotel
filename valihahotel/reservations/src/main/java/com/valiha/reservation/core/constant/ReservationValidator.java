@@ -18,6 +18,7 @@ public class ReservationValidator {
   public static final String INVALID_ROOM_ERROR = "invalid room";
   public static final String INVALID_CLIENT_ERROR = "invalid client";
   public static final String INVALID_PAYMENT_ERROR = "invalid payment";
+  public static final String RESERVATION_EXISTS_ERRORS = "reservation exists";
 
   public static final String RESERVATION_NOT_FOUND_ERROR =
     "reservation not found";

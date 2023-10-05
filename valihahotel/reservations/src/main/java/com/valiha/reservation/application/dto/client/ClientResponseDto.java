@@ -33,4 +33,15 @@ public class ClientResponseDto {
   public static List<ClientResponseDto> from(List<Client> clients) {
     return clients.stream().map(ClientResponseDto::from).toList();
   }
+
+  public static Client toClient(ClientResponseDto responseDto) {
+    return Client
+      .builder()
+      .id(responseDto.id)
+      .firstName(responseDto.firstName)
+      .lastName(responseDto.lastName)
+      .phoneNumber(responseDto.phoneNumber)
+      .email(responseDto.email)
+      .build();
+  }
 }

@@ -1,6 +1,7 @@
 package com.valiha.reservation.application.repository;
 
 import com.valiha.reservation.core.entities.models.Room;
+import java.util.Date;
 import java.util.List;
 
 public interface RoomRepository {
@@ -12,11 +13,15 @@ public interface RoomRepository {
 
   List<Room> findAll();
 
-  List<Room> findRoomsByCategoryTypeAndExcludeIdsAndCriteria(
+  List<Room> findAllAvailableRooms(
+    Date checkIn,
+    Date checkOut,
     String categoryType,
     int adult,
-    int kid,
-    List<String> excludedRoomIds
+    int kid
   );
+
+  boolean isAvailableRoom(String id, Date checkIn, Date checkOut);
+
   void deleteById(String id);
 }

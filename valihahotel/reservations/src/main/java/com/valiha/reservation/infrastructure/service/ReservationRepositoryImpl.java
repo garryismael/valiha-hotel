@@ -83,27 +83,13 @@ public class ReservationRepositoryImpl implements ReservationRepository {
   }
 
   @Override
-  public List<Reservation> findReservationsWithinDateRange(
+  public List<Reservation> findAllWithinDateRange(
     Date startDate,
     Date endDate
   ) {
-    Criteria checkInCriteria = Criteria
-      .where("checkIn")
-      .lte(startDate)
-      .and("checkOut")
-      .gte(startDate);
-    Criteria checkOutCriteria = Criteria
-      .where("checkIn")
-      .lte(endDate)
-      .and("checkOut")
-      .gte(endDate);
-    Criteria overlappingCriteria = Criteria
-      .where("checkIn")
-      .gte(startDate)
-      .and("checkOut")
-      .lte(endDate);
+    List<Criteria> criterias = this.getDateRangeCriterias(startDate, endDate);
     Criteria reservationDateRangeCriteria = new Criteria()
-      .orOperator(checkInCriteria, checkOutCriteria, overlappingCriteria);
+      .orOperator(criterias);
     Query query = new Query(reservationDateRangeCriteria);
     List<ReservationDataMapper> dataMappers = mongoTemplate.find(
       query,
@@ -111,6 +97,30 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     );
 
     return toReservations(dataMappers);
+  }
+
+  @Override
+  public boolean existsByRoomIdWithinDateRange(
+    String roomId,
+    Date checkIn,
+    Date checkOut
+  ) {
+    List<Criteria> criterias = this.getDateRangeCriterias(checkIn, checkOut);
+    Criteria roomCriteria = Criteria.where("room.$id").is(roomId);
+
+    Criteria reservationCriteria = new Criteria()
+      .orOperator(criterias)
+      .andOperator(roomCriteria);
+    Query query = new Query(reservationCriteria);
+    return mongoTemplate.exists(query, ReservationDataMapper.class);
+  }
+
+  private List<Criteria> getDateRangeCriterias(Date startDate, Date endDate) {
+    return List.of(
+      Criteria.where("checkIn").lte(startDate).and("checkOut").gte(startDate),
+      Criteria.where("checkIn").lte(endDate).and("checkOut").gte(endDate),
+      Criteria.where("checkIn").gte(startDate).and("checkOut").lte(endDate)
+    );
   }
 
   private List<Reservation> toReservations(

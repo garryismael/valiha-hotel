@@ -19,9 +19,9 @@ import com.valiha.reservation.core.entities.models.Client;
 import com.valiha.reservation.core.entities.models.Payment;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
-import com.valiha.reservation.core.interfaces.factory.ClientFactory;
 import com.valiha.reservation.core.interfaces.factory.PaymentFactory;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -34,7 +34,6 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
   private final GenericService<ClientResponseDto, ClientRequestDto> clientService;
   private final GenericService<PaymentResponseDto, PaymentRequestDto> paymentService;
   private final GenericPresenter<ReservationResponseDto> reservationPresenter;
-  private final ClientFactory clientFactory;
   private final PaymentFactory paymentFactory;
   private final ReservationFactory reservationFactory;
 
@@ -42,6 +41,15 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
   public ReservationResponseDto execute(ReservationRequestDto requestDto) {
     Map<String, String> errors = new HashMap<>();
     Room room = roomRepository.findOneById(requestDto.getRoomId());
+    Date checkIn = ReservationRequestDto.convert(
+      requestDto.getCheckIn(),
+      AppReservation.DATE_FORMAT
+    );
+
+    Date checkOut = ReservationRequestDto.convert(
+      requestDto.getCheckOut(),
+      AppReservation.DATE_FORMAT
+    );
 
     Payment payment = paymentFactory.create(
       null,
@@ -50,25 +58,13 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
     );
 
     Client client = requestDto.getClient() != null
-      ? clientFactory.create(
-        null,
-        requestDto.getClient().getFirstName(),
-        requestDto.getClient().getLastName(),
-        requestDto.getClient().getPhoneNumber(),
-        requestDto.getClient().getEmail()
-      )
+      ? ClientRequestDto.toClient(requestDto.getClient())
       : new Client();
 
     Reservation reservation = reservationFactory.create(
       null,
-      ReservationRequestDto.convert(
-        requestDto.getCheckIn(),
-        AppReservation.DATE_FORMAT
-      ),
-      ReservationRequestDto.convert(
-        requestDto.getCheckOut(),
-        AppReservation.DATE_FORMAT
-      ),
+      checkIn,
+      checkOut,
       ReservationState.PENDING.value(),
       requestDto.isParking(),
       room,
@@ -76,7 +72,20 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
       payment
     );
 
-    errors = reservation.validate();
+    boolean reservationExists = reservationRepository.existsByRoomIdWithinDateRange(
+      requestDto.getRoomId(),
+      checkIn,
+      checkOut
+    );
+
+    if (reservationExists) {
+      errors.put(
+        ReservationValidator.INVALID_CHECK_IN_ERROR,
+        ReservationValidator.RESERVATION_EXISTS_ERRORS
+      );
+    }
+
+    errors.putAll(reservation.validate());
 
     if (!errors.isEmpty()) {
       return this.reservationPresenter.prepareInvalidDataView(
@@ -86,32 +95,14 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
     }
 
     PaymentResponseDto paymentResponseDto =
-      this.paymentService.create(
-          PaymentRequestDto
-            .builder()
-            .discount(payment.getDiscount())
-            .state(payment.getState())
-            .build()
-        );
+      this.paymentService.create(PaymentRequestDto.from(payment));
 
     ClientResponseDto clientResponseDto =
       this.clientService.create(requestDto.getClient());
 
-    client =
-      clientFactory.create(
-        clientResponseDto.getId(),
-        clientResponseDto.getFirstName(),
-        clientResponseDto.getLastName(),
-        clientResponseDto.getPhoneNumber(),
-        clientResponseDto.getEmail()
-      );
+    client = ClientResponseDto.toClient(clientResponseDto);
 
-    payment =
-      paymentFactory.create(
-        paymentResponseDto.getId(),
-        paymentResponseDto.getDiscount(),
-        paymentResponseDto.getState()
-      );
+    payment = PaymentResponseDto.toPayment(paymentResponseDto);
 
     reservation =
       reservationFactory.create(

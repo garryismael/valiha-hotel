@@ -29,4 +29,13 @@ public class PaymentResponseDto {
   public static List<PaymentResponseDto> from(List<Payment> payments) {
     return payments.stream().map(PaymentResponseDto::from).toList();
   }
+
+  public static Payment toPayment(PaymentResponseDto responseDto) {
+    return Payment
+      .builder()
+      .id(responseDto.id)
+      .discount(responseDto.discount)
+      .state(responseDto.state)
+      .build();
+  }
 }
