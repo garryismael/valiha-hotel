@@ -15,7 +15,7 @@ const CheckAvailability = () => {
   
   return (
     <form className={styles.form}>
-      <div className={styles.inputContainer}>
+      <div className={styles.content}>
         <div className={styles.inputs}>
           <Select
             aria-label="Hotel Type"
@@ -61,7 +61,7 @@ const CheckAvailability = () => {
         </div>
         <button
           type="button"
-          className="bg-dark-muted-500 hover:bg-reddish-orange-500 py-16 w-1/6 rounded-r-full text-white"
+          className={styles.btn}
         >
           Voir disponibilités
         </button>
