@@ -1,6 +1,7 @@
 import { FindAllCategoriesInterceptor } from "@/application/interactors/category/find-all-categories";
 import { FindAllCategoriesUseCase } from "@/application/use-cases/category/find-all-categories-use-case";
 import CategorySection from "@/components/Category/CategorySection";
+import GallerySection from "@/components/GallerySection";
 import { HeroSection } from "@/components/HeroSection";
 import ServiceSection from "@/components/ServiceSection";
 import { container } from "tsyringe";
@@ -15,6 +16,7 @@ export default async function Home() {
       <HeroSection />
       <CategorySection categories={categories} />
       <ServiceSection/>
+      <GallerySection/>
     </>
   );
 }

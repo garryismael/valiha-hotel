@@ -18,7 +18,6 @@ import { LuParkingCircle, LuWifi, LuCoffee } from "react-icons/lu";
 export default function ServiceSection() {
   return (
     <section className="my-24">
-      <h1 className="title container mx-auto">Services</h1>
       <Swiper
         slidesPerView={3}
         spaceBetween={0}
@@ -29,7 +28,7 @@ export default function ServiceSection() {
         }}
         navigation={true}
         modules={[Autoplay, Navigation]}
-        className="mySwiper"
+        className="service-swiper"
       >
         <SwiperSlide>
           <SectionService

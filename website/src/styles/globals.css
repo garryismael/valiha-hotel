@@ -54,5 +54,41 @@ body {
 }
 
 .title {
-  @apply text-4xl font-bold my-4;
+  @apply text-5xl font-bold my-4;
+}
+
+.gallery-swiper .swiper-button-prev,
+.gallery-swiper .swiper-button-next,
+.service-swiper .swiper-button-prev,
+.service-swiper .swiper-button-next {
+	background: rgb(240, 83, 63);
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border: 2px solid rgb(240, 83, 63);
+	border-radius: 50%;
+	opacity: 0.7;
+	text-align: center;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	color: #687693;
+	padding: 10px;
+}
+
+.service-swiper .swiper-button-prev,
+.service-swiper .swiper-button-next {
+  opacity: 0;
+}
+
+.service-swiper:hover .swiper-button-prev,
+.service-swiper:hover .swiper-button-next {
+  opacity: 0.7;
+}
+
+.gallery-swiper .swiper-button-prev::after,
+.gallery-swiper .swiper-button-next::after,
+.service-swiper .swiper-button-prev::after,
+.service-swiper .swiper-button-next::after {
+	font-size: 20px;
+	@apply text-white;
 }
