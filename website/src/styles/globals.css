@@ -24,14 +24,15 @@ body {
 }
 
 .header__nav {
-  @apply bg-transparent fixed top-0 w-full z-50 h-24 flex items-center;
+  @apply absolute left-0 w-full z-50;
+  background: rgba(37, 48, 65, 0.7);
 }
 
-.header__nav.active {
-  @apply bg-dark-muted-500;
+.header__nav div.active {
+  @apply fixed top-0 left-0 right-0 bg-dark-muted-500;
 }
 
-.header__nav.active a {
+.header__nav div.active a {
   @apply text-white;
 }
 
