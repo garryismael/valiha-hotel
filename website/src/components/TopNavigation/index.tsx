@@ -22,13 +22,13 @@ const TopNavigation = () => {
           </Link>
           <div className="hidden md:flex items-center space-x-10">
             <Link
-              href="#"
+              href="/"
               className="hover:text-reddish-orange-500 hover:border-t-2 py-9 px-5 hover:border-reddish-orange-500"
             >
               Accueil
             </Link>
             <Link
-              href="#"
+              href="/reservations"
               className=" hover:text-reddish-orange-400"
             >
               Réservation

@@ -54,7 +54,7 @@ body {
 }
 
 .title {
-  @apply text-5xl font-bold my-4;
+  @apply text-5xl font-bold my-12;
 }
 
 .gallery-swiper .swiper-button-prev,

@@ -24,9 +24,9 @@ export default function CategoryCard({ category }: Props) {
       </div>
       <div className="pb-6 mt-5 ml-2">
         <Link href="#" className={styles.room__category}>
-          {category.type}
+          {category.title}
         </Link>
-        <div className="flex items-start">
+        <div className="flex items-start mt-3">
           <div className="pr-4">
             <div className="flex items-center gap-1">
               <MdOutlineBed className={styles.cardInfo} />

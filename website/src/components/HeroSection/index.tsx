@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CheckAvailability from "@/components/CheckAvailability";
+import styles from './index.module.css';
 
 export const HeroSection = () => {
   return (
@@ -12,7 +13,9 @@ export const HeroSection = () => {
           className="object-cover"
         />
       </div>
-      <CheckAvailability />
+      <div className={styles.form}>
+        <CheckAvailability />
+      </div>
     </section>
   );
 };

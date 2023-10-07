@@ -3,7 +3,7 @@
 }
 
 .room__category {
-    @apply text-medium font-semibold;
+    @apply text-2xl font-black;
     @apply text-dark-muted-500 hover:text-reddish-orange-500;
 }
 

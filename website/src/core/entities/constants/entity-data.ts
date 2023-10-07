@@ -9,17 +9,7 @@ const CATEGORY_VALUES = [
     1,
     1,
     0,
-    "/statics/2Standard/1.webp"
-  ),
-  new Category(
-    "2",
-    "Deluxe Twin",
-    "Hotel with breakfast",
-    2,
-    1,
-    0,
-    2,
-    "/statics/303Deluxe/1.webp"
+    "/statics/categories/standard.webp"
   ),
   new Category(
     "3",
@@ -29,17 +19,7 @@ const CATEGORY_VALUES = [
     1,
     1,
     0,
-    "/statics/305Deluxe/1.webp"
-  ),
-  new Category(
-    "4",
-    "Triple",
-    "Hotel with breakfast",
-    3,
-    1,
-    1,
-    1,
-    "/statics/303Triple/1.webp"
+    "/statics/categories/deluxeDouble.webp"
   ),
   new Category(
     "5",
@@ -49,17 +29,37 @@ const CATEGORY_VALUES = [
     2,
     1,
     2,
-    "/statics/305Familiale/1.webp"
+    "/statics/categories/familyRoom.webp"
+  ),
+  new Category(
+    "2",
+    "Deluxe Twin",
+    "Hotel with breakfast",
+    2,
+    1,
+    0,
+    2,
+    "/statics/categories/deluxeTwin.webp"
+  ),
+  new Category(
+    "4",
+    "Chambre Triple",
+    "Hotel with breakfast",
+    3,
+    1,
+    1,
+    1,
+    "/statics/categories/triple.webp"
   ),
   new Category(
     "6",
-    "Apartment",
+    "Appartement",
     "Apartment with Kitchen",
     2,
     1,
     1,
     1,
-    "/statics/3Appart/1.webp"
+    "/statics/categories/appart.webp"
   ),
 ];
 

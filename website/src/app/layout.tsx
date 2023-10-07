@@ -2,6 +2,7 @@ import "reflect-metadata";
 import TopNavigation from "@/components/TopNavigation";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
+import FooterSection from "@/components/FooterSection";
 
 export const metadata: Metadata = {
   title: "Valiha Hôtel",
@@ -17,7 +18,8 @@ export default function RootLayout({
     <html lang="en" className="font-poppins">
       <body>
         <TopNavigation />
-        <main>{children}</main>
+        <main className="relative">{children}</main>
+        <FooterSection />
       </body>
     </html>
   );
