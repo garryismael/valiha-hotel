@@ -8,17 +8,7 @@ export class FindAllCategoriesInterceptor implements FindAllCategoriesUseCase {
     @inject("CategoryService") private categoryService: CategoryService
   ) {}
 
-  async execute() {
-    const categories = await this.categoryService.findAll();
-    return categories.map((category) => ({
-      id: category.getId(),
-      title: category.getTitle(),
-      type: category.getType(),
-      adult: category.getAdult(),
-      kid: category.getKid(),
-      bigBed: category.getBigBed(),
-      smallBed: category.getSmallBed(),
-      image: category.getImage(),
-    }));
+  execute() {
+    return this.categoryService.findAll();
   }
 }

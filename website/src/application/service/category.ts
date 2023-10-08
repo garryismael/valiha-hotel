@@ -1,5 +1,5 @@
-import { Category } from "@/core/entities/models/Category";
+import { CategoryResponseDto } from '@/application/dto/category/category-response';
 
 export interface CategoryService {
-    findAll(): Promise<Array<Category>>;
+    findAll(): Promise<Array<CategoryResponseDto>>;
 }

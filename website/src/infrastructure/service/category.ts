@@ -1,3 +1,4 @@
+import { CategoryResponseDto } from '@/application/dto/category/category-response';
 import { CategoryService } from "@/application/service/category";
 import CATEGORY_VALUES from "@/core/entities/constants/entity-data";
 import { Category } from "@/core/entities/models/Category";
@@ -10,7 +11,7 @@ export class CategoryServiceImpl implements CategoryService {
     private httpClient: HttpClient
   ){}
 
-  async findAll(): Promise<Category[]> {
+  async findAll(): Promise<CategoryResponseDto[]> {
     return CATEGORY_VALUES;
   }
 }
