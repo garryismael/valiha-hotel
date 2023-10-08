@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "@/config/container.config";
 import TopNavigation from "@/components/TopNavigation";
 import "@/styles/globals.css";
 import "@/styles/layout.css";
