@@ -1,6 +1,6 @@
 import Image from "next/image";
-import CheckAvailability from "@/components/CheckAvailability";
 import styles from './index.module.css';
+import CheckAvailability from "../CheckAvailability";
 
 export const HeroSection = () => {
   return (

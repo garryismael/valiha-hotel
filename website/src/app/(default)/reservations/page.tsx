@@ -1,4 +1,5 @@
-import CheckAvailability from "@/components/CheckAvailability";
+import CheckAvailability from "@/presentation/components/CheckAvailability";
+
 
 const Page = () => {
   return (
