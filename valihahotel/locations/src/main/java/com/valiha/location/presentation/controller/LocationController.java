@@ -9,6 +9,7 @@ import com.valiha.location.application.useCase.location.EditLocationUseCase;
 import com.valiha.location.application.useCase.location.FindAllLocationUseCase;
 import com.valiha.location.application.useCase.location.FindOneLocationUseCase;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/locations")
+@AllArgsConstructor
 public class LocationController {
 
   private final CreateLocationUseCase createUseCase;
@@ -27,20 +29,6 @@ public class LocationController {
   private final EditLocationUseCase editUseCase;
   private final FindAllLocationUseCase findAllUseCase;
   private final FindOneLocationUseCase findOneUseCase;
-
-  public LocationController(
-    CreateLocationUseCase createUseCase,
-    DeleteLocationUseCase deleteUseCase,
-    EditLocationUseCase editUseCase,
-    FindAllLocationUseCase findAllUseCase,
-    FindOneLocationUseCase findOneUseCase
-  ) {
-    this.createUseCase = createUseCase;
-    this.deleteUseCase = deleteUseCase;
-    this.editUseCase = editUseCase;
-    this.findAllUseCase = findAllUseCase;
-    this.findOneUseCase = findOneUseCase;
-  }
 
   @PostMapping
   public LocationResponseDto create(

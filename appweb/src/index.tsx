@@ -1,17 +1,21 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
+import { Provider } from "inversify-react";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import container from "./presentations/config/container";
 import "./presentations/config/i18n";
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider container={container}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

@@ -9,6 +9,7 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,6 +26,10 @@ public class WebSecurity {
     "/static/**",
   };
 
+  private static final String[] AUTH_RESERVATION = { "/reservations/**" };
+
+  private static final String[] AUTH_API_GET = { "/categories", "/rooms" };
+
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http
@@ -33,6 +38,10 @@ public class WebSecurity {
       .authorizeHttpRequests(authz -> {
         authz
           .requestMatchers(AUTH_WHITELIST)
+          .permitAll()
+          .requestMatchers(HttpMethod.POST, AUTH_RESERVATION)
+          .permitAll()
+          .requestMatchers(HttpMethod.GET, AUTH_API_GET)
           .permitAll()
           .anyRequest()
           .authenticated();

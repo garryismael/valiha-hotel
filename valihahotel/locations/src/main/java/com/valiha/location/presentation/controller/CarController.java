@@ -7,6 +7,7 @@ import com.valiha.location.application.useCase.car.FindAllCarsUseCase;
 import com.valiha.location.application.useCase.car.FindOneCarUseCase;
 import com.valiha.location.infrastructure.service.CarService;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,24 +21,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/cars")
+@AllArgsConstructor
 public class CarController {
 
   private final CarService carService;
   private final FindAllCarsUseCase findAllUseCase;
   private final FindOneCarUseCase findOneUseCase;
   private final DeleteCarUseCase deleteUseCase;
-
-  public CarController(
-    CarService carService,
-    FindAllCarsUseCase findAllUseCase,
-    FindOneCarUseCase findOneUseCase,
-    DeleteCarUseCase deleteUseCase
-  ) {
-    this.carService = carService;
-    this.findAllUseCase = findAllUseCase;
-    this.findOneUseCase = findOneUseCase;
-    this.deleteUseCase = deleteUseCase;
-  }
 
   @PostMapping
   public CarResponseDto create(
