@@ -43,13 +43,13 @@ const TopNavigation = () => {
                     </Link>
                   </li>
                   <li className="dropdown">
-                    <Link href="#" className={`${styles.link} `}>
+                    <Link href="/rooms" className={`${styles.link} `}>
                       Chambres
                     </Link>
                     <ul className="dropdown-content">
                       <li>
                         <Link
-                          href="#"
+                          href="/rooms/with-breakfast"
                           className="block text-dark-muted-500 my-4"
                         >
                           Hôtel avec petit-déjeuner
@@ -57,7 +57,7 @@ const TopNavigation = () => {
                       </li>
                       <li>
                         <Link
-                          href="#"
+                          href="/rooms/with-kitchen"
                           className="block text-dark-muted-500 my-4"
                         >
                           Appartement avec cuisine

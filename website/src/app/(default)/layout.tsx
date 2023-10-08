@@ -12,16 +12,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <div className="relative h-[500px] w-full mb-48">
+    <div className="relative">
+      <div className="relative h-[500px] w-full">
         <Image
           fill={true}
           src="/assets/images/banner.webp"
           alt="banner"
-          className="object-cover"
+          className="object-cover mb-5"
         />
-        {children}
       </div>
-    </>
+      {children}
+    </div>
   );
 }

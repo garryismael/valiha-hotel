@@ -14,7 +14,7 @@ const CheckAvailability = () => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   
   return (
-    <form className={styles.form}>
+    <form>
       <div className={styles.content}>
         <div className={styles.inputs}>
           <Select
