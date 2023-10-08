@@ -1,5 +1,5 @@
-import { RoomResponseDto } from "@/application/dto/room/room-response";
+import { Room } from "@/core/entities/models/Room";
 
-export interface getRoomsUseCase {
-    execute(): Array<RoomResponseDto>;
+export interface FindAllRoomsUseCase {
+  execute(): Promise<Room[]>;
 }
