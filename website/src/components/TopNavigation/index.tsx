@@ -25,29 +25,53 @@ const TopNavigation = () => {
                   className="h-14"
                 />
               </Link>
-              <div className="hidden md:flex items-center space-x-10">
-                <Link href="/" className={styles.link}>
-                  Accueil
-                </Link>
-                <Link href="/reservations" className={styles.link}>
-                  Réservation
-                </Link>
-                <Link href="#" className={styles.link}>
-                  Blog
-                </Link>
-                <Link href="#" className={`dropdown ${styles.link} `}>
-                  <span>Chambres</span>
-                  <div className="dropdown-content">
-                    <Link href="#" className="block text-dark-muted-500 my-4">Hôtel avec petit-déjeuner</Link>
-                    <Link href="#" className="block text-dark-muted-500 my-4">Appartement avec cuisine</Link>
-                  </div>
-                </Link>
-                <Link href="#" className={styles.link}>
-                  Location de voitures
-                </Link>
-                <Link href="#" className={styles.link}>
-                  Contact
-                </Link>
+              <div className="hidden md:flex items-center mx-24">
+                <ul className="flex items-center mt-4">
+                  <li>
+                    <Link href="/" className={styles.link}>
+                      Accueil
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/reservations" className={styles.link}>
+                      Réservation
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className={styles.link}>
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className={`dropdown ${styles.link} `}>
+                      <span>Chambres</span>
+                      <div className="dropdown-content">
+                        <Link
+                          href="#"
+                          className="block text-dark-muted-500 my-4"
+                        >
+                          Hôtel avec petit-déjeuner
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block text-dark-muted-500 my-4 hover:border-b-2 hover:border-reddish-orange-500"
+                        >
+                          Appartement avec cuisine
+                        </Link>
+                      </div>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className={styles.link}>
+                      Location de voitures
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className={styles.link}>
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
               </div>
               <div className="md:hidden flex items-center">
                 <button className=" focus:outline-none">
