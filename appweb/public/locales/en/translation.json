@@ -1,0 +1,497 @@
+{
+	"menu": {
+		"accueil": "Home",
+		"blog": "Blog",
+		"reservation": "Reservation",
+		"hebergement": "Hebergement",
+		"location": "Car rental",
+		"contact": "Contact"
+	},
+	"banniere": {
+		"chambre_moderne": "Our rooms",
+		"facade": "",
+		"appartement": "Serviced apartment",
+		"vue": "Our terrace view"
+	},
+	"chambre": "Room Type",
+	"room": "Room",
+	"bouton": {
+		"bDispo": "Check availability",
+		"bReserver": "Book now",
+		"bEnvoi": "Send now",
+		"location": "Confirm your rental",
+		"confirmation": "Confirm your reservation",
+		"revenir": "Back to homepage",
+		"bResChambre": "Book this room",
+		"bRes": "Confirm your Booking",
+		"bDetail": "Room details",
+		"bPetitDej": "Confirm your breakfast",
+		"bValider": "To validate",
+		"bEnvoyer": "Send",
+		"bFormPetitDej": "Breakfast form",
+		"bTarif": "Rates and rental conditions",
+		"bChoixRoom": "Choose another room",
+		"bChoixDate": "Choose another date",
+		"bLocation": "Book this car",
+		"bChoixVoiture": "Choose another car",
+		"envoyer": "Submit",
+		"annuler": "Cancel"
+	},
+	"rooms": {
+		"titre": "Our rooms and apartments",
+		"gl": "Big bed",
+		"pl": "Small bed",
+		"salle_bain": "Bathroom",
+		"adulte": "Adults",
+		"enfant": "Children",
+		"hotel-avec-petit-dejeuner": "Hotel with breakfast",
+		"appartement-avec-cuisine": "Apartment with Kitchen",
+		"Hôtel avec petit-déjeuner": "Hotel with breakfast",
+		"Appartement avec Cuisine": "Apartment with Kitchen"
+	},
+	"services": {
+		"titre": "Services",
+		"petitDej": "Breakfast",
+		"parking": "Parking",
+		"navette": "Airport shuttle",
+		"wifi": "Free Wifi"
+	},
+	"keyService": {
+		"petitDej": "breakfast",
+		"parking": "parking",
+		"navette": "airport-shuttle"
+	},
+	"galerie": {
+		"titre": "Gallery",
+		"nbr_photo": "+20 pictures"
+	},
+	"choix": {
+		"titre": "Why choose us ?",
+		"immeuble": {
+			"titre": "Completely new and modern building",
+			"description": "The whole building is completely new with a modern style throughout, both outside and inside the rooms."
+		},
+		"clim": {
+			"titre": "Comfortable rooms with air conditioning",
+			"description": "All our rooms are equipped with a quality air conditioner to offer you pleasant stays in winter as in summer."
+		},
+		"vue": {
+			"titre": "Terrace with a magnificent view",
+			"description": "A terrace with a breathtaking view to allow you to admire the sunset to end the day well."
+		},
+		"connexion": {
+			"titre": "Broadband internet connection (fiber optic)",
+			"description": "A high-speed internet connection is at your disposal with fiber optics to allow you to be permanently connected."
+		},
+		"eau": {
+			"titre": "Shower with hot water available 24/7",
+			"description": "Equipped with a shower with hot water, all our rooms meet the criteria to offer you relaxing stays."
+		},
+		"carte": {
+			"titre": "Location in the city center (easy access)",
+			"description": "Located in the city center, access is easy and you will be a few meters from the shopping centers for shopping."
+		}
+	},
+	"footer": {
+		"partenaires": {
+			"titre": "The partners"
+		},
+		"contact": {
+			"adresse": "Valiha Antanimena Building, IVG 204 Antananarivo",
+			"adr": "Address",
+			"email": "E-mail",
+			"tel": "Telephone"
+		}
+	},
+	"grand_titre": {
+		"blog": "Recent news",
+		"hebergement": "Hebergement",
+		"contact": "Contact us",
+		"reserver": "Your Booking Info",
+		"chambre_dispo": "Rooms and apartments available",
+		"petitdej": "Breakfast form",
+		"auth": "Please authenticate",
+		"location": "Car rental"
+	},
+	"titre": {
+		"formulaire": "Shuttle Reservation",
+		"h4": "Booking Details",
+		"type": "Room Categorys",
+		"gl": "Number of bed",
+		"pl": "Number of small bed",
+		"date": "Reservation date",
+		"pax": "Number pax",
+		"nuitée": "Nightly Rate",
+		"total": "Total price",
+		"adulte": "adult",
+		"enfant": "children",
+		"nbr_adulte": "Number of adults",
+		"nbr_enfant": "Number of children",
+		"nbr_chambre": "Room quantity",
+		"au": "to",
+		"et": "and",
+		"nuit": "Night",
+		"lit": "Bed",
+		"location": "4x4 car rental in Madagascar",
+		"modele": "Rental vehicle models:",
+		"navette": "Shuttle",
+		"personalInfo": "Your personal information",
+		"breakfastReservation": "Breakfast Details",
+		"breakfast": "Breakfast",
+		"breakfastPax": "/pax",
+		"shuttleReservation": "Shuttle Reservation",
+		"addShuttle": "Add Another Shuttle",
+		"addBreakfast": "Add Another Breakfast"
+	},
+	"url": {
+		"langue": "en",
+		"reserve_global": "en/reservation",
+		"reservation": "en/reservation",
+		"formulaire": "en/form",
+		"detail_chambre": "en/bedroom-detail",
+		"service": "en/service",
+		"service_type": "en/service/:keyService",
+		"blog": "en/blog",
+		"contact": "en/contact-us",
+		"hebergement": "en/hebergement",
+		"hebergement_type": "en/hebergement/:keyType",
+		"hebergement_dispo": "en/hebergement-available",
+		"galerie": "en/gallery",
+		"form_petit_dej": "en/breakfast-form",
+		"location": "en/locations",
+		"petitDej": "bed-and-breakfast",
+		"appart": "serviced-apartment",
+		"category": {
+			"rooms": "en/categories/rooms"
+		}
+	},
+	"langue": {
+		"francais": "French",
+		"anglais": "English",
+		"chinois": "Chinese"
+	},
+	"question": "Do you have any questions?",
+	"voir_disponiblites": "Check all availabilities",
+	"formulaire": {
+		"nom": "Your name",
+		"prenom": "Your first name",
+		"email": "Your e-mail",
+		"telephone": "Your phone",
+		"commentaire": "Your comment",
+		"heure": "Your arrival time",
+		"remarque": "Note on your breakfast",
+		"navette": "Shuttle bus",
+		"numeroVol": "Your flight number",
+		"oui": "Yes",
+		"non": "No",
+		"lieu_navette": "Shuttle location",
+		"airport": "Airport",
+		"choix": {
+			"prestation": "Choose service",
+			"service": "Room service",
+			"responsable": "Responsable",
+			"aide": "Help center"
+		},
+		"message": "Your message",
+		"airportToHotel": "Airport to hotel",
+		"hotelToAirport": "Hotel to airport",
+		"autreNavette": "Other",
+		"dateAirportArrival": "Your arrival date",
+		"modal": {
+			"title": "Please Review Your Reservation Details and Confirm",
+			"message": "You want to add this reservation?"
+		},
+		"navetteName": "Flight Name",
+		"lieuNavetteName": "Type Your shuttle location:"
+	},
+	"formulaire_dejeuner": {
+		"numero": "Room number",
+		"deluxe": "Deluxe",
+		"standard": "Standard",
+		"viennoiserie": "Pastry",
+		"croissant": "Croissant bread",
+		"pain": "Chocolate bread",
+		"raisin": "raisin bread",
+		"chaude": "Hot drink",
+		"froide": "Cold drink",
+		"cafe": "Coffee",
+		"chocolat": "Hot chocolate",
+		"the": "The",
+		"lait": "Milk",
+		"papaye": "Papaya",
+		"citron": "Lemon",
+		"saison": "Seasonal fruit",
+		"fruit": "Fruits",
+		"yaourt": "yogurt",
+		"autre": "Others",
+		"oeuf": "Eggs",
+		"omelette": "Omelette",
+		"plat": "Fried egg",
+		"dur": "Hard egg",
+		"date": "Choose Date"
+	},
+	"modal": {
+		"enregistre": "your reservation has been registered",
+		"locationEnregistre": "Your rental has been recorded",
+		"mail_confirmation": "You will receive a confirmation e-mail after submitting.",
+		"bientot": "See you soon !",
+		"petitDej": "Your breakfast is well rated",
+		"dispo_chambre": "This room is no longer available on this date",
+		"choisir": "Please choose another date or room.",
+		"errPetitDej": "Name or room number does not exist! Try again, please.",
+		"choix": "Please complete this form carefully.",
+		"locationDateMin": "Each rental must have a minimum of 5 days, please change the date!",
+		"avis": "Your message has been saved.",
+		"location": {
+			"title": "Confirmation of your rental",
+			"confirm": "Would you do your rental?"
+		}
+	},
+	"liste": {
+		"photo": "Room picture",
+		"prix_nuit": "Price per night",
+		"prix": "Price",
+		"type": "Hotel type",
+		"reservation": "Reservation"
+	},
+	"detail": {
+		"description": "Description",
+		"dispo": "See availabilities",
+		"equipement": "Each room is equipped with:",
+		"frigo": "Fridge and drinks",
+		"clim": "Air conditioning",
+		"cuisine": "Breakfast or kitchen at your disposal",
+		"tele": "1 television",
+		"table": "Table and chair",
+		"serviette": "2 towels for each person",
+		"salle_bain": "1 private bathroom",
+		"wifi": "Free WiFi at all times",
+		"commentaire": "Add a comment",
+		"note": "Your Rating *",
+		"enregistre": "Save my name, e-mail and website in this browser for the next time I comment.",
+		"article": "Similar items",
+		"decouvre": "Discover our rooms",
+		"comment": "How can we help you",
+		"contact": "If you need help or further information, please contact us ."
+	},
+	"service": {
+		"net": "Daily cleaning",
+		"connexion": "Broadband internet connection",
+		"douche": "Shower with hot water",
+		"femme": "Maids at your disposal"
+	},
+	"blog": {
+		"recherche": "Search here..",
+		"destination": "Some destinations",
+		"mada": "Thing you must see while you are in Madagascar",
+		"article": "Articles on traditions in Madagascar",
+		"decouvrir": "Discover Madagascar in a few minutes",
+		"voyage": "Travel",
+		"hotel": "Hotel",
+		"site": "Touristic site",
+		"restaurant": "Restaurant",
+		"dest": "Destination",
+		"tour": "Madagascar tour",
+		"chambre": "Hotel room",
+		"spa": "Spa",
+		"guide": "Guide",
+		"service": "Services",
+		"tag": "Tags",
+		"lire": "READ MORE ..."
+	},
+	"destination": {
+		"palais": "Queen's palace",
+		"tsingy": "Tsingy of Bemaraha"
+	},
+	"location": {
+		"titre": {
+			"entrainement": "Wheels",
+			"kilometrage": "Mileage",
+			"portes": "Doors",
+			"places": "Seats",
+			"modele": "Model / Year",
+			"prix": "Price per day"
+		},
+		"intro": "Valiha hotel has its own vehicle fleet and also uses subcontractors selected with very strict criteria. You give us your dates, the desired route, we will confirm the feasibility according to the period and the practicability of the slopes. Travel times are generally quite long, you should not think in kilometers but in driving time.",
+		"possibilite": "Road Possibilities : main roads and some off road",
+		"drive": "driving wheels",
+		"kilometrage": "liters per 100 km",
+		"prix": "(minimum 5 days)",
+		"chauffeur": "Driver: included",
+		"louer": "Rent it",
+		"jusque": "Until",
+		"trajet": "Please tell us about your journey.",
+		"destination": "Choose destination",
+		"voiture": "Rent the brand car",
+		"formulaire": "Rental form",
+		"hors": "Outside Antananarivo",
+		"tana": "Antananarivo",
+		"choix": "Please choose another date or another car!",
+		"reserver": "This date is not available",
+		"marque": "Car brand",
+		"porte": "Door : 5",
+		"place": "Door : 5",
+		"modele": "Modèle / Année : 2005"
+	},
+	"section": {
+		"type": "Please specify your choice",
+		"date": "invalid date"
+	},
+	"detailChambre": {
+		"valiha": "Valiha Hotel",
+		"site": "Located in the city center,",
+		"presentation": "is a very recent hotel, a completely new and modern building offers you an exceptional panoramic view on the terrace.",
+		"qualite": "is the assurance of comfort and quality service.",
+		"capacite": "With a capacity of 13 rooms, Valiha Hotel is ideally located between Villa Pradon and the Basic Health Center II (CSBII) Antanimena.",
+		"parking": "Private hotel parking is available by reservation only and subject to availability. Our reception, manned 7 days a week, 24 hours a day, is at your disposal for any information and reservations.",
+		"titre": {
+			"appart": "Our Apartments:",
+			"standard": "Our Standard rooms:",
+			"deluxe": "Our Deluxe double rooms:",
+			"twin": "Our Twin room:",
+			"triple": "Our Triple room:",
+			"familiale": "Our Family room:"
+		},
+		"appart": " Apartment equipped with a kitchen, (breakfast not included) an apartment for two people, consisting of a large double bed, equipped with a bathroom with hairdryer and welcome products.",
+		"standard": "A modern room for 2 people, consisting of a large double bed, breakfast for each person every morning during the stay, equipped with a bathroom with hairdryer and welcome products.",
+		"deluxe": " A luxurious room for 2 people with a magnificent view, composed of a large double bed, breakfast for each person every morning during the stay, equipped with a bathroom with hairdryer and welcome products.",
+		"twin": "A modern room for 2 people, with 2 single beds, 1 place each, breakfast for each person every morning during the stay, equipped with a bathroom with hairdryer and welcome products.",
+		"triple": "A modern room for 3 people, with 1 double bed and 1 single bed, breakfast for each person every morning during the stay, equipped with a bathroom with hairdryer and welcome products.",
+		"familiale": "A luxurious room for 4 people, with 2 double beds, a breakfast for each person every morning during the stay, equipped with a bathroom with hairdryer and welcome products."
+	},
+	"load_more": "Load more",
+	"form_validation": {
+		"required": "Required field. Please complete it.",
+		"firstName": {
+			"min": "This field must be at least 2 characters long",
+			"required": "Required field. Please complete it."
+		},
+		"lastName": {
+			"required": "Required field. Please complete it.",
+			"min": "Le nom doit comporter au moins 2 caractères."
+		},
+		"email": {
+			"required": "Required field. Please complete it.",
+			"invalid": "Please enter a valid e-mail address."
+		},
+		"phoneNumber": {
+			"required": "Required field. Please complete it."
+		},
+		"subject": {
+			"required": "Required field. Please complete it.",
+			"min": "This field must be at least 2 characters long"
+		},
+		"message": {
+			"required": "Required field. Please complete it.",
+			"min": "This field must be at least 4 characters long"
+		},
+		"date": {
+			"required": "Required field. Please complete it.",
+			"min": "This field must be after or equal to today.",
+			"refStartDate": "Date must be greater than or equal to the start date",
+			"refEndDate": "This field must be less than or equal to the end date"
+		},
+		"endDate": {
+			"graterThanStart": "This field must be at least 5 days after the rental start date."
+		},
+		"string": {
+			"min": "This field must have at least {{min}} characters.",
+			"max": "This field cannot exceed {{max}} characters."
+		},
+		"number": {
+			"min": "This value must be at least {{min}}.",
+			"max": "This value must be at least {{min}}."
+		},
+		"reservation": {
+			"firstName": {
+				"min": "First name must contain at least 2 characters",
+				"required": "First name is required"
+			},
+			"lastName": {
+				"min": "Last name must contain at least 2 characters",
+				"required": "Last name is required"
+			},
+			"email": {
+				"required": "Email address is required",
+				"invalid": "Invalid e-mail address"
+			},
+			"adults": {
+				"min": "At least one adult is required",
+				"required": "Number of adults is required"
+			},
+			"kids": {
+				"required": "Number of kids is required",
+				"min": "At least zero kids are required"
+			},
+			"phoneNumber": {
+				"min": "Phone number must contain at least 5 character",
+				"required": "Phone number is required"
+			},
+			"breakfast": {
+				"check": {
+					"required": "Breakfast selection is required"
+				},
+				"date": {
+					"required": "Breakfast date is required",
+					"dateArrival": {
+						"required": "Arrival date is required",
+						"refStartDate": "The date must be greater than or equal to the start date",
+						"refEndDate": "This field must be less than or equal to the end date"
+					}
+				}
+			},
+			"navette": {
+				"check": {
+					"required": "Shuttle selection is required"
+				},
+				"name": {
+					"required": "Shuttle name is required"
+				},
+				"selection": {
+					"required": "Shuttle selection is required"
+				},
+				"direction": {
+					"required": "Shuttle direction is required"
+				},
+				"flightNumber": {
+					"required": "Flight number is required"
+				},
+				"timeArrival": {
+					"required": "Arrival time is required"
+				},
+				"dateArrival": {
+					"required": "Arrival date is required",
+					"refStartDate": "The date must be greater than or equal to the start date",
+					"refEndDate": "This field must be less than or equal to the end date"
+				}
+			}
+		},
+		"type": "Invalid room type",
+		"sexe": "Your gender",
+		"masculin": "Man",
+		"feminin": "Woman"
+	},
+	"404": {
+		"title": "Oops! Page not found",
+		"message": "We're sorry, but we couldn't find the page you requested. This may be because you entered the web address incorrectly.",
+		"action": "Back to home page"
+	},
+	"confirm": "Submit your Reservation",
+	"reservations": {
+		"email": {
+			"title": "We Received your reservation!",
+			"subTitle": "A confirmation e-mail has been sent address you provided!",
+			"error": "Error",
+			"errorMessage": "E-mail could not be sent for the reservation."
+		}
+	},
+	"locations": {
+		"email": {
+			"title": "We Received your reservation!",
+			"subTitle": "A confirmation e-mail has been sent address you provided!",
+			"error": "Error",
+			"errorMessage": "E-mail could not be sent for the location."
+		}
+	},
+	"homepage": "Return to the homepage"
+}

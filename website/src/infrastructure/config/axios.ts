@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
-import { singleton } from "tsyringe";
+import { injectable } from "inversify";
 
-@singleton()
+@injectable()
 export class HttpClient {
   private http: AxiosInstance;
 

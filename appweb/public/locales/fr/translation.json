@@ -1,0 +1,496 @@
+{
+	"menu": {
+		"accueil": "Accueil",
+		"blog": "Blog",
+		"reservation": "Réservation",
+		"hebergement": "Hébergement",
+		"location": "Location de voitures",
+		"contact": "Contact"
+	},
+	"banniere": {
+		"chambre_moderne": "Chambres modernes",
+		"facade": "",
+		"appartement": "Appartement équipée de cuisine",
+		"vue": "Vue sur notre terrasse"
+	},
+	"chambre": "Détails de la chambre",
+	"room": "Chambre",
+	"bouton": {
+		"bDispo": "Voir disponibilités",
+		"bReserver": "Réserver maintenant",
+		"bEnvoi": "Envoyer maintenant",
+		"location": "Confirmer votre location",
+		"confirmation": "Confirmer votre réservation",
+		"revenir": "Revenir à la page d'accueil",
+		"bResChambre": "Réserver la chambre",
+		"bRes": "Confirmer votre reservation",
+		"bDetail": "Détails de la chambre",
+		"bPetitDej": "Confirmer votre petit-déjeuner",
+		"bValider": "Valider",
+		"bEnvoyer": "Envoyer",
+		"bFormPetitDej": "Formulaire petit-déjeuner",
+		"bTarif": "Tarifs et conditions de location",
+		"bChoixRoom": "Choisir une autre chambre",
+		"bChoixDate": "Choisir une autre date",
+		"bLocation": "Réserver cette voiture",
+		"bChoixVoiture": "Choisir une autre voiture",
+		"envoyer": "Soumettre",
+		"annuler": "Annuler"
+	},
+	"rooms": {
+		"titre": "Nos chambres et appartements",
+		"gl": "Grand(s) lit(s)",
+		"pl": "Petit(s) lit(s)",
+		"salle_bain": "Salle de bain",
+		"adulte": "Adulte(s)",
+		"enfant": "Enfant(s)",
+		"hotel-avec-petit-dejeuner": "Hôtel avec petit-déjeuner",
+		"appartement-avec-cuisine": "Appartement avec Cuisine",
+		"Hôtel avec petit-déjeuner": "Hôtel avec petit-déjeuner",
+		"Appartement avec Cuisine": "Appartement avec Cuisine"
+	},
+	"services": {
+		"titre": "Services",
+		"petitDej": "Petit-déjeuner",
+		"parking": "Parking",
+		"navette": "Navette aéroport",
+		"wifi": "Wifi gratuit"
+	},
+	"keyService": {
+		"petitDej": "petit-dejeuner",
+		"parking": "parking",
+		"navette": "navette-aeroport"
+	},
+	"galerie": {
+		"titre": "Galerie photos",
+		"nbr_photo": "+20 photos"
+	},
+	"choix": {
+		"titre": "Pourquoi nous choisir ?",
+		"immeuble": {
+			"titre": "Immeuble entièrement neuf et moderne",
+			"description": "Tout l'immeuble est entièrement neuf avec un style moderne dans tout l'enceinte tant à l'extérieur qu'à l'intérieur des chambres."
+		},
+		"clim": {
+			"titre": "Chambres confortables avec climatisation",
+			"description": "Toutes nos chambres sont équipées d'un climatiseur de qualité pour vous offrir des séjours agréables en hiver comme en été."
+		},
+		"vue": {
+			"titre": "Terrasse avec une vue magnifique",
+			"description": "Une terrasse avec une vue imprenable pour vous permettre d'admirer le coucher du soleil pour bien finir la journée."
+		},
+		"connexion": {
+			"titre": "Connexion internet à haut débit (fibre optique)",
+			"description": "Une connexion internet à haut débit est à votre disposition avec la fibre optique pour vous permettre d'être connectés en permanence."
+		},
+		"eau": {
+			"titre": "Douche avec eau chaude disponible 24 / 7",
+			"description": "Equipées de douche avec eau chaude, toutes nos chambres remplissent les critères pour vous offrir des séjours relaxants."
+		},
+		"carte": {
+			"titre": "Emplacement en centre-ville (facilité d'accès)",
+			"description": "Situé en plein centre ville, l'accès est facile et vous serez à quelques mètres des centres commerciaux pour faire du shopping."
+		}
+	},
+	"footer": {
+		"partenaires": {
+			"titre": "Les partenaires"
+		},
+		"contact": {
+			"adresse": "Immeuble Valiha Antanimena, IVG 204 Antananarivo",
+			"adr": "Adresse",
+			"email": "Email",
+			"tel": "Téléphone"
+		}
+	},
+	"grand_titre": {
+		"blog": "Dernières nouvelles",
+		"hebergement": "Hébergement",
+		"contact": "Contactez-nous",
+		"reserver": "Réserver maintenant",
+		"chambre_dispo": "Chambres et appartements disponible",
+		"petitdej": "Formulaire petit-déjeuner",
+		"auth": "Authentification",
+		"location": "Location de voitures"
+	},
+	"titre": {
+		"formulaire": "Reservation Navette Aéroport",
+		"h4": "Détails de votre réservation",
+		"type": "Type de chambre réservée",
+		"gl": "Nombre de grands lits",
+		"pl": "Nombre de petits lits",
+		"date": "Date de réservation",
+		"pax": "Nombre pax",
+		"nuitée": "Nuitée",
+		"total": "Prix total",
+		"adulte": "adulte(s)",
+		"enfant": "enfant(s)",
+		"nbr_adulte": "Nombre d'adulte",
+		"nbr_enfant": "Nombre d'enfant",
+		"nbr_chambre": "Quantité de chambre",
+		"au": "au",
+		"et": "et",
+		"nuit": "Nuit",
+		"lit": "Lit(s)",
+		"location": "Location de voiture 4x4 à Madagascar",
+		"modele": "Les modèles de vehicule en location : ",
+		"navette": "Navette",
+		"personalInfo": "Votre information personnelle",
+		"breakfastReservation": "Réservation petit-déjeuner",
+		"breakfast": "Petit Déjeuner",
+		"breakfastPax": "/ pax",
+		"shuttleReservation": "Réservation navette",
+		"addShuttle": "Ajouter une nouvelle Navette",
+		"addBreakfast": "Ajouter un nouveau petit-déjeuner"
+	},
+	"url": {
+		"langue": "fr",
+		"reserve_global": "fr/reservation",
+		"reservation": "fr/reservation",
+		"formulaire": "fr/form",
+		"detail_chambre": "fr/bedroom-detail",
+		"service": "fr/service",
+		"service_type": "fr/service/:keyService",
+		"blog": "fr/blog",
+		"contact": "fr/contact-us",
+		"hebergement": "fr/hebergement",
+		"hebergement_type": "fr/hebergement/:keyType",
+		"hebergement_dispo": "fr/hebergement-available",
+		"galerie": "fr/gallery",
+		"form_petit_dej": "fr/breakfast-form",
+		"location": "fr/locations",
+		"petitDej": "lit-et-petit-dejeuner",
+		"appart": "appartement-equipee-cuisine",
+		"category": {
+			"rooms": "fr/categories/rooms"
+		}
+	},
+	"langue": {
+		"francais": "Français",
+		"anglais": "Anglais",
+		"chinois": "Chinois"
+	},
+	"question": "Avez-vous des questions?",
+	"voir_disponiblites": "Voir toutes disponibilités",
+	"formulaire": {
+		"nom": "Votre nom",
+		"prenom": "Votre prénom",
+		"email": "Votre email",
+		"telephone": "Votre téléphone",
+		"commentaire": "Votre commentaire",
+		"heure": "Votre heure d'arrivée",
+		"remarque": "Remarque sur votre petit-déjeuner",
+		"navette": "Navette",
+		"numeroVol": "Votre numéro de vol",
+		"oui": "Oui",
+		"non": "Non",
+		"lieu_navette": "Lieu navette",
+		"airport": "Aéroport",
+		"choix": {
+			"prestation": "Choisir une préstation",
+			"service": "Service de chambre",
+			"responsable": "Résponsable",
+			"aide": "Centre d'aide"
+		},
+		"message": "Votre message",
+		"airportToHotel": "Aéroport à l'hôtel",
+		"hotelToAirport": "Hôtel à l'aéroport",
+		"autreNavette": "Autre",
+		"dateAirportArrival": "Votre date d'arrivée",
+		"modal": {
+			"title": "Confirmation finale de votre reservation",
+			"message": "Voulez-vous ajouter cette réservation ?"
+		},
+		"navetteName": "Nom du vol",
+		"lieuNavetteName": "Tapez votre lieu de navette:"
+	},
+	"formulaire_dejeuner": {
+		"numero": "Numéro de chambre",
+		"deluxe": "Deluxe",
+		"standard": "Standard",
+		"viennoiserie": "Viennoiserie",
+		"croissant": "Croissant",
+		"pain": "Pain choco",
+		"raisin": "Pain aux raisins",
+		"chaude": "Boisson chaude",
+		"froide": "Boisson froide",
+		"cafe": "Café",
+		"chocolat": "Chocolat chaud",
+		"the": "Thé",
+		"lait": "Lait",
+		"papaye": "Papaye",
+		"citron": "Citron",
+		"saison": "Fruit de saison",
+		"fruit": "Fruits",
+		"yaourt": "Yaourt",
+		"autre": "Autres",
+		"oeuf": "Oeufs",
+		"omelette": "Omelette",
+		"plat": "Sur plat",
+		"dur": "Dur",
+		"date": "Pour le"
+	},
+	"modal": {
+		"enregistre": "Votre réservation a bien été enregistrée",
+		"locationEnregistre": "Votre location a bien été enregistrée",
+		"mail_confirmation": "Vous allez recevoir un mail de confirmation après soumission.",
+		"bientot": "Merci et à très bientôt !",
+		"petitDej": "Votre petit-déjeuner est bien noté",
+		"dispo_chambre": "Cette chambre n'est plus disponible à cette date.",
+		"choisir": "Merci de choisir une autre date ou une chambre.",
+		"errPetitDej": "Le nom ou le numéro de chambre n'existe pas! veuillez réessayer s'il vous plaît.",
+		"choix": "Merci de bien remplir ce formulaire.",
+		"locationDateMin": "Chaque location doit disposer d'un minimum de 5 jours, s'il vous plaît changer la date!",
+		"avis": "Votre message a bien été enregistré.",
+		"location": {
+			"title": "Confirmation de votre location",
+			"confirm": "Voulez-vous faire une location?"
+		}
+	},
+	"liste": {
+		"photo": "Photo de la chambre",
+		"prix_nuit": "Prix par nuiter",
+		"prix": "Prix",
+		"type": "Type hôtel",
+		"reservation": "Réservation"
+	},
+	"detail": {
+		"description": "Description",
+		"dispo": "Voir les disponibilités",
+		"equipement": "Chaque chambre est équipée de : ",
+		"frigo": "Réfrigerateur et boissons",
+		"clim": "Air conditionné",
+		"cuisine": "Petit-déjeuner ou cuisine a votre disposition",
+		"tele": "1 télévision",
+		"table": "Table et chaise",
+		"serviette": "2 serviettes pour chaque personne",
+		"salle_bain": "1 salle de bain privative",
+		"wifi": "Wifi gratuit à tout moment",
+		"commentaire": "Ajouter un commentaire",
+		"note": "Votre note *",
+		"enregistre": "Enregistrez mon nom, mon adresse e-mail et mon site Web dans ce navigateur pour la prochaine fois que je commenterai.",
+		"article": "Articles similaires",
+		"decouvre": "Découvrez nos chambres",
+		"comment": "Comment nous pouvons vous aider",
+		"contact": "Si vous avez besoin d'aide ou d'informations complémentaires, nous vous invitons à nous contacter ."
+	},
+	"service": {
+		"net": "Nettoyage quotidien",
+		"connexion": "Connexion internet à haut débit",
+		"douche": "Douche avec eau chaude",
+		"femme": "Des femmes de chambre à votre disposition"
+	},
+	"blog": {
+		"recherche": "Rechercher ici..",
+		"destination": "Quelques destinations",
+		"mada": "Chose que vous devez voir pendant que vous êtes à Madagascar",
+		"article": "Articles sur les traditions à Madagascar",
+		"decouvrir": "Découvrir Madagascar en quelques minutes",
+		"voyage": "Voyage",
+		"hotel": "Hôtel",
+		"restaurant": "Restaurant",
+		"dest": "Destination",
+		"tour": "Tour de Madagascar",
+		"chambre": "Chambre d'hôtel",
+		"site": "Site touristique",
+		"guide": "Guide",
+		"service": "Services",
+		"tag": "Tag",
+		"lire": "LIRE LA SUITE ..."
+	},
+	"destination": {
+		"palais": "Palais de la reine",
+		"tsingy": "Tsingy de Bemaraha"
+	},
+	"location": {
+		"titre": {
+			"entrainement": "Entrainement",
+			"kilometrage": "Kilométrage",
+			"portes": "Portes",
+			"places": "Places",
+			"modele": "Modèle / Année",
+			"prix": "Prix ​​par jour"
+		},
+		"intro": "Valiha hôtel dispose de son propre parc véhicule et fait aussi appel à des sous traitants sélectionnés par nos soins avec des critères très stricts. Vous nous communiquez vos dates, l’itinéraire souhaité, nous vous confirmerons la faisabilité selon la période et la praticabilité des pistes. Les temps de trajet sont généralement assez longs, il ne faut pas raisonner en kilomètres mais en temps de route.",
+		"possibilite": "Possibilités routières : routes principales et quelques hors route",
+		"drive": "roues motrices",
+		"kilometrage": "litres aux 100 km",
+		"prix": "(minimum 5 jours)",
+		"chauffeur": "Chauffeur : inclus",
+		"louer": "Louer le",
+		"jusque": "Jusqu'au",
+		"trajet": "Veuillez nous expliquer votre trajet s'il vous plaît",
+		"destination": "Choisir la déstination",
+		"voiture": "Louer la voiture de marque",
+		"formulaire": "Formulaire de location",
+		"hors": "Hors Tananarive",
+		"tana": "Tananarive",
+		"choix": "Veuillez choisir une autre date ou une autre voiture svp!",
+		"reserver": "est déjà réservée le",
+		"marque": "La voiture de marque",
+		"porte": "Portes : 5",
+		"place": "Places : 5",
+		"modele": "Modèle / Année : 2005"
+	},
+	"section": {
+		"type": "Veuillez préciser votre choix",
+		"date": "Date invalide"
+	},
+	"detailChambre": {
+		"valiha": "Valiha Hôtel",
+		"site": "Situé en plein centre-ville, ",
+		"presentation": " est un hôtel très récent, un immeuble entièrement neuf et moderne vous offre une vue panoramique exceptionnelle sur la terrasse.",
+		"qualite": " est l'assurance d'un confort et d'un service de qualité.",
+		"capacite": "D'une capacité de 13 chambres, Valiha Hôtel est idéalement situé entre le villa Pradon et le Centre de santé de base II (CSBII) Antanimena.",
+		"parking": "Un parking privé de l'hôtel vous est proposé sur réservation uniquement et selon disponibilité. Notre réception, assurée 7jours sur 7 et 24h sur 24 est à votre écoute pour tout renseignement et réservation.",
+		"titre": {
+			"appart": "Nos Appartements :",
+			"standard": "Nos chambres Standard :",
+			"deluxe": "Nos chambres Deluxe double :",
+			"twin": "Notre chambre Twin :",
+			"triple": "Notre chambre Triple :",
+			"familiale": "Notre chambre Familiale :"
+		},
+		"appart": " Appartement équipé d'une cuisine, (petit-déjeuner non inclus) un appartement pour deux personnes, composé d'un grand lit à 2 places, équipées d'une salle de bain avec sèche-cheveux et des produits d'accueil.",
+		"standard": " Une chambre moderne pour 2 personnes, composée d'un grand lit à 2 places, un petit-déjeuner pour chaque personne tous les matins pendant le séjour, équipées d'une salle de bain avec sèche-cheveux et des produits d'accueil.",
+		"deluxe": " Une chambre luxieuse pour 2 personnes avec une vue magnifique, composée d'un grand lit à 2 places, un petit-déjeuner pour chaque personne tout les matins pendant le séjour, équipées d'une salle de bain avec sèche-cheveux et des produits d'accueil.",
+		"twin": " Une chambre moderne pour 2 personnes, avec 2 petits lits, 1 place chaqu'un, un petit-déjeuner pour chaque personne tous les matins pendant le séjour, équipées d'une salle de bain avec sèche-cheveux et des produits d'accueil.",
+		"triple": " Une chambre moderne pour 3 personnes, avec 1 grand lit et 1 petit lit, un petit-déjeuner pour chaque personne tous les matins pendant le séjour, équipées d'une salle de bain avec sèche-cheveux et des produits d'accueil.",
+		"familiale": " Une chambre luxieuse pour 4 personnes, avec 2 grands lits, un petit-déjeuner pour chaque personne tous les matins pendant le séjour, équipées d'une salle de bain avec sèche-cheveux et des produits d'accueil."
+	},
+	"load_more": "Charger plus",
+	"form_validation": {
+		"required": "Champ requis. Veuillez le compléter.",
+		"firstName": {
+			"required": "Champ requis. Veuillez le compléter.",
+			"min": "Ce champ doit comporter au moins 2 caractères."
+		},
+		"lastName": {
+			"required": "Champ requis. Veuillez le compléter.",
+			"min": "Ce champ doit comporter au moins 2 caractères."
+		},
+		"email": {
+			"required": "Champ requis. Veuillez le compléter.",
+			"invalid": "Veuillez saisir une adresse e-mail valide."
+		},
+		"phoneNumber": {
+			"required": "Champ requis. Veuillez le compléter."
+		},
+		"subject": {
+			"required": "Champ requis. Veuillez le compléter.",
+			"min": "Ce champ doit comporter au moins 2 caractères."
+		},
+		"message": {
+			"required": "Champ requis. Veuillez le compléter.",
+			"min": "Le message doit comporter au moins 4 caractères."
+		},
+		"date": {
+			"required": "Champ requis. Veuillez le compléter.",
+			"min": "Ce champ doit être postérieure ou égale à aujourd'hui.",
+			"refStartDate": "La date doit être supérieure ou égale à la date de début",
+			"refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+		},
+		"endDate": {
+			"graterThanStart": "Ce champ doit être au moins 5 jours après la date de début de location."
+		},
+		"string": {
+			"min": "Ce champ doit comporter au moins {{min}} caractères.",
+			"max": "Ce champ ne peut pas comporter plus de {{max}} caractères"
+		},
+		"number": {
+			"min": "Cette valeur doit être d'au moins {{min}}.",
+			"max": "Cette valeur ne peut pas dépasser {{max}}."
+		},
+		"reservation": {
+			"firstName": {
+				"min": "Le prénom doit contenir au moins 2 caractères",
+				"required": "Le prénom est requis"
+			},
+			"lastName": {
+				"min": "Le nom de famille doit contenir au moins 2 caractères",
+				"required": "Le nom de famille est requis"
+			},
+			"email": {
+				"required": "L'adresse e-mail est requise",
+				"invalid": "L'adresse e-mail est invalide"
+			},
+			"adults": {
+				"min": "Le nombre d'adultes doit être au moins 1",
+				"required": "Le nombre d'adultes est requis"
+			},
+			"kids": {
+				"required": "Le nombre d'enfants est requis",
+				"min": "Le nombre d'enfants doit être d'au moins zéro"
+			},
+			"phoneNumber": {
+				"min": "Le numéro de téléphone doit contenir au moins 5 caractère",
+				"required": "Le numéro de téléphone est requis"
+			},
+			"breakfast": {
+				"check": {
+					"required": "La sélection du petit-déjeuner est requise"
+				},
+				"date": {
+					"required": "La date du petit-déjeuner est requise",
+					"dateArrival": {
+						"required": "La date d'arrivée est requise",
+						"refStartDate": "La date doit être supérieure ou égale à la date de début",
+						"refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+					}
+				}
+			},
+			"navette": {
+				"check": {
+					"required": "La sélection de la navette est requise"
+				},
+				"name": {
+					"required": "Le nom de la navette est requis"
+				},
+				"selection": {
+					"required": "La sélection de la navette est requise"
+				},
+				"direction": {
+					"required": "La direction de la navette est requise"
+				},
+				"flightNumber": {
+					"required": "Le numéro de vol est requis"
+				},
+				"timeArrival": {
+					"required": "L'heure d'arrivée est requise"
+				},
+				"dateArrival": {
+					"required": "La date d'arrivée est requise",
+					"refStartDate": "La date doit être supérieure ou égale à la date de début",
+					"refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+				}
+			}
+		},
+		"type": "Type de chambre invalide.",
+		"sexe": "Votre sexe",
+		"masculin": "Homme",
+		"feminin": "Femme"
+	},
+	"404": {
+		"title": "Oops! Page non trouvée",
+		"message": "Nous sommes désolés, mais nous ne parvenons pas à trouver la page que vous avez demandée. Cela peut être dû au fait que vous avez mal saisi l'adresse Web.",
+		"action": "Revenir à la page d'accueil"
+	},
+	"confirm": "Confirmer",
+	"reservations": {
+		"email": {
+			"title": "Votre réservation a été enregistrée avec succès!",
+			"subTitle": "Un message de confirmation a été envoyé à l'adresse e-mail que vous avez fournie.",
+			"error": "Erreur",
+			"errorMessage": "L'e-mail n'a pas pu être envoyé pour la réservation."
+		}
+	},
+	"locations": {
+		"email": {
+			"title": "Votre location de voiture a été enregistrée avec succès!",
+			"subTitle": "Un e-mail de confirmation a été envoyé à l'adresse e-mail que vous avez fournie.",
+			"error": "Erreur",
+			"errorMessage": " L'e-mail n'a pas pu être envoyé pour la location."
+		}
+	},
+	"homepage": "Retourner à la page d'accueil"
+}
