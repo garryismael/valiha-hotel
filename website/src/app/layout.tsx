@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import TopNavigation from "@/components/TopNavigation";
 import "@/styles/globals.css";
+import "@/styles/layout.css";
 import type { Metadata } from "next";
 import FooterSection from "@/components/FooterSection";
 

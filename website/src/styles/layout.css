@@ -1,11 +1,24 @@
 .flex-x-y-center {
-    @apply flex h-screen items-center justify-center;
+  @apply flex h-screen items-center justify-center;
 }
 
 .flex-x-center {
-    @apply flex items-center justify-center;
+  @apply flex items-center justify-center;
 }
 
 .flex-y-center {
-    @apply flex flex-col items-center;
+  @apply flex flex-col items-center;
+}
+
+.dropdown {
+  @apply relative inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  @apply absolute bg-white min-w-max py-3 px-4 z-10 mt-5;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

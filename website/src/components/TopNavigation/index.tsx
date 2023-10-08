@@ -4,6 +4,7 @@ import useStickyHeader from "@/hooks/header";
 import Image from "next/image";
 import Link from "next/link";
 import TopHeader from "../TopHeader";
+import styles from "./index.module.css";
 
 const TopNavigation = () => {
   const [sticky] = useStickyHeader();
@@ -25,28 +26,26 @@ const TopNavigation = () => {
                 />
               </Link>
               <div className="hidden md:flex items-center space-x-10">
-                <Link
-                  href="/"
-                  className="hover:text-reddish-orange-500 hover:border-t-2 py-9 px-5 hover:border-reddish-orange-500"
-                >
+                <Link href="/" className={styles.link}>
                   Accueil
                 </Link>
-                <Link
-                  href="/reservations"
-                  className=" hover:text-reddish-orange-400"
-                >
+                <Link href="/reservations" className={styles.link}>
                   Réservation
                 </Link>
-                <Link href="#" className=" hover:text-reddish-orange-400">
+                <Link href="#" className={styles.link}>
                   Blog
                 </Link>
-                <Link href="#" className=" hover:text-reddish-orange-400">
-                  Hébergement
+                <Link href="#" className={`dropdown ${styles.link} `}>
+                  <span>Chambres</span>
+                  <div className="dropdown-content">
+                    <Link href="#" className="block text-dark-muted-500 my-4">Hôtel avec petit-déjeuner</Link>
+                    <Link href="#" className="block text-dark-muted-500 my-4">Appartement avec cuisine</Link>
+                  </div>
                 </Link>
-                <Link href="#" className=" hover:text-reddish-orange-400">
+                <Link href="#" className={styles.link}>
                   Location de voitures
                 </Link>
-                <Link href="#" className=" hover:text-reddish-orange-400">
+                <Link href="#" className={styles.link}>
                   Contact
                 </Link>
               </div>
