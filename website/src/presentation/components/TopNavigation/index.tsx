@@ -6,7 +6,6 @@ import "reflect-metadata";
 import TopHeader from "../TopHeader";
 import styles from "./index.module.css";
 
-
 const TopNavigation = () => {
   const [sticky] = useStickyHeader();
 
@@ -14,7 +13,7 @@ const TopNavigation = () => {
     <div className="relative z-[99999]">
       <header className="header__nav">
         <TopHeader />
-        <div className={`absolute left-0 w-full ${sticky}`}>
+        <div className={`absolute left-0 w-full ${sticky} py-7`}>
           <nav className={`container mx-auto px-6`}>
             <div className="flex justify-between items-center text-dark-muted-500 font-bold">
               <Link href="#" className="text-2xl font-extrabold ">
@@ -43,24 +42,28 @@ const TopNavigation = () => {
                       Blog
                     </Link>
                   </li>
-                  <li>
-                    <Link href="#" className={`dropdown ${styles.link} `}>
-                      <span>Chambres</span>
-                      <div className="dropdown-content">
+                  <li className="dropdown">
+                    <Link href="#" className={`${styles.link} `}>
+                      Chambres
+                    </Link>
+                    <ul className="dropdown-content">
+                      <li>
                         <Link
                           href="#"
                           className="block text-dark-muted-500 my-4"
                         >
                           Hôtel avec petit-déjeuner
                         </Link>
+                      </li>
+                      <li>
                         <Link
                           href="#"
-                          className="block text-dark-muted-500 my-4 hover:border-b-2 hover:border-reddish-orange-500"
+                          className="block text-dark-muted-500 my-4"
                         >
                           Appartement avec cuisine
                         </Link>
-                      </div>
-                    </Link>
+                      </li>
+                    </ul>
                   </li>
                   <li>
                     <Link href="#" className={styles.link}>
