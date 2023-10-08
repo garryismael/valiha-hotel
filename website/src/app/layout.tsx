@@ -1,10 +1,9 @@
-import "reflect-metadata";
-import "@/config/container.config";
-import TopNavigation from "@/components/TopNavigation";
-import "@/styles/globals.css";
-import "@/styles/layout.css";
+import "@/presentation/config/container.config";
+import TopNavigation from "@/presentation/components/TopNavigation";
+import "@/presentation/styles/globals.css";
+import "@/presentation/styles/layout.css";
 import type { Metadata } from "next";
-import FooterSection from "@/components/FooterSection";
+import FooterSection from "@/presentation/components/FooterSection";
 
 export const metadata: Metadata = {
   title: "Valiha Hôtel",
