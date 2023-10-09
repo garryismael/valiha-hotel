@@ -1,25 +1,34 @@
 package com.valiha.reservation.application.interactors.reservation;
 
+import com.valiha.reservation.application.dto.breakfast.BreakfastRequestDto;
 import com.valiha.reservation.application.dto.client.ClientRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
+import com.valiha.reservation.application.dto.shuttle.ShuttleRequestDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
+import com.valiha.reservation.application.utils.DateFormatter;
 import com.valiha.reservation.core.constant.AppReservation;
 import com.valiha.reservation.core.constant.PaymentState;
 import com.valiha.reservation.core.constant.ReservationState;
 import com.valiha.reservation.core.constant.ReservationValidator;
+import com.valiha.reservation.core.entities.models.Breakfast;
 import com.valiha.reservation.core.entities.models.Client;
 import com.valiha.reservation.core.entities.models.Payment;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
+import com.valiha.reservation.core.entities.models.Shuttle;
+import com.valiha.reservation.core.interfaces.factory.BreakfastFactory;
 import com.valiha.reservation.core.interfaces.factory.ClientFactory;
 import com.valiha.reservation.core.interfaces.factory.PaymentFactory;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
+import com.valiha.reservation.core.interfaces.factory.ShuttleFactory;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 
@@ -32,11 +41,17 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
   private final ClientFactory clientFactory;
   private final PaymentFactory paymentFactory;
   private final ReservationFactory reservationFactory;
+  private final ShuttleFactory shuttleFactory;
+  private final BreakfastFactory breakfastFactory;
 
   @Override
   public ReservationResponseDto execute(ReservationRequestDto requestDto) {
     Map<String, String> errors = new HashMap<>();
-    Room room = roomRepository.findOneById(requestDto.getRoomId());
+    ClientRequestDto clientRequestDto = requestDto.getClient();
+    List<ShuttleRequestDto> shuttleRequestDtos = requestDto.getShuttles();
+    List<BreakfastRequestDto> breakfastRequestDtos = requestDto.getBreakfasts();
+
+    List<Room> rooms = roomRepository.findAllByIds(requestDto.getRoomIds());
     Date checkIn = ReservationRequestDto.convert(
       requestDto.getCheckIn(),
       AppReservation.DATE_FORMAT
@@ -53,7 +68,6 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
       PaymentState.PENDING.value()
     );
 
-    ClientRequestDto clientRequestDto = requestDto.getClient();
     Client client = clientRequestDto != null
       ? clientFactory.create(
         null,
@@ -64,19 +78,51 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
       )
       : new Client();
 
+    List<Shuttle> shuttles = shuttleRequestDtos != null
+      ? shuttleRequestDtos
+        .stream()
+        .map(dto ->
+          shuttleFactory.create(
+            null,
+            dto.getFlightName(),
+            dto.getFlightNumber(),
+            DateFormatter.parseToDateTime(
+              dto.getDate(),
+              AppReservation.DATE_TIME_FORMAT
+            ),
+            dto.getDestination()
+          )
+        )
+        .toList()
+      : new ArrayList<>();
+
+    List<Breakfast> breakfasts = breakfastRequestDtos != null
+      ? breakfastRequestDtos
+        .stream()
+        .map(dto ->
+          breakfastFactory.create(
+            null,
+            DateFormatter.parseToDate(dto.getDate(), AppReservation.DATE_FORMAT)
+          )
+        )
+        .toList()
+      : new ArrayList<>();
+
     Reservation reservation = reservationFactory.create(
       null,
       checkIn,
       checkOut,
       ReservationState.PENDING.value(),
       requestDto.isParking(),
-      room,
       client,
-      payment
+      payment,
+      rooms,
+      shuttles,
+      breakfasts
     );
 
     boolean reservationExists = reservationRepository.existsByRoomIdWithinDateRange(
-      requestDto.getRoomId(),
+      requestDto.getRoomIds(),
       checkIn,
       checkOut
     );

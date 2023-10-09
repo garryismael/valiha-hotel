@@ -121,12 +121,12 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
   @Override
   public boolean existsByRoomIdWithinDateRange(
-    String roomId,
+    List<String> roomIds,
     Date checkIn,
     Date checkOut
   ) {
     List<Criteria> criterias = this.getDateRangeCriterias(checkIn, checkOut);
-    Criteria roomCriteria = Criteria.where("room.id").in(roomId);
+    Criteria roomCriteria = Criteria.where("room.id").in(roomIds);
 
     Criteria reservationCriteria = new Criteria()
       .orOperator(criterias)

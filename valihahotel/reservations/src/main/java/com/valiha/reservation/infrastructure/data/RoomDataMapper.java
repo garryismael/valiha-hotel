@@ -27,7 +27,7 @@ public class RoomDataMapper {
   @DBRef
   private CategoryDataMapper category;
 
-  public static Room toRoom(RoomDataMapper dataMapper) {
+  public static Room cast(RoomDataMapper dataMapper) {
     return Room
       .builder()
       .id(dataMapper.getId())
@@ -38,8 +38,8 @@ public class RoomDataMapper {
       .build();
   }
 
-  public static List<Room> toRoomList(List<RoomDataMapper> dataMappers) {
-    return dataMappers.stream().map(RoomDataMapper::toRoom).toList();
+  public static List<Room> cast(List<RoomDataMapper> dataMappers) {
+    return dataMappers.stream().map(RoomDataMapper::cast).toList();
   }
 
   public static RoomDataMapper from(Room room) {
@@ -51,5 +51,9 @@ public class RoomDataMapper {
       .image(room.getImage())
       .category(CategoryDataMapper.from(room.getCategory()))
       .build();
+  }
+
+  public static List<RoomDataMapper> from(List<Room> rooms) {
+    return rooms.stream().map(RoomDataMapper::from).toList();
   }
 }

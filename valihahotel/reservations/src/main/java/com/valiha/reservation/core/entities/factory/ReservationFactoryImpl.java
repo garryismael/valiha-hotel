@@ -1,11 +1,14 @@
 package com.valiha.reservation.core.entities.factory;
 
+import com.valiha.reservation.core.entities.models.Breakfast;
 import com.valiha.reservation.core.entities.models.Client;
 import com.valiha.reservation.core.entities.models.Payment;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
+import com.valiha.reservation.core.entities.models.Shuttle;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
 import java.util.Date;
+import java.util.List;
 
 public class ReservationFactoryImpl implements ReservationFactory {
 
@@ -16,9 +19,11 @@ public class ReservationFactoryImpl implements ReservationFactory {
     Date checkOut,
     String state,
     boolean useParking,
-    Room room,
     Client client,
-    Payment payment
+    Payment payment,
+    List<Room> room,
+    List<Shuttle> shuttles,
+    List<Breakfast> breakfasts
   ) {
     return Reservation
       .builder()
@@ -27,9 +32,11 @@ public class ReservationFactoryImpl implements ReservationFactory {
       .checkOut(checkOut)
       .state(state)
       .parking(useParking)
-      .room(room)
       .client(client)
       .payment(payment)
+      .rooms(room)
+      .shuttles(shuttles)
+      .breakfasts(breakfasts)
       .build();
   }
 }

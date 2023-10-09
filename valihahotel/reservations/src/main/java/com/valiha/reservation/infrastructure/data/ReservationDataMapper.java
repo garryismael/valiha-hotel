@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -24,7 +25,6 @@ public class ReservationDataMapper {
   private Date checkOut;
   private String state;
   private boolean parking;
-  private RoomDataMapper room;
 
   @Transient
   private ClientDataMapper client;
@@ -36,6 +36,15 @@ public class ReservationDataMapper {
 
   private String paymentId;
 
+  @DBRef
+  private List<RoomDataMapper> rooms;
+
+  @DBRef
+  private List<Shuttle> shuttles;
+
+  @DBRef
+  private List<Breakfast> breakfasts;
+
   public static Reservation toReservation(ReservationDataMapper dataMapper) {
     return Reservation
       .builder()
@@ -44,7 +53,7 @@ public class ReservationDataMapper {
       .checkOut(dataMapper.checkOut)
       .state(dataMapper.state)
       .parking(dataMapper.parking)
-      .room(RoomDataMapper.toRoom(dataMapper.room))
+      .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(dataMapper.client))
       .payment(PaymentDataMapper.toPayment(dataMapper.payment))
       .build();
@@ -62,7 +71,7 @@ public class ReservationDataMapper {
       .checkOut(dataMapper.checkOut)
       .state(dataMapper.state)
       .parking(dataMapper.parking)
-      .room(RoomDataMapper.toRoom(dataMapper.room))
+      .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(clientResponseDto))
       .payment(PaymentDataMapper.toPayment(paymentResponseDto))
       .build();
@@ -76,7 +85,7 @@ public class ReservationDataMapper {
       .checkOut(reservation.getCheckOut())
       .state(reservation.getState())
       .parking(reservation.isParking())
-      .room(RoomDataMapper.from(reservation.getRoom()))
+      .rooms(RoomDataMapper.from(reservation.getRooms()))
       .client(ClientDataMapper.from(reservation.getClient()))
       .clientId(reservation.getClient().getId())
       .payment(PaymentDataMapper.from(reservation.getPayment()))
@@ -96,7 +105,7 @@ public class ReservationDataMapper {
       .checkOut(reservation.getCheckOut())
       .state(reservation.getState())
       .parking(reservation.isParking())
-      .room(RoomDataMapper.from(reservation.getRoom()))
+      .rooms(RoomDataMapper.from(reservation.getRooms()))
       .client(clientDataMapper)
       .clientId(clientDataMapper.getId())
       .payment(paymentDataMapper)

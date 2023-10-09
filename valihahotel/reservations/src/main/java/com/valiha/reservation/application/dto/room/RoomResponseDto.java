@@ -31,6 +31,10 @@ public class RoomResponseDto {
       .build();
   }
 
+  public static List<RoomResponseDto> from(List<Room> rooms) {
+    return rooms.stream().map(RoomResponseDto::from).toList();
+  }
+
   public static List<RoomResponseDto> fromList(List<Room> rooms) {
     return rooms.stream().map(RoomResponseDto::from).toList();
   }

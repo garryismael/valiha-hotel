@@ -13,6 +13,8 @@ public interface RoomRepository {
 
   List<Room> findAll();
 
+  List<Room> findAllByIds(List<String> id);
+
   List<Room> findAllAvailableRooms(
     Date checkIn,
     Date checkOut,

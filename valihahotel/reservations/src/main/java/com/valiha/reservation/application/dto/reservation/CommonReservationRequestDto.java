@@ -1,5 +1,6 @@
 package com.valiha.reservation.application.dto.reservation;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CommonReservationRequestDto {
 
-  private String roomId;
+  private List<String> roomIds;
   private String checkIn;
   private String checkOut;
   private String state;

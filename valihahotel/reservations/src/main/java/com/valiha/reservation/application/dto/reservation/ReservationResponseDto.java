@@ -1,8 +1,10 @@
 package com.valiha.reservation.application.dto.reservation;
 
+import com.valiha.reservation.application.dto.breakfast.BreakfastResponseDto;
 import com.valiha.reservation.application.dto.client.ClientResponseDto;
 import com.valiha.reservation.application.dto.payment.PaymentResponseDto;
 import com.valiha.reservation.application.dto.room.RoomResponseDto;
+import com.valiha.reservation.application.dto.shuttle.ShuttleResponseDto;
 import com.valiha.reservation.core.constant.AppReservation;
 import com.valiha.reservation.core.entities.models.Reservation;
 import java.text.SimpleDateFormat;
@@ -24,9 +26,11 @@ public class ReservationResponseDto {
   private String checkOut;
   private String state;
   private boolean parking;
-  private RoomResponseDto room;
   private ClientResponseDto client;
   private PaymentResponseDto payment;
+  private List<RoomResponseDto> rooms;
+  private List<ShuttleResponseDto> shuttles;
+  private List<BreakfastResponseDto> breakfasts;
 
   public static String dateToString(Date date, String pattern) {
     SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
@@ -45,7 +49,7 @@ public class ReservationResponseDto {
       )
       .state(reservation.getState())
       .parking(reservation.isParking())
-      .room(RoomResponseDto.from(reservation.getRoom()))
+      .rooms(RoomResponseDto.from(reservation.getRooms()))
       .client(ClientResponseDto.from(reservation.getClient()))
       .payment(PaymentResponseDto.from(reservation.getPayment()))
       .build();

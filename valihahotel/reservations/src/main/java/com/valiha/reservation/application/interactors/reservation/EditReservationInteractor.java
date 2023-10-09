@@ -13,6 +13,7 @@ import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 
@@ -44,7 +45,7 @@ public class EditReservationInteractor implements EditReservationUseCase {
         );
     }
 
-    Room room = roomRepository.findOneById(requestDto.getRoomId());
+    List<Room> rooms = roomRepository.findAllByIds(requestDto.getRoomIds());
 
     reservation =
       reservationFactory.create(
@@ -59,9 +60,11 @@ public class EditReservationInteractor implements EditReservationUseCase {
         ),
         requestDto.getState(),
         requestDto.isParking(),
-        room,
         reservation.getClient(),
-        reservation.getPayment()
+        reservation.getPayment(),
+        rooms,
+        reservation.getShuttles(),
+        reservation.getBreakfasts()
       );
 
     errors = reservation.validate();

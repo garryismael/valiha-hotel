@@ -5,6 +5,7 @@ import com.valiha.reservation.core.constant.ReservationValidator;
 import com.valiha.reservation.core.interfaces.validator.InputValidator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.Getter;
 
@@ -16,9 +17,11 @@ public class Reservation implements InputValidator {
   private Date checkOut;
   private String state;
   private boolean parking;
-  private Room room;
   private Client client;
   private Payment payment;
+  private List<Room> rooms;
+  private List<Shuttle> shuttles;
+  private List<Breakfast> breakfasts;
 
   public class Builder {
 
@@ -53,8 +56,8 @@ public class Reservation implements InputValidator {
       return this;
     }
 
-    public Builder room(Room room) {
-      reservation.room = room;
+    public Builder rooms(List<Room> rooms) {
+      reservation.rooms = rooms;
       return this;
     }
 
@@ -65,6 +68,16 @@ public class Reservation implements InputValidator {
 
     public Builder payment(Payment payment) {
       reservation.payment = payment;
+      return this;
+    }
+
+    public Builder shuttles(List<Shuttle> shuttles) {
+      reservation.shuttles = shuttles;
+      return this;
+    }
+
+    public Builder breakfasts(List<Breakfast> breakfasts) {
+      reservation.breakfasts = breakfasts;
       return this;
     }
 
@@ -98,8 +111,8 @@ public class Reservation implements InputValidator {
     return this.state != null && AppReservation.STATES.contains(state);
   }
 
-  public boolean roomIsValid() {
-    return this.room != null;
+  public boolean roomsIsValid() {
+    return this.rooms != null && this.rooms.size() > 0;
   }
 
   public boolean clientIsValid() {
@@ -135,7 +148,7 @@ public class Reservation implements InputValidator {
       );
     }
 
-    if (!roomIsValid()) {
+    if (!roomsIsValid()) {
       errors.put(
         ReservationValidator.KEY_ROOM,
         ReservationValidator.INVALID_ROOM_ERROR

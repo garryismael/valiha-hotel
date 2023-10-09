@@ -10,6 +10,7 @@ import com.valiha.reservation.infrastructure.data.RoomDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoRoomRepository;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
@@ -26,13 +27,13 @@ public class RoomRepositoryImpl implements RoomRepository {
   public Room save(Room room) {
     RoomDataMapper dataMapper =
       this.roomRepository.save(RoomDataMapper.from(room));
-    return RoomDataMapper.toRoom(dataMapper);
+    return RoomDataMapper.cast(dataMapper);
   }
 
   @Override
   public List<Room> findAll() {
     List<RoomDataMapper> roomDataMappers = this.roomRepository.findAll();
-    return RoomDataMapper.toRoomList(roomDataMappers);
+    return RoomDataMapper.cast(roomDataMappers);
   }
 
   @Override
@@ -40,7 +41,7 @@ public class RoomRepositoryImpl implements RoomRepository {
     Optional<RoomDataMapper> optionalRoom = this.roomRepository.findById(id);
     Room room = null;
     if (optionalRoom.isPresent()) {
-      room = RoomDataMapper.toRoom(optionalRoom.get());
+      room = RoomDataMapper.cast(optionalRoom.get());
     }
     return room;
   }
@@ -54,7 +55,7 @@ public class RoomRepositoryImpl implements RoomRepository {
   public Room update(String id, Room entity) {
     RoomDataMapper dataMapper =
       this.roomRepository.save(RoomDataMapper.from(entity));
-    return RoomDataMapper.toRoom(dataMapper);
+    return RoomDataMapper.cast(dataMapper);
   }
 
   @Override
@@ -70,10 +71,13 @@ public class RoomRepositoryImpl implements RoomRepository {
     List<Reservation> reservations =
       this.reservationRepository.findAllWithinDateRange(checkIn, checkOut);
 
-    List<String> ids = reservations
-      .stream()
-      .map(reservation -> reservation.getRoom().getId())
-      .toList();
+    HashSet<String> ids = new HashSet<String>();
+
+    for (Reservation reservation : reservations) {
+      ids.addAll(
+        reservation.getRooms().stream().map(room -> room.getId()).toList()
+      );
+    }
 
     Category categoryDataMapper =
       this.categoryRepository.findOneByTypeAndAdultAndKid(
@@ -86,9 +90,9 @@ public class RoomRepositoryImpl implements RoomRepository {
       List<RoomDataMapper> dataMappers =
         this.mongoRoomRepository.findByCategoryAndIdNotIn(
             categoryDataMapper.getId(),
-            ids
+            ids.stream().toList()
           );
-      rooms = RoomDataMapper.toRoomList(dataMappers);
+      rooms = RoomDataMapper.cast(dataMappers);
     }
     return rooms;
   }
@@ -97,6 +101,12 @@ public class RoomRepositoryImpl implements RoomRepository {
   public List<Room> findAllByCategory(String id) {
     List<RoomDataMapper> roomDataMappers =
       this.roomRepository.findByCategory(id);
-    return RoomDataMapper.toRoomList(roomDataMappers);
+    return RoomDataMapper.cast(roomDataMappers);
+  }
+
+  @Override
+  public List<Room> findAllByIds(List<String> ids) {
+    List<RoomDataMapper> dataMappers = this.roomRepository.findAllById(ids);
+    return RoomDataMapper.cast(dataMappers);
   }
 }
