@@ -6,5 +6,15 @@
         "french": "French",
         "english": "English",
         "chinese": "Chinese"
+    },
+    "menu": {
+        "home": "Accueil",
+        "reservation": "Réservation",
+        "blog": "Blog",
+        "rooms": "Chambres",
+        "location": "Location de voiture",
+        "contact": "Contact",
+        "with-breakfast": "Hôtel avec petit-déjeuner",
+        "with-kitchen": "Appartement avec Cuisine"
     }
 }

@@ -1,0 +1,19 @@
+.hero__section {
+  position: relative;
+  height: 100vh;
+}
+
+.hero__section > div {
+  position: relative;
+  height: 90vh;
+}
+
+.hero__section > div > img {
+  position: absolute;
+  object-fit: cover;
+}
+
+.hero__section > div div.img-container {
+  position: relative;
+  z-index: 11;
+}

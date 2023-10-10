@@ -1,3 +1,9 @@
+import HeroSection from "app/sections/hero";
+
 export const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <HeroSection />
+    </>
+  );
 };
