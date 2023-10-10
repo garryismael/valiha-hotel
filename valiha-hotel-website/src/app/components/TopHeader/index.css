@@ -1,0 +1,71 @@
+.top-header {
+  position: relative;
+  display: block;
+  margin: 0;
+  font-size: 16px;
+}
+
+.top-header::before {
+  content: "";
+  position: absolute;
+  width: 118%;
+  left: -8%;
+  bottom: 0;
+  height: 1px;
+  background: var(--color-dark-muted);
+}
+
+.top-header .contacts ul,
+.top-header ul {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  overflow: hidden;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.top-header .contacts ul li,
+.top-header ul li {
+  padding: 15px 10px;
+  line-height: 1em;
+  color: var(--white-muted);
+}
+
+.top-header .contacts ul li:first-child {
+  padding-left: 0;
+}
+
+.top-header .contacts ul li + li {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.top-header ul li.langage {
+  border-right: 1px solid var(--dark-muted);
+}
+
+.top-header ul li.langage img {
+    width: 30px;
+    height: 20px;
+}
+
+.top-header ul li.langage select {
+    width: 130px;
+    border: none;
+    margin-top: 0;
+    background: none;
+    color: var(--white-muted);
+    margin-top: -5px;
+    height: 20px;
+    text-align: center;
+    outline: none;
+}
+
+.top-header ul li.langage select option {
+  color: var(--dark-100);
+}
+
+.top-header ul li a {
+  color: var(--white); 
+}
