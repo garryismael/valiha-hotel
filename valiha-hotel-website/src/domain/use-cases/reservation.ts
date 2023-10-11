@@ -1,0 +1,48 @@
+import { inject, injectable } from "tsyringe";
+
+export interface ReservationRequestDto {
+  roomIds: string[];
+  checkIn: string;
+  checkOut: string;
+  parking: boolean;
+  client: ClientRequestDto;
+  shuttles: ShuttleRequestDto[];
+  breakfasts: BreakfastRequestDto[];
+}
+
+export interface ClientRequestDto {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+}
+
+export interface ShuttleRequestDto {
+  flightName: string;
+  flightNumber: string;
+  destination: string;
+  date: string;
+}
+
+export interface BreakfastRequestDto {
+  date: string;
+}
+
+export interface ReservationService {
+  create(request: ReservationRequestDto): Promise<void>;
+}
+
+export interface CreateReservationUseCase {
+  execute(request: ReservationRequestDto): Promise<void>;
+}
+
+@injectable()
+export class CreateReservationInteractor implements CreateReservationUseCase {
+  constructor(
+    @inject("ReservationService") private contactService: ReservationService
+  ) {}
+
+  execute(request: ReservationRequestDto) {
+    return this.contactService.create(request);
+  }
+}
