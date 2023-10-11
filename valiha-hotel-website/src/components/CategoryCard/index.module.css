@@ -1,3 +1,6 @@
+.card_container {
+    @apply shadow-md rounded-lg inline-block w-[420px] max-sm:w-full;
+}
 .card {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -17,6 +20,10 @@
     @apply transition-all duration-300 ease-in-out hover:scale-105 overflow-hidden;
 }
 
-.cardInfo {
+.card_info_icon {
     color: #777;
+}
+
+.card_info_text {
+    @apply font-semibold text-reddish-orange-500;
 }

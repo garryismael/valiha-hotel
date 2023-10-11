@@ -54,7 +54,7 @@ const MenuHeader = () => {
         </div>
       </div>
       <div
-        className={`flex items-center justify-between px-40 pt-6 ${
+        className={`flex items-center justify-around pt-6 ${
           isScrolled
             ? "fixed top-0 left-0 w-full bg-dark-500 text-white shadow-lg !pt-0 z-50"
             : ""
