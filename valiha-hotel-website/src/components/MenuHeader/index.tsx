@@ -11,7 +11,7 @@ import {
 const MenuHeader = () => {
   const isScrolled = useScroll();
   return (
-    <header className="absolute top-0 w-full">
+    <header className="absolute top-0 w-full z-50">
       <div className="flex items-center justify-between z-20 bg-slate-blue-500 text-white">
         <div className="flex items-center gap-2 header__contact">
           <div>

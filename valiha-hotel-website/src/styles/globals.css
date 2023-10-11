@@ -1,5 +1,7 @@
 @import url("@fontsource/inter");
 
+@import url("react-datepicker/dist/react-datepicker.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +10,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --slate-blue: 37,48,65,.7;
+  --slate-blue: 37, 48, 65, 0.7;
+  --orange: rgb(240, 83, 63);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,11 +22,73 @@
   }
 }
 
+.title {
+  font-size: 45px;
+  font-weight: 600;
+  line-height: 55px;
+  margin: 0 0 20px;
+  position: relative;
+  text-transform: capitalize;
+}
+
+.btn {
+  @apply px-6 py-3;
+}
+
+.btn-orange {
+  background: var(--orange);
+  @apply text-white;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  @apply !flex items-center justify-center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 90% !important;
+  object-fit: cover;
+}
+
+.gallery-swiper .swiper-button-prev,
+.gallery-swiper .swiper-button-next {
+  background: rgba(255, 255, 255, 0.2);
+  width: 48px;
+  height: 48px;
+  line-height: 60px;
+  background-color: rgb(240, 83, 63);
+  border-radius: 100%;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  @apply text-white p-8;
+}
+
+.gallery-swiper .swiper-button-prev::after,
+.gallery-swiper .swiper-button-next::after {
+  font-size: 24px !important;
+}
+
 /* Contact Header */
-.header__contact > div:not(:last-child)  {
+.header__contact > div:not(:last-child) {
   @apply border-solid border-r-2 border-gray-200 px-3;
 }
 
 .header__contact > div {
   @apply flex items-center gap-2 py-2;
+}
+
+/* Search Rooms */
+.search__rooms {
+  @apply bg-white h-full flex items-center justify-between relative;
+  box-shadow: 0 1px 13.5px 1.5px rgba(46, 49, 108, 0.08);
 }
