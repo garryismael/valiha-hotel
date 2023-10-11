@@ -1,0 +1,12 @@
+.media {
+    @apply flex items-center justify-center w-9 h-9 rounded-full;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.media:hover {
+    @apply bg-white;
+}
+
+.h2 {
+    @apply text-xl font-extrabold pb-6;
+}

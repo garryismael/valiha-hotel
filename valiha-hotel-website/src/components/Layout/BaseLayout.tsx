@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import MenuHeader from "../MenuHeader";
-import Footer from "../Footer";
+import Footer from "../FooterSection";
 
 const BaseLayout = ({ children }: { children: ReactNode }) => {
   return (
