@@ -1,20 +1,42 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        inter: ["Inter", "ui-serif"],
+      },
+      colors: {
+        "slate-blue": {
+          100: "#e5e6e8f0",
+          200: "#c5c8cde0",
+          300: "#9ea3aad1",
+          400: "#6a727dc2",
+          500: "#253041b3",
+          600: "#19212cc2",
+          700: "#11151dd1",
+          800: "#0a0d11e0",
+          900: "#040608f0",
+        },
+        "dark": {
+          100: "#d6d6d9",
+          200: "#acaeb4",
+          300: "#83858e",
+          400: "#595d69",
+          500: "#303443",
+          600: "#262a36",
+          700: "#1d1f28",
+          800: "#13151b",
+          900: "#0a0a0d",
+        },
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

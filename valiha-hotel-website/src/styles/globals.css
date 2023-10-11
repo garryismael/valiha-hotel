@@ -1,3 +1,5 @@
+@import url("@fontsource/inter");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --slate-blue: 37,48,65,.7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,4 +17,13 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+/* Contact Header */
+.header__contact > div:not(:last-child)  {
+  @apply border-solid border-r-2 border-gray-200 px-3;
+}
+
+.header__contact > div {
+  @apply flex items-center gap-2 py-2;
 }
