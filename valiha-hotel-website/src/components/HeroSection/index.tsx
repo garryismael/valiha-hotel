@@ -17,8 +17,8 @@ const HeroSection = () => {
         }}
         slidesPerView={1}
       >
-        {images.map((image) => (
-          <SwiperSlide>
+        {images.map((image, i) => (
+          <SwiperSlide key={i}>
             <Image src={image} alt="room" fill={true} />
           </SwiperSlide>
         ))}

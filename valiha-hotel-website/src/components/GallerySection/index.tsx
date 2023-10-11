@@ -1,18 +1,10 @@
-"use client";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-import { galleries } from "@/core/entities/constants/gallery";
 import { useState } from "react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import GalleryHotel from "../GalleryHotel";
-import GalleryThumb from "../GalleryThumb";
+import { Swiper, SwiperSlide } from "swiper/react";
+import GalleryHotel from "./GalleryHotel";
+import GalleryThumb from "./GalleryThumb";
 
-function GallerySection() {
+const GallerySection = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   return (
     <section className="container mx-auto">
@@ -43,13 +35,13 @@ function GallerySection() {
           }}
           className="gallery-swiper"
         >
-          {galleries.map((image) => (
-            <SwiperSlide key={image}>
-              <GalleryHotel image={image} />
+          {Array.from({length: 22}).map((_, i) => (
+            <SwiperSlide key={i}>
+              <GalleryHotel image={`/assets/images/galleries/${i+1}.webp`} />
             </SwiperSlide>
           ))}
         </Swiper>
-        <GalleryThumb setThumbsSwiper={setThumbsSwiper} />
+        <GalleryThumb setSwiper={setThumbsSwiper} />
       </div>
     </section>
   );
