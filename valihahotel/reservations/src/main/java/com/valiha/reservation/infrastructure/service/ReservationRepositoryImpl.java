@@ -120,7 +120,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
   }
 
   @Override
-  public boolean existsByRoomIdWithinDateRange(
+  public boolean existsByRoomIdsWithinDateRange(
     List<String> roomIds,
     Date checkIn,
     Date checkOut

@@ -15,7 +15,7 @@ public interface ReservationRepository {
 
   List<Reservation> findAllWithinDateRange(Date checkIn, Date checkOut);
 
-  boolean existsByRoomIdWithinDateRange(
+  boolean existsByRoomIdsWithinDateRange(
     List<String> roomIds,
     Date checkIn,
     Date checkOut
