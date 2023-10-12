@@ -39,8 +39,7 @@ public class CreateCategoryInteractor implements CategoryCreateUseCase {
           null,
           requestDto.getTitle(),
           requestDto.getType(),
-          requestDto.getAdult(),
-          requestDto.getKid(),
+          requestDto.getPax(),
           requestDto.getBigBed(),
           requestDto.getSmallBed(),
           image

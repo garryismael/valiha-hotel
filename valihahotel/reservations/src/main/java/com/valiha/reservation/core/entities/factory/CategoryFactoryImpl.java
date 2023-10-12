@@ -10,8 +10,7 @@ public class CategoryFactoryImpl implements CategoryFactory {
     String id,
     String title,
     String type,
-    int adult,
-    int kid,
+    int pax,
     int bigBed,
     int smallBed,
     String image
@@ -21,8 +20,7 @@ public class CategoryFactoryImpl implements CategoryFactory {
       .id(id)
       .title(title)
       .type(type)
-      .adult(adult)
-      .kid(kid)
+      .pax(pax)
       .bigBed(bigBed)
       .smallBed(smallBed)
       .image(image)

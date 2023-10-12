@@ -18,8 +18,7 @@ public class CategoryResponseDto {
   private String id;
   private String title;
   private String type;
-  private int adult;
-  private int kid;
+  private int pax;
   private int bigBed;
   private int smallBed;
   private String image;
@@ -30,8 +29,7 @@ public class CategoryResponseDto {
       .id(category.getId())
       .title(category.getTitle())
       .type(category.getType())
-      .adult(category.getAdult())
-      .kid(category.getKid())
+      .pax(category.getPax())
       .bigBed(category.getBigBed())
       .smallBed(category.getSmallBed())
       .image(category.getImage())

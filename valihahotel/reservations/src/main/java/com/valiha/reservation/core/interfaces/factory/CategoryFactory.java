@@ -7,8 +7,7 @@ public interface CategoryFactory {
     String id,
     String title,
     String type,
-    int adult,
-    int kid,
+    int pax,
     int bigBed,
     int smallBed,
     String image

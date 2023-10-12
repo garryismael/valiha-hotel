@@ -59,8 +59,7 @@ public class EditCategoryInteractor implements CategoryEditUseCase {
           id,
           requestDto.getTitle(),
           requestDto.getType(),
-          requestDto.getAdult(),
-          requestDto.getKid(),
+          requestDto.getPax(),
           requestDto.getBigBed(),
           requestDto.getSmallBed(),
           image
