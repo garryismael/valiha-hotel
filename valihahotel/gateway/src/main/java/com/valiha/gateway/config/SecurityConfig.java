@@ -13,8 +13,11 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfig {
 
   private static final String[] AUTH_API_GET = {
-    "/RESERVATIONS-SERVICE/categories",
-    "/RESERVATIONS-SERVICE/rooms",
+    "/RESERVATIONS-SERVICE/categories/**",
+    "/RESERVATIONS-SERVICE/rooms/**",
+  };
+  private static final String[] AUTH_RESERVATION = {
+    "/RESERVATIONS-SERVICE/reservations/**",
   };
 
   @Bean
@@ -25,6 +28,8 @@ public class SecurityConfig {
       .authorizeExchange(exchange ->
         exchange
           .pathMatchers(HttpMethod.GET, AUTH_API_GET)
+          .permitAll()
+          .pathMatchers(HttpMethod.POST, AUTH_RESERVATION)
           .permitAll()
           .anyExchange()
           .authenticated()
