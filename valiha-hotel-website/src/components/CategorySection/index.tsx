@@ -9,11 +9,10 @@ const CategorySection = () => {
           <CategoryCard
             key={i}
             category={{
-              adult: 0,
+              pax: 0,
               bigBed: 2,
               id: "2",
               image: "/assets/images/rooms/1deluxeDouble.webp",
-              kid: 2,
               smallBed: 2,
               title: "Standard",
               type: "Hotel With Breakfast",

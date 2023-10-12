@@ -18,11 +18,7 @@ const DropdownAvailability = () => {
           <FaUser size={24} />
           <div>
             <p>1</p>
-            <p>Adulte(s)</p>
-          </div>
-          <div>
-            <p>1</p>
-            <p>Enfants(s)</p>
+            <p>Pax(s)</p>
           </div>
           <div>
             <p>1</p>
@@ -31,34 +27,6 @@ const DropdownAvailability = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
-        <DropdownItem key="adult" className="hover:!bg-transparent">
-          <div className="flex items-center justify-between gap-4">
-            <span>Adulte(s)</span>
-            <div className="flex items-center gap-3">
-              <Button isIconOnly color="default" radius="full" size="sm" className="!text-dark-muted-300">
-                <FaMinus size={16} />
-              </Button>
-              <span>1</span>
-              <Button isIconOnly color="default" radius="full" size="sm" className="!text-dark-muted-300">
-                <FaPlus size={16} />
-              </Button>
-            </div>
-          </div>
-        </DropdownItem>
-        <DropdownItem key="kid" className="hover:!bg-transparent">
-          <div className="flex items-center justify-between gap-4">
-            <span>Enfant(s)</span>
-            <div className="flex items-center gap-3">
-              <Button isIconOnly color="default" radius="full" size="sm" className="!text-dark-muted-300">
-                <FaMinus size={16} />
-              </Button>
-              <span>1</span>
-              <Button isIconOnly color="default" radius="full" size="sm" className="!text-dark-muted-300">
-                <FaPlus size={16} />
-              </Button>
-            </div>
-          </div>
-        </DropdownItem>
         <DropdownItem key="room" className="hover:!bg-transparent">
           <div className="flex items-center justify-between gap-4">
             <span>Chambre(s)</span>

@@ -6,12 +6,11 @@ export class CategoryFactoryImpl implements CategoryFactory {
     id: string,
     title: string,
     type: string,
-    adult: number,
-    kid: number,
+    pax: number,
     bigBed: number,
     smallBed: number,
     image: string
   ): Category {
-    return new Category(id, title, type, adult, kid, bigBed, smallBed, image);
+    return new Category(id, title, type, pax, bigBed, smallBed, image);
   }
 }
