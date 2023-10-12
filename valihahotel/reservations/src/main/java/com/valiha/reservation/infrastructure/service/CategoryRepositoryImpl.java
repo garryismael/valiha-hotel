@@ -48,13 +48,9 @@ public class CategoryRepositoryImpl implements CategoryRepository {
   }
 
   @Override
-  public Category findOneByTypeAndAdultAndKid(String type, int adult, int kid) {
+  public Category findOneByType(String type) {
     Optional<CategoryDataMapper> optionalDataMapper =
-      this.categoryRepository.findOneByTypeAndAdultGreaterThanEqualAndKidGreaterThanEqual(
-          type,
-          adult,
-          kid
-        );
+      this.categoryRepository.findOneByType(type);
     return optionalDataMapper.isPresent()
       ? CategoryDataMapper.toCategory(optionalDataMapper.get())
       : null;

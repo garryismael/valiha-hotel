@@ -103,7 +103,7 @@ public class Category implements InputValidator {
     }
 
     if (!paxIsValid()) {
-      errors.put(CategoryValidator.KEY_ADULT, CategoryValidator.INVALID_ADULT);
+      errors.put(CategoryValidator.KEY_PAX, CategoryValidator.INVALID_PAX);
     }
 
     if (!bigBedIsValid()) {

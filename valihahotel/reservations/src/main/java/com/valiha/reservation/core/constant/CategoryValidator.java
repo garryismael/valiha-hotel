@@ -50,11 +50,7 @@ public class CategoryValidator {
   /**
    *
    */
-  public static final String KEY_KID = "kid";
-  /**
-   *
-   */
-  public static final String KEY_ADULT = "adult";
+  public static final String KEY_PAX = "pax";
   /**
    *
    */
@@ -79,7 +75,7 @@ public class CategoryValidator {
   /**
    *
    */
-  public static final String INVALID_ADULT = "Adult Invalid";
+  public static final String INVALID_PAX = "Pax Invalid";
   /**
    *
    */

@@ -6,9 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface MongoCategoryRepository
   extends MongoRepository<CategoryDataMapper, String> {
-  Optional<CategoryDataMapper> findOneByTypeAndAdultGreaterThanEqualAndKidGreaterThanEqual(
-    String type,
-    int adult,
-    int kid
-  );
+  Optional<CategoryDataMapper> findOneByType(String type);
 }

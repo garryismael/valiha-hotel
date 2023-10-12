@@ -8,7 +8,7 @@ public interface CategoryRepository {
 
   Category update(String id, Category entity);
 
-  Category findOneByTypeAndAdultAndKid(String type, int adult, int kid);
+  Category findOneByType(String type);
 
   Category findOneById(String id);
 
