@@ -29,7 +29,7 @@ public class CreateCategoryInteractor implements CategoryCreateUseCase {
     String image = null;
 
     try {
-      image = this.storageService.upload(file, "blogs");
+      image = this.storageService.upload(file, "categories");
     } catch (IOException exception) {
       errors.put(CategoryValidator.KEY_IMAGE, CategoryValidator.UPLOAD_ERROR);
     }
