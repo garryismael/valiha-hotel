@@ -82,6 +82,6 @@ public class CategoryValidator {
    */
   public static final List<String> ROOM_TYPES = List.of(
     "hotel-with-breakfast",
-    "appartement-with-kitchen"
+    "apartment-with-kitchen"
   );
 }
