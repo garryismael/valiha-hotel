@@ -15,13 +15,7 @@ public interface RoomRepository {
 
   List<Room> findAllByIds(List<String> id);
 
-  List<Room> findAllAvailableRooms(
-    Date checkIn,
-    Date checkOut,
-    String categoryType,
-    int adult,
-    int kid
-  );
+  List<Room> findAllAvailableRooms(Date checkIn, Date checkOut);
 
   List<Room> findAllByCategory(String id);
 

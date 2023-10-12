@@ -30,13 +30,7 @@ public class FindAvailableRoomsInteractor implements FindAvailableRoomsUseCase {
     );
 
     List<Room> rooms =
-      this.roomRepository.findAllAvailableRooms(
-          checkIn,
-          checkOut,
-          requestDto.getCategoryType(),
-          requestDto.getAdult(),
-          requestDto.getKid()
-        );
+      this.roomRepository.findAllAvailableRooms(checkIn, checkOut);
     List<RoomResponseDto> responseDtos = RoomResponseDto.fromList(rooms);
     return this.roomPresenter.prepareSuccessView(responseDtos);
   }

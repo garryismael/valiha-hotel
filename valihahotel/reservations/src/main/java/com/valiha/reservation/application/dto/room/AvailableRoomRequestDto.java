@@ -7,9 +7,6 @@ import lombok.Setter;
 @Setter
 public class AvailableRoomRequestDto {
 
-  private String categoryType;
   private String checkIn;
   private String checkOut;
-  private int adult;
-  private int kid;
 }

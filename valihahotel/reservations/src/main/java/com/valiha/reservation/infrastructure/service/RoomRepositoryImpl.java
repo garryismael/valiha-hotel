@@ -1,9 +1,7 @@
 package com.valiha.reservation.infrastructure.service;
 
-import com.valiha.reservation.application.repository.CategoryRepository;
 import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
-import com.valiha.reservation.core.entities.models.Category;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
 import com.valiha.reservation.infrastructure.data.RoomDataMapper;
@@ -20,7 +18,6 @@ public class RoomRepositoryImpl implements RoomRepository {
 
   private final ReservationRepository reservationRepository;
   private final MongoRoomRepository roomRepository;
-  private final CategoryRepository categoryRepository;
   private final MongoRoomRepository mongoRoomRepository;
 
   @Override
@@ -59,13 +56,7 @@ public class RoomRepositoryImpl implements RoomRepository {
   }
 
   @Override
-  public List<Room> findAllAvailableRooms(
-    Date checkIn,
-    Date checkOut,
-    String categoryType,
-    int adult,
-    int kid
-  ) {
+  public List<Room> findAllAvailableRooms(Date checkIn, Date checkOut) {
     List<Room> rooms = new ArrayList<>();
 
     List<Reservation> reservations =
@@ -79,21 +70,10 @@ public class RoomRepositoryImpl implements RoomRepository {
       );
     }
 
-    Category categoryDataMapper =
-      this.categoryRepository.findOneByTypeAndAdultAndKid(
-          categoryType,
-          adult,
-          kid
-        );
+    List<RoomDataMapper> dataMappers =
+      this.mongoRoomRepository.findByIdNotIn(ids.stream().toList());
+    rooms = RoomDataMapper.cast(dataMappers);
 
-    if (categoryDataMapper != null) {
-      List<RoomDataMapper> dataMappers =
-        this.mongoRoomRepository.findByCategoryAndIdNotIn(
-            categoryDataMapper.getId(),
-            ids.stream().toList()
-          );
-      rooms = RoomDataMapper.cast(dataMappers);
-    }
     return rooms;
   }
 
