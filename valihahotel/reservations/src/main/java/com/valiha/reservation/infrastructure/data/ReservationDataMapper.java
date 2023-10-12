@@ -40,10 +40,10 @@ public class ReservationDataMapper {
   private List<RoomDataMapper> rooms;
 
   @DBRef
-  private List<Shuttle> shuttles;
+  private List<ShuttleDataMapper> shuttles;
 
   @DBRef
-  private List<Breakfast> breakfasts;
+  private List<BreakfastDataMapper> breakfasts;
 
   public static Reservation toReservation(ReservationDataMapper dataMapper) {
     return Reservation
@@ -56,6 +56,8 @@ public class ReservationDataMapper {
       .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(dataMapper.client))
       .payment(PaymentDataMapper.toPayment(dataMapper.payment))
+      .breakfasts(BreakfastDataMapper.cast(dataMapper.breakfasts))
+      .shuttles(ShuttleDataMapper.cast(dataMapper.shuttles))
       .build();
   }
 
@@ -74,6 +76,8 @@ public class ReservationDataMapper {
       .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(clientResponseDto))
       .payment(PaymentDataMapper.toPayment(paymentResponseDto))
+      .breakfasts(BreakfastDataMapper.cast(dataMapper.breakfasts))
+      .shuttles(ShuttleDataMapper.cast(dataMapper.shuttles))
       .build();
   }
 
