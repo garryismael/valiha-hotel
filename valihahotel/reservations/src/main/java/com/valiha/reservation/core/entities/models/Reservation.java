@@ -150,8 +150,8 @@ public class Reservation implements InputValidator {
 
     if (!roomsIsValid()) {
       errors.put(
-        ReservationValidator.KEY_ROOM,
-        ReservationValidator.INVALID_ROOM_ERROR
+        ReservationValidator.KEY_ROOMS,
+        ReservationValidator.INVALID_ROOMS_ERROR
       );
     }
 

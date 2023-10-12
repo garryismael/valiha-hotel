@@ -53,9 +53,18 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
 
     List<String> ids = requestDto.getRoomIds();
 
-    List<Room> rooms = roomRepository.findAllByIds(
-      ids != null ? ids : new ArrayList<>()
-    );
+    if (ids == null || ids.isEmpty()) {
+      errors.put(
+        ReservationValidator.KEY_ROOMS,
+        ReservationValidator.INVALID_ROOMS_ERROR
+      );
+      return this.reservationPresenter.prepareInvalidDataView(
+          ReservationValidator.KEY_ROOMS,
+          errors
+        );
+    }
+
+    List<Room> rooms = roomRepository.findAllByIds(ids);
     Date checkIn = ReservationRequestDto.convert(
       requestDto.getCheckIn(),
       AppReservation.DATE_FORMAT

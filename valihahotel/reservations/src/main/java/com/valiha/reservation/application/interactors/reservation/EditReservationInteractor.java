@@ -12,7 +12,6 @@ import com.valiha.reservation.core.constant.ReservationValidator;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,9 +47,18 @@ public class EditReservationInteractor implements EditReservationUseCase {
 
     List<String> ids = requestDto.getRoomIds();
 
-    List<Room> rooms = roomRepository.findAllByIds(
-      ids != null ? ids : new ArrayList<>()
-    );
+    if (ids == null || ids.isEmpty()) {
+      errors.put(
+        ReservationValidator.KEY_ROOMS,
+        ReservationValidator.INVALID_ROOMS_ERROR
+      );
+      return this.reservationPresenter.prepareInvalidDataView(
+          ReservationValidator.KEY_ROOMS,
+          errors
+        );
+    }
+
+    List<Room> rooms = roomRepository.findAllByIds(ids);
 
     reservation =
       reservationFactory.create(
