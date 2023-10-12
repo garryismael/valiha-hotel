@@ -112,19 +112,6 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
         .toList()
       : new ArrayList<>();
 
-    Reservation reservation = reservationFactory.create(
-      null,
-      checkIn,
-      checkOut,
-      ReservationState.PENDING.value(),
-      requestDto.isParking(),
-      client,
-      payment,
-      rooms,
-      shuttles,
-      breakfasts
-    );
-
     boolean reservationExists = reservationRepository.existsByRoomIdWithinDateRange(
       ids,
       checkIn,
@@ -141,6 +128,19 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
           errors
         );
     }
+
+    Reservation reservation = reservationFactory.create(
+      null,
+      checkIn,
+      checkOut,
+      ReservationState.PENDING.value(),
+      requestDto.isParking(),
+      client,
+      payment,
+      rooms,
+      shuttles,
+      breakfasts
+    );
 
     errors = reservation.validate();
 
