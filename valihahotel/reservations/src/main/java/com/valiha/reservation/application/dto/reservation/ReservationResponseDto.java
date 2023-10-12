@@ -52,6 +52,8 @@ public class ReservationResponseDto {
       .rooms(RoomResponseDto.from(reservation.getRooms()))
       .client(ClientResponseDto.from(reservation.getClient()))
       .payment(PaymentResponseDto.from(reservation.getPayment()))
+      .breakfasts(BreakfastResponseDto.from(reservation.getBreakfasts()))
+      .shuttles(ShuttleResponseDto.from(reservation.getShuttles()))
       .build();
   }
 

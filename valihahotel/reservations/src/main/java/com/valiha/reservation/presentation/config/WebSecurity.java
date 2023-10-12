@@ -28,7 +28,10 @@ public class WebSecurity {
 
   private static final String[] AUTH_RESERVATION = { "/reservations/**" };
 
-  private static final String[] AUTH_API_GET = { "/categories", "/rooms" };
+  private static final String[] AUTH_API_GET = {
+    "/categories/**",
+    "/rooms/**",
+  };
 
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
