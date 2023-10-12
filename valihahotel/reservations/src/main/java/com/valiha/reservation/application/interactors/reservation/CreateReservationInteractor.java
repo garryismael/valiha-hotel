@@ -126,7 +126,7 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
     );
 
     boolean reservationExists = reservationRepository.existsByRoomIdWithinDateRange(
-      requestDto.getRoomIds(),
+      ids,
       checkIn,
       checkOut
     );

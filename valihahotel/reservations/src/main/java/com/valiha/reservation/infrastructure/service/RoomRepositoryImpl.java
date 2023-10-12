@@ -86,6 +86,9 @@ public class RoomRepositoryImpl implements RoomRepository {
 
   @Override
   public List<Room> findAllByIds(List<String> ids) {
+    if (ids.isEmpty()) {
+      return new ArrayList<>();
+    }
     List<RoomDataMapper> dataMappers = this.roomRepository.findAllById(ids);
     return RoomDataMapper.cast(dataMappers);
   }
