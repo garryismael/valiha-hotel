@@ -40,7 +40,7 @@ public class StorageServiceImpl implements StorageService {
     }
 
     // Define the target file path
-    Path targetPath = Paths.get(UPLOAD_DIRECTORY, file.getName());
+    Path targetPath = Paths.get(UPLOAD_DIRECTORY, path, file.getName());
 
     // Copy the file to the storage directory
     Files.copy(file.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
