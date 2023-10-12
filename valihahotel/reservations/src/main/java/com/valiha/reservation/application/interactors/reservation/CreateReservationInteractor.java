@@ -51,7 +51,11 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
     List<ShuttleRequestDto> shuttleRequestDtos = requestDto.getShuttles();
     List<BreakfastRequestDto> breakfastRequestDtos = requestDto.getBreakfasts();
 
-    List<Room> rooms = roomRepository.findAllByIds(requestDto.getRoomIds());
+    List<String> ids = requestDto.getRoomIds();
+
+    List<Room> rooms = roomRepository.findAllByIds(
+      ids != null ? ids : List.of()
+    );
     Date checkIn = ReservationRequestDto.convert(
       requestDto.getCheckIn(),
       AppReservation.DATE_FORMAT

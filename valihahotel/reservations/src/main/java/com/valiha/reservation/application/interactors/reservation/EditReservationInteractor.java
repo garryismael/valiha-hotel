@@ -45,7 +45,11 @@ public class EditReservationInteractor implements EditReservationUseCase {
         );
     }
 
-    List<Room> rooms = roomRepository.findAllByIds(requestDto.getRoomIds());
+    List<String> ids = requestDto.getRoomIds();
+
+    List<Room> rooms = roomRepository.findAllByIds(
+      ids != null ? ids : List.of()
+    );
 
     reservation =
       reservationFactory.create(
