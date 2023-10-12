@@ -2,6 +2,7 @@ package com.valiha.reservation.infrastructure.data;
 
 import com.valiha.reservation.core.entities.models.Shuttle;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +35,7 @@ public class ShuttleDataMapper {
   }
 
   public static List<Shuttle> cast(List<ShuttleDataMapper> shuttles) {
+    if (shuttles == null) return new ArrayList<>() {};
     return shuttles.stream().map(ShuttleDataMapper::cast).toList();
   }
 }

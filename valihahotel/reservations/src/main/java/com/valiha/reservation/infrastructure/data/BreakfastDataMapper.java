@@ -1,6 +1,7 @@
 package com.valiha.reservation.infrastructure.data;
 
 import com.valiha.reservation.core.entities.models.Breakfast;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class BreakfastDataMapper {
   }
 
   public static List<Breakfast> cast(List<BreakfastDataMapper> dataMappers) {
+    if (dataMappers == null) return new ArrayList<>() {};
     return dataMappers.stream().map(BreakfastDataMapper::cast).toList();
   }
 }

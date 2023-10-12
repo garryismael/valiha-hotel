@@ -3,7 +3,6 @@ package com.valiha.reservation.infrastructure.data;
 import com.valiha.reservation.application.dto.client.ClientResponseDto;
 import com.valiha.reservation.application.dto.payment.PaymentResponseDto;
 import com.valiha.reservation.core.entities.models.Reservation;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -57,16 +56,8 @@ public class ReservationDataMapper {
       .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(dataMapper.client))
       .payment(PaymentDataMapper.toPayment(dataMapper.payment))
-      .breakfasts(
-        dataMapper.breakfasts == null
-          ? new ArrayList<>()
-          : BreakfastDataMapper.cast(dataMapper.breakfasts)
-      )
-      .shuttles(
-        dataMapper.shuttles == null
-          ? new ArrayList<>()
-          : ShuttleDataMapper.cast(dataMapper.shuttles)
-      )
+      .breakfasts(BreakfastDataMapper.cast(dataMapper.breakfasts))
+      .shuttles(ShuttleDataMapper.cast(dataMapper.shuttles))
       .build();
   }
 
@@ -85,16 +76,8 @@ public class ReservationDataMapper {
       .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(clientResponseDto))
       .payment(PaymentDataMapper.toPayment(paymentResponseDto))
-      .breakfasts(
-        dataMapper.breakfasts == null
-          ? new ArrayList<>()
-          : BreakfastDataMapper.cast(dataMapper.breakfasts)
-      )
-      .shuttles(
-        dataMapper.shuttles == null
-          ? new ArrayList<>()
-          : ShuttleDataMapper.cast(dataMapper.shuttles)
-      )
+      .breakfasts(BreakfastDataMapper.cast(dataMapper.breakfasts))
+      .shuttles(ShuttleDataMapper.cast(dataMapper.shuttles))
       .build();
   }
 
