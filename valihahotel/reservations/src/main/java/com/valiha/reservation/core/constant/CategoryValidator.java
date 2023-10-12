@@ -71,10 +71,6 @@ public class CategoryValidator {
   /**
    *
    */
-  public static final String INVALID_KID = "Kid Invalid";
-  /**
-   *
-   */
   public static final String INVALID_PAX = "Pax Invalid";
   /**
    *
