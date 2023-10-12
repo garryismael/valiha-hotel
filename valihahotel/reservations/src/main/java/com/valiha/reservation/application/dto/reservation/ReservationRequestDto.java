@@ -29,6 +29,7 @@ public class ReservationRequestDto {
   public static Date convert(String dateString, String pattern) {
     SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
     Date date;
+    if (dateString == null) return null;
     try {
       date = dateFormat.parse(dateString);
       return date;

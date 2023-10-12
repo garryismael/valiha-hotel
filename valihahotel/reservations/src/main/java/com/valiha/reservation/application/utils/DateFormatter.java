@@ -20,6 +20,7 @@ public class DateFormatter {
   }
 
   public static LocalDateTime parseToDateTime(String date, String pattern) {
+    if (date == null) return null;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
     try {
       return LocalDateTime.parse(date, formatter);
@@ -29,6 +30,7 @@ public class DateFormatter {
   }
 
   public static Date parseToDate(String date, String pattern) {
+    if (date == null) return null;
     SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
     try {
       return dateFormat.parse(date);
