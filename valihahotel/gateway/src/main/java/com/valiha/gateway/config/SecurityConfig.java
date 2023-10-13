@@ -14,6 +14,10 @@ public class SecurityConfig {
 
   private static final String[] AUTH_API_GET = {
     "/RESERVATIONS-SERVICE/categories/**",
+    "/RESERVATIONS-SERVICE/docs/**",
+    "/RESERVATIONS-SERVICE/api-docs/**",
+    "/RESERVATIONS-SERVICE/uploads/**",
+    "/RESERVATIONS-SERVICE/static/**",
     "/RESERVATIONS-SERVICE/rooms/**",
   };
   private static final String[] AUTH_RESERVATION = {
@@ -30,11 +34,6 @@ public class SecurityConfig {
           .pathMatchers(HttpMethod.GET, AUTH_API_GET)
           .permitAll()
           .pathMatchers(HttpMethod.POST, AUTH_RESERVATION)
-          .permitAll()
-          .pathMatchers(
-            HttpMethod.GET,
-            "^/RESERVATIONS-SERVICE/rooms.*\\\\?checkIn=.+&checkOut=.+"
-          )
           .permitAll()
           .anyExchange()
           .authenticated()
