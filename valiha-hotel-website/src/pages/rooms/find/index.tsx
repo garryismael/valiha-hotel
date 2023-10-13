@@ -1,11 +1,14 @@
 import NestedLayout from "@/components/Layout/NestedLayout";
+import SearchRooms from "@/components/SearchRooms";
 import { NextPageWithLayout } from "@/pages/_app";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 const Page: NextPageWithLayout = () => {
   return (
-    <div>
-      <p>Available Rooms</p>
+    <div className="h-48">
+      <div className="absolute right-0 z-50 w-1/2 -translate-x-1/2 -translate-y-1/2 left-1/2">
+        <SearchRooms />
+      </div>
     </div>
   );
 };
