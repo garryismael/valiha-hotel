@@ -13,6 +13,7 @@ const SearchRooms = () => {
           selected={startDate}
           onChange={(date: Date) => setStartDate(date)}
           className="bg-transparent outline-none !pl-7"
+          popperClassName="relative !z-40"
         />
       </div>
       <div className="flex flex-col">

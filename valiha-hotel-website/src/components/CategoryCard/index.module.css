@@ -1,5 +1,5 @@
 .card_container {
-    @apply shadow-md rounded-lg inline-block w-[420px] max-sm:w-full;
+    @apply shadow-md rounded-lg inline-block w-[420px] max-sm:w-full z-0;
 }
 .card {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

@@ -22,6 +22,10 @@
   }
 }
 
+.react-datepicker-popper {
+  z-index: 100000 !important;
+}
+
 .title {
   font-size: 45px;
   font-weight: 600;
@@ -56,18 +60,18 @@
 .gallery-swiper .swiper-button-next,
 .service-swiper .swiper-button-prev,
 .service-swiper .swiper-button-next {
-	background: rgb(240, 83, 63);
-	width: 60px;
-	height: 60px;
-	line-height: 60px;
-	border: 2px solid rgb(240, 83, 63);
-	border-radius: 50%;
-	opacity: 0.7;
-	text-align: center;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
-	color: #687693;
-	padding: 10px;
+  background: rgb(240, 83, 63);
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border: 2px solid rgb(240, 83, 63);
+  border-radius: 50%;
+  opacity: 0.7;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #687693;
+  padding: 10px;
 }
 
 .service-swiper .swiper-button-prev,
@@ -84,10 +88,9 @@
 .gallery-swiper .swiper-button-next::after,
 .service-swiper .swiper-button-prev::after,
 .service-swiper .swiper-button-next::after {
-	font-size: 20px;
-	@apply text-white;
+  font-size: 20px;
+  @apply text-white;
 }
-
 
 /* Contact Header */
 .header__contact > div:not(:last-child) {

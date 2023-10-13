@@ -23,7 +23,6 @@ export default function Home({ categories }: { categories: Category[] }) {
 }
 
 export async function getServerSideProps() {
-  console.log("Hello, World");
   const getCategories = container.resolve<GetCategoriesUseCase>(
     GetCategoriesInteractor
   );
