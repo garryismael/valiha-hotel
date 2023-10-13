@@ -1,27 +1,15 @@
+import { Category } from "@/domain/entities/category";
 import CategoryCard from "../CategoryCard";
 
-const CategorySection = () => {
+export const CategorySection = ({ categories }: { categories: Category[] }) => {
   return (
     <section className="container mx-auto">
       <div className="title">Nos Chambres Et Appartements</div>
       <div className="flex items-center justify-between content-between gap-8 flex-wrap">
-        {Array.from({ length: 6 }).map((_v, i) => (
-          <CategoryCard
-            key={i}
-            category={{
-              pax: 0,
-              bigBed: 2,
-              id: "2",
-              image: "/assets/images/rooms/1deluxeDouble.webp",
-              smallBed: 2,
-              title: "Standard",
-              type: "Hotel With Breakfast",
-            }}
-          />
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
         ))}
       </div>
     </section>
   );
 };
-
-export default CategorySection;

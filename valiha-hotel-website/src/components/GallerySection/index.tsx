@@ -35,7 +35,7 @@ const GallerySection = () => {
           }}
           className="gallery-swiper"
         >
-          {Array.from({length: 22}).map((_, i) => (
+          {Array.from({length: 21}).map((_, i) => (
             <SwiperSlide key={i}>
               <GalleryHotel image={`/assets/images/galleries/${i+1}.webp`} />
             </SwiperSlide>
