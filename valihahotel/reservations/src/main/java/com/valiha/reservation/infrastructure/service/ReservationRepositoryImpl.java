@@ -174,4 +174,20 @@ public class ReservationRepositoryImpl implements ReservationRepository {
       })
       .collect(Collectors.toList());
   }
+
+  public List<String> findRoomsIdsWithinDateRange(
+    Date startDate,
+    Date endDate
+  ) {
+    List<Criteria> criterias = this.getDateRangeCriterias(startDate, endDate);
+    Criteria reservationDateRangeCriteria = new Criteria()
+      .orOperator(criterias);
+    Query query = new Query(reservationDateRangeCriteria);
+    List<ReservationDataMapper> dataMappers = mongoTemplate.find(
+      query,
+      ReservationDataMapper.class
+    );
+
+    return dataMappers.stream().map(dataMapper -> dataMapper.getId()).toList();
+  }
 }

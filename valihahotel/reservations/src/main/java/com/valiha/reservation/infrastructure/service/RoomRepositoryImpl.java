@@ -1,8 +1,6 @@
 package com.valiha.reservation.infrastructure.service;
 
-import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
-import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Room;
 import com.valiha.reservation.infrastructure.data.RoomDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoRoomRepository;
@@ -16,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class RoomRepositoryImpl implements RoomRepository {
 
-  private final ReservationRepository reservationRepository;
+  private final ReservationRepositoryImpl reservationRepository;
   private final MongoRoomRepository roomRepository;
   private final MongoRoomRepository mongoRoomRepository;
 
@@ -57,24 +55,14 @@ public class RoomRepositoryImpl implements RoomRepository {
 
   @Override
   public List<Room> findAllAvailableRooms(Date checkIn, Date checkOut) {
-    List<Room> rooms = new ArrayList<>();
+    List<String> reservations =
+      this.reservationRepository.findRoomsIdsWithinDateRange(checkIn, checkOut);
 
-    List<Reservation> reservations =
-      this.reservationRepository.findAllWithinDateRange(checkIn, checkOut);
-
-    HashSet<String> ids = new HashSet<String>();
-
-    for (Reservation reservation : reservations) {
-      ids.addAll(
-        reservation.getRooms().stream().map(room -> room.getId()).toList()
-      );
-    }
+    HashSet<String> ids = new HashSet<String>(reservations);
 
     List<RoomDataMapper> dataMappers =
       this.mongoRoomRepository.findByIdNotIn(ids.stream().toList());
-    rooms = RoomDataMapper.cast(dataMappers);
-
-    return rooms;
+    return RoomDataMapper.cast(dataMappers);
   }
 
   @Override

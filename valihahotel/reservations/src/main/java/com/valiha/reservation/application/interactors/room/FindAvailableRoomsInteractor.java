@@ -1,7 +1,6 @@
 package com.valiha.reservation.application.interactors.room;
 
 import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
-import com.valiha.reservation.application.dto.room.AvailableRoomRequestDto;
 import com.valiha.reservation.application.dto.room.RoomResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.RoomRepository;
@@ -20,13 +19,13 @@ public class FindAvailableRoomsInteractor implements FindAvailableRoomsUseCase {
   private final GenericPresenter<RoomResponseDto> roomPresenter;
 
   @Override
-  public List<RoomResponseDto> execute(AvailableRoomRequestDto requestDto) {
+  public List<RoomResponseDto> execute(String startDate, String endDate) {
     Date checkIn = ReservationRequestDto.convert(
-      requestDto.getCheckIn(),
+      startDate,
       AppReservation.DATE_FORMAT
     );
     Date checkOut = ReservationRequestDto.convert(
-      requestDto.getCheckOut(),
+      endDate,
       AppReservation.DATE_FORMAT
     );
 

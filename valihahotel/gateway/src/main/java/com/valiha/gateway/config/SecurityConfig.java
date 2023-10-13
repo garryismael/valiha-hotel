@@ -31,6 +31,11 @@ public class SecurityConfig {
           .permitAll()
           .pathMatchers(HttpMethod.POST, AUTH_RESERVATION)
           .permitAll()
+          .pathMatchers(
+            HttpMethod.GET,
+            "^/RESERVATIONS-SERVICE/rooms.*\\\\?checkIn=.+&checkOut=.+"
+          )
+          .permitAll()
           .anyExchange()
           .authenticated()
       );
