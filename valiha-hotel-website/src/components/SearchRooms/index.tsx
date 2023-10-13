@@ -8,6 +8,7 @@ const SearchRooms = () => {
       <div className="flex flex-col pl-6">
         <label htmlFor="checkIn">Check Out</label>
         <DatePicker
+          portalId="checkIn"
           showIcon={true}
           name="checkIn"
           selected={startDate}
@@ -19,6 +20,7 @@ const SearchRooms = () => {
       <div className="flex flex-col">
         <label htmlFor="checkOut">Check In</label>
         <DatePicker
+          portalId="checkOut"
           name="checkOut"
           showIcon={true}
           selected={startDate}
