@@ -20,12 +20,13 @@ const GalleryThumb = ({ setSwiper }: Props) => {
       modules={[FreeMode, Navigation, Thumbs]}
       className="h-[80%] w-full my-6"
     >
-      {Array.from({ length: 22 }).map((_, i) => (
+      {Array.from({ length: 21 }).map((_, i) => (
         <SwiperSlide key={i}>
           <div className="relative h-[300px]">
             <Image
               src={`/assets/images/galleries/${i+1}.webp`}
               fill={true}
+              sizes="100%"
               alt="hotel-gallery"
               className="w-full h-[300px] object-cover"
             />

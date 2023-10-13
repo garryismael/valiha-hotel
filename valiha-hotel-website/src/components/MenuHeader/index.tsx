@@ -32,8 +32,10 @@ const MenuHeader = () => {
             <Image
               src="/assets/images/flags/fr.png"
               alt="flag"
+              sizes="100%"
               width={24}
               height={24}
+              className="w-auto"
             />
             <select className="border-none outline-none mr-2 text-white bg-transparent">
               <option value="fr" className="text-slate-500">

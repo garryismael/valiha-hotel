@@ -19,7 +19,13 @@ const HeroSection = () => {
       >
         {images.map((image, i) => (
           <SwiperSlide key={i}>
-            <Image src={image} alt="room" fill={true} />
+            <Image
+              src={image}
+              alt="room"
+              fill={true}
+              sizes="100%"
+              className="h-full"
+            />
           </SwiperSlide>
         ))}
       </Swiper>

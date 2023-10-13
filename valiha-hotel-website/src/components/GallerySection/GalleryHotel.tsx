@@ -10,6 +10,7 @@ const GalleryHotel = ({ image }: Props) => {
       <Image
         src={image}
         fill={true}
+        sizes="100%"
         alt="hotel-gallery"
         className="w-full h-[600px] object-cover"
       />

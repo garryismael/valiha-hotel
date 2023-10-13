@@ -1,20 +1,21 @@
-import { useState } from "react";
+import { useSearchRoom } from "@/hooks/room";
 import DatePicker from "react-datepicker";
 
 const SearchRooms = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const formik = useSearchRoom();
   return (
-    <form className="search__rooms">
+    <form onSubmit={formik.handleSubmit} className="search__rooms">
       <div className="flex flex-col pl-6">
         <label htmlFor="checkIn">Check Out</label>
         <DatePicker
           portalId="checkIn"
           showIcon={true}
           name="checkIn"
-          selected={startDate}
-          onChange={(date: Date) => setStartDate(date)}
+          minDate={new Date()}
+          selected={formik.values.checkIn}
+          onChange={(date: Date) => formik.setFieldValue("checkOut", date)}
           className="bg-transparent outline-none !pl-7"
-          popperClassName="relative !z-40"
+          popperClassName="relative !z-10"
         />
       </div>
       <div className="flex flex-col">
@@ -23,8 +24,9 @@ const SearchRooms = () => {
           portalId="checkOut"
           name="checkOut"
           showIcon={true}
-          selected={startDate}
-          onChange={(date: Date) => setStartDate(date)}
+          minDate={formik.values.checkIn}
+          selected={formik.values.checkOut}
+          onChange={(date: Date) => formik.setFieldValue("checkOut", date)}
           className="bg-transparent outline-none !pl-7"
         />
       </div>
