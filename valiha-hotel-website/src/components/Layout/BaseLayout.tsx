@@ -6,7 +6,7 @@ const BaseLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <MenuHeader />
-      <main>{children}</main>
+      <main className="relative">{children}</main>
       <Footer />
     </>
   );

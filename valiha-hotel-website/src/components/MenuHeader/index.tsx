@@ -76,7 +76,7 @@ const MenuHeader = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/">Reservation</Link>
+              <Link href="/rooms/available">Reservation</Link>
             </li>
             <li>
               <Link href="/">Blog</Link>

@@ -3,17 +3,18 @@ import { ReactNode } from "react";
 
 const NestedLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
-      <div className="relative w-full h-[500]">
+    <>
+      <div className="relative w-full h-[500px]">
         <Image
           src="/assets/images/banner.webp"
+          fill={true}
           alt="banner"
           sizes="100%"
           className="h-full w-full"
         />
       </div>
       {children}
-    </div>
+    </>
   );
 };
 
