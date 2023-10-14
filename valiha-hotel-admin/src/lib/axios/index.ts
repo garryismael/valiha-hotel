@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Session, getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { authOptions } from "../auth";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
@@ -22,7 +22,6 @@ http.interceptors.request.use(
       session = await getServerSession(authOptions);
     } else {
       session = await getSession();
-      console.log("User Session: ", session?.user);
     }
     if (session && session?.user.access_token) {
       config.headers["Authorization"] = `Bearer ${session.user.access_token}`;
@@ -31,6 +30,20 @@ http.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
+  }
+);
+
+http.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const { response } = error;
+    const originalRequest = error.config;
+
+    if (!response || response.status !== 401 || originalRequest._retry) {
+      return Promise.reject(error);
+    }
+
+    await signIn();
   }
 );
 

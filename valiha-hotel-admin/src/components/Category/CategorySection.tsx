@@ -12,6 +12,7 @@ const CategorySection = () => {
     );
     setCategories(response.data.length);
   };
+  
   return <div onClick={handleClick}>Data: {categories}</div>;
 };
 
