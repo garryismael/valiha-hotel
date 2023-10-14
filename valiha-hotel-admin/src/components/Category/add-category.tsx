@@ -1,15 +1,15 @@
 "use client";
 import {
-  useDisclosure,
   Button,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Input,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  useDisclosure,
 } from "@nextui-org/react";
-import React, { ChangeEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FaUpload } from "react-icons/fa6";
 
 const AddCategory = () => {
