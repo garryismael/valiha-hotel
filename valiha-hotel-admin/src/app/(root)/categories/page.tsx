@@ -3,7 +3,7 @@ import {
   GetCategoriesInteractor,
   GetCategoriesUseCase,
 } from "@/domain/use-cases/category";
-import { container } from "tsyringe";
+import container from "@/infrastructures/config/container.config";
 
 const Page = async () => {
   const getCategories = container.resolve<GetCategoriesUseCase>(
@@ -11,7 +11,7 @@ const Page = async () => {
   );
   const categories = await getCategories.execute();
   return (
-    <section className="container mx-auto p-8">
+    <section className="my-14 max-w-[95rem] mx-auto w-full flex flex-col gap-4">
       <CategoryList categories={categories} />
     </section>
   );

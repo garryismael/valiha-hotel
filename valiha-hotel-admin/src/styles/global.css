@@ -33,11 +33,7 @@
 }
 
 .title {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 55px;
-  margin: 0 0 20px;
-  position: relative;
+  @apply text-xl font-semibold;
   text-transform: capitalize;
 }
 
@@ -48,4 +44,12 @@
 .btn-orange {
   background: var(--orange);
   @apply text-white;
+}
+
+input[type=file]::file-selector-button {
+  @apply rounded-medium border-none bg-transparent;
+}
+
+.input-file {
+  display: none!important;
 }
