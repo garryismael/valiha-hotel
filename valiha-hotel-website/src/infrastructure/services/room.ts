@@ -6,7 +6,7 @@ import { injectable } from "tsyringe";
 @injectable()
 export class RoomServiceImpl implements RoomService {
   async findRoomsAvailable(checkIn: string, checkOut: string): Promise<Room[]> {
-    const response = await http.get<Room[]>("/USERS-SERVICES/rooms/available", {
+    const response = await http.get<Room[]>("/RESERVATIONS-SERVICE/rooms/available", {
       params: {
         checkIn,
         checkOut,
@@ -16,7 +16,7 @@ export class RoomServiceImpl implements RoomService {
   }
   
   async findAll(): Promise<Room[]> {
-    const response = await http.get<Room[]>("/USERS-SERVICES/rooms");
+    const response = await http.get<Room[]>("/RESERVATIONS-SERVICE/rooms");
     return response.data;
   }
 }

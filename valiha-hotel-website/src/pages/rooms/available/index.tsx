@@ -1,4 +1,5 @@
 import NestedLayout from "@/components/Layout/NestedLayout";
+import { Room } from "@/domain/entities/room";
 import {
   GetAvailableRoomsInteractor,
   GetAvailableRoomsUseCase,
@@ -8,7 +9,11 @@ import { NextPageContext } from "next";
 import { ReactElement } from "react";
 import { container } from "tsyringe";
 
-const Page: NextPageWithLayout = () => {
+const Page: NextPageWithLayout = ({
+  rooms,
+}: {
+  rooms: Room[];
+}) => {
   return (
     <section>
       <h1 className="title">Available Rooms</h1>
@@ -23,6 +28,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
 
 export async function getServerSideProps(context: NextPageContext) {
   const { checkIn, checkOut } = context.query;
+  console.log(checkIn, checkOut);
   const findAvailability = container.resolve<GetAvailableRoomsUseCase>(
     GetAvailableRoomsInteractor
   );
