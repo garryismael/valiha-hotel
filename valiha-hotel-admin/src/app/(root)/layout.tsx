@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import "@/infrastructures/config/container.config";
-import "./global.css";
+import "@/styles/global.css";
 
 import NextThemesProvider from "@/components/Layout/NextThemesProvider";
 import NextUIWrapper from "@/components/Layout/NextUIWrapper";

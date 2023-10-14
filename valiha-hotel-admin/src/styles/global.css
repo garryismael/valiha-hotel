@@ -4,14 +4,48 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --slate-blue: 37, 48, 65, 0.7;
+  --orange: rgb(240, 83, 63);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-@layer  base {
+@layer base {
   html {
     font-family: Inter, "Proxima Nova", system-ui, sans-serif;
   }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 55px;
+  margin: 0 0 20px;
+  position: relative;
+  text-transform: capitalize;
+}
+
+.btn {
+  @apply px-6 py-3;
+}
+
+.btn-orange {
+  background: var(--orange);
+  @apply text-white;
 }

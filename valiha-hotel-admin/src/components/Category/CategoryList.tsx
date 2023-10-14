@@ -10,7 +10,7 @@ type Props = {
 const CategoryList = ({ categories }: Props) => {
   return (
     <>
-      <div className="title">Nos Chambres Et Appartements</div>
+      <div className="title">Liste des Chambres Et Appartements</div>
       <div className="flex items-center justify-between content-between gap-8 flex-wrap">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
