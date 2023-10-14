@@ -1,5 +1,4 @@
 "use client";
-import "@/infrastructures/config/container.config";
 
 import { ThemeProvider } from "next-themes";
 import React from "react";

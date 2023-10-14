@@ -2,7 +2,6 @@
 import { NavbarWrapper } from "@/components/Navbar/navbar";
 import { SidebarWrapper } from "@/components/Sidebar/sidebar";
 import { useLockedBody } from "@/hooks/useBodyLock";
-import "@/infrastructures/config/container.config";
 import React from "react";
 import { SidebarContext } from "./context";
 
