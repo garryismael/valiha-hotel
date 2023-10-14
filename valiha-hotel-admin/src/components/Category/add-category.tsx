@@ -1,3 +1,4 @@
+"use client";
 import {
   useDisclosure,
   Button,
@@ -8,11 +9,13 @@ import {
   ModalFooter,
   Input,
 } from "@nextui-org/react";
-import React from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { FaUpload } from "react-icons/fa6";
 
 const AddCategory = () => {
+  const [fileName, setFileName] = useState<string | undefined>("");
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>
@@ -40,17 +43,24 @@ const AddCategory = () => {
                   <Input
                     label="Image"
                     variant="bordered"
+                    value={fileName}
                     readOnly={true}
-                    onClick={() => console.log("Clicked")}
+                    onClick={() => {
+                      inputRef.current?.click();
+                    }}
                     startContent={
                       <FaUpload />
                     }
                   />
                   <Input
+                    ref={inputRef}
                     label="Image"
                     variant="bordered"
                     type="file"
                     className="input-file"
+                    onChange={(e) => {
+                      setFileName(e.target.files?.[0]?.name);
+                    }}
                   />
                 </ModalBody>
                 <ModalFooter>
