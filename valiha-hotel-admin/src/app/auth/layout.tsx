@@ -1,3 +1,4 @@
+import "@/infrastructures/config/container.config";
 import "@/styles/global.css";
 
 export const metadata = {

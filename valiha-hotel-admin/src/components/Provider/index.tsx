@@ -1,5 +1,5 @@
 "use client";
-
+import "@/infrastructures/config/container.config";
 import { SessionProvider } from "next-auth/react";
 import React from "react";
 

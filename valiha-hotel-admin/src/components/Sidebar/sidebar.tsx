@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { AccountsIcon } from "@/icons/sidebar/accounts-icon";
 import { BalanceIcon } from "@/icons/sidebar/balance-icon";
 import { CustomersIcon } from "@/icons/sidebar/customers-icon";
@@ -15,11 +15,11 @@ import { useSidebarContext } from "@/components/Layout/context";
 import { ChangeLogIcon } from "@/icons/sidebar/changelog-icon";
 import { FilterIcon } from "@/icons/sidebar/filter-icon";
 import { usePathname } from "next/navigation";
-import { SidebarItem } from "./sidebar-item";
-import { CompaniesDropdown } from "./companies-dropdown";
-import { Sidebar } from "./sidebar.styles";
-import { SidebarMenu } from "./sidebar-menu";
 import { CollapseItems } from "./collapse-items";
+import { CompaniesDropdown } from "./companies-dropdown";
+import { SidebarItem } from "./sidebar-item";
+import { SidebarMenu } from "./sidebar-menu";
+import { Sidebar } from "./sidebar.styles";
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
@@ -64,9 +64,10 @@ export const SidebarWrapper = () => {
                 title="Balances"
               />
               <SidebarItem
-                isActive={pathname === "/customers"}
-                title="Customers"
+                isActive={pathname === "/categories"}
+                title="Categories"
                 icon={<CustomersIcon />}
+                href="categories"
               />
               <SidebarItem
                 isActive={pathname === "/products"}

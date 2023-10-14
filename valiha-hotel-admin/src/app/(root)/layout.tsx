@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import "@/infrastructures/config/container.config";
 import "./global.css";
 
 import NextThemesProvider from "@/components/Layout/NextThemesProvider";
