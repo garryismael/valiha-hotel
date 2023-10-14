@@ -43,7 +43,9 @@ http.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    await signIn();
+    if (!isServer) {
+      await signIn();
+    }
   }
 );
 

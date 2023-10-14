@@ -9,6 +9,6 @@ export class CategoryServiceImpl implements CategoryService {
     const response = await http.get<Category[]>(
       "/RESERVATIONS-SERVICE/categories"
     );
-    return response.data;
+    return response.data ?? [];
   }
 }

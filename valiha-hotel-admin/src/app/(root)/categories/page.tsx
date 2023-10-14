@@ -1,4 +1,4 @@
-import CategorySection from "@/components/Category/CategorySection";
+import CategoryList from "@/components/Category/CategoryList";
 import {
   GetCategoriesInteractor,
   GetCategoriesUseCase,
@@ -11,11 +11,9 @@ const Page = async () => {
   );
   const categories = await getCategories.execute();
   return (
-    <div className="p-2">
-      <span>Category List: </span>
-      {categories.length}
-      <CategorySection />
-    </div>
+    <section className="container mx-auto p-8">
+      <CategoryList categories={categories} />
+    </section>
   );
 };
 
