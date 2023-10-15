@@ -41,19 +41,21 @@ const RoomCard = ({ room }: Props) => {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <FaUserGroup size={24} />
-          <p className="text-reddish-orange-500">{room.category.pax}</p>
-          <p className="text-medium font-base font-medium">Pax</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <FaBed size={24} />
-          <p className="text-reddish-orange-500">{room.category.bigBed}</p>
-          <p className="text-medium font-base font-medium">Big Bed</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <FaBed size={24} />
-          <p className="text-reddish-orange-500">{room.category.smallBed}</p>
-          <p className="text-medium font-base font-medium">Small Bed</p>
+          <div className="flex items-center gap-2">
+            <FaUserGroup size={16} />
+            <p className="text-reddish-orange-500">{room.category.pax}</p>
+            <p className="text-medium font-base font-medium">Pax</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaBed size={16} />
+            <p className="text-reddish-orange-500">{room.category.bigBed}</p>
+            <p className="text-medium font-base font-medium">Big Bed</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaBed size={16} />
+            <p className="text-reddish-orange-500">{room.category.smallBed}</p>
+            <p className="text-medium font-base font-medium">Small Bed</p>
+          </div>
         </div>
       </div>
     </div>
