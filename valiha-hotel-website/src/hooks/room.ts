@@ -16,7 +16,8 @@ export const useSearchRoom = () => {
       checkOut: new Date(),
     },
     onSubmit(values: SearchRoomsSchema) {
-      router.push("/rooms/available", {
+      router.push({
+        pathname: "/rooms/available",
         query: {
           checkIn: moment(values.checkIn).format(DATE_FORMAT),
           checkOut: moment(values.checkOut).format(DATE_FORMAT),

@@ -30,9 +30,9 @@ const HeroSection = () => {
         ))}
       </Swiper>
       <div>
-        <div className="absolute bottom-0 right-0 z-50 w-1/2 -translate-x-1/2 -translate-y-1/2 left-1/2">
-        <SearchRooms />
-      </div>
+        <div className="absolute bottom-0 right-0 z-10 w-1/2 -translate-x-1/2 -translate-y-1/2 left-1/2">
+          <SearchRooms />
+        </div>
       </div>
     </section>
   );

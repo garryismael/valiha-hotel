@@ -15,7 +15,6 @@ const SearchRooms = () => {
           selected={formik.values.checkIn}
           onChange={(date: Date) => formik.setFieldValue("checkOut", date)}
           className="bg-transparent outline-none !pl-7"
-          popperClassName="relative !z-10"
         />
       </div>
       <div className="flex flex-col">

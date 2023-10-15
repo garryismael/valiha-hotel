@@ -1,23 +1,24 @@
 import NestedLayout from "@/components/Layout/NestedLayout";
+import RoomList from "@/components/Room/room-list";
 import { Room } from "@/domain/entities/room";
 import {
   GetAvailableRoomsInteractor,
   GetAvailableRoomsUseCase,
 } from "@/domain/use-cases/room";
+import container from "@/infrastructure/config/container.config";
 import { NextPageWithLayout } from "@/pages/_app";
 import { NextPageContext } from "next";
 import { ReactElement } from "react";
-import { container } from "tsyringe";
 
-const Page: NextPageWithLayout = ({
-  rooms,
-}: {
+type Props = {
   rooms: Room[];
-}) => {
+};
+
+const Page: NextPageWithLayout<Props> = ({ rooms }) => {
   return (
-    <section>
+    <section className="container mx-auto">
       <h1 className="title">Available Rooms</h1>
-      <div></div>
+      <RoomList rooms={rooms} />
     </section>
   );
 };
