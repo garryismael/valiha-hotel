@@ -1,8 +1,12 @@
 package com.valiha.location.application.dto.car;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class CarRequestDto {
 
   private String mark;
@@ -12,5 +16,4 @@ public class CarRequestDto {
   private int place;
   private int year;
   private int price;
-  private String image;
 }

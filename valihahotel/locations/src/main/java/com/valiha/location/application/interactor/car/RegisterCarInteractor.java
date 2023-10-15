@@ -13,25 +13,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class RegisterCarInteractor implements RegisterCarUseCase {
 
   private final GenericRepository<Car> carRepository;
   private final GenericPresenter<CarResponseDto> carPresenter;
   private final StorageService storageService;
   private final CarFactory carFactory;
-
-  public RegisterCarInteractor(
-    GenericRepository<Car> carRepository,
-    GenericPresenter<CarResponseDto> carPresenter,
-    StorageService storageService,
-    CarFactory carFactory
-  ) {
-    this.carRepository = carRepository;
-    this.carPresenter = carPresenter;
-    this.storageService = storageService;
-    this.carFactory = carFactory;
-  }
 
   @Override
   public CarResponseDto execute(CarRequestDto requestDto, File file) {

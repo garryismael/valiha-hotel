@@ -1,5 +1,6 @@
 package com.valiha.location.core.entities.models;
 
+import com.valiha.location.core.constants.CarValidator;
 import com.valiha.location.core.interfaces.models.ICar;
 import com.valiha.location.core.interfaces.validator.InputValidator;
 import java.util.HashMap;
@@ -125,6 +126,36 @@ public class Car implements ICar, InputValidator {
   public Map<String, String> validate() {
     Map<String, String> errors = new HashMap<>();
 
+    if (!markIsValid()) {
+      errors.put(CarValidator.KEY_MARK, CarValidator.INVALID_MARK_ERROR);
+    }
+
+    if (!trainingIsValid()) {
+      errors.put(
+        CarValidator.KEY_TRAINING,
+        CarValidator.INVALID_TRAINING_ERROR
+      );
+    }
+
+    if (!mileageIsValid()) {
+      errors.put(CarValidator.KEY_MILEAGE, CarValidator.INVALID_MILEAGE_ERROR);
+    }
+
+    if (!doorIsValid()) {
+      errors.put(CarValidator.KEY_DOOR, CarValidator.INVALID_DOOR_ERROR);
+    }
+
+    if (!placeIsValid()) {
+      errors.put(CarValidator.KEY_PLACE, CarValidator.INVALID_PLACE_ERROR);
+    }
+
+    if (!yearIsValid()) {
+      errors.put(CarValidator.KEY_YEAR, CarValidator.INVALID_YEAR_ERROR);
+    }
+
+    if (!priceIsValid()) {
+      errors.put(CarValidator.KEY_PRICE, CarValidator.INVALID_PRICE_ERROR);
+    }
     return errors;
   }
 }
