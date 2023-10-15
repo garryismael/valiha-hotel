@@ -14,5 +14,5 @@ export class RoomServiceImpl implements RoomService {
 
   create(request: RoomRequest): Promise<Room> {
     throw new Error("Method not implemented.");
-}
+  }
 }

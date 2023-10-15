@@ -14,7 +14,7 @@ export default function CategoryCard({ category }: { category: Category }) {
           alt="category room"
           fill={true}
           sizes="100%"
-          className={styles.room__image}
+          className={styles.image}
         />
       </div>
       <div className="pb-6 mt-5 ml-2">

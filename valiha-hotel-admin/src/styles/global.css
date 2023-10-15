@@ -34,13 +34,7 @@
 
 @layer components {
   .title {
-    @apply text-xl font-semibold;
-    text-transform: capitalize;
-  }
-
-  .title {
-    @apply text-xl font-semibold;
-    text-transform: capitalize;
+    @apply text-xl font-semibold capitalize dark:text-white;
   }
 
   .btn {
