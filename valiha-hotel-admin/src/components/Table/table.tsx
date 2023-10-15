@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   Link,
   Table,
@@ -9,10 +9,15 @@ import {
   TableRow,
 } from "@nextui-org/react";
 import React from "react";
-import { columns, users } from "./data";
+import { columns } from "./data";
 import { RenderCell } from "./render-cell";
+import { User } from "@/domain/entities/user";
 
-export const TableWrapper = () => {
+type Props = {
+  users: User[];
+};
+
+export const TableWrapper = ({ users }: Props) => {
   return (
     <div className=" w-full flex flex-col gap-4">
       <Table aria-label="Example table with custom cells">

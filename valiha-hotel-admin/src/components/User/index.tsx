@@ -1,6 +1,7 @@
 "use client";
 import { TableWrapper } from "@/components/Table/table";
 import { accountBreadcrumbs } from "@/constants/account";
+import { User } from "@/domain/entities/user";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
 import { ExportIcon } from "@/icons/accounts/export-icon";
 import { InfoIcon } from "@/icons/accounts/info-icon";
@@ -10,7 +11,7 @@ import { Button, Input } from "@nextui-org/react";
 import Breadcrumbs from "../BreadCrumbs";
 import { AddUser } from "./add-user";
 
-export const Accounts = () => {
+export const Accounts = ({ users }: { users: User[] }) => {
   return (
     <div className="my-14 max-w-[95rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={accountBreadcrumbs} />
@@ -38,7 +39,7 @@ export const Accounts = () => {
         </div>
       </div>
       <div className="max-w-[95rem] mx-auto w-full">
-        <TableWrapper />
+        <TableWrapper users={users} />
       </div>
     </div>
   );
