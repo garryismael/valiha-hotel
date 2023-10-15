@@ -28,6 +28,8 @@ const AvailableRoomList = ({ rooms }: Props) => {
       pathname: "/rooms/booking",
       query: {
         ids: bookedRooms,
+        checkIn: router.query.checkIn,
+        checkOut: router.query.checkOut
       },
     });
   };

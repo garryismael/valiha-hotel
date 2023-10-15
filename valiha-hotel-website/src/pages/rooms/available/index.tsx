@@ -29,7 +29,6 @@ Page.getLayout = function getLayout(page: ReactElement) {
 
 export async function getServerSideProps(context: NextPageContext) {
   const { checkIn, checkOut } = context.query;
-  console.log(checkIn, checkOut);
   const findAvailability = container.resolve<GetAvailableRoomsUseCase>(
     GetAvailableRoomsInteractor
   );

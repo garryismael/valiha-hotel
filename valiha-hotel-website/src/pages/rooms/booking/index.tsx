@@ -1,9 +1,10 @@
+import BookingForm from "@/components/Booking/booking-form";
 import NestedLayout from "@/components/Layout/NestedLayout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
 const Page: NextPageWithLayout = () => {
-  return <div>Booking</div>;
+  return <BookingForm />;
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
