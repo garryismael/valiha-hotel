@@ -7,7 +7,7 @@ type Props = {
 
 const RoomList = ({ rooms }: Props) => {
   return (
-    <div className="flex items-center justify-between content-between gap-8 flex-wrap">
+    <div className="flex items-center justify-between content-between gap-8 flex-wrap relative">
       {rooms.map((room) => (
         <RoomCard key={room.id} room={room} />
       ))}

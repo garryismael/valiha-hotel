@@ -1,5 +1,5 @@
 import NestedLayout from "@/components/Layout/NestedLayout";
-import RoomList from "@/components/Room/room-list";
+import AvailableRoomList from "@/components/Room/available-room-list";
 import { Room } from "@/domain/entities/room";
 import {
   GetAvailableRoomsInteractor,
@@ -18,7 +18,7 @@ const Page: NextPageWithLayout<Props> = ({ rooms }) => {
   return (
     <section className="container mx-auto">
       <h1 className="title">Available Rooms</h1>
-      <RoomList rooms={rooms} />
+      <AvailableRoomList rooms={rooms} />
     </section>
   );
 };
