@@ -14,6 +14,7 @@ public class SecurityConfig {
 
   private static final String[] AUTH_API_GET = {
     "/LOCATIONS-SERVICE/cars/**",
+    "/LOCATIONS-SERVICE/uploads/**",
     "/RESERVATIONS-SERVICE/docs/**",
     "/RESERVATIONS-SERVICE/rooms/**",
     "/RESERVATIONS-SERVICE/static/**",
