@@ -13,12 +13,13 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfig {
 
   private static final String[] AUTH_API_GET = {
-    "/RESERVATIONS-SERVICE/categories/**",
+    "/LOCATIONS-SERVICE/cars/**",
     "/RESERVATIONS-SERVICE/docs/**",
-    "/RESERVATIONS-SERVICE/api-docs/**",
-    "/RESERVATIONS-SERVICE/uploads/**",
-    "/RESERVATIONS-SERVICE/static/**",
     "/RESERVATIONS-SERVICE/rooms/**",
+    "/RESERVATIONS-SERVICE/static/**",
+    "/RESERVATIONS-SERVICE/uploads/**",
+    "/RESERVATIONS-SERVICE/api-docs/**",
+    "/RESERVATIONS-SERVICE/categories/**",
   };
   private static final String[] AUTH_RESERVATION = {
     "/RESERVATIONS-SERVICE/reservations/**",
