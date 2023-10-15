@@ -45,6 +45,6 @@ public class StorageServiceImpl implements StorageService {
     // Copy the file to the storage directory
     Files.copy(file.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
-    return file.getName();
+    return String.format("%s/%s", path, file.getName());
   }
 }

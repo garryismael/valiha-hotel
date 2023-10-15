@@ -1,6 +1,7 @@
 package com.valiha.location.infrastructure.data;
 
 import com.valiha.location.core.entities.models.Car;
+import com.valiha.location.infrastructure.config.LocationData;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,7 +37,7 @@ public class CarDataMapper {
       .place(dataMapper.place)
       .year(dataMapper.year)
       .price(dataMapper.price)
-      .image(dataMapper.image)
+      .image(String.format("%s/%s", LocationData.BASE_URL, dataMapper.image))
       .build();
   }
 
