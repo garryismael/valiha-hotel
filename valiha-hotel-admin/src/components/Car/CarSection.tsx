@@ -1,4 +1,5 @@
 "use client";
+
 import { roomBreadcrumbs } from "@/constants/room";
 import { Car } from "@/domain/entities/car";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
@@ -16,7 +17,7 @@ type Props = {
 
 const CarSection = ({ cars }: Props) => {
   return (
-    <section className="my-14 max-w-[95rem] mx-auto w-full flex flex-col gap-4">
+    <section className="my-14 px-8 max-w-[95rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={roomBreadcrumbs} />
       <h3 className="title">Rooms</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">

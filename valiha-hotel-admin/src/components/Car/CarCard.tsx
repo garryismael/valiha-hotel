@@ -22,7 +22,14 @@ const CarCard = ({ car }: Props) => {
       </div>
       <div className="flex flex-col gap-2 p-2">
         <h1 className="uppercase text-reddish-orange-500 font-semibold text-lg">
-          {car.mileage}
+          {car.mark}
+        </h1>
+        <h1 className="font-semibold text-lg">
+          <span>{car.mileage}</span> <span>liters per 100 km</span>
+        </h1>
+        <h1>
+          <span>{car.place}</span> {" "}
+          <span>places</span>
         </h1>
       </div>
     </div>

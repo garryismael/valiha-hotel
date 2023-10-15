@@ -3,11 +3,11 @@
 }
 
 .card__image {
-  @apply relative w-full max-sm:w-full h-[600px] overflow-hidden;
+  @apply relative w-full max-sm:w-full h-[550px] overflow-hidden;
   @apply rounded-tl-lg rounded-tr-lg;
 }
 
 .image {
-  @apply object-contain;
+  @apply object-fill;
   @apply transition-all duration-300 ease-in-out hover:scale-105 overflow-hidden;
 }
