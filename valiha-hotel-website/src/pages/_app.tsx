@@ -7,6 +7,7 @@ import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
 import { Provider } from "react-redux";
+import { NextUIProvider } from "@nextui-org/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -22,9 +23,11 @@ type AppPropsWithLayout = AppProps & {
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
-    <Provider store={store}>
-      <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
-    </Provider>
+    <NextUIProvider>
+      <Provider store={store}>
+        <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+      </Provider>
+    </NextUIProvider>
   );
 }
 

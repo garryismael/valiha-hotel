@@ -14,8 +14,8 @@ export const useBookingForm = () => {
     },
   });
 
-  const handleCheckBreakfast = () => {
-    setUseBreakfast(!useBreakfast);
+  const handleCheckBreakfast = (checked: boolean) => {
+    setUseBreakfast(checked);
 
     if (formik.values.breakfasts.length === 0) {
       formik.setFieldValue("breakfasts", [
@@ -26,8 +26,29 @@ export const useBookingForm = () => {
     }
   };
 
-  const handleCheckShuttle = () => {
-    setUseShuttle(!useShuttle);
+  const addBreakfast = () => {
+    formik.setFieldValue("breakfasts", [
+      ...formik.values.breakfasts,
+      {
+        date: booking.checkIn,
+      },
+    ]);
+  };
+
+  const addShuttle = () => {
+    formik.setFieldValue("shuttles", [
+      ...formik.values.shuttles,
+      {
+        date: booking.checkIn,
+        destination: "",
+        flightName: "",
+        flightNumber: "",
+      },
+    ]);
+  };
+
+  const handleCheckShuttle = (checked: boolean) => {
+    setUseShuttle(checked);
 
     if (formik.values.shuttles.length === 0) {
       formik.setFieldValue("shuttles", [
@@ -47,5 +68,7 @@ export const useBookingForm = () => {
     useShuttle,
     handleCheckBreakfast,
     handleCheckShuttle,
+    addBreakfast,
+    addShuttle
   };
 };
