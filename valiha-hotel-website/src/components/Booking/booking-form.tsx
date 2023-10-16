@@ -1,24 +1,23 @@
 import { useBookingForm } from "@/hooks/reservation";
 import { Button, Checkbox, Input, Select, SelectItem } from "@nextui-org/react";
-import React, { forwardRef } from "react";
+import React from "react";
 import ReactDatePicker from "react-datepicker";
-import { FaCalendarDays, FaPlus, FaXmark } from "react-icons/fa6";
+import { FaCalendarDays, FaPlus, FaTrash } from "react-icons/fa6";
 import { If, Then } from "react-if";
-import InputDate from "./date-input";
 
 const BookingForm = () => {
   const {
     formik,
-    useBreakfast,
-    useShuttle,
     handleCheckBreakfast,
     handleCheckShuttle,
     addBreakfast,
+    deleteBreakfast,
     addShuttle,
+    deleteShuttle,
   } = useBookingForm();
 
   return (
-    <section className="w-full max-w-5xl shadow-lg mx-auto mt-12">
+    <section className="w-full max-w-5xl shadow-md mx-auto mt-12">
       <form
         onSubmit={formik.handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col gap-4 content-between"
@@ -58,22 +57,40 @@ const BookingForm = () => {
             className="w-full"
           />
         </div>
-
         <Checkbox
-          isSelected={useBreakfast}
+          name="parking"
+          isSelected={formik.values.parking}
+          onValueChange={(isSelected: boolean) => {
+            if (isSelected) {
+              formik.setFieldValue("shuttles.checked", false);
+              formik.setFieldValue("shuttles.data", []);
+            }
+            formik.setFieldValue("parking", isSelected);
+          }}
+        >
+          Use parking?
+        </Checkbox>
+        <Checkbox
+          isSelected={
+            formik.values.parking
+              ? false
+              : formik.values.breakfasts.data.length > 0
+          }
           onValueChange={handleCheckBreakfast}
         >
           Breakfast?
         </Checkbox>
-        <If condition={!formik.values.parking && useBreakfast}>
+        <If condition={formik.values.breakfasts.data.length > 0}>
           <Then>
             <div className="border-1 border-solid border-gray-200 flex items-center flex-wrap gap-4 content-between py-2 px-2">
-              {formik.values.breakfasts.map((breakfast, index) => (
+              {formik.values.breakfasts.data.map((breakfast, index) => (
                 <ReactDatePicker
+                  key={index}
                   selected={breakfast.date}
                   onChange={(date: Date) =>
-                    formik.setFieldValue(`breakfasts.${index}`, date)
+                    formik.setFieldValue(`breakfasts.data.${index}`, date)
                   }
+                  wrapperClassName="w-1/3"
                   customInput={
                     <Input
                       onChange={formik.handleChange}
@@ -81,7 +98,12 @@ const BookingForm = () => {
                       variant="bordered"
                       className="w-full"
                       startContent={<FaCalendarDays />}
-                      endContent={<FaXmark className="cursor-pointer" />}
+                      endContent={
+                        <FaTrash
+                          className="cursor-pointer text-red-600"
+                          onClick={() => deleteBreakfast(index)}
+                        />
+                      }
                     />
                   }
                 />
@@ -98,32 +120,49 @@ const BookingForm = () => {
             </div>
           </Then>
         </If>
-        <Checkbox isSelected={useShuttle} onValueChange={handleCheckShuttle}>
+        <Checkbox
+          isSelected={
+            formik.values.parking
+              ? false
+              : formik.values.shuttles.data.length > 0
+          }
+          onValueChange={handleCheckShuttle}
+        >
           Shuttle?
         </Checkbox>
-        <If condition={!formik.values.parking && useShuttle}>
+        <If condition={formik.values.shuttles.data.length > 0}>
           <Then>
             <div className="flex flex-col gap-4 content-between border-1 border-solid border-gray-200 p-2">
-              {formik.values.shuttles.map((shuttle, index) => (
-                <div key={index} className="border-1 border-solid border-gray-200 p-4 flex flex-col gap-2 content-between">
+              {formik.values.shuttles.data.map((shuttle, index) => (
+                <div
+                  key={index}
+                  className="border-1 border-solid border-gray-200 p-4 flex flex-col gap-2 content-between"
+                >
                   <div className="flex items-center justify-between gap-4">
                     <Input
-                      name="client.firstName"
+                      name={`shuttles.data.${index}.flightName`}
                       onChange={formik.handleChange}
                       label="Flight Name"
+                      value={shuttle.flightName}
                       variant="bordered"
                       className="w-full"
                     />
                     <Input
-                      name={`shuttle.${index}.flightName`}
+                      name={`shuttles.data.${index}.flightNumber`}
                       onChange={formik.handleChange}
-                      label="Email"
+                      label="Flight Number"
                       variant="bordered"
                       className="w-full"
                     />
                   </div>
                   <div className="flex items-center justify-between gap-4">
-                    <Select variant="bordered" label="Destination">
+                    <Select
+                      variant="bordered"
+                      label="Destination"
+                      name={`shuttles.data.${index}.destination`}
+                      value={shuttle.destination}
+                      onChange={formik.handleChange}
+                    >
                       <SelectItem
                         key="airport-to-hotel"
                         value="airport-to-hotel"
@@ -141,9 +180,10 @@ const BookingForm = () => {
                       </SelectItem>
                     </Select>
                     <Input
-                      name={`shuttle.${index}.flightName`}
+                      name={`shuttles.data.${index}.destination`}
                       onChange={formik.handleChange}
-                      label="Email"
+                      value={shuttle.destination}
+                      label="Destination"
                       variant="bordered"
                       className="w-full"
                     />
@@ -152,11 +192,12 @@ const BookingForm = () => {
                     <ReactDatePicker
                       selected={shuttle.date}
                       onChange={(date: Date) =>
-                        formik.setFieldValue(`shuttles.${index}`, date)
+                        formik.setFieldValue(`shuttles.data.${index}.date`, date)
                       }
                       className="w-full"
                       showTimeSelect
                       timeFormat="HH:mm"
+                      wrapperClassName="w-full"
                       customInput={
                         <Input
                           onChange={formik.handleChange}
@@ -167,14 +208,17 @@ const BookingForm = () => {
                         />
                       }
                     />
-                    <Input
-                      name="destination"
-                      onChange={formik.handleChange}
-                      label="Destination"
-                      variant="bordered"
-                      className="w-full"
-                    />
                   </div>
+                  <Button
+                    isIconOnly
+                    color="danger"
+                    variant="light"
+                    aria-label="add shuttle"
+                    className="justify-self-end align-self-end"
+                    onClick={() => deleteShuttle(index)}
+                  >
+                    <FaTrash />
+                  </Button>
                 </div>
               ))}
               <Button
