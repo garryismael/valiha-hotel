@@ -1,6 +1,6 @@
 import BaseLayout from "@/components/Layout/BaseLayout";
 import "@/infrastructure/config/container.config";
-import store from "@/infrastructure/store";
+import { store } from "@/infrastructure/store";
 import "@/styles/globals.css";
 import { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
