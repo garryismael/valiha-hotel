@@ -1,9 +1,10 @@
 import { inject, injectable } from "tsyringe";
+import { Room } from "../entities/room";
 
 export interface ReservationRequestDto {
-  roomIds: string[];
-  checkIn: string;
-  checkOut: string;
+  rooms: Room[];
+  checkIn: Date;
+  checkOut: Date;
   parking: boolean;
   client: ClientRequestDto;
   shuttles: ShuttleRequestDto[];

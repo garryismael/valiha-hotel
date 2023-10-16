@@ -1,24 +1,30 @@
 import { Room } from "@/domain/entities/room";
+import { useAppDispatch } from "@/hooks/store";
+import {
+  addRoom,
+  removeRoom,
+} from "@/infrastructure/store/slices/booking-slice";
 import styles from "@/styles/room.module.css";
 import { getCategoryType } from "@/utils/category";
 import Image from "next/image";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 import { FaBed, FaPlus, FaUserGroup, FaXmark } from "react-icons/fa6";
 import { Else, If, Then } from "react-if";
 
-type Props = {
-  room: Room;
-  handleBooking: (roomId: string) => void;
-};
-
-const AvailableRoomCard = ({ room, handleBooking }: Props) => {
+const AvailableRoomCard = ({ room }: { room: Room }) => {
   const [selected, setSelected] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
-  const handleClick = () => {
+  const handleAddRoom = () => {
+    dispatch(addRoom(room));
     setSelected(!selected);
-    handleBooking(room.id);
   };
-  
+
+  const handleRemoveRoom = () => {
+    dispatch(removeRoom(room));
+    setSelected(!selected);
+  };
+
   return (
     <div className={styles.card_container}>
       <div className={styles.card__image}>
@@ -71,7 +77,7 @@ const AvailableRoomCard = ({ room, handleBooking }: Props) => {
             <Then>
               <div
                 className="flex items-center justify-center w-12 h-12 bg-blue-400 hover:scale-105 text-white rounded-full cursor-pointer transition-transform ease-out delay-300 scale-100"
-                onClick={handleClick}
+                onClick={handleAddRoom}
               >
                 <FaPlus size={24} />
               </div>
@@ -79,7 +85,7 @@ const AvailableRoomCard = ({ room, handleBooking }: Props) => {
             <Else>
               <div
                 className="flex items-center justify-center w-12 h-12 bg-red-400 hover:scale-105 text-white rounded-full cursor-pointer transition-transform ease-out delay-300 scale-100"
-                onClick={handleClick}
+                onClick={handleRemoveRoom}
               >
                 <FaXmark size={24} />
               </div>

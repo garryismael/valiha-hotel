@@ -1,10 +1,12 @@
 import BaseLayout from "@/components/Layout/BaseLayout";
 import "@/infrastructure/config/container.config";
+import store from "@/infrastructure/store";
 import "@/styles/globals.css";
 import { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
+import { Provider } from "react-redux";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -19,7 +21,11 @@ type AppPropsWithLayout = AppProps & {
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
-  return <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>;
+  return (
+    <Provider store={store}>
+      <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+    </Provider>
+  );
 }
 
 export default appWithTranslation(App);
