@@ -22,11 +22,11 @@ export interface ShuttleRequestDto {
   flightName: string;
   flightNumber: string;
   destination: string;
-  date: string;
+  date: Date;
 }
 
 export interface BreakfastRequestDto {
-  date: string;
+  date: Date;
 }
 
 export interface ReservationService {
