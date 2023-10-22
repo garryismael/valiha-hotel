@@ -1,3 +1,77 @@
 {
-    "hello": "Bonjour"
+  "hello": "Bonjour",
+  "menu": {
+    "home": "Accueil",
+    "reservation": "Réservation",
+    "blog": "Blog",
+    "room": "Hébergement",
+    "rent_car": "Location de voiture",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Chambre moderne",
+      "book": "Réserver maintenant"
+    },
+    "search": {
+      "button": "Voir disponibilités"
+    },
+    "category": {
+      "title": "Nos Chambres Et Appartements",
+      "big_bed": "Grand(s) lit(s)",
+      "small_bed": "Petit(s) lit(s)",
+      "bathroom": "Salle de bain"
+    },
+    "service": {
+      "parking": "Parking",
+      "breakfast": "Petit-déjeuner",
+      "wifi": "Wifi"
+    },
+    "gallery": "Galerie Photos",
+    "choice": {
+      "title": "Pourquoi Nous Choisir ?",
+      "building": {
+        "title": "Immeuble entièrement neuf et moderne",
+        "paragraph": "Tout l'immeuble est entièrement neuf avec un style moderne dans tout l'enceinte tant à l'extérieur qu'à l'intérieur des chambres."
+      },
+      "room": {
+        "title": "Chambres confortables avec climatisation",
+        "paragraph": "Toutes nos chambres sont équipées d'un climatiseur de qualité pour vous offrir des séjours agréables en hiver comme en été."
+      },
+      "terrace": {
+        "title": "Terrasse avec une vue magnifique",
+        "paragraph": "Une terrasse avec une vue imprenable pour vous permettre d'admirer le coucher du soleil pour bien finir la journée."
+      },
+      "internet": {
+        "title": "Connexion internet à haut débit (fibre optique)",
+        "paragraph": "Une connexion internet à haut débit est à votre disposition avec la fibre optique pour vous permettre d'être connectés en permanence."
+      },
+      "shower": {
+        "title": "Douche avec eau chaude disponible 24 / 7",
+        "paragraph": "Équipées de douche avec eau chaude, toutes nos chambres remplissent les critères pour vous offrir des séjours relaxants."
+      },
+      "location": {
+        "title": "Emplacement en centre-ville (facilité d'accès)",
+        "paragraph": "Situé en plein centre ville, l'accès est facile et vous serez à quelques mètres des centres commerciaux pour faire du shopping."
+      }
+    },
+    "footer": {
+      "service": {
+        "title": "Service",
+        "breakfast": "Petit-déjeuner",
+        "parking": "Parking",
+        "shuttle": "Navette aéroport"
+      },
+      "partners": {
+        "title": "The partners"
+      },
+      "contact": {
+        "title": "Contact",
+        "address": "Immeuble Valiha Antanimena, IVG 204 Antananarivo"
+      }
+    }
+  },
+  "blog": {
+    "title": "Dernières nouvelles"
+  }
 }

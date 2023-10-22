@@ -8,8 +8,15 @@ import {
   FaFacebookF,
   FaGoogle,
 } from "react-icons/fa6";
+import { useLanguageSwitcher } from "@/hooks/translation";
+import { useTranslation } from "next-i18next";
+
 const MenuHeader = () => {
   const isScrolled = useScroll();
+  const { i18n, onSwitch } = useLanguageSwitcher();
+
+  const { t } = useTranslation("room");
+
   return (
     <header className="absolute top-0 w-full z-50">
       <div className="flex items-center justify-between z-20 bg-slate-blue-500 text-white">
@@ -30,14 +37,18 @@ const MenuHeader = () => {
         <div className="flex items-center">
           <div className="flex items-center gap-2 border-solid border-r-2 border-gray-200">
             <Image
-              src="/assets/images/flags/fr.png"
+              src={`/assets/images/flags/${i18n.language}.png`}
               alt="flag"
               sizes="100%"
               width={24}
               height={24}
               className="w-auto"
             />
-            <select className="border-none outline-none mr-2 text-white bg-transparent">
+            <select
+              className="border-none outline-none mr-2 text-white bg-transparent"
+              value={i18n.language}
+              onChange={(e) => onSwitch(e.target.value)}
+            >
               <option value="fr" className="text-slate-500">
                 Français
               </option>
@@ -67,28 +78,31 @@ const MenuHeader = () => {
             src="/assets/images/logo.png"
             width={250}
             height={100}
+            sizes="100%"
             alt="logo"
           />
         </div>
         <nav>
           <ul className="flex items-center gap-16">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">{t("home")}</Link>
             </li>
             <li>
-              <Link href="/rooms/find">Reservation</Link>
+              <Link href="/rooms/find">{t("reservation")}</Link>
             </li>
             <li>
-              <Link href="/">Blog</Link>
+              <Link href="/blogs" locale={i18n.language}>
+                {t("blog")}
+              </Link>
             </li>
             <li>
-              <Link href="/">Rooms</Link>
+              <Link href="/">{t("room")}</Link>
             </li>
             <li>
-              <Link href="/">Cars</Link>
+              <Link href="/">{t("rent_car")}</Link>
             </li>
             <li>
-              <Link href="/">Contact</Link>
+              <Link href="/">{t("contact")}</Link>
             </li>
           </ul>
         </nav>

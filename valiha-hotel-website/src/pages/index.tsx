@@ -9,6 +9,7 @@ import {
   GetCategoriesInteractor,
 } from "@/domain/use-cases/category";
 import { container } from "tsyringe";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function Home({ categories }: { categories: Category[] }) {
   return (
@@ -22,11 +23,16 @@ export default function Home({ categories }: { categories: Category[] }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }: { locale: string }) {
   const getCategories = container.resolve<GetCategoriesUseCase>(
     GetCategoriesInteractor
   );
   const categories = await getCategories.execute();
 
-  return { props: { categories } };
+  return {
+    props: {
+      categories,
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }
