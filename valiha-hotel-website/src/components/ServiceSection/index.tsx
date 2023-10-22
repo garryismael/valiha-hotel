@@ -2,8 +2,10 @@ import { LuCoffee, LuParkingCircle, LuWifi } from "react-icons/lu";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HotelService from "./HotelService";
+import {useTranslation} from "next-i18next";
 
 const ServiceSection = () => {
+  const {t} = useTranslation();  
   return (
     <section className="my-24">
       <Swiper
@@ -21,42 +23,42 @@ const ServiceSection = () => {
         <SwiperSlide>
           <HotelService
             Icon={LuParkingCircle}
-            text="Parking"
+            text={t("home.service.parking")}
             img="/assets/images/services/parking.webp"
           />
         </SwiperSlide>
         <SwiperSlide>
           <HotelService
             Icon={LuWifi}
-            text="Wifi"
+            text={t("home.service.wifi")}
             img="/assets/images/services/wifi.webp"
           />
         </SwiperSlide>
         <SwiperSlide>
           <HotelService
             Icon={LuCoffee}
-            text="Breakfast"
+            text={t("home.service.breakfast")}
             img="/assets/images/services/breakfast.webp"
           />
         </SwiperSlide>
         <SwiperSlide>
           <HotelService
             Icon={LuParkingCircle}
-            text="Parking"
+            text={t("home.service.parking")}
             img="/assets/images/services/parking.webp"
           />
         </SwiperSlide>
         <SwiperSlide>
           <HotelService
             Icon={LuWifi}
-            text="Wifi"
+            text={t("home.service.wifi")}
             img="/assets/images/services/wifi.webp"
           />
         </SwiperSlide>
         <SwiperSlide>
           <HotelService
             Icon={LuCoffee}
-            text="Breakfast"
+            text={t("home.service.breakfast")}
             img="/assets/images/services/breakfast.webp"
           />
         </SwiperSlide>

@@ -3,12 +3,13 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import GalleryHotel from "./GalleryHotel";
 import GalleryThumb from "./GalleryThumb";
-
+import {useTranslation} from "next-i18next";
 const GallerySection = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const {t} = useTranslation();
   return (
     <section className="container mx-auto">
-      <h1 className="title">Gallery Photos</h1>
+      <h1 className="title">{t("home.gallery")}</h1>
       <div>
         <Swiper
           loop={true}

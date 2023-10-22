@@ -14,7 +14,9 @@
       "book": "Réserver maintenant"
     },
     "search": {
-      "button": "Voir disponibilités"
+      "button": "Voir disponibilités",
+      "check_in": "Date de départ",
+      "check_out": "Date d'arrivée"
     },
     "category": {
       "title": "Our rooms and apartments",

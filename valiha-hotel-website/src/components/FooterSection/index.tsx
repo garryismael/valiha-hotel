@@ -7,8 +7,10 @@ import {
   FaPhone,
 } from "react-icons/fa6";
 import styles from "./index.module.css";
+import { useTranslation } from "next-i18next";
 
 const FooterSection = () => {
+  const { t } = useTranslation();
   return (
     <footer className="pt-8">
       <div className="bg-dark-500 py-16">
@@ -32,21 +34,21 @@ const FooterSection = () => {
             </div>
           </div>
           <div className="w-1/4">
-            <h2 className={styles.h2}>SERVICES</h2>
+            <h2 className={`${styles.h2} uppercase`}>{t("home.footer.service.title")}</h2>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#">Petit-déjeuner</a>
+                <a href="#">{t("home.footer.service.breakfast")}</a>
               </li>
               <li>
-                <a href="#">Parking</a>
+                <a href="#">{t("home.footer.service.parking")}</a>
               </li>
               <li>
-                <a href="#">Navette aéroport</a>
+                <a href="#">{t("home.footer.service.shuttle")}</a>
               </li>
             </ul>
           </div>
           <div className="w-1/4">
-            <h2 className={styles.h2}>LES PARTENAIRES</h2>
+            <h2 className={`${styles.h2} uppercase`}>{t("home.footer.partners.title")}</h2>
             <ul className="flex flex-col gap-2">
               <li>
                 <a href="#">Facebook</a>
@@ -66,11 +68,11 @@ const FooterSection = () => {
             </ul>
           </div>
           <div className="w-1/4">
-            <h2 className={styles.h2}>CONTACT</h2>
+            <h2 className={`${styles.h2} uppercase`}>{t("home.footer.contact.title")}</h2>
             <ul className="flex flex-col gap-2">
               <li className="flex items-center gap-2">
                 <FaLocationDot size={20} />
-                <span>Immeuble Valiha Antanimena, IVG 204 Antananarivo</span>
+                <span>{t("home.footer.contact.address")}</span>
               </li>
               <li className="flex items-center gap-2">
                 <FaPhone size={20} />

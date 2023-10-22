@@ -1,4 +1,5 @@
 import { Category } from "@/domain/entities/category";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import { BiBath } from "react-icons/bi";
@@ -6,6 +7,7 @@ import { MdOutlineBed } from "react-icons/md";
 import styles from "./index.module.css";
 
 export default function CategoryCard({ category }: { category: Category }) {
+  const { t } = useTranslation();
   return (
     <div className={styles.card_container}>
       <div className={styles.card__image}>
@@ -27,21 +29,27 @@ export default function CategoryCard({ category }: { category: Category }) {
               <MdOutlineBed className={styles.card_info_icon} />
               <span className={styles.card_info_text}>{category.bigBed}</span>
             </div>
-            <span className={styles.card_info_icon}>Grand(s) lit(s)</span>
+            <span className={styles.card_info_icon}>
+              {t("home.category.big_bed")}
+            </span>
           </div>
           <div className="pr-4">
             <div className="flex items-center gap-1">
               <MdOutlineBed className={styles.card_info_icon} />
               <span className={styles.card_info_text}>{category.smallBed}</span>
             </div>
-            <span className={styles.card_info_icon}>Petit(s) lit(s)</span>
+            <span className={styles.card_info_icon}>
+              {t("home.category.small_bed")}
+            </span>
           </div>
           <div className="pr-4">
             <div className="flex items-center gap-1">
               <BiBath className={styles.card_info_icon} />
               <span className={styles.card_info_text}>1</span>
             </div>
-            <span className={styles.card_info_icon}>Salle de bain</span>
+            <span className={styles.card_info_icon}>
+              {t("home.category.bathroom")}
+            </span>
           </div>
         </div>
       </div>

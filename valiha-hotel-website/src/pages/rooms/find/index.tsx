@@ -1,7 +1,8 @@
 import NestedLayout from "@/components/Layout/NestedLayout";
 import SearchRooms from "@/components/SearchRooms";
 import { NextPageWithLayout } from "@/pages/_app";
-import React, { ReactElement } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { ReactElement } from "react";
 
 const Page: NextPageWithLayout = () => {
   return (
@@ -16,5 +17,15 @@ const Page: NextPageWithLayout = () => {
 Page.getLayout = function getLayout(page: ReactElement) {
   return <NestedLayout>{page}</NestedLayout>;
 };
+
+export async function getServerSideProps({ locale }: { locale: string }) {
+  const translation = await serverSideTranslations(locale, ["common"]);
+
+  return {
+    props: {
+      ...translation,
+    },
+  };
+}
 
 export default Page;

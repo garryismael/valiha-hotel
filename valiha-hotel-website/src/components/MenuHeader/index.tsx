@@ -85,24 +85,38 @@ const MenuHeader = () => {
         <nav>
           <ul className="flex items-center gap-16">
             <li>
-              <Link href="/">{t("menu.home")}</Link>
+              <Link href="/" className="font-extrabold text-base">
+                {t("menu.home")}
+              </Link>
             </li>
             <li>
-              <Link href="/rooms/find">{t("menu.reservation")}</Link>
+              <Link href="/rooms/find" className="font-extrabold text-base">
+                {t("menu.reservation")}
+              </Link>
             </li>
             <li>
-              <Link href="/blogs" locale={i18n.language}>
+              <Link
+                href="/blogs"
+                locale={i18n.language}
+                className="font-extrabold text-base"
+              >
                 {t("menu.blog")}
               </Link>
             </li>
             <li>
-              <Link href="/">{t("menu.room")}</Link>
+              <Link href="/" className="font-extrabold text-base">
+                {t("menu.room")}
+              </Link>
             </li>
             <li>
-              <Link href="/">{t("menu.rent_car")}</Link>
+              <Link href="/" className="font-extrabold text-base">
+                {t("menu.rent_car")}
+              </Link>
             </li>
             <li>
-              <Link href="/">{t("menu.contact")}</Link>
+              <Link href="/" className="font-extrabold text-base">
+                {t("menu.contact")}
+              </Link>
             </li>
           </ul>
         </nav>

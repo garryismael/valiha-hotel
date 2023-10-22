@@ -20,12 +20,16 @@ const HeroSection = () => {
         {images.map((image, i) => (
           <SwiperSlide key={i}>
             <Image
-              src={image}
+              src={image.src}
               alt="room"
               fill={true}
               sizes="100%"
               className="h-full"
             />
+            <div className="absolute top-1/2 left-[15%] -translate-y-1/2">
+              <h1 className="text-7xl text-reddish-orange-500 w-2/3 mb-16">{image.title}</h1>
+              <button className="btn btn-orange">Réserver Maintenant</button>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

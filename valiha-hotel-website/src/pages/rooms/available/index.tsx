@@ -8,6 +8,7 @@ import {
 import container from "@/infrastructure/config/container.config";
 import { NextPageWithLayout } from "@/pages/_app";
 import { NextPageContext } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ReactElement } from "react";
 
 type Props = {
@@ -17,7 +18,7 @@ type Props = {
 const Page: NextPageWithLayout<Props> = ({ rooms }) => {
   return (
     <section className="container mx-auto">
-      <h1 className="title">Available Rooms</h1>
+      <h1 className="title">Chambres disponibles</h1>
       <AvailableRoomList rooms={rooms} />
     </section>
   );
@@ -32,12 +33,15 @@ export async function getServerSideProps(context: NextPageContext) {
   const findAvailability = container.resolve<GetAvailableRoomsUseCase>(
     GetAvailableRoomsInteractor
   );
+  const translation = await serverSideTranslations(context.locale as string, [
+    "common",
+  ]);
 
   const rooms = await findAvailability.execute(
     checkIn as string,
     checkOut as string
   );
-  return { props: { rooms } };
+  return { props: { rooms, ...translation } };
 }
 
 export default Page;
