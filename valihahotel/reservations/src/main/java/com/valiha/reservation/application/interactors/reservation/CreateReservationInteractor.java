@@ -8,6 +8,7 @@ import com.valiha.reservation.application.dto.shuttle.ShuttleRequestDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
+import com.valiha.reservation.application.service.NotificationService;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
 import com.valiha.reservation.application.utils.DateFormatter;
 import com.valiha.reservation.core.constant.AppReservation;
@@ -43,6 +44,7 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
   private final ReservationFactory reservationFactory;
   private final ShuttleFactory shuttleFactory;
   private final BreakfastFactory breakfastFactory;
+  private final NotificationService notificationService;
 
   @Override
   public ReservationResponseDto execute(ReservationRequestDto requestDto) {
@@ -162,8 +164,10 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
 
     reservation = this.reservationRepository.save(reservation);
 
-    return this.reservationPresenter.prepareSuccessView(
-        ReservationResponseDto.from(reservation)
-      );
+    ReservationResponseDto responseDto = ReservationResponseDto.from(
+      reservation
+    );
+    notificationService.execute(responseDto);
+    return this.reservationPresenter.prepareSuccessView(responseDto);
   }
 }

@@ -4,9 +4,7 @@ public enum PaymentState {
   PENDING("pending"),
   PAID("paid"),
   FAILED("failed"),
-  CANCELED("canceled"),
-  REFUNDED("refunded"),
-  EXPIRED("expired");
+  REFUNDED("refunded");
 
   private final String state;
 

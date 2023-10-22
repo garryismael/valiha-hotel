@@ -10,8 +10,6 @@ public class AppPayment {
     PaymentState.PENDING.value(),
     PaymentState.PAID.value(),
     PaymentState.FAILED.value(),
-    PaymentState.CANCELED.value(),
-    PaymentState.EXPIRED.value(),
     PaymentState.REFUNDED.value()
   );
 }
