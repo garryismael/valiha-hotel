@@ -1,11 +1,11 @@
 {
   "hello": "Hello",
   "menu": {
-    "home": "Accueil",
-    "reservation": "Réservation",
+    "home": "Home",
+    "reservation": "Reservation",
     "blog": "Blog",
-    "room": "Hébergement",
-    "rent_car": "Location de voiture",
+    "room": "Room",
+    "rent_car": "Car rental",
     "contact": "Contact"
   },
   "home": {
@@ -17,7 +17,7 @@
       "button": "Voir disponibilités"
     },
     "category": {
-      "title": "Nos Chambres Et Appartements",
+      "title": "Our rooms and apartments",
       "big_bed": "Grand(s) lit(s)",
       "small_bed": "Petit(s) lit(s)",
       "bathroom": "Salle de bain"

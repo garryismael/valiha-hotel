@@ -15,7 +15,7 @@ const MenuHeader = () => {
   const isScrolled = useScroll();
   const { i18n, onSwitch } = useLanguageSwitcher();
 
-  const { t } = useTranslation("room");
+  const { t } = useTranslation();
 
   return (
     <header className="absolute top-0 w-full z-50">
@@ -85,24 +85,24 @@ const MenuHeader = () => {
         <nav>
           <ul className="flex items-center gap-16">
             <li>
-              <Link href="/">{t("home")}</Link>
+              <Link href="/">{t("menu.home")}</Link>
             </li>
             <li>
-              <Link href="/rooms/find">{t("reservation")}</Link>
+              <Link href="/rooms/find">{t("menu.reservation")}</Link>
             </li>
             <li>
               <Link href="/blogs" locale={i18n.language}>
-                {t("blog")}
+                {t("menu.blog")}
               </Link>
             </li>
             <li>
-              <Link href="/">{t("room")}</Link>
+              <Link href="/">{t("menu.room")}</Link>
             </li>
             <li>
-              <Link href="/">{t("rent_car")}</Link>
+              <Link href="/">{t("menu.rent_car")}</Link>
             </li>
             <li>
-              <Link href="/">{t("contact")}</Link>
+              <Link href="/">{t("menu.contact")}</Link>
             </li>
           </ul>
         </nav>

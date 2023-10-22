@@ -28,11 +28,12 @@ export async function getServerSideProps({ locale }: { locale: string }) {
     GetCategoriesInteractor
   );
   const categories = await getCategories.execute();
+  const translation = await serverSideTranslations(locale, ["common"]);
 
   return {
     props: {
       categories,
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...translation,
     },
   };
 }
