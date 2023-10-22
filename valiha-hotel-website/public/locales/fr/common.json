@@ -73,6 +73,29 @@
       }
     }
   },
+  "reservation": {
+    "booking": {
+      "title": "Formulaire de Réservation",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "phone_number": "Numéro téléphone",
+      "email": "E-mail",
+      "use_parking": "Utiliser un parking",
+      "breakfast": {
+        "check_in": "Date du petit-déjeuner"
+      },
+      "shuttle": {
+        "shuttle_name": "Nom du vol",
+        "shuttle_number": "Numéro du vol",
+        "destination": {
+          "label": "Destination",
+          "airport_to_hotel": "Aéroport à l'hôtel",
+          "hotel_to_airport": "Hotel à l'aéroport"
+        },
+        "date": "Date de la Navette"
+      }
+    }
+  },
   "blog": {
     "title": "Dernières nouvelles"
   }
