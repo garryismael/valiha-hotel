@@ -2,24 +2,19 @@
 import { AccountsIcon } from "@/icons/sidebar/accounts-icon";
 import { BalanceIcon } from "@/icons/sidebar/balance-icon";
 import { CustomersIcon } from "@/icons/sidebar/customers-icon";
-import { DevIcon } from "@/icons/sidebar/dev-icon";
 import { HomeIcon } from "@/icons/sidebar/home-icon";
 import { PaymentsIcon } from "@/icons/sidebar/payments-icon";
 import { ProductsIcon } from "@/icons/sidebar/products-icon";
 import { ReportsIcon } from "@/icons/sidebar/reports-icon";
-import { SettingsIcon } from "@/icons/sidebar/settings-icon";
-import { ViewIcon } from "@/icons/sidebar/view-icon";
-import { Avatar, Tooltip } from "@nextui-org/react";
 
 import { useSidebarContext } from "@/components/Layout/context";
-import { ChangeLogIcon } from "@/icons/sidebar/changelog-icon";
-import { FilterIcon } from "@/icons/sidebar/filter-icon";
 import { usePathname } from "next/navigation";
 import { CollapseItems } from "./collapse-items";
 import { CompaniesDropdown } from "./companies-dropdown";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { Sidebar } from "./sidebar.styles";
+import Image from "next/image";
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
@@ -36,26 +31,55 @@ export const SidebarWrapper = () => {
         })}
       >
         <div className={Sidebar.Header()}>
-          <CompaniesDropdown />
+          <Image src="/images/logo.png" alt="logo" width={150} height={50} />
         </div>
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
             <SidebarItem
-              title="Home"
+              title="Tableau de bord"
               icon={<HomeIcon />}
               isActive={pathname === "/"}
               href="/"
             />
-            <SidebarMenu title="Main Menu">
+            <SidebarMenu title="Menu Principal">
               <SidebarItem
-                isActive={pathname === "/accounts"}
-                title="Accounts"
-                icon={<AccountsIcon />}
-                href="accounts"
+                isActive={pathname === "/categories"}
+                title="Catégories"
+                icon={<CustomersIcon />}
+                href="categories"
+              />
+              <SidebarItem
+                isActive={pathname === "/rooms"}
+                title="Chambres"
+                icon={<ProductsIcon />}
+                href="rooms"
+              />
+              <SidebarItem
+                isActive={pathname === "/reservations"}
+                title="Réservations"
+                icon={<ProductsIcon />}
+                href="reservations"
+              />
+              <SidebarItem
+                isActive={pathname === "/cars"}
+                title="Véhicules"
+                icon={<ReportsIcon />}
+                href="cars"
+              />
+              <SidebarItem
+                isActive={pathname === "/locations"}
+                title="Locations"
+                icon={<ReportsIcon />}
+                href="cars"
               />
               <SidebarItem
                 isActive={pathname === "/payments"}
-                title="Payments"
+                title="Paiements"
+                icon={<PaymentsIcon />}
+              />
+              <SidebarItem
+                isActive={pathname === "/transactions"}
+                title="Transactions"
                 icon={<PaymentsIcon />}
               />
               <CollapseItems
@@ -63,69 +87,28 @@ export const SidebarWrapper = () => {
                 items={["Banks Accounts", "Credit Cards", "Loans"]}
                 title="Balances"
               />
-              <SidebarItem
-                isActive={pathname === "/categories"}
-                title="Categories"
-                icon={<CustomersIcon />}
-                href="categories"
-              />
-              <SidebarItem
-                isActive={pathname === "/rooms"}
-                title="Rooms"
-                icon={<ProductsIcon />}
-                href="rooms"
-              />
-              <SidebarItem
-                isActive={pathname === "/cars"}
-                title="Cars"
-                icon={<ReportsIcon />}
-                href="cars"
-              />
             </SidebarMenu>
 
-            <SidebarMenu title="General">
+            <SidebarMenu title="Général">
               <SidebarItem
-                isActive={pathname === "/developers"}
-                title="Developers"
-                icon={<DevIcon />}
+                isActive={pathname === "/blogs"}
+                title="Blogs"
+                icon={<AccountsIcon />}
+                href="blogs"
               />
               <SidebarItem
-                isActive={pathname === "/view"}
-                title="View Test Data"
-                icon={<ViewIcon />}
+                isActive={pathname === "/clients"}
+                title="Clients"
+                icon={<AccountsIcon />}
+                href="accounts"
               />
               <SidebarItem
-                isActive={pathname === "/settings"}
-                title="Settings"
-                icon={<SettingsIcon />}
+                isActive={pathname === "/accounts"}
+                title="Administrateurs"
+                icon={<AccountsIcon />}
+                href="accounts"
               />
             </SidebarMenu>
-
-            <SidebarMenu title="Updates">
-              <SidebarItem
-                isActive={pathname === "/changelog"}
-                title="Changelog"
-                icon={<ChangeLogIcon />}
-              />
-            </SidebarMenu>
-          </div>
-          <div className={Sidebar.Footer()}>
-            <Tooltip content={"Settings"} color="primary">
-              <div className="max-w-fit">
-                <SettingsIcon />
-              </div>
-            </Tooltip>
-            <Tooltip content={"Adjustments"} color="primary">
-              <div className="max-w-fit">
-                <FilterIcon />
-              </div>
-            </Tooltip>
-            <Tooltip content={"Profile"} color="primary">
-              <Avatar
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                size="sm"
-              />
-            </Tooltip>
           </div>
         </div>
       </div>

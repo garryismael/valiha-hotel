@@ -23,7 +23,7 @@ http.interceptors.request.use(
     } else {
       session = await getSession();
     }
-    console.log(session?.user.access_token);
+    
     if (session && session?.user.access_token) {
       config.headers["Authorization"] = `Bearer ${session.user.access_token}`;
     }
