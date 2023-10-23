@@ -16,12 +16,7 @@ export class CategoryServiceImpl implements CategoryService {
 
     const response = await http.post<Category>(
       "/RESERVATIONS-SERVICE/categories",
-      form,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      request
     );
     console.log(response.data);
     return response.data;

@@ -1,4 +1,5 @@
 "use client";
+import { categoryTypes } from "@/constants/category";
 import { useCategoryForm } from "@/hooks/useCategory";
 import {
   Button,
@@ -8,20 +9,25 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
+  Select,
+  SelectItem,
 } from "@nextui-org/react";
 import { useRef } from "react";
-import { FaUpload } from "react-icons/fa6";
+import { FaPlus, FaUpload } from "react-icons/fa6";
 
 const AddCategory = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-
   const { formik, onOpen, isOpen, onOpenChange } = useCategoryForm();
 
   return (
     <div>
       <>
-        <Button onPress={onOpen} color="primary">
-          Add Category
+        <Button
+          onPress={onOpen}
+          color="primary"
+          startContent={<FaPlus size={16} />}
+        >
+          Catégorie
         </Button>
         <Modal
           isOpen={isOpen}
@@ -32,67 +38,76 @@ const AddCategory = () => {
             {(onClose) => (
               <form onSubmit={formik.handleSubmit}>
                 <ModalHeader className="flex flex-col gap-1">
-                  Add Category
+                  Ajouter une catégorie de chambre
                 </ModalHeader>
                 <ModalBody>
                   <Input
+                    name="title"
                     label="Title"
                     variant="bordered"
+                    radius="sm"
                     value={formik.values.title}
-                    onValueChange={(value) =>
-                      formik.setFieldValue("title", value)
-                    }
+                    onChange={formik.handleChange}
                   />
-                  <Input
-                    label="Type"
+                  <Select
+                    name="type"
+                    label="Type de chambre"
                     variant="bordered"
-                    value={formik.values.type}
-                    onValueChange={(value) =>
-                      formik.setFieldValue("type", value)
-                    }
-                  />
+                    radius="sm"
+                    placeholder="Sélectionner le type de chambre"
+                    onChange={formik.handleChange}
+                  >
+                    {Object.values(categoryTypes).map((type) => (
+                      <SelectItem key={type.text} value={type.text}>
+                        {type.text}
+                      </SelectItem>
+                    ))}
+                  </Select>
                   <Input
+                    name="pax"
                     label="Pax"
                     type="number"
                     variant="bordered"
+                    radius="sm"
                     value={formik.values.pax.toString()}
-                    onValueChange={(value) =>
-                      formik.setFieldValue("pax", value)
-                    }
+                    onChange={formik.handleChange}
                   />
                   <Input
+                    name="bigBed"
                     label="Big Bed"
                     type="number"
                     variant="bordered"
+                    radius="sm"
                     value={formik.values.bigBed.toString()}
-                    onValueChange={(value) =>
-                      formik.setFieldValue("bigBed", value)
-                    }
+                    onChange={formik.handleChange}
                   />
                   <Input
+                    name="smallBed"
                     label="Small Bed"
                     type="number"
                     variant="bordered"
+                    radius="sm"
                     value={formik.values.smallBed.toString()}
-                    onValueChange={(value) =>
-                      formik.setFieldValue("smallBed", value)
-                    }
+                    onChange={formik.handleChange}
                   />
                   <Input
                     label="Image"
                     variant="bordered"
                     value={formik.values.image?.name}
                     readOnly={true}
+                    radius="sm"
                     onClick={() => {
                       inputRef.current?.click();
                     }}
                     startContent={<FaUpload />}
                   />
                   <Input
+                    name=""
                     ref={inputRef}
                     label="Image"
                     variant="bordered"
                     type="file"
+                    radius="sm"
                     className="input-file"
                     onChange={(e) => {
                       formik.setFieldValue("image", e.target.files?.item(0));
@@ -101,10 +116,10 @@ const AddCategory = () => {
                 </ModalBody>
                 <ModalFooter>
                   <Button color="danger" variant="flat" onClick={onClose}>
-                    Close
+                    Annuler
                   </Button>
                   <Button color="primary" onPress={onClose} type="submit">
-                    Add Category
+                    Ajouter
                   </Button>
                 </ModalFooter>
               </form>

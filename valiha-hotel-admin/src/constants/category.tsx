@@ -26,11 +26,11 @@ export const categoryBreadcrumbs: Breadcrumb[] = [
 
 export const categoryTypes = {
   "hotel-with-breakfast": {
-    text: "Hotel With Breakfast",
+    text: "Hotel avec petit-déjeuner",
     icon: <MdRestaurantMenu size={24}/>,
   },
   "apartment-with-kitchen": {
-    text: "Apartment with Kitchen",
+    text: "Hôtel avec appartement",
     icon: <FaKitchenSet size={24}/>,
   },
 };

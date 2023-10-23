@@ -22,7 +22,6 @@ export const useCategoryForm = () => {
       smallBed: 0,
     },
     onSubmit: async (values) => {
-        console.log("submited");
       onOpenChange();
       await createCategory.execute(values);
     },
