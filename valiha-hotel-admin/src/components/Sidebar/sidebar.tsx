@@ -1,20 +1,15 @@
 "use client";
-import { AccountsIcon } from "@/icons/sidebar/accounts-icon";
-import { BalanceIcon } from "@/icons/sidebar/balance-icon";
-import { CustomersIcon } from "@/icons/sidebar/customers-icon";
 import { HomeIcon } from "@/icons/sidebar/home-icon";
-import { PaymentsIcon } from "@/icons/sidebar/payments-icon";
-import { ProductsIcon } from "@/icons/sidebar/products-icon";
-import { ReportsIcon } from "@/icons/sidebar/reports-icon";
 
 import { useSidebarContext } from "@/components/Layout/context";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { CollapseItems } from "./collapse-items";
-import { CompaniesDropdown } from "./companies-dropdown";
+import { FaBed, FaCreditCard, FaDoorOpen, FaUsers } from "react-icons/fa6";
+import { MdArticle, MdDirectionsCar, MdEvent, MdHistory, MdOutlineCarRental } from "react-icons/md";
+import { RiShieldUserFill } from 'react-icons/ri';
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { Sidebar } from "./sidebar.styles";
-import Image from "next/image";
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
@@ -45,67 +40,63 @@ export const SidebarWrapper = () => {
               <SidebarItem
                 isActive={pathname === "/categories"}
                 title="Catégories"
-                icon={<CustomersIcon />}
+                icon={<FaBed size={24} className="text-white-gray-500"/>}
                 href="categories"
               />
               <SidebarItem
                 isActive={pathname === "/rooms"}
                 title="Chambres"
-                icon={<ProductsIcon />}
+                icon={<FaDoorOpen size={24} className="text-white-gray-500" />}
                 href="rooms"
               />
               <SidebarItem
                 isActive={pathname === "/reservations"}
                 title="Réservations"
-                icon={<ProductsIcon />}
+                icon={<MdEvent size={24} className="text-white-gray-500" />}
                 href="reservations"
               />
               <SidebarItem
                 isActive={pathname === "/cars"}
                 title="Véhicules"
-                icon={<ReportsIcon />}
+                icon={<MdDirectionsCar size={24} className="text-white-gray-500"/>}
                 href="cars"
               />
               <SidebarItem
                 isActive={pathname === "/locations"}
                 title="Locations"
-                icon={<ReportsIcon />}
+                icon={<MdOutlineCarRental size={24} className="text-white-gray-500"/>}
                 href="cars"
               />
               <SidebarItem
                 isActive={pathname === "/payments"}
                 title="Paiements"
-                icon={<PaymentsIcon />}
+                icon={<FaCreditCard size={24} className="text-white-gray-500"/>}
               />
               <SidebarItem
                 isActive={pathname === "/transactions"}
                 title="Transactions"
-                icon={<PaymentsIcon />}
+                icon={<MdHistory size={24} className="text-white-gray-500"/>}
               />
-              <CollapseItems
-                icon={<BalanceIcon />}
-                items={["Banks Accounts", "Credit Cards", "Loans"]}
-                title="Balances"
-              />
+              
             </SidebarMenu>
 
             <SidebarMenu title="Général">
               <SidebarItem
                 isActive={pathname === "/blogs"}
                 title="Blogs"
-                icon={<AccountsIcon />}
+                icon={<MdArticle size={24} className="text-white-gray-500" />}
                 href="blogs"
               />
               <SidebarItem
                 isActive={pathname === "/clients"}
                 title="Clients"
-                icon={<AccountsIcon />}
+                icon={<RiShieldUserFill size={24} className="text-white-gray-500"/>}
                 href="accounts"
               />
               <SidebarItem
                 isActive={pathname === "/accounts"}
                 title="Administrateurs"
-                icon={<AccountsIcon />}
+                icon={<FaUsers size={24} className="text-white-gray-500"/>}
                 href="accounts"
               />
             </SidebarMenu>
