@@ -19,7 +19,7 @@ const CategoryList = ({ categories }: Props) => {
   return (
     <>
       <Breadcrumbs breadcrumbs={categoryBreadcrumbs} />
-      <h3 className="title">Rooms And Apartments</h3>
+      <h3 className="title">Categories des chambres</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
           <Input
@@ -27,7 +27,7 @@ const CategoryList = ({ categories }: Props) => {
               input: "w-full",
               mainWrapper: "w-full",
             }}
-            placeholder="Search users"
+            placeholder="Rechercher des categories"
           />
           <SettingsIcon />
           <TrashIcon />

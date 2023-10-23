@@ -1,22 +1,21 @@
 import { Breadcrumb } from "@/components/BreadCrumbs";
-import { HouseIcon } from "@/icons/breadcrumb/house-icon";
-import { UsersIcon } from "@/icons/breadcrumb/users-icon";
-import { FaKitchenSet } from "react-icons/fa6";
+import { HomeIcon } from "@/icons/sidebar/home-icon";
+import { FaBed, FaKitchenSet } from "react-icons/fa6";
 import { MdRestaurantMenu } from "react-icons/md";
 
 export const categoryBreadcrumbs: Breadcrumb[] = [
   {
     id: 1,
-    icon: <HouseIcon />,
-    text: "Home",
+    icon: <HomeIcon />,
+    text: "Tableau de bord",
     href: "/",
     spacer: "/",
   },
   {
     id: 2,
-    icon: <UsersIcon />,
-    text: "Users",
-    href: "/accounts",
+    icon: <FaBed size={24} className="text-white-gray-500 ml-2"/>,
+    text: "Categories",
+    href: "/categories",
     spacer: "/",
   },
   {

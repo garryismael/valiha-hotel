@@ -6,8 +6,8 @@
 }
 
 .room__category {
-    @apply text-2xl font-black;
-    @apply text-dark-500 hover:text-orange-500;
+    @apply text-2xl text-white-gray-500 font-semibold;
+    @apply hover:text-orange-500;
 }
 
 .card__image {
