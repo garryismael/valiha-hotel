@@ -2,17 +2,12 @@ import { Category } from "@/domain/entities/category";
 import { CategoryRequest, CategoryService } from "@/domain/use-cases/category";
 import http, { httpClient } from "@/lib/axios";
 import { injectable } from "tsyringe";
+import { createFormData } from "../utils";
 
 @injectable()
 export class CategoryServiceImpl implements CategoryService {
   async create(request: CategoryRequest): Promise<Category> {
-    const data = new FormData();
-    data.append("title", request.title);
-    data.append("type", request.type);
-    data.append("pax", request.pax.toString());
-    data.append("bigBed", request.bigBed.toString());
-    data.append("smallBed", request.smallBed.toString());
-    data.append("image", request.image as File);
+    const data = createFormData(request);
 
     const response = await http.post<Category>(
       "/RESERVATIONS-SERVICE/categories",
