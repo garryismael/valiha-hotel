@@ -6,12 +6,15 @@ import {
 } from "@/domain/use-cases/category";
 import { useDisclosure } from "@nextui-org/react";
 import { useFormik } from "formik";
+import { useAppDispatch } from "./useStore";
+import { addCategory } from "@/lib/store/slices/category-slice";
 
 export const useCategoryForm = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const createCategory = container.resolve<CreateCategoryUseCase>(
     CreateCategoryInteractor
   );
+  const dispatch = useAppDispatch();
   const formik = useFormik<CategoryRequest>({
     initialValues: {
       title: "",
@@ -23,7 +26,8 @@ export const useCategoryForm = () => {
     },
     onSubmit: async (values) => {
       onOpenChange();
-      await createCategory.execute(values);
+      const category = await createCategory.execute(values);
+      dispatch(addCategory(category));
     },
   });
 
