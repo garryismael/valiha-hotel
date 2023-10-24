@@ -6,6 +6,7 @@ import NextThemesProvider from "@/components/Layout/NextThemesProvider";
 import NextUIWrapper from "@/components/Layout/NextUIWrapper";
 import NextAuthProvider from "@/components/Provider";
 import type { Metadata } from "next";
+import ReduxProvider from "@/components/StoreProvider";
 
 export const metadata: Metadata = {
   title: "Valiha Hotel - Admin",
@@ -20,13 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextAuthProvider>
-          <NextThemesProvider>
-            <NextUIWrapper>
-              <Layout>{children}</Layout>
-            </NextUIWrapper>
-          </NextThemesProvider>
-        </NextAuthProvider>
+        <ReduxProvider>
+          <NextAuthProvider>
+            <NextThemesProvider>
+              <NextUIWrapper>
+                <Layout>{children}</Layout>
+              </NextUIWrapper>
+            </NextThemesProvider>
+          </NextAuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
