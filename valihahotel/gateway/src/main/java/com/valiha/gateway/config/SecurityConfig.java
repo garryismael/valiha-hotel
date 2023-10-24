@@ -24,7 +24,7 @@ public class SecurityConfig {
   };
   private static final String[] AUTH_RESERVATION = {
     "/RESERVATIONS-SERVICE/reservations/**",
-    "/RESERVATIONS-SERVICE/categories/**"
+    "/RESERVATIONS-SERVICE/categories/**",
   };
 
   @Bean
@@ -34,6 +34,8 @@ public class SecurityConfig {
       .csrf(c -> c.disable())
       .authorizeExchange(exchange ->
         exchange
+          .pathMatchers(HttpMethod.OPTIONS, "/**")
+          .permitAll()
           .pathMatchers(HttpMethod.GET, AUTH_API_GET)
           .permitAll()
           .pathMatchers(HttpMethod.POST, AUTH_RESERVATION)

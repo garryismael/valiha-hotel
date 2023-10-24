@@ -18,7 +18,7 @@ export const useCategoryForm = () => {
       type: "",
       pax: 1,
       image: null,
-      bigBed: 0,
+      bigBed: 1,
       smallBed: 0,
     },
     onSubmit: async (values) => {
