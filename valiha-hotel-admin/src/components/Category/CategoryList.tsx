@@ -1,6 +1,7 @@
 "use client";
 
 import { categoryBreadcrumbs } from "@/constants/category";
+import { Category } from "@/domain/entities/category";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
 import { InfoIcon } from "@/icons/accounts/info-icon";
 import { TrashIcon } from "@/icons/accounts/trash-icon";
@@ -9,10 +10,19 @@ import { Input } from "@nextui-org/react";
 import Breadcrumbs from "../BreadCrumbs";
 import CategoryCard from "./CategoryCard";
 import AddCategory from "./add-category";
-import { useAppSelector } from "@/hooks/useStore";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
+import { setCategories } from "@/lib/store/slices/category-slice";
 
-const CategoryList = () => {
+type Props = {
+  categories: Category[];
+};
+
+const CategoryList = ({ categories: data }: Props) => {
+  const dispatch = useAppDispatch();
+  dispatch(setCategories(data));
+
   const { categories } = useAppSelector((state) => state.category);
+
   return (
     <>
       <Breadcrumbs breadcrumbs={categoryBreadcrumbs} />
