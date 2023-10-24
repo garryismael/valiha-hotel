@@ -13,6 +13,9 @@ export const CategorySlice = createSlice({
     setCategories: (state, action: PayloadAction<Category[]>) => {
       state.categories = action.payload;
     },
+    addCategory: (state, action: PayloadAction<Category>) => {
+      state.categories.push(action.payload);
+    }
   },
 });
 
