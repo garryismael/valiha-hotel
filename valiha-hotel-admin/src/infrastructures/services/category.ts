@@ -7,7 +7,7 @@ import { injectable } from "tsyringe";
 export class CategoryServiceImpl implements CategoryService {
   async create(request: CategoryRequest): Promise<Category> {
     const data = new FormData();
-    data.append("type", request.title);
+    data.append("title", request.title);
     data.append("type", request.type);
     data.append("bigBed", request.bigBed.toString());
     data.append("smallBed", request.smallBed.toString());

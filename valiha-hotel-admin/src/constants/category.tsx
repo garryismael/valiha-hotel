@@ -13,7 +13,7 @@ export const categoryBreadcrumbs: Breadcrumb[] = [
   },
   {
     id: 2,
-    icon: <FaBed size={24} className="text-white-gray-500 ml-2"/>,
+    icon: <FaBed size={24} className="text-white-gray-500 ml-2" />,
     text: "Categories",
     href: "/categories",
     spacer: "/",
@@ -24,13 +24,18 @@ export const categoryBreadcrumbs: Breadcrumb[] = [
   },
 ];
 
-export const categoryTypes = {
+export type CategoryType = {
+  text: string;
+  icon: JSX.Element;
+};
+
+export const categoryTypes: Record<string, CategoryType> = {
   "hotel-with-breakfast": {
     text: "Hotel avec petit-déjeuner",
-    icon: <MdRestaurantMenu size={24}/>,
+    icon: <MdRestaurantMenu size={24} />,
   },
   "apartment-with-kitchen": {
     text: "Hôtel avec appartement",
-    icon: <FaKitchenSet size={24}/>,
+    icon: <FaKitchenSet size={24} />,
   },
 };

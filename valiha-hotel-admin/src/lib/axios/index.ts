@@ -34,20 +34,4 @@ http.interceptors.request.use(
   }
 );
 
-http.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const { response } = error;
-    const originalRequest = error.config;
-
-    if (!response || response.status !== 401 || originalRequest._retry) {
-      return Promise.reject(error);
-    }
-
-    if (!isServer) {
-      await signIn();
-    }
-  }
-);
-
 export default http;

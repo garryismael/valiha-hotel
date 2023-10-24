@@ -57,9 +57,9 @@ const AddCategory = () => {
                     placeholder="Sélectionner le type de chambre"
                     onChange={formik.handleChange}
                   >
-                    {Object.values(categoryTypes).map((type) => (
-                      <SelectItem key={type.text} value={type.text}>
-                        {type.text}
+                    {Object.keys(categoryTypes).map((key: string) => (
+                      <SelectItem key={key} value={key}>
+                        {categoryTypes[key].text}
                       </SelectItem>
                     ))}
                   </Select>
