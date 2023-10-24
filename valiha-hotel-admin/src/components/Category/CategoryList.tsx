@@ -12,6 +12,7 @@ import CategoryCard from "./CategoryCard";
 import AddCategory from "./add-category";
 import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { setCategories } from "@/lib/store/slices/category-slice";
+import { useEffect } from "react";
 
 type Props = {
   categories: Category[];
@@ -19,7 +20,9 @@ type Props = {
 
 const CategoryList = ({ categories: data }: Props) => {
   const dispatch = useAppDispatch();
-  dispatch(setCategories(data));
+  useEffect(() => {
+    dispatch(setCategories(data));
+  }, []);
 
   const { categories } = useAppSelector((state) => state.category);
 
