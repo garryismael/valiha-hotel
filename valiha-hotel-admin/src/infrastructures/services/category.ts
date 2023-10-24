@@ -6,17 +6,22 @@ import { injectable } from "tsyringe";
 @injectable()
 export class CategoryServiceImpl implements CategoryService {
   async create(request: CategoryRequest): Promise<Category> {
-    const form = new FormData();
-    form.append("title", request.title);
-    form.append("type", request.type);
-    form.append("pax", request.pax.toString());
-    form.append("bigBed", request.bigBed.toString());
-    form.append("smallBed", request.smallBed.toString());
-    form.append("image", request.image as File);
+    const data = new FormData();
+    data.append("title", request.title);
+    data.append("type", request.type);
+    data.append("pax", request.pax.toString());
+    data.append("bigBed", request.bigBed.toString());
+    data.append("smallBed", request.smallBed.toString());
+    data.append("image", request.image as File);
 
     const response = await http.post<Category>(
       "/RESERVATIONS-SERVICE/categories",
-      request
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
     console.log(response.data);
     return response.data;
