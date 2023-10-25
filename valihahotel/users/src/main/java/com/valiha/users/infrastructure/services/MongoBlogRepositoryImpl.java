@@ -4,6 +4,7 @@ import com.valiha.users.application.repository.GenericRepository;
 import com.valiha.users.application.repository.UserRepository;
 import com.valiha.users.core.entities.model.Blog;
 import com.valiha.users.core.entities.model.User;
+import com.valiha.users.infrastructure.config.UserData;
 import com.valiha.users.infrastructure.data.BlogDataMapper;
 import com.valiha.users.infrastructure.data.UserDataMapper;
 import com.valiha.users.infrastructure.repository.MongoBlogRepository;
@@ -93,7 +94,7 @@ public class MongoBlogRepositoryImpl implements GenericRepository<Blog> {
       .id(dataMapper.getId())
       .title(dataMapper.getTitle())
       .text(dataMapper.getText())
-      .image(dataMapper.getImage())
+      .image(String.format("%s/%s", UserData.BASE_URL, dataMapper.getImage()))
       .user(UserRepositoryImpl.toUser(dataMapper.getUser()))
       .build();
   }
