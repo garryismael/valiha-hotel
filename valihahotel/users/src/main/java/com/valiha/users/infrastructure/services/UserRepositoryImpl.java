@@ -2,6 +2,7 @@ package com.valiha.users.infrastructure.services;
 
 import com.valiha.users.application.repository.UserRepository;
 import com.valiha.users.core.entities.model.User;
+import com.valiha.users.infrastructure.config.UserData;
 import com.valiha.users.infrastructure.data.UserDataMapper;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -86,7 +87,7 @@ public class UserRepositoryImpl implements UserRepository {
       .lastName(user.getLastName())
       .phoneNumber(user.getPhoneNumber())
       .email(user.getEmail())
-      .image(user.getImage())
+      .image(String.format("%s/%s", UserData.BASE_URL, user.getImage()))
       .build();
   }
 }
