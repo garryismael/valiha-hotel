@@ -18,6 +18,7 @@ public class UserDataMapper {
   private String lastName;
   private String phoneNumber;
   private String email;
+  private String image;
   private String password;
 
   public static UserDataMapper from(User user) {
@@ -28,6 +29,7 @@ public class UserDataMapper {
       .lastName(user.getLastName())
       .phoneNumber(user.getPhoneNumber())
       .email(user.getEmail())
+      .image(user.getImage())
       .password(user.getPassword())
       .build();
   }
@@ -40,6 +42,7 @@ public class UserDataMapper {
       .lastName(user.getLastName())
       .phoneNumber(user.firstAttribute("phoneNumber"))
       .email(user.getEmail())
+      .image(user.firstAttribute("image"))
       .build();
   }
 }

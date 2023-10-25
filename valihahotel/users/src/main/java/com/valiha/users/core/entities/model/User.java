@@ -15,6 +15,7 @@ public class User implements IUser, InputValidator {
   private String lastName;
   private String phoneNumber;
   private String email;
+  private String image;
   private String password;
 
   public class Builder {
@@ -50,6 +51,11 @@ public class User implements IUser, InputValidator {
       return this;
     }
 
+    public Builder image(String value) {
+      image = value;
+      return this;
+    }
+
     public Builder password(String value) {
       password = value;
       return this;
@@ -78,6 +84,11 @@ public class User implements IUser, InputValidator {
   @Override
   public boolean lastNameIsValid() {
     return this.lastName == null || this.lastName.trim().length() > 3;
+  }
+
+  @Override
+  public boolean imageIsValid() {
+    return this.image != null;
   }
 
   @Override
@@ -123,6 +134,10 @@ public class User implements IUser, InputValidator {
         UserValidator.KEY_PHONE_NUMBER,
         UserValidator.INVALID_PHONE_NUMBER_ERROR
       );
+    }
+
+    if (!imageIsValid()) {
+      errors.put(UserValidator.KEY_IMAGE, UserValidator.INVALID_IMAGE_ERROR);
     }
 
     return errors;

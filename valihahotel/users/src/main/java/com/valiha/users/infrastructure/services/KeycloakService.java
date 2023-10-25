@@ -3,8 +3,9 @@ package com.valiha.users.infrastructure.services;
 import com.valiha.users.infrastructure.data.UserDataMapper;
 import jakarta.ws.rs.core.Response;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.UserResource;
@@ -48,17 +49,21 @@ public class KeycloakService {
     String lastName,
     String phoneNumber,
     String email,
+    String image,
     String password
   ) {
     UserRepresentation user = new UserRepresentation();
+
+    Map<String, List<String>> attributes = new HashMap<>();
+    attributes.put("phoneNumber", Arrays.asList(phoneNumber));
+    attributes.put("image", Arrays.asList(image));
+
     user.setUsername(email);
     user.setEmail(email);
     user.setFirstName(firstName);
     user.setLastName(lastName);
     user.setEnabled(true);
-    user.setAttributes(
-      Collections.singletonMap("phoneNumber", Arrays.asList(phoneNumber))
-    );
+    user.setAttributes(attributes);
     Response response = usersRessource.create(user);
 
     String userId = CreatedResponseUtil.getCreatedId(response);
@@ -78,17 +83,20 @@ public class KeycloakService {
     String firstName,
     String lastName,
     String phoneNumber,
-    String email
+    String email,
+    String image
   ) {
     UserResource userResource = usersRessource.get(id);
     UserRepresentation user = userResource.toRepresentation();
+
+    Map<String, List<String>> attributes = new HashMap<>();
+    attributes.put("phoneNumber", Arrays.asList(phoneNumber));
+    attributes.put("image", Arrays.asList(image));
     user.setUsername(email);
     user.setEmail(email);
     user.setFirstName(firstName);
     user.setLastName(lastName);
-    user.setAttributes(
-      Collections.singletonMap("phoneNumber", Arrays.asList(phoneNumber))
-    );
+    user.setAttributes(attributes);
     userResource.update(user);
     return UserDataMapper.from(user);
   }

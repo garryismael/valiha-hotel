@@ -4,7 +4,6 @@ import com.valiha.users.application.dto.blog.BlogRequestDto;
 import com.valiha.users.application.dto.blog.BlogResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
 import com.valiha.users.application.repository.GenericRepository;
-import com.valiha.users.application.repository.UserRepository;
 import com.valiha.users.application.service.AuthService;
 import com.valiha.users.application.service.StorageService;
 import com.valiha.users.application.useCase.blog.CreateBlogUseCase;
@@ -17,7 +16,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CreateBlogInteractor implements CreateBlogUseCase {
 
   private final GenericRepository<Blog> blogRepository;
@@ -25,21 +26,6 @@ public class CreateBlogInteractor implements CreateBlogUseCase {
   private final BlogFactory blogFactory;
   private final GenericPresenter<BlogResponseDto> blogPresenter;
   private final AuthService authService;
-
-  public CreateBlogInteractor(
-    GenericRepository<Blog> blogRepository,
-    UserRepository userRepository,
-    StorageService storageService,
-    BlogFactory blogFactory,
-    GenericPresenter<BlogResponseDto> blogPresenter,
-    AuthService authService
-  ) {
-    this.blogRepository = blogRepository;
-    this.storageService = storageService;
-    this.blogFactory = blogFactory;
-    this.blogPresenter = blogPresenter;
-    this.authService = authService;
-  }
 
   @Override
   public BlogResponseDto execute(BlogRequestDto requestDto, File file) {

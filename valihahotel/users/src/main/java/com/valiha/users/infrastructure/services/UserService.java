@@ -1,20 +1,21 @@
 package com.valiha.users.infrastructure.services;
 
-import com.valiha.users.application.dto.blog.BlogRequestDto;
-import com.valiha.users.application.dto.blog.BlogResponseDto;
-import com.valiha.users.application.useCase.blog.CreateBlogUseCase;
-import com.valiha.users.application.useCase.blog.EditBlogUseCase;
+import com.valiha.users.application.dto.user.UserCommonDto;
+import com.valiha.users.application.dto.user.UserRequestDto;
+import com.valiha.users.application.dto.user.UserResponseDto;
+import com.valiha.users.application.useCase.user.EditUserUseCase;
+import com.valiha.users.application.useCase.user.RegisterUserUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
-public class BlogService {
+public class UserService {
 
-  private final CreateBlogUseCase createUseCase;
-  private final EditBlogUseCase editUseCase;
+  private final RegisterUserUseCase createUseCase;
+  private final EditUserUseCase editUseCase;
 
-  public BlogResponseDto create(
-    BlogRequestDto requestDto,
+  public UserResponseDto create(
+    UserRequestDto requestDto,
     MultipartFile multipartFile
   ) {
     return createUseCase.execute(
@@ -23,9 +24,9 @@ public class BlogService {
     );
   }
 
-  public BlogResponseDto edit(
+  public UserResponseDto edit(
     String id,
-    BlogRequestDto requestDto,
+    UserCommonDto requestDto,
     MultipartFile multipartFile
   ) {
     return editUseCase.execute(

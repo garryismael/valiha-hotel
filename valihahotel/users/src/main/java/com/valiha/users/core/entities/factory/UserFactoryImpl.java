@@ -12,6 +12,7 @@ public class UserFactoryImpl implements UserFactory {
     String lastName,
     String phoneNumber,
     String email,
+    String image,
     String password
   ) {
     return User
@@ -21,6 +22,7 @@ public class UserFactoryImpl implements UserFactory {
       .lastName(lastName)
       .phoneNumber(phoneNumber)
       .email(email)
+      .image(image)
       .password(password)
       .build();
   }

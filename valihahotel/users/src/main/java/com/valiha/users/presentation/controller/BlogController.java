@@ -8,6 +8,7 @@ import com.valiha.users.application.useCase.blog.FindOneBlogUseCase;
 import com.valiha.users.infrastructure.services.BlogService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,24 +22,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping(value = "/blogs")
+@AllArgsConstructor
 public class BlogController {
 
   private final BlogService blogService;
   private final FindAllBlogsUseCase findAllUseCase;
   private final FindOneBlogUseCase findOneUseCase;
   private final DeleteBlogUseCase deleteUseCase;
-
-  public BlogController(
-    BlogService blogService,
-    FindAllBlogsUseCase findAllUseCase,
-    FindOneBlogUseCase findOneUseCase,
-    DeleteBlogUseCase deleteUseCase
-  ) {
-    this.blogService = blogService;
-    this.findAllUseCase = findAllUseCase;
-    this.findOneUseCase = findOneUseCase;
-    this.deleteUseCase = deleteUseCase;
-  }
 
   @GetMapping
   public List<BlogResponseDto> getBlogs() {

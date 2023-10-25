@@ -9,6 +9,7 @@ public interface UserFactory {
     String lastName,
     String phoneNumber,
     String email,
+    String image,
     String password
   );
 }

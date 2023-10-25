@@ -4,32 +4,33 @@ import com.valiha.users.application.dto.user.UserCommonDto;
 import com.valiha.users.application.dto.user.UserResponseDto;
 import com.valiha.users.application.presenter.GenericPresenter;
 import com.valiha.users.application.repository.UserRepository;
+import com.valiha.users.application.service.StorageService;
 import com.valiha.users.application.useCase.user.EditUserUseCase;
 import com.valiha.users.core.constants.UserValidator;
 import com.valiha.users.core.entities.model.User;
 import com.valiha.users.core.interfaces.factory.UserFactory;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class EditUserInteractor implements EditUserUseCase {
 
   final UserRepository userRepository;
   final GenericPresenter<UserResponseDto> userPresenter;
   final UserFactory userFactory;
-
-  public EditUserInteractor(
-    UserRepository userRepository,
-    GenericPresenter<UserResponseDto> userPresenter,
-    UserFactory userFactory
-  ) {
-    this.userRepository = userRepository;
-    this.userPresenter = userPresenter;
-    this.userFactory = userFactory;
-  }
+  private final StorageService storageService;
 
   @Override
-  public UserResponseDto execute(String id, UserCommonDto requestDto) {
+  public UserResponseDto execute(
+    String id,
+    UserCommonDto requestDto,
+    File file
+  ) {
     Map<String, String> errors = new HashMap<String, String>();
+    String image = null;
     User user = this.userRepository.findOneById(id);
 
     if (user == null) {
@@ -38,6 +39,16 @@ public class EditUserInteractor implements EditUserUseCase {
         UserValidator.KEY_ID,
         errors
       );
+    } else {
+      image = user.getImage();
+    }
+
+    if (file != null) {
+      try {
+        image = this.storageService.upload(file, "blogs");
+      } catch (IOException exception) {
+        errors.put(UserValidator.KEY_IMAGE, UserValidator.UPLOAD_ERROR);
+      }
     }
 
     user =
@@ -47,6 +58,7 @@ public class EditUserInteractor implements EditUserUseCase {
         requestDto.getLastName(),
         requestDto.getPhoneNumber(),
         requestDto.getEmail(),
+        image,
         user.getPassword()
       );
 

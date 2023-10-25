@@ -20,4 +20,6 @@ public interface IUser {
   boolean lastNameIsValid();
 
   boolean phoneNumberIsValid();
+
+  boolean imageIsValid();
 }

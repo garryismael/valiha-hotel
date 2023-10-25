@@ -18,6 +18,7 @@ public class UserResponseDto {
   private String lastName;
   private String phoneNumber;
   private String email;
+  private String image;
 
   public static UserResponseDto from(User user) {
     return UserResponseDto
@@ -27,6 +28,7 @@ public class UserResponseDto {
       .lastName(user.getLastName())
       .phoneNumber(user.getPhoneNumber())
       .email(user.getEmail())
+      .image(user.getImage())
       .build();
   }
 

@@ -8,7 +8,9 @@ import com.valiha.users.application.useCase.user.EditUserUseCase;
 import com.valiha.users.application.useCase.user.FindAllUsersUseCase;
 import com.valiha.users.application.useCase.user.FindOneUserUseCase;
 import com.valiha.users.application.useCase.user.RegisterUserUseCase;
+import com.valiha.users.infrastructure.services.UserService;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping(value = "/users")
+@AllArgsConstructor
 public class UserController {
 
   final RegisterUserUseCase registerUseCase;
@@ -27,20 +32,7 @@ public class UserController {
   final FindOneUserUseCase findOneUseCase;
   final DeleteUserUseCase deleteUseCase;
   final EditUserUseCase updateUseCase;
-
-  public UserController(
-    RegisterUserUseCase registerUseCase,
-    FindAllUsersUseCase findAllUseCase,
-    FindOneUserUseCase findOneUseCase,
-    DeleteUserUseCase deleteUseCase,
-    EditUserUseCase updateUseCase
-  ) {
-    this.registerUseCase = registerUseCase;
-    this.findAllUseCase = findAllUseCase;
-    this.findOneUseCase = findOneUseCase;
-    this.updateUseCase = updateUseCase;
-    this.deleteUseCase = deleteUseCase;
-  }
+  final UserService userService;
 
   @GetMapping
   public List<UserResponseDto> getUsers() {
@@ -53,16 +45,20 @@ public class UserController {
   }
 
   @PostMapping
-  public UserResponseDto create(@RequestBody UserRequestDto requestModel) {
-    return registerUseCase.execute(requestModel);
+  public UserResponseDto create(
+    @RequestBody UserRequestDto requestModel,
+    @RequestParam(name = "image") MultipartFile multipartFile
+  ) {
+    return userService.create(requestModel, multipartFile);
   }
 
   @PutMapping("/{id}")
   public UserResponseDto update(
     @PathVariable String id,
-    @RequestBody UserCommonDto request
+    @RequestBody UserCommonDto request,
+    @RequestParam(name = "image", required = false) MultipartFile multipartFile
   ) {
-    return updateUseCase.execute(id, request);
+    return userService.edit(id, request, multipartFile);
   }
 
   @DeleteMapping("/{id}")

@@ -8,6 +8,7 @@ public class UserValidator {
   public static final String KEY_LAST_NAME = "lastName";
   public static final String KEY_PHONE_NUMBER = "phoneNumber";
   public static final String KEY_EMAIL = "email";
+  public static final String KEY_IMAGE = "image";
   public static final String KEY_PASSWORD = "password";
 
   // Contact Invalid Attribute Error Message
@@ -18,6 +19,8 @@ public class UserValidator {
   public static final String INVALID_EMAIL_ERROR = "email invalid";
   public static final String EMAIL_EXISTS_ERROR = "email exists";
   public static final String INVALID_PASSWORD_ERROR = "password invalid";
+  public static final String INVALID_IMAGE_ERROR = "invalid image";
+  public static final String UPLOAD_ERROR = "upload failed";
 
   // Contact Error Message
   public static final String USER_NOT_FOUND_ERROR = "user not found";

@@ -22,6 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
           user.getLastName(),
           user.getPhoneNumber(),
           user.getEmail(),
+          user.getImage(),
           user.getPassword()
         );
     return toUser(dataMapper);
@@ -35,7 +36,8 @@ public class UserRepositoryImpl implements UserRepository {
           user.getFirstName(),
           user.getLastName(),
           user.getPhoneNumber(),
-          user.getEmail()
+          user.getEmail(),
+          user.getImage()
         );
     return toUser(userRepresentation);
   }
@@ -84,6 +86,7 @@ public class UserRepositoryImpl implements UserRepository {
       .lastName(user.getLastName())
       .phoneNumber(user.getPhoneNumber())
       .email(user.getEmail())
+      .image(user.getImage())
       .build();
   }
 }
