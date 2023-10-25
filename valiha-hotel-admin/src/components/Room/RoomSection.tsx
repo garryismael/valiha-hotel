@@ -19,7 +19,7 @@ const RoomSection = ({ rooms }: Props) => {
   return (
     <section className="my-14 max-w-[95rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={roomBreadcrumbs} />
-      <h3 className="title">Rooms</h3>
+      <h3 className="title">Chambres et appartements</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
           <Input
@@ -27,7 +27,7 @@ const RoomSection = ({ rooms }: Props) => {
               input: "w-full",
               mainWrapper: "w-full",
             }}
-            placeholder="Search users"
+            placeholder="Recherche des chambres"
           />
           <SettingsIcon />
           <TrashIcon />

@@ -37,13 +37,13 @@ const AddCategory = () => {
           <ModalContent>
             {(onClose) => (
               <form onSubmit={formik.handleSubmit}>
-                <ModalHeader className="flex flex-col gap-1">
+                <ModalHeader className="flex flex-col gap-1 text-center">
                   Ajouter une catégorie de chambre
                 </ModalHeader>
                 <ModalBody>
                   <Input
                     name="title"
-                    label="Title"
+                    label="Intitulé"
                     variant="bordered"
                     radius="sm"
                     value={formik.values.title}
@@ -65,7 +65,7 @@ const AddCategory = () => {
                   </Select>
                   <Input
                     name="pax"
-                    label="Pax"
+                    label="Nombre de Pax"
                     type="number"
                     variant="bordered"
                     radius="sm"
@@ -74,7 +74,7 @@ const AddCategory = () => {
                   />
                   <Input
                     name="bigBed"
-                    label="Big Bed"
+                    label="Nombre de Grant Lit"
                     type="number"
                     variant="bordered"
                     radius="sm"
@@ -83,7 +83,7 @@ const AddCategory = () => {
                   />
                   <Input
                     name="smallBed"
-                    label="Small Bed"
+                    label="Nombre de Petit Lit"
                     type="number"
                     variant="bordered"
                     radius="sm"
@@ -91,7 +91,7 @@ const AddCategory = () => {
                     onChange={formik.handleChange}
                   />
                   <Input
-                    label="Image"
+                    label="Image de la catégorie"
                     variant="bordered"
                     value={formik.values.image?.name}
                     readOnly={true}

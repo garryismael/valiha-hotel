@@ -3,9 +3,7 @@ import {
   GetCategoriesInteractor,
   GetCategoriesUseCase,
 } from "@/domain/use-cases/category";
-import { useAppDispatch } from "@/hooks/useStore";
 import container from "@/infrastructures/config/container.config";
-import { setCategories } from "@/lib/store/slices/category-slice";
 
 const Page = async () => {
   const getCategories = container.resolve<GetCategoriesUseCase>(

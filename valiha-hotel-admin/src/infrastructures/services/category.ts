@@ -23,7 +23,7 @@ export class CategoryServiceImpl implements CategoryService {
         },
       }
     );
-    console.log(response.data);
+    
     return response.data;
   }
   async findAll(): Promise<Category[]> {
