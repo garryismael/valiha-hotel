@@ -26,15 +26,27 @@
   .title {
     @apply text-5xl font-semibold capitalize text-dark-500 py-4;
   }
+
+  .btn {
+    @apply px-6 py-3;
+  }
+
+  .btn-orange {
+    @apply bg-reddish-orange-500 hover:bg-reddish-orange-400 text-white;
+  }
 }
 
-.btn {
-  @apply px-6 py-3;
+.st0 {
+  fill: none;
 }
-
-.btn-orange {
-  background: var(--orange);
-  @apply text-white;
+.st1 {
+  fill: #ff5f00;
+}
+.st2 {
+  fill: #eb001b;
+}
+.st3 {
+  fill: #f79e1b;
 }
 
 .swiper {
@@ -100,11 +112,9 @@
   box-shadow: 0 1px 13.5px 1.5px rgba(46, 49, 108, 0.08);
 }
 
-
 .react-datepicker-popper {
   z-index: 10;
 }
-
 
 .input-group {
   @apply mb-4 w-full;

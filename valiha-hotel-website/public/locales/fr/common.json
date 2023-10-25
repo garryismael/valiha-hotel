@@ -80,20 +80,29 @@
       "last_name": "Nom",
       "phone_number": "Numéro téléphone",
       "email": "E-mail",
-      "use_parking": "Utiliser un parking",
+      "use_parking": "Utiliser un parking?",
       "breakfast": {
-        "check_in": "Date du petit-déjeuner"
+        "title": "Petit-déjeuner?",
+        "date": "Date du petit-déjeuner"
       },
       "shuttle": {
-        "shuttle_name": "Nom du vol",
-        "shuttle_number": "Numéro du vol",
+        "title": "Navette?",
+        "name": "Nom du vol",
+        "number": "Numéro du vol",
         "destination": {
           "label": "Destination",
           "airport_to_hotel": "Aéroport à l'hôtel",
-          "hotel_to_airport": "Hotel à l'aéroport"
+          "hotel_to_airport": "Hotel à l'aéroport",
+          "other": "Autre"
         },
         "date": "Date de la Navette"
-      }
+      },
+      "payment": {
+        "title": "Mode de paiement",
+        "mastercard": "Via Mastercard",
+        "on_the_spot": "On the spot"
+      },
+      "button": "Procéder"
     }
   },
   "blog": {

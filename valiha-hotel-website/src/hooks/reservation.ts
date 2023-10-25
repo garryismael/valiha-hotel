@@ -28,6 +28,10 @@ type ReservationForm = {
     checked: boolean;
     data: BreakfastRequestDto[];
   };
+  payment: {
+    selection: string;
+    card: string;
+  }
 };
 
 export const useBookingForm = () => {
@@ -51,6 +55,10 @@ export const useBookingForm = () => {
         checked: false,
         data: [],
       },
+      payment: {
+        selection: "",
+        card: ""
+      }
     },
     onSubmit(values) {
       console.log(values);

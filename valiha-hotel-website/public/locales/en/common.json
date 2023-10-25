@@ -1,11 +1,11 @@
 {
-  "hello": "Hello",
+  "hello": "Bonjour",
   "menu": {
-    "home": "Home",
-    "reservation": "Reservation",
+    "home": "Accueil",
+    "reservation": "Réservation",
     "blog": "Blog",
-    "room": "Room",
-    "rent_car": "Car rental",
+    "room": "Hébergement",
+    "rent_car": "Location de voiture",
     "contact": "Contact"
   },
   "home": {
@@ -19,7 +19,7 @@
       "check_out": "Date d'arrivée"
     },
     "category": {
-      "title": "Our rooms and apartments",
+      "title": "Nos Chambres Et Appartements",
       "big_bed": "Grand(s) lit(s)",
       "small_bed": "Petit(s) lit(s)",
       "bathroom": "Salle de bain"
@@ -73,7 +73,39 @@
       }
     }
   },
+  "reservation": {
+    "booking": {
+      "title": "Formulaire de Réservation",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "phone_number": "Numéro téléphone",
+      "email": "E-mail",
+      "use_parking": "Utiliser un parking?",
+      "breakfast": {
+        "title": "Petit-déjeuner?",
+        "date": "Date du petit-déjeuner"
+      },
+      "shuttle": {
+        "title": "Navette?",
+        "name": "Nom du vol",
+        "number": "Numéro du vol",
+        "destination": {
+          "label": "Destination",
+          "airport_to_hotel": "Aéroport à l'hôtel",
+          "hotel_to_airport": "Hotel à l'aéroport",
+          "other": "Autre"
+        },
+        "date": "Date de la Navette"
+      },
+      "payment": {
+        "title": "Mode de paiement",
+        "mastercard": "Via Mastercard",
+        "on_the_spot": "On the spot"
+      },
+      "button": "Procéder"
+    }
+  },
   "blog": {
-    "title": "Recent news"
+    "title": "Dernières nouvelles"
   }
 }

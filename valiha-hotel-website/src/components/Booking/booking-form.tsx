@@ -1,9 +1,10 @@
 import { useBookingForm } from "@/hooks/reservation";
 import { Button, Checkbox, Input, Select, SelectItem } from "@nextui-org/react";
-import React from "react";
+import { useTranslation } from "next-i18next";
 import ReactDatePicker from "react-datepicker";
-import { FaCalendarDays, FaPlus, FaTrash } from "react-icons/fa6";
+import { FaCalendarDays, FaHotel, FaPlus, FaTrash } from "react-icons/fa6";
 import { If, Then } from "react-if";
+import Mastercard from "../Icons/MasterCard";
 
 const BookingForm = () => {
   const {
@@ -16,6 +17,7 @@ const BookingForm = () => {
     deleteShuttle,
     handleDestinationChange,
   } = useBookingForm();
+  const { t } = useTranslation();
 
   return (
     <section className="w-full max-w-5xl shadow-md mx-auto mt-12">
@@ -24,36 +26,36 @@ const BookingForm = () => {
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col gap-4 content-between"
       >
         <h1 className="text-xl font-semibold text-center pt-4 pb-8">
-          Booking Info
+          {t("reservation.booking.title")}
         </h1>
         <div className="flex items-center justify-between gap-4">
           <Input
-            name="firstName"
+            name="client.firstName"
             onChange={formik.handleChange}
-            label="First Name"
+            label={t("reservation.booking.first_name")}
             variant="bordered"
             className="w-full"
           />
           <Input
-            name="lastName"
+            name="client.lastName"
             onChange={formik.handleChange}
-            label="Last Name"
+            label={t("reservation.booking.last_name")}
             variant="bordered"
             className="w-full"
           />
         </div>
         <div className="flex items-center justify-between gap-4">
           <Input
-            name="phoneNumber"
+            name="client.phoneNumber"
             onChange={formik.handleChange}
-            label="Phone Number"
+            label={t("reservation.booking.phone_number")}
             variant="bordered"
             className="w-full"
           />
           <Input
-            name="email"
+            name="client.email"
             onChange={formik.handleChange}
-            label="Email"
+            label={t("reservation.booking.email")}
             variant="bordered"
             className="w-full"
           />
@@ -69,13 +71,13 @@ const BookingForm = () => {
             formik.setFieldValue("parking", isSelected);
           }}
         >
-          Use parking?
+          {t("reservation.booking.use_parking")}
         </Checkbox>
         <Checkbox
           isSelected={formik.values.breakfasts.checked}
           onValueChange={handleCheckBreakfast}
         >
-          Breakfast?
+          {t("reservation.booking.breakfast.title")}
         </Checkbox>
         <If condition={formik.values.breakfasts.data.length > 0}>
           <Then>
@@ -91,7 +93,7 @@ const BookingForm = () => {
                   customInput={
                     <Input
                       onChange={formik.handleChange}
-                      label="Check In"
+                      label={t("reservation.booking.breakfast.date")}
                       variant="bordered"
                       className="w-full"
                       startContent={<FaCalendarDays />}
@@ -125,7 +127,7 @@ const BookingForm = () => {
           }
           onValueChange={handleCheckShuttle}
         >
-          Shuttle?
+          {t("reservation.booking.shuttle.title")}
         </Checkbox>
         <If condition={formik.values.shuttles.data.length > 0}>
           <Then>
@@ -139,15 +141,18 @@ const BookingForm = () => {
                     <Input
                       name={`shuttles.data.${index}.flightName`}
                       onChange={formik.handleChange}
-                      label="Flight Name"
+                      label={t("reservation.booking.shuttle.name")}
                       value={shuttle.flightName}
                       variant="bordered"
                       className="w-full"
+                      classNames={{
+                        label: "z-1",
+                      }}
                     />
                     <Input
                       name={`shuttles.data.${index}.flightNumber`}
                       onChange={formik.handleChange}
-                      label="Flight Number"
+                      label={t("reservation.booking.shuttle.number")}
                       variant="bordered"
                       className="w-full"
                     />
@@ -156,38 +161,38 @@ const BookingForm = () => {
                     <Select
                       name={`shuttles.data.${index}.selection`}
                       variant="bordered"
-                      label="Destination"
+                      label={t("reservation.booking.shuttle.destination.label")}
                       value={shuttle.destination}
-                      onChange={(e) =>
-                        handleDestinationChange(e, index)
-                      }
+                      onChange={(e) => handleDestinationChange(e, index)}
                     >
                       <SelectItem
                         key="airport-to-hotel"
                         value="airport-to-hotel"
                       >
-                        airport to hotel
+                        {t(
+                          "reservation.booking.shuttle.destination.airport_to_hotel"
+                        )}
                       </SelectItem>
                       <SelectItem
                         key="hotel-to-airport"
                         value="hotel-to-airport"
                       >
-                        hotel to airport
+                        {t(
+                          "reservation.booking.shuttle.destination.hotel_to_airport"
+                        )}
                       </SelectItem>
                       <SelectItem key="other" value="other">
-                        other
+                        {t("reservation.booking.shuttle.destination.other")}
                       </SelectItem>
                     </Select>
                     <Input
                       name={`shuttles.data.${index}.destination`}
                       onChange={formik.handleChange}
                       value={shuttle.destination}
-                      label="Destination"
+                      label={t("reservation.booking.shuttle.destination.label")}
                       variant="bordered"
                       className={`w-full ${
-                        shuttle.selection !== "other"
-                          ? "invisible"
-                          : "visible"
+                        shuttle.selection !== "other" ? "invisible" : "visible"
                       }`}
                     />
                   </div>
@@ -208,9 +213,9 @@ const BookingForm = () => {
                       customInput={
                         <Input
                           onChange={formik.handleChange}
-                          label="Check In"
+                          label={t("reservation.booking.shuttle.date")}
                           variant="bordered"
-                          className="w-full"
+                          className="w-1/2"
                           startContent={<FaCalendarDays />}
                         />
                       }
@@ -240,11 +245,23 @@ const BookingForm = () => {
             </div>
           </Then>
         </If>
-        <button
-          className="bg-reddish-orange-500 w-fit block self-end hover:bg-reddish-orange-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-        >
-          Proceed
+        <div>
+          <h1>Mode de paiement</h1>
+          <div className="flex items-center gap-2">
+            <div className="flex flex-col items-center justify-center border-1 border-solid border-gray-200 p-2 h-24 w-36">
+              <Mastercard />
+              <p className="text-center">Via Mastercard</p>
+            </div>
+            <div className="flex flex-col items-center justify-center border-1 border-solid border-gray-200 p-2 h-24 w-36">
+              <div className="flex items-center flex-grow">
+                <FaHotel size={24} />
+              </div>
+              <p className="self-center">Sur place</p>
+            </div>
+          </div>
+        </div>
+        <button className="btn btn-orange w-fit self-end" type="submit">
+          {t("reservation.booking.button")}
         </button>
       </form>
     </section>
