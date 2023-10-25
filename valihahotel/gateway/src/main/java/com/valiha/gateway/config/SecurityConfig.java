@@ -21,6 +21,7 @@ public class SecurityConfig {
     "/RESERVATIONS-SERVICE/uploads/**",
     "/RESERVATIONS-SERVICE/api-docs/**",
     "/RESERVATIONS-SERVICE/categories/**",
+    "/USERS-SERVICE/uploads/**",
   };
   private static final String[] AUTH_RESERVATION = {
     "/RESERVATIONS-SERVICE/reservations/**",
