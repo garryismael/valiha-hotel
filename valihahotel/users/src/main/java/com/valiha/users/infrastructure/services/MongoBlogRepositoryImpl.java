@@ -70,13 +70,15 @@ public class MongoBlogRepositoryImpl implements GenericRepository<Blog> {
           .filter(j -> users.get(j).getId().equals(blog.getUserId()))
           .findFirst()
           .orElse(-1);
+
         User user = users.get(index);
+
         return Blog
           .builder()
           .id(blog.getId())
           .title(blog.getTitle())
           .text(blog.getText())
-          .image(blog.getImage())
+          .image(String.format("%s/%s", UserData.BASE_URL, blog.getImage()))
           .user(user)
           .build();
       })
