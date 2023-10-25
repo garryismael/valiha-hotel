@@ -14,6 +14,7 @@ const BookingForm = () => {
     deleteBreakfast,
     addShuttle,
     deleteShuttle,
+    handleDestinationChange,
   } = useBookingForm();
 
   return (
@@ -71,11 +72,7 @@ const BookingForm = () => {
           Use parking?
         </Checkbox>
         <Checkbox
-          isSelected={
-            formik.values.parking
-              ? false
-              : formik.values.breakfasts.data.length > 0
-          }
+          isSelected={formik.values.breakfasts.checked}
           onValueChange={handleCheckBreakfast}
         >
           Breakfast?
@@ -88,7 +85,7 @@ const BookingForm = () => {
                   key={index}
                   selected={breakfast.date}
                   onChange={(date: Date) =>
-                    formik.setFieldValue(`breakfasts.data.${index}`, date)
+                    formik.setFieldValue(`breakfasts.data.${index}.date`, date)
                   }
                   wrapperClassName="w-1/3"
                   customInput={
@@ -157,11 +154,13 @@ const BookingForm = () => {
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <Select
+                      name={`shuttles.data.${index}.selection`}
                       variant="bordered"
                       label="Destination"
-                      name={`shuttles.data.${index}.destination`}
                       value={shuttle.destination}
-                      onChange={formik.handleChange}
+                      onChange={(e) =>
+                        handleDestinationChange(e, index)
+                      }
                     >
                       <SelectItem
                         key="airport-to-hotel"
@@ -173,7 +172,7 @@ const BookingForm = () => {
                         key="hotel-to-airport"
                         value="hotel-to-airport"
                       >
-                        airport to hotel
+                        hotel to airport
                       </SelectItem>
                       <SelectItem key="other" value="other">
                         other
@@ -185,15 +184,23 @@ const BookingForm = () => {
                       value={shuttle.destination}
                       label="Destination"
                       variant="bordered"
-                      className="w-full"
+                      className={`w-full ${
+                        shuttle.selection !== "other"
+                          ? "invisible"
+                          : "visible"
+                      }`}
                     />
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <ReactDatePicker
                       selected={shuttle.date}
                       onChange={(date: Date) =>
-                        formik.setFieldValue(`shuttles.data.${index}.date`, date)
+                        formik.setFieldValue(
+                          `shuttles.data.${index}.date`,
+                          date
+                        )
                       }
+                      dateFormat="dd/MM/yyyy HH:mm"
                       className="w-full"
                       showTimeSelect
                       timeFormat="HH:mm"

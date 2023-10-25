@@ -1,11 +1,19 @@
 import {
   BreakfastRequestDto,
-  ReservationRequestDto,
   ShuttleRequestDto,
 } from "@/domain/use-cases/reservation";
 import { useFormik } from "formik";
 import { useAppSelector } from "./store";
 import { ClientRequestDto } from "@/domain/use-cases/contact";
+
+
+type ShuttleForm = {
+  flightName: string;
+  flightNumber: string;
+  destination: string;
+  selection: string;
+  date: Date;
+};
 
 type ReservationForm = {
   checkIn: Date;
@@ -14,7 +22,7 @@ type ReservationForm = {
   client: ClientRequestDto;
   shuttles: {
     checked: boolean;
-    data: ShuttleRequestDto[];
+    data: ShuttleForm[]
   };
   breakfasts: {
     checked: boolean;
@@ -65,6 +73,7 @@ export const useBookingForm = () => {
         {
           date: booking.checkIn,
           destination: "",
+          selection: "",
           flightName: "",
           flightNumber: "",
         },
@@ -78,9 +87,12 @@ export const useBookingForm = () => {
 
   const addBreakfast = () => {
     const fieldValue = formik.values.breakfasts;
-    const updatedBreakfasts = [...fieldValue.data, {
-      date: booking.checkIn
-    }];
+    const updatedBreakfasts = [
+      ...fieldValue.data,
+      {
+        date: booking.checkIn,
+      },
+    ];
     formik.setFieldValue("breakfasts.data", updatedBreakfasts);
   };
 
@@ -98,6 +110,7 @@ export const useBookingForm = () => {
       {
         date: booking.checkIn,
         destination: "",
+        selection: "",
         flightName: "",
         flightNumber: "",
       },
@@ -110,6 +123,18 @@ export const useBookingForm = () => {
     formik.setFieldValue("shuttles.data", shuttles);
   };
 
+  const handleDestinationChange = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    index: number
+  ) => {
+    formik.handleChange(e);
+    let value = e.target.value;
+    if (value === "other") {
+      value = "";
+    }
+    formik.setFieldValue(`shuttles.data.${index}.destination`, value);
+  };
+
   return {
     formik,
     handleCheckBreakfast,
@@ -118,5 +143,6 @@ export const useBookingForm = () => {
     deleteBreakfast,
     addShuttle,
     deleteShuttle,
+    handleDestinationChange,
   };
 };
