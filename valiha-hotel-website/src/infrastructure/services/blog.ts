@@ -6,7 +6,7 @@ import { injectable } from "tsyringe";
 @injectable()
 export class BlogServiceImpl implements BlogService {
   async findAll(): Promise<Blog[]> {
-    const response = await http.get<Blog[]>("/USERS-SERVICES/blogs");
+    const response = await http.get<Blog[]>("/USERS-SERVICE/blogs");
     return response.data;
   }
 }
