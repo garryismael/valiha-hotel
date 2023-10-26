@@ -100,7 +100,8 @@
       "payment": {
         "title": "Mode de paiement",
         "mastercard": "Via Mastercard",
-        "on_the_spot": "On the spot"
+        "on_the_spot": "On the spot",
+        "card_number": "Numéro de la carte"
       },
       "button": "Procéder"
     }

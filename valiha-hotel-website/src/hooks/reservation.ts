@@ -56,7 +56,7 @@ export const useBookingForm = () => {
         data: [],
       },
       payment: {
-        selection: "",
+        selection: "on_spot",
         card: ""
       }
     },

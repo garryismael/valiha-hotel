@@ -164,6 +164,9 @@ const BookingForm = () => {
                       label={t("reservation.booking.shuttle.destination.label")}
                       value={shuttle.destination}
                       onChange={(e) => handleDestinationChange(e, index)}
+                      classNames={{
+                        label: "z-1",
+                      }}
                     >
                       <SelectItem
                         key="airport-to-hotel"
@@ -246,19 +249,48 @@ const BookingForm = () => {
           </Then>
         </If>
         <div>
-          <h1>Mode de paiement</h1>
-          <div className="flex items-center gap-2">
-            <div className="flex flex-col items-center justify-center border-1 border-solid border-gray-200 p-2 h-24 w-36">
+          <h1 className="text-lg py-2">Mode de paiement</h1>
+          <div className="flex items-center gap-2 mb-2">
+            <div
+              className={`flex flex-col items-center justify-center border-2 border-solid p-2 h-24 w-36 ${
+                formik.values.payment.selection === "mastercard"
+                  ? "border-blue-500"
+                  : "border-gray-200"
+              }`}
+              onClick={() =>
+                formik.setFieldValue("payment.selection", "mastercard")
+              }
+            >
               <Mastercard />
               <p className="text-center">Via Mastercard</p>
             </div>
-            <div className="flex flex-col items-center justify-center border-1 border-solid border-gray-200 p-2 h-24 w-36">
+            <div
+              className={`flex flex-col items-center justify-center border-2 border-solid p-2 h-24 w-36 ${
+                formik.values.payment.selection === "on_spot"
+                  ? "border-blue-500"
+                  : "border-gray-200"
+              }`}
+              onClick={() =>
+                formik.setFieldValue("payment.selection", "on_spot")
+              }
+            >
               <div className="flex items-center flex-grow">
                 <FaHotel size={24} />
               </div>
               <p className="self-center">Sur place</p>
             </div>
           </div>
+          <If condition={formik.values.payment.selection === "mastercard"}>
+            <Then>
+              <Input
+                name="payment.card"
+                onChange={formik.handleChange}
+                label={t("reservation.booking.payment.card_number")}
+                variant="bordered"
+                className="w-full flex basis-1/2"
+              />
+            </Then>
+          </If>
         </div>
         <button className="btn btn-orange w-fit self-end" type="submit">
           {t("reservation.booking.button")}
