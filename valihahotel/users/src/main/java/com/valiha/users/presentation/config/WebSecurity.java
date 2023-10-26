@@ -23,6 +23,7 @@ public class WebSecurity {
     "/api-docs/**",
     "/uploads/**",
     "/static/**",
+    "/blogs/**"
   };
 
   @Bean
