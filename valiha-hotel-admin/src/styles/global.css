@@ -1,0 +1,56 @@
+@import "@fontsource/inter";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --slate-blue: 37, 48, 65, 0.7;
+  --orange: rgb(240, 83, 63);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  html {
+    font-family: Inter, "Proxima Nova", system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .title {
+    @apply text-xl font-semibold capitalize text-white-gray-500 dark:text-white;
+  }
+
+  .btn {
+    @apply px-6 py-3;
+  }
+
+  .btn-orange {
+    background: var(--orange);
+    @apply text-white;
+  }
+}
+
+input[type="file"]::file-selector-button {
+  @apply rounded-medium border-none bg-transparent;
+}
+
+.input-file {
+  display: none !important;
+}

@@ -1,0 +1,43 @@
+.aside__title {
+  @apply font-bold relative pb-5 text-xl capitalize mb-4;
+}
+
+.links {
+  @apply hover:text-reddish-orange-500;
+}
+
+.aside__title::before {
+  content: "";
+  width: 55px;
+  height: 4px;
+  @apply bg-reddish-orange-500 absolute bottom-0 left-0;
+}
+
+.aside__title::after {
+  content: "";
+  background-color: #f2f2f2;
+  width: 83%;
+  height: 4px;
+  position: absolute;
+  left: 65px;
+  bottom: 0;
+  border-radius: 10px;
+}
+
+.contact {
+  @apply mt-16 relative text-white py-14 px-10;
+  background: url("/assets/images/reception.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: 1;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(48, 52, 67, 0.92);
+  z-index: -1;
+}

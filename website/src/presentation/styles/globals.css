@@ -1,0 +1,95 @@
+@import '@fontsource/poppins';
+@import 'react-datepicker/dist/react-datepicker.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  transition: font-size 0.4s ease-in-out;
+}
+
+.header__nav {
+  @apply absolute left-0 w-full z-50;
+  background: rgba(37, 48, 65, 0.7);
+}
+
+.header__nav div.active {
+  @apply fixed top-0 left-0 right-0 bg-dark-muted-500;
+}
+
+.header__nav div.active a {
+  @apply text-white;
+}
+
+.btn, .btn-orange {
+  @apply px-8 py-3
+}
+
+.btn-orange {
+  @apply text-white shadow-lg bg-reddish-orange-500;
+  @apply hover:bg-bright-red-500;
+}
+
+.btn-outline-orange {
+  @apply border border-reddish-orange-500;
+  @apply text-reddish-orange-500;
+}
+
+.border-dark {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  @apply text-5xl font-bold my-12;
+}
+
+.gallery-swiper .swiper-button-prev,
+.gallery-swiper .swiper-button-next,
+.service-swiper .swiper-button-prev,
+.service-swiper .swiper-button-next {
+	background: rgb(240, 83, 63);
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border: 2px solid rgb(240, 83, 63);
+	border-radius: 50%;
+	opacity: 0.7;
+	text-align: center;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	color: #687693;
+	padding: 10px;
+}
+
+.service-swiper .swiper-button-prev,
+.service-swiper .swiper-button-next {
+  opacity: 0;
+}
+
+.service-swiper:hover .swiper-button-prev,
+.service-swiper:hover .swiper-button-next {
+  opacity: 0.7;
+}
+
+.gallery-swiper .swiper-button-prev::after,
+.gallery-swiper .swiper-button-next::after,
+.service-swiper .swiper-button-prev::after,
+.service-swiper .swiper-button-next::after {
+	font-size: 20px;
+	@apply text-white;
+}

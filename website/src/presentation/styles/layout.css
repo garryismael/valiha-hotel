@@ -1,0 +1,40 @@
+.flex-x-y-center {
+  @apply flex h-screen items-center justify-center;
+}
+
+.flex-x-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-y-center {
+  @apply flex flex-col items-center;
+}
+
+.dropdown {
+  @apply relative block;
+}
+
+.dropdown-content {
+  position: relative;
+  visibility: hidden;
+  @apply absolute bg-white min-w-max py-3 px-4 z-10 mt-8;
+}
+
+.dropdown:hover .dropdown-content {
+  @apply visible;
+}
+
+.dropdown:hover .dropdown-content a {
+  position: relative;
+  @apply text-dark-muted-500 p-1;
+}
+
+.dropdown:hover .dropdown-content a::after {
+  content: "";
+  display: none;
+  @apply absolute h-1 w-5 bg-reddish-orange-500;
+}
+
+.dropdown:hover .dropdown-content a:hover::after {
+  display: block;
+}

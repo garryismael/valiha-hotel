@@ -1,0 +1,3 @@
+.link {
+    @apply hover:text-reddish-orange-500 hover:border-t-4 py-12 px-5 hover:border-reddish-orange-500;
+}
