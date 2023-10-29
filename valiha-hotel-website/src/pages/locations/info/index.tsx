@@ -1,5 +1,4 @@
 import NestedLayout from "@/components/Layout/NestedLayout";
-import { Button, Card, CardBody } from "@nextui-org/react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Image from "next/image";
@@ -11,18 +10,17 @@ const Page = () => {
   return (
     <section className="container mx-auto">
       <h1 className="title">{t("location.info.title")}</h1>
-      <div className="grid grid-cols-2">
-        <Card shadow="sm" className="w-[700px]">
-          <CardBody className="overflow-visible py-2 relative h-[600px]">
-            <Image
-              src="/assets/images/vehicles/LandCruiser.webp"
-              alt="Nissan"
-              fill={true}
-              sizes="100%"
-              className="w-full object-fill h-[700px]"
-            />
-          </CardBody>
-        </Card>
+      <div className="grid grid-cols-2 gap-8">
+        <div className="w-full">
+          <Image
+            src="/assets/images/vehicles/LandCruiser.webp"
+            alt="Nissan"
+            width={500}
+            height={400}
+            sizes="100%"
+            className="w-[85%] object-fill h-full rounded-2xl"
+          />
+        </div>
         <div className="flex flex-col gap-8 w-3/4">
           <h2 className="title text-4xl">{t("location.info.sub_title")}</h2>
           <p>{t("location.info.paragraph")}</p>

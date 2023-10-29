@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import { AppDispatch, RootState } from "@/lib/store";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 

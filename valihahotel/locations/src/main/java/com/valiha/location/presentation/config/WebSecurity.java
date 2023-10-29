@@ -26,7 +26,7 @@ public class WebSecurity {
     "/static/**",
   };
 
-  private static final String[] AUTH_CARS = { "/cars" };
+  private static final String[] AUTH_CARS = { "/cars/**" };
 
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

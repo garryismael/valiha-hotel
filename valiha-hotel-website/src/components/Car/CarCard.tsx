@@ -48,7 +48,15 @@ const CarCard = ({ car }: Props) => {
           <span>Prix par jour: </span>: <span>{car.price} MGA </span>
         </p>
         <p>Chauffeur: inclus</p>
-        <Link href="/locations" className="py-6 self-center justify-center">
+        <Link
+          href={{
+            pathname: "/locations",
+            query: {
+              id: car.id,
+            },
+          }}
+          className="py-6 self-center justify-center"
+        >
           <span className="btn btn-orange w-fit">Louer Cette Voiture</span>
         </Link>
       </div>

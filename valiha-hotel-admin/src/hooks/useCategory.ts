@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { Category } from "@/domain/entities/category";
 import {
   CategoryRequest,

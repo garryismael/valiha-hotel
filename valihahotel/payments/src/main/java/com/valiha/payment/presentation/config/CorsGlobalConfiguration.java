@@ -9,11 +9,6 @@ public class CorsGlobalConfiguration implements WebMvcConfigurer {
 
   @Override
   public void addCorsMappings(CorsRegistry corsRegistry) {
-    corsRegistry
-      .addMapping("/**")
-      .allowedMethods("PUT", "DELETE")
-      .allowedOriginPatterns("*")
-      .maxAge(3600)
-      .allowCredentials(true);
+    corsRegistry.addMapping("/**").allowedMethods("*");
   }
 }

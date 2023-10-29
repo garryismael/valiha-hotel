@@ -16,7 +16,7 @@ const Page = ({ cars }: Props) => {
       <h1 className="title">Location de voitures</h1>
       <div className="flex items-center justify-between flex-wrap gap-3 content-between">
         {cars.map((car) => (
-          <CarCard car={car} />
+          <CarCard key={car.id} car={car} />
         ))}
       </div>
     </section>
