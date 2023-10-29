@@ -132,7 +132,7 @@ const CarLocation = (props: CarProps) => {
         />
         <Button
           type="submit"
-          className="bg-reddish-orange-500 w-fit text-white"
+          className="bg-reddish-orange-500 w-fit text-white self-center px-16"
           radius="sm"
           size="lg"
         >
