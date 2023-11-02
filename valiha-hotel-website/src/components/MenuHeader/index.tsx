@@ -18,7 +18,7 @@ const MenuHeader = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="absolute top-0 w-full z-50">
+    <header className="absolute top-0 w-full z-50 bg-white-transparent">
       <div className="flex items-center justify-between z-20 bg-slate-blue-500 text-white">
         <div className="flex items-center gap-2 header__contact">
           <div>
@@ -67,9 +67,9 @@ const MenuHeader = () => {
         </div>
       </div>
       <div
-        className={`flex items-center justify-around pt-6 ${
+        className={`flex items-center justify-around py-2 ${
           isScrolled
-            ? "fixed top-0 left-0 w-full bg-dark-500 text-white shadow-lg !pt-0 z-50"
+            ? "fixed top-0 left-0 w-full bg-dark-500 text-white shadow-lg z-50"
             : ""
         }`}
       >

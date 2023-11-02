@@ -59,13 +59,13 @@
     },
     "footer": {
       "service": {
-        "title": "Service",
+        "title": "Services",
         "breakfast": "Petit-déjeuner",
         "parking": "Parking",
         "shuttle": "Navette aéroport"
       },
       "partners": {
-        "title": "The partners"
+        "title": "Les partenaires"
       },
       "contact": {
         "title": "Contact",
