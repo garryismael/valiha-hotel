@@ -1,6 +1,5 @@
 import {
   BreakfastRequestDto,
-  ShuttleRequestDto,
 } from "@/domain/use-cases/reservation";
 import { useFormik } from "formik";
 import { useAppSelector } from "./store";
@@ -19,6 +18,7 @@ type ReservationForm = {
   checkIn: Date;
   checkOut: Date;
   parking: boolean;
+  pax: number;
   client: ClientRequestDto;
   shuttles: {
     checked: boolean;
@@ -28,10 +28,6 @@ type ReservationForm = {
     checked: boolean;
     data: BreakfastRequestDto[];
   };
-  payment: {
-    selection: string;
-    card: string;
-  }
 };
 
 export const useBookingForm = () => {
@@ -41,6 +37,7 @@ export const useBookingForm = () => {
       checkIn: booking.checkIn,
       checkOut: booking.checkOut,
       parking: false,
+      pax: 0,
       client: {
         firstName: "",
         lastName: "",
@@ -55,10 +52,6 @@ export const useBookingForm = () => {
         checked: false,
         data: [],
       },
-      payment: {
-        selection: "on_spot",
-        card: ""
-      }
     },
     onSubmit(values) {
       console.log(values);

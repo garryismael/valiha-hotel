@@ -188,6 +188,11 @@ public class ReservationRepositoryImpl implements ReservationRepository {
       ReservationDataMapper.class
     );
 
-    return dataMappers.stream().map(dataMapper -> dataMapper.getId()).toList();
+    return dataMappers
+      .stream()
+      .flatMap(reservation ->
+        reservation.getRooms().stream().map(room -> room.getId())
+      )
+      .toList();
   }
 }

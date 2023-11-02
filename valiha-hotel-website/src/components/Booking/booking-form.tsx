@@ -2,9 +2,8 @@ import { useBookingForm } from "@/hooks/reservation";
 import { Button, Checkbox, Input, Select, SelectItem } from "@nextui-org/react";
 import { useTranslation } from "next-i18next";
 import ReactDatePicker from "react-datepicker";
-import { FaCalendarDays, FaHotel, FaPlus, FaTrash } from "react-icons/fa6";
+import { FaCalendarDays, FaPlus, FaTrash } from "react-icons/fa6";
 import { If, Then } from "react-if";
-import Mastercard from "../Icons/MasterCard";
 
 const BookingForm = () => {
   const {
@@ -25,22 +24,24 @@ const BookingForm = () => {
         onSubmit={formik.handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col gap-4 content-between"
       >
-        <h1 className="text-xl font-semibold text-center pt-4 pb-8">
+        <h1 className="text-3xl font-semibold text-center pt-4 pb-8">
           {t("reservation.booking.title")}
         </h1>
         <div className="flex items-center justify-between gap-4">
-          <Input
-            name="client.firstName"
-            onChange={formik.handleChange}
-            label={t("reservation.booking.first_name")}
-            variant="bordered"
-            className="w-full"
-          />
           <Input
             name="client.lastName"
             onChange={formik.handleChange}
             label={t("reservation.booking.last_name")}
             variant="bordered"
+            className="w-full"
+            radius="sm"
+          />
+          <Input
+            name="client.firstName"
+            onChange={formik.handleChange}
+            label={t("reservation.booking.first_name")}
+            variant="bordered"
+            radius="sm"
             className="w-full"
           />
         </div>
@@ -50,6 +51,7 @@ const BookingForm = () => {
             onChange={formik.handleChange}
             label={t("reservation.booking.phone_number")}
             variant="bordered"
+            radius="sm"
             className="w-full"
           />
           <Input
@@ -57,8 +59,22 @@ const BookingForm = () => {
             onChange={formik.handleChange}
             label={t("reservation.booking.email")}
             variant="bordered"
+            radius="sm"
             className="w-full"
           />
+        </div>
+        <div className="flex items-center justify-between gap-4">
+          <Input
+            name="pax"
+            onChange={formik.handleChange}
+            label="Nombre de pax"
+            variant="bordered"
+            type="number"
+            radius="sm"
+            className="w-full"
+            
+          />
+          <div className="w-full"/>
         </div>
         <Checkbox
           name="parking"
@@ -89,12 +105,14 @@ const BookingForm = () => {
                   onChange={(date: Date) =>
                     formik.setFieldValue(`breakfasts.data.${index}.date`, date)
                   }
+                  dateFormat="dd/MM/yyyy"
                   wrapperClassName="w-1/3"
                   customInput={
                     <Input
                       onChange={formik.handleChange}
                       label={t("reservation.booking.breakfast.date")}
                       variant="bordered"
+                      radius="sm"
                       className="w-full"
                       startContent={<FaCalendarDays />}
                       endContent={
@@ -144,6 +162,7 @@ const BookingForm = () => {
                       label={t("reservation.booking.shuttle.name")}
                       value={shuttle.flightName}
                       variant="bordered"
+                      radius="sm"
                       className="w-full"
                       classNames={{
                         label: "z-1",
@@ -154,6 +173,7 @@ const BookingForm = () => {
                       onChange={formik.handleChange}
                       label={t("reservation.booking.shuttle.number")}
                       variant="bordered"
+                      radius="sm"
                       className="w-full"
                     />
                   </div>
@@ -161,6 +181,7 @@ const BookingForm = () => {
                     <Select
                       name={`shuttles.data.${index}.selection`}
                       variant="bordered"
+                      radius="sm"
                       label={t("reservation.booking.shuttle.destination.label")}
                       value={shuttle.destination}
                       onChange={(e) => handleDestinationChange(e, index)}
@@ -194,6 +215,7 @@ const BookingForm = () => {
                       value={shuttle.destination}
                       label={t("reservation.booking.shuttle.destination.label")}
                       variant="bordered"
+                      radius="sm"
                       className={`w-full ${
                         shuttle.selection !== "other" ? "invisible" : "visible"
                       }`}
@@ -218,6 +240,7 @@ const BookingForm = () => {
                           onChange={formik.handleChange}
                           label={t("reservation.booking.shuttle.date")}
                           variant="bordered"
+                          radius="sm"
                           className="w-1/2"
                           startContent={<FaCalendarDays />}
                         />
@@ -227,6 +250,7 @@ const BookingForm = () => {
                   <Button
                     isIconOnly
                     color="danger"
+                    radius="sm"
                     variant="light"
                     aria-label="add shuttle"
                     className="justify-self-end align-self-end"
@@ -241,6 +265,7 @@ const BookingForm = () => {
                 color="primary"
                 variant="bordered"
                 aria-label="Add"
+                radius="sm"
                 onClick={addShuttle}
               >
                 <FaPlus />
@@ -248,51 +273,8 @@ const BookingForm = () => {
             </div>
           </Then>
         </If>
-        <div>
-          <h1 className="text-lg py-2">Mode de paiement</h1>
-          <div className="flex items-center gap-2 mb-2">
-            <div
-              className={`flex flex-col items-center justify-center border-2 border-solid p-2 h-24 w-36 ${
-                formik.values.payment.selection === "mastercard"
-                  ? "border-blue-500"
-                  : "border-gray-200"
-              }`}
-              onClick={() =>
-                formik.setFieldValue("payment.selection", "mastercard")
-              }
-            >
-              <Mastercard />
-              <p className="text-center">Via Mastercard</p>
-            </div>
-            <div
-              className={`flex flex-col items-center justify-center border-2 border-solid p-2 h-24 w-36 ${
-                formik.values.payment.selection === "on_spot"
-                  ? "border-blue-500"
-                  : "border-gray-200"
-              }`}
-              onClick={() =>
-                formik.setFieldValue("payment.selection", "on_spot")
-              }
-            >
-              <div className="flex items-center flex-grow">
-                <FaHotel size={24} />
-              </div>
-              <p className="self-center">Sur place</p>
-            </div>
-          </div>
-          <If condition={formik.values.payment.selection === "mastercard"}>
-            <Then>
-              <Input
-                name="payment.card"
-                onChange={formik.handleChange}
-                label={t("reservation.booking.payment.card_number")}
-                variant="bordered"
-                className="w-full flex basis-1/2"
-              />
-            </Then>
-          </If>
-        </div>
-        <button className="btn btn-orange w-fit self-end" type="submit">
+
+        <button className="btn btn-orange w-fit self-start" type="submit">
           {t("reservation.booking.button")}
         </button>
       </form>

@@ -33,14 +33,7 @@ const CarLocation = (props: CarProps) => {
       <div className="flex flex-col p-8 shadow-lg justify-center flex-wrap gap-2 w-2/3 mx-auto">
         <div className="flex items-center justify-between gap-4">
           <Input
-            name="client.firstName"
-            onChange={formik.handleChange}
-            label={t("reservation.booking.first_name")}
-            variant="bordered"
-            className="w-full"
-            radius="sm"
-          />
-          <Input
+            size="lg"
             name="client.lastName"
             onChange={formik.handleChange}
             label={t("reservation.booking.last_name")}
@@ -48,9 +41,19 @@ const CarLocation = (props: CarProps) => {
             className="w-full"
             radius="sm"
           />
+          <Input
+            size="lg"
+            name="client.firstName"
+            onChange={formik.handleChange}
+            label={t("reservation.booking.first_name")}
+            variant="bordered"
+            className="w-full"
+            radius="sm"
+          />
         </div>
         <div className="flex items-center justify-between gap-4">
           <Input
+            size="lg"
             name="client.phoneNumber"
             onChange={formik.handleChange}
             label={t("reservation.booking.phone_number")}
@@ -59,6 +62,7 @@ const CarLocation = (props: CarProps) => {
             radius="sm"
           />
           <Input
+            size="lg"
             name="client.email"
             onChange={formik.handleChange}
             label={t("reservation.booking.email")}
@@ -76,6 +80,7 @@ const CarLocation = (props: CarProps) => {
             wrapperClassName="w-full"
             customInput={
               <Input
+                size="lg"
                 onChange={formik.handleChange}
                 label="Début de location"
                 variant="bordered"
@@ -93,6 +98,7 @@ const CarLocation = (props: CarProps) => {
             wrapperClassName="w-full"
             customInput={
               <Input
+                size="lg"
                 onChange={formik.handleChange}
                 label="Fin de location"
                 variant="bordered"
@@ -113,6 +119,7 @@ const CarLocation = (props: CarProps) => {
             label: "z-1",
           }}
           radius="sm"
+          size="lg"
         >
           <SelectItem key="Antananarivo" value="Antananarivo">
             Antananarivo
@@ -126,9 +133,10 @@ const CarLocation = (props: CarProps) => {
           label="Raison du trajet"
           variant="bordered"
           classNames={{
-            label: "z-1",
+            label: "z-1 text-medium",
           }}
           radius="sm"
+          size="lg"
         />
         <Button
           type="submit"

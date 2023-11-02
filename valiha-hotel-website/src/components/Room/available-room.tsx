@@ -6,6 +6,7 @@ import {
 } from "@/infrastructure/store/slices/booking-slice";
 import styles from "@/styles/room.module.css";
 import { getCategoryType } from "@/utils/category";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import { useState } from "react";
 import { FaBed, FaPlus, FaUserGroup, FaXmark } from "react-icons/fa6";
@@ -13,6 +14,7 @@ import { Else, If, Then } from "react-if";
 
 const AvailableRoomCard = ({ room }: { room: Room }) => {
   const [selected, setSelected] = useState<boolean>(false);
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const handleAddRoom = () => {
@@ -47,29 +49,33 @@ const AvailableRoomCard = ({ room }: { room: Room }) => {
           <span className="text-dark-1-500 font-extrabold text-xl">
             {room.price} MGA
           </span>
-          <span>/Night</span>
+          <span>/Nuit</span>
         </h3>
         <div className="flex items-center gap-2">
           {getCategoryType(room.category.type).icon}
           <p className="text-medium font-base font-medium">
-            {getCategoryType(room.category.type).text}
+            {t(`room.${room.category.type}`)}
           </p>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
             <FaUserGroup size={16} />
             <p className="text-reddish-orange-500">{room.category.pax}</p>
-            <p className="text-medium font-base font-medium">Pax</p>
+            <p className="text-medium font-base font-medium">{t("pax")}</p>
           </div>
           <div className="flex items-center gap-2">
             <FaBed size={16} />
             <p className="text-reddish-orange-500">{room.category.bigBed}</p>
-            <p className="text-medium font-base font-medium">Big Bed</p>
+            <p className="text-medium font-base font-medium">
+              {t("room.big_bed")}
+            </p>
           </div>
           <div className="flex items-center gap-2">
             <FaBed size={16} />
             <p className="text-reddish-orange-500">{room.category.smallBed}</p>
-            <p className="text-medium font-base font-medium">Small Bed</p>
+            <p className="text-medium font-base font-medium">
+              {t("room.small_bed")}
+            </p>
           </div>
         </div>
         <div className="flex items-center justify-center gap-2 p-2">

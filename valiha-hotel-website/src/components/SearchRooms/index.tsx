@@ -15,7 +15,8 @@ const SearchRooms = () => {
           name="checkIn"
           minDate={new Date()}
           selected={formik.values.checkIn}
-          onChange={(date: Date) => formik.setFieldValue("checkOut", date)}
+          dateFormat="dd/MM/yyyy"
+          onChange={(date: Date) => formik.setFieldValue("checkIn", date)}
           className="bg-transparent outline-none !pl-7"
         />
       </div>
@@ -27,6 +28,7 @@ const SearchRooms = () => {
           showIcon={true}
           minDate={formik.values.checkIn}
           selected={formik.values.checkOut}
+          dateFormat="dd/MM/yyyy"
           onChange={(date: Date) => formik.setFieldValue("checkOut", date)}
           className="bg-transparent outline-none !pl-7"
         />

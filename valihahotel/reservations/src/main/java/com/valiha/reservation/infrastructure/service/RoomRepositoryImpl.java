@@ -60,6 +60,10 @@ public class RoomRepositoryImpl implements RoomRepository {
 
     HashSet<String> ids = new HashSet<String>(reservations);
 
+    System.out.println(checkIn.toString());
+    System.out.println(checkOut.toString());
+    System.out.println(ids.size());
+
     List<RoomDataMapper> dataMappers =
       this.mongoRoomRepository.findByIdNotIn(ids.stream().toList());
     return RoomDataMapper.cast(dataMappers);

@@ -39,15 +39,17 @@ const Page = () => {
         <div className="flex flex-col p-8 shadow-lg justify-center flex-wrap gap-2 w-2/3 mx-auto">
           <div className="flex items-center justify-between gap-4">
             <Input
-              name="client.firstName"
-              label={t("reservation.booking.first_name")}
+              size="lg"
+              name="client.lastName"
+              label={t("reservation.booking.last_name")}
               variant="bordered"
               className="w-full"
               radius="sm"
             />
             <Input
-              name="client.lastName"
-              label={t("reservation.booking.last_name")}
+              size="lg"
+              name="client.firstName"
+              label={t("reservation.booking.first_name")}
               variant="bordered"
               className="w-full"
               radius="sm"
@@ -55,6 +57,7 @@ const Page = () => {
           </div>
           <div className="flex items-center justify-between gap-4">
             <Input
+              size="lg"
               name="client.phoneNumber"
               label={t("reservation.booking.phone_number")}
               variant="bordered"
@@ -62,6 +65,7 @@ const Page = () => {
               radius="sm"
             />
             <Input
+              size="lg"
               name="client.email"
               label={t("reservation.booking.email")}
               variant="bordered"
@@ -74,9 +78,10 @@ const Page = () => {
             variant="bordered"
             label="Sujet"
             classNames={{
-              label: "z-1",
+              label: "z-1 text-medium",
             }}
             radius="sm"
+            size="lg"
           >
             <SelectItem key="room-service" value="room-service">
               Service de chambre
@@ -93,9 +98,10 @@ const Page = () => {
             label="Votre message"
             variant="bordered"
             classNames={{
-              label: "z-1",
+              label: "z-1 text-medium",
             }}
             radius="sm"
+            size="lg"
           />
           <Button
             type="submit"
