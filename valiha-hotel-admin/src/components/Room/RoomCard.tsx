@@ -1,15 +1,23 @@
-import { categoryTypes } from "@/constants/category";
 import { Room } from "@/domain/entities/room";
 import { getCategoryType } from "@/lib/utils/room";
 import styles from "@/styles/room.module.css";
+import {
+  Dropdown,
+  DropdownTrigger,
+  Button,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
 import Image from "next/image";
-import { FaBed, FaUserGroup } from "react-icons/fa6";
+import { useState } from "react";
+import { FaBed, FaEllipsisVertical, FaUserGroup } from "react-icons/fa6";
 
 type Props = {
   room: Room;
 };
 
 const RoomCard = ({ room }: Props) => {
+  const [key, setKey] = useState("");
   return (
     <div className={styles.card_container}>
       <div className={styles.card__image}>
@@ -20,6 +28,30 @@ const RoomCard = ({ room }: Props) => {
           sizes="100%"
           className={styles.image}
         />
+        <div className="actions">
+          <Dropdown
+            radius="sm"
+            className="bg-background border-1 border-default-200"
+          >
+            <DropdownTrigger className="outline-none">
+              <Button
+                isIconOnly
+                radius="none"
+                className="rounded-bl-3xl outline-none"
+                size="lg"
+                variant="light"
+              >
+                <FaEllipsisVertical size={18} className="text-dark-400" />
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu onAction={(key) => setKey(key.valueOf() as string)}>
+              <DropdownItem key={"edit"}>Modifier</DropdownItem>
+              <DropdownItem key={"bloquer"}>Bloquer</DropdownItem>
+              <DropdownItem key={"modifier"}>Modifier</DropdownItem>
+              <DropdownItem key={"delete"}>Supprimer</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
       </div>
       <div className="flex flex-col gap-2 p-2">
         <h1 className="uppercase text-reddish-orange-500 font-semibold text-lg">

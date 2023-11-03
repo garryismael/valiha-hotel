@@ -1,7 +1,6 @@
 package com.valiha.reservation.infrastructure.data;
 
 import com.valiha.reservation.core.entities.models.Category;
-import com.valiha.reservation.infrastructure.config.ReservationData;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,9 +35,7 @@ public class CategoryDataMapper {
       .pax(dataMapper.getPax())
       .bigBed(dataMapper.getBigBed())
       .smallBed(dataMapper.getSmallBed())
-      .image(
-        String.format("%s/%s", ReservationData.BASE_URL, dataMapper.getImage())
-      )
+      .image(dataMapper.getImage())
       .build();
   }
 

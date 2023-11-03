@@ -2,6 +2,7 @@ package com.valiha.reservation.application.dto.room;
 
 import com.valiha.reservation.application.dto.category.CategoryResponseDto;
 import com.valiha.reservation.core.entities.models.Room;
+import com.valiha.reservation.infrastructure.config.ReservationData;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +27,7 @@ public class RoomResponseDto {
       .id(room.getId())
       .title(room.getTitle())
       .price(room.getPrice())
-      .image(room.getImage())
+      .image(String.format("%s/%s", ReservationData.BASE_URL, room.getImage()))
       .category(CategoryResponseDto.from(room.getCategory()))
       .build();
   }

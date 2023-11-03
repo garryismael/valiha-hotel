@@ -30,6 +30,10 @@ export interface EditCategoryUseCase {
   execute(id: string, request: CategoryRequest): Promise<Category>;
 }
 
+export interface DeleteCategoryUseCase {
+  execute(id: string): Promise<void>;
+}
+
 @injectable()
 export class GetCategoriesInteractor implements GetCategoriesUseCase {
   constructor(
@@ -58,5 +62,15 @@ export class EditCategoryInteractor implements EditCategoryUseCase {
   ) {}
   execute(id: string, request: CategoryRequest): Promise<Category> {
     return this.categoryService.edit(id, request);
+  }
+}
+
+@injectable()
+export class DeleteCategoryInteractor implements DeleteCategoryUseCase {
+  constructor(
+    @inject("CategoryService") private categoryService: CategoryService
+  ) {}
+  execute(id: string): Promise<void> {
+    return this.categoryService.delete(id);
   }
 }

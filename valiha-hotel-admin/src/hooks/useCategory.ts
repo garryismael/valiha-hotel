@@ -4,13 +4,19 @@ import {
   CategoryRequest,
   CreateCategoryInteractor,
   CreateCategoryUseCase,
+  DeleteCategoryInteractor,
+  DeleteCategoryUseCase,
   EditCategoryInteractor,
   EditCategoryUseCase,
   GetCategoriesInteractor,
   GetCategoriesUseCase,
 } from "@/domain/use-cases/category";
 import container from "@/infrastructures/config/container.config";
-import { addCategory, editCategory } from "@/lib/store/slices/category-slice";
+import {
+  addCategory,
+  deleteCategory,
+  editCategory,
+} from "@/lib/store/slices/category-slice";
 import { useDisclosure } from "@nextui-org/react";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
@@ -53,7 +59,6 @@ export const useCategoryForm = () => {
       smallBed: 0,
     },
     onSubmit: async (values) => {
-      onOpenChange();
       const category = await createUseCase.execute(values);
       dispatch(addCategory(category));
     },
@@ -85,4 +90,21 @@ export const useCategoryEditForm = (category: Category) => {
   });
 
   return formik;
+};
+
+export const useDeleteCategory = (id: string) => {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const deleteUseCase = container.resolve<DeleteCategoryUseCase>(
+    DeleteCategoryInteractor
+  );
+
+  const handleDelete = async () => {
+    setLoading(true);
+    await deleteUseCase.execute(id);
+    dispatch(deleteCategory(id));
+    setLoading(false);
+  };
+
+  return { loading, handleDelete };
 };

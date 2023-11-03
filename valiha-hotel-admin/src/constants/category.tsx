@@ -32,10 +32,10 @@ export type CategoryType = {
 export const categoryTypes: Record<string, CategoryType> = {
   "hotel-with-breakfast": {
     text: "Hotel avec petit-déjeuner",
-    icon: <MdRestaurantMenu size={24} />,
+    icon: <MdRestaurantMenu size={24} className="text-white-gray-500" />,
   },
   "apartment-with-kitchen": {
     text: "Hôtel avec appartement",
-    icon: <FaKitchenSet size={24} />,
+    icon: <FaKitchenSet size={24} className="text-white-gray-500" />,
   },
 };

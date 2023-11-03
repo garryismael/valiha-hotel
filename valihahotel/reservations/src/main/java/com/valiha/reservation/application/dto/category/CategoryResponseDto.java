@@ -1,6 +1,7 @@
 package com.valiha.reservation.application.dto.category;
 
 import com.valiha.reservation.core.entities.models.Category;
+import com.valiha.reservation.infrastructure.config.ReservationData;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +33,9 @@ public class CategoryResponseDto {
       .pax(category.getPax())
       .bigBed(category.getBigBed())
       .smallBed(category.getSmallBed())
-      .image(category.getImage())
+      .image(
+        String.format("%s/%s", ReservationData.BASE_URL, category.getImage())
+      )
       .build();
   }
 

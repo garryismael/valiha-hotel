@@ -1,3 +1,4 @@
+import { multipart } from "@/constants/axios";
 import { Category } from "@/domain/entities/category";
 import { CategoryRequest, CategoryService } from "@/domain/use-cases/category";
 import http, { httpClient } from "@/lib/axios";
@@ -35,7 +36,7 @@ export class CategoryServiceImpl implements CategoryService {
   }
 
   async delete(id: string): Promise<void> {
-    await http.delete<void>(`${CATEGORY_PATH}/${id}}`);
+    await http.delete<void>(`${CATEGORY_PATH}/${id}`);
   }
 
   private cast(request: CategoryRequest): FormData {

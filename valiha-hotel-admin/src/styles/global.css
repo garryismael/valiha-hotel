@@ -47,6 +47,10 @@
   }
 }
 
+.actions {
+  @apply absolute right-0 rounded-tr-lg rounded-bl-3xl bg-reddish-orange-500;
+}
+
 input[type="file"]::file-selector-button {
   @apply rounded-medium border-none bg-transparent;
 }

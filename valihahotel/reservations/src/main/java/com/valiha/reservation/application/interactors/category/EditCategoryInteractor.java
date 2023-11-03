@@ -53,6 +53,7 @@ public class EditCategoryInteractor implements CategoryEditUseCase {
     } else {
       image = category.getImage();
     }
+    System.out.println(image);
 
     category =
       this.categoryFactory.create(
