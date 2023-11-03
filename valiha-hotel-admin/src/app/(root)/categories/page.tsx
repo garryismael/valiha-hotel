@@ -12,7 +12,7 @@ const Page = async () => {
   const categories = await getCategories.execute();
 
   return (
-    <section className="my-14 max-w-[96rem] mx-auto w-full flex flex-col gap-4">
+    <section className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
       <CategoryList categories={categories}/>
     </section>
   );

@@ -48,7 +48,7 @@ const CategoryList = ({ categories: data }: Props) => {
           <AddCategory />
         </div>
       </div>
-      <div className="max-w-[95rem] mx-auto w-full flex items-center justify-between content-between gap-8 flex-wrap">
+      <div className="max-w-[100rem] mx-auto w-full flex items-center justify-between content-between gap-8 flex-wrap">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
