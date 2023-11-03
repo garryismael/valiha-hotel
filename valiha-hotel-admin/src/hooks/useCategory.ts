@@ -4,11 +4,13 @@ import {
   CategoryRequest,
   CreateCategoryInteractor,
   CreateCategoryUseCase,
+  EditCategoryInteractor,
+  EditCategoryUseCase,
   GetCategoriesInteractor,
   GetCategoriesUseCase,
 } from "@/domain/use-cases/category";
 import container from "@/infrastructures/config/container.config";
-import { addCategory } from "@/lib/store/slices/category-slice";
+import { addCategory, editCategory } from "@/lib/store/slices/category-slice";
 import { useDisclosure } from "@nextui-org/react";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
@@ -37,7 +39,7 @@ export const useCategoryList = () => {
 
 export const useCategoryForm = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const createCategory = container.resolve<CreateCategoryUseCase>(
+  const createUseCase = container.resolve<CreateCategoryUseCase>(
     CreateCategoryInteractor
   );
   const dispatch = useAppDispatch();
@@ -52,10 +54,35 @@ export const useCategoryForm = () => {
     },
     onSubmit: async (values) => {
       onOpenChange();
-      const category = await createCategory.execute(values);
+      const category = await createUseCase.execute(values);
       dispatch(addCategory(category));
     },
   });
 
   return { formik, isOpen, onOpen, onOpenChange };
+};
+
+export const useCategoryEditForm = (category: Category) => {
+  const editUseCase = container.resolve<EditCategoryUseCase>(
+    EditCategoryInteractor
+  );
+  const dispatch = useAppDispatch();
+
+  const formik = useFormik<CategoryRequest & { id: string }>({
+    initialValues: {
+      id: category.id,
+      title: category.title,
+      type: category.type,
+      pax: category.pax,
+      image: null,
+      bigBed: category.bigBed,
+      smallBed: category.smallBed,
+    },
+    onSubmit: async (values) => {
+      const category = await editUseCase.execute(values.id, values);
+      dispatch(editCategory(category));
+    },
+  });
+
+  return formik;
 };

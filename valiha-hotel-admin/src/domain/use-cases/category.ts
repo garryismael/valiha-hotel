@@ -12,7 +12,10 @@ export interface CategoryRequest {
 
 export interface CategoryService {
   findAll(): Promise<Category[]>;
+  findOne(id: string): Promise<Category>;
   create(request: CategoryRequest): Promise<Category>;
+  edit(id: string, request: CategoryRequest): Promise<Category>;
+  delete(id: string): Promise<void>;
 }
 
 export interface GetCategoriesUseCase {
@@ -21,6 +24,10 @@ export interface GetCategoriesUseCase {
 
 export interface CreateCategoryUseCase {
   execute(request: CategoryRequest): Promise<Category>;
+}
+
+export interface EditCategoryUseCase {
+  execute(id: string, request: CategoryRequest): Promise<Category>;
 }
 
 @injectable()
@@ -41,5 +48,15 @@ export class CreateCategoryInteractor implements CreateCategoryUseCase {
   ) {}
   execute(request: CategoryRequest): Promise<Category> {
     return this.categoryService.create(request);
+  }
+}
+
+@injectable()
+export class EditCategoryInteractor implements EditCategoryUseCase {
+  constructor(
+    @inject("CategoryService") private categoryService: CategoryService
+  ) {}
+  execute(id: string, request: CategoryRequest): Promise<Category> {
+    return this.categoryService.edit(id, request);
   }
 }

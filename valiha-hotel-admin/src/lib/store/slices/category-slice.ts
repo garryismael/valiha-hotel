@@ -15,10 +15,21 @@ export const CategorySlice = createSlice({
     },
     addCategory: (state, action: PayloadAction<Category>) => {
       state.categories.push(action.payload);
-    }
+    },
+    editCategory: (state, action: PayloadAction<Category>) => {
+      state.categories = state.categories.map((category) =>
+        category.id != action.payload.id ? category : action.payload
+      );
+    },
+    deleteCategory: (state, action: PayloadAction<string>) => {
+      state.categories = state.categories.filter(
+        (category) => category.id !== action.payload
+      );
+    },
   },
 });
 
-export const { setCategories, addCategory } = CategorySlice.actions;
+export const { setCategories, addCategory, editCategory, deleteCategory } =
+  CategorySlice.actions;
 
 export default CategorySlice.reducer;

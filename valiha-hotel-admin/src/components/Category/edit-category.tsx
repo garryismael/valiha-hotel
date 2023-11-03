@@ -1,8 +1,10 @@
 "use client";
 import { categoryTypes } from "@/constants/category";
-import { useCategoryForm } from "@/hooks/useCategory";
+import { Category } from "@/domain/entities/category";
+import { useCategoryEditForm } from "@/hooks/useCategory";
 import {
   Button,
+  DropdownItem,
   Input,
   Modal,
   ModalBody,
@@ -13,32 +15,32 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { useRef } from "react";
-import { FaPlus, FaUpload } from "react-icons/fa6";
+import { FaUpload } from "react-icons/fa6";
 
-const AddCategory = () => {
+type Props = {
+  isOpen: boolean;
+  onOpenChange: () => void;
+  category: Category;
+};
+
+const EditCategory = ({ category, isOpen, onOpenChange }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { formik, onOpen, isOpen, onOpenChange } = useCategoryForm();
+  const formik = useCategoryEditForm(category);
 
   return (
     <div>
       <>
-        <Button
-          onPress={onOpen}
-          color="primary"
-          startContent={<FaPlus size={16} />}
-        >
-          Catégorie
-        </Button>
         <Modal
           isOpen={isOpen}
           onOpenChange={onOpenChange}
           placement="top-center"
+          isDismissable={false}
         >
           <ModalContent>
             {(onClose) => (
               <form onSubmit={formik.handleSubmit}>
                 <ModalHeader className="flex flex-col gap-1">
-                  Ajouter une catégorie de chambre
+                  Modifier une catégorie de chambre
                 </ModalHeader>
                 <ModalBody>
                   <Input
@@ -55,6 +57,7 @@ const AddCategory = () => {
                     variant="bordered"
                     radius="sm"
                     placeholder="Sélectionner le type de chambre"
+                    defaultSelectedKeys={[category.type]}
                     onChange={formik.handleChange}
                   >
                     {Object.keys(categoryTypes).map((key: string) => (
@@ -119,7 +122,7 @@ const AddCategory = () => {
                     Annuler
                   </Button>
                   <Button color="primary" onPress={onClose} type="submit">
-                    Ajouter
+                    Modifier
                   </Button>
                 </ModalFooter>
               </form>
@@ -131,4 +134,4 @@ const AddCategory = () => {
   );
 };
 
-export default AddCategory;
+export default EditCategory;
