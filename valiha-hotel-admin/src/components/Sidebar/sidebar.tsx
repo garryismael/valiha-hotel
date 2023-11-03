@@ -4,9 +4,19 @@ import { HomeIcon } from "@/icons/sidebar/home-icon";
 import { useSidebarContext } from "@/components/Layout/context";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { FaBed, FaCreditCard, FaDoorOpen, FaUsers } from "react-icons/fa6";
-import { MdArticle, MdDirectionsCar, MdEvent, MdHistory, MdOutlineCarRental } from "react-icons/md";
-import { RiShieldUserFill } from 'react-icons/ri';
+import {
+  FaBed,
+  FaCalendarCheck,
+  FaCar,
+  FaClockRotateLeft,
+  FaCreditCard,
+  FaDoorOpen,
+  FaKey,
+  FaNewspaper,
+  FaUsers,
+} from "react-icons/fa6";
+import { MdArticle } from "react-icons/md";
+import { RiShieldUserFill } from "react-icons/ri";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { Sidebar } from "./sidebar.styles";
@@ -40,7 +50,7 @@ export const SidebarWrapper = () => {
               <SidebarItem
                 isActive={pathname === "/categories"}
                 title="Catégories"
-                icon={<FaBed size={24} className="text-white-gray-500"/>}
+                icon={<FaBed size={24} className="text-white-gray-500" />}
                 href="categories"
               />
               <SidebarItem
@@ -52,51 +62,63 @@ export const SidebarWrapper = () => {
               <SidebarItem
                 isActive={pathname === "/reservations"}
                 title="Réservations"
-                icon={<MdEvent size={24} className="text-white-gray-500" />}
+                icon={
+                  <FaCalendarCheck size={24} className="text-white-gray-500" />
+                }
                 href="reservations"
               />
               <SidebarItem
                 isActive={pathname === "/cars"}
                 title="Véhicules"
-                icon={<MdDirectionsCar size={24} className="text-white-gray-500"/>}
+                icon={<FaCar size={24} className="text-white-gray-500" />}
                 href="cars"
               />
               <SidebarItem
                 isActive={pathname === "/locations"}
                 title="Locations"
-                icon={<MdOutlineCarRental size={24} className="text-white-gray-500"/>}
-                href="cars"
+                icon={
+                  <FaKey
+                    size={24}
+                    className="text-white-gray-500"
+                  />
+                }
+                href="locations"
               />
               <SidebarItem
                 isActive={pathname === "/payments"}
                 title="Paiements"
-                icon={<FaCreditCard size={24} className="text-white-gray-500"/>}
+                icon={
+                  <FaCreditCard size={24} className="text-white-gray-500" />
+                }
+                href="payments"
               />
               <SidebarItem
                 isActive={pathname === "/transactions"}
                 title="Transactions"
-                icon={<MdHistory size={24} className="text-white-gray-500"/>}
+                icon={<FaClockRotateLeft size={24} className="text-white-gray-500" />}
+                href="transactions"
               />
-              
             </SidebarMenu>
 
             <SidebarMenu title="Général">
               <SidebarItem
                 isActive={pathname === "/blogs"}
                 title="Blogs"
-                icon={<MdArticle size={24} className="text-white-gray-500" />}
+                icon={<FaNewspaper size={24} className="text-white-gray-500" />}
                 href="blogs"
               />
               <SidebarItem
                 isActive={pathname === "/clients"}
                 title="Clients"
-                icon={<FaUsers size={24} className="text-white-gray-500"/>}
-                href="accounts"
+                icon={<FaUsers size={24} className="text-white-gray-500" />}
+                href="clients"
               />
               <SidebarItem
                 isActive={pathname === "/accounts"}
                 title="Administrateurs"
-                icon={<RiShieldUserFill size={24} className="text-white-gray-500"/>}
+                icon={
+                  <RiShieldUserFill size={24} className="text-white-gray-500" />
+                }
                 href="accounts"
               />
             </SidebarMenu>

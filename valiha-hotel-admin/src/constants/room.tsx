@@ -1,11 +1,12 @@
 import { Breadcrumb } from "@/components/BreadCrumbs";
 import { HouseIcon } from "@/icons/breadcrumb/house-icon";
 import { FaDoorOpen } from "react-icons/fa6";
+import { HomeIcon } from "@/icons/sidebar/home-icon";
 
 export const roomBreadcrumbs: Breadcrumb[] = [
   {
     id: 1,
-    icon: <HouseIcon />,
+    icon: <HomeIcon />,
     text: "Tableau de bord",
     href: "/",
     spacer: "/",
