@@ -27,3 +27,8 @@
 .card_info_text {
     @apply font-semibold text-reddish-orange-500;
 }
+
+.actions {
+    @apply absolute z-[1000] right-0 rounded-tr-lg rounded-bl-3xl;
+    background: rgba(255, 255, 255, 0.5);
+}
