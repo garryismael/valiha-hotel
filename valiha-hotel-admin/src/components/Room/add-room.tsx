@@ -39,7 +39,7 @@ const AddRoom = () => {
           <ModalContent>
             {(onClose) => (
               <form onSubmit={formik.handleSubmit}>
-                <ModalHeader className="flex flex-col gap-1 text-center">
+                <ModalHeader className="flex flex-col gap-1">
                   Ajouter une chambre
                 </ModalHeader>
                 <ModalBody>

@@ -17,7 +17,7 @@ type Props = {
 
 const RoomSection = ({ rooms }: Props) => {
   return (
-    <section className="my-14 max-w-[96rem] mx-auto w-full flex flex-col gap-4">
+    <section className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={roomBreadcrumbs} />
       <h3 className="title">Chambres et appartements</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">
@@ -38,7 +38,7 @@ const RoomSection = ({ rooms }: Props) => {
           <AddRoom />
         </div>
       </div>
-      <div className="max-w-[95rem] mx-auto w-full flex items-center justify-between content-between gap-8 flex-wrap">
+      <div className="max-w-[100rem] mx-auto w-full flex items-center justify-between content-between gap-8 flex-wrap">
         {rooms.map((room) => (
           <RoomCard key={room.id} room={room} />
         ))}
