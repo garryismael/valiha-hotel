@@ -1,9 +1,17 @@
-import React from 'react'
+import ReservationPage from "@/pages/ReservationPage";
+import React from "react";
+import container from "@/infrastructures/config/container.config";
+import {
+  FindReservationsInteractor,
+  FindReservationsUseCase,
+} from "@/domain/use-cases/reservation";
 
-const Page = () => {
-  return (
-    <main className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">Page</main>
-  )
-}
+const Page = async () => {
+  const findAllUseCase = container.resolve<FindReservationsUseCase>(
+    FindReservationsInteractor
+  );
+  const reservations = await findAllUseCase.execute();
+  return <ReservationPage reservations={reservations} />;
+};
 
-export default Page
+export default Page;
