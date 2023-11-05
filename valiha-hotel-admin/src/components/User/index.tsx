@@ -3,11 +3,10 @@ import { TableWrapper } from "@/components/Table/table";
 import { accountBreadcrumbs } from "@/constants/account";
 import { User } from "@/domain/entities/user";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
-import { ExportIcon } from "@/icons/accounts/export-icon";
 import { InfoIcon } from "@/icons/accounts/info-icon";
 import { TrashIcon } from "@/icons/accounts/trash-icon";
 import { SettingsIcon } from "@/icons/sidebar/settings-icon";
-import { Button, Input } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import Breadcrumbs from "../BreadCrumbs";
 import { AddUser } from "./add-user";
 
@@ -33,9 +32,6 @@ export const Accounts = ({ users }: { users: User[] }) => {
         </div>
         <div className="flex flex-row gap-3.5 flex-wrap">
           <AddUser />
-          <Button color="primary" startContent={<ExportIcon />}>
-            Export to CSV
-          </Button>
         </div>
       </div>
       <div className="max-w-[95rem] mx-auto w-full">

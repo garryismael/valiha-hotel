@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { CategorySlice } from "./slices/category-slice";
 import { RoomSlice } from "./slices/room-slice";
+import { UserSlice } from "./slices/user-slide";
 
 export const store = configureStore({
   reducer: {
     category: CategorySlice.reducer,
-    room: RoomSlice.reducer
+    room: RoomSlice.reducer,
+    user: UserSlice.reducer
   },
 });
 

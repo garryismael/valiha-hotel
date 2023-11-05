@@ -1,12 +1,16 @@
 import { inject, injectable } from "tsyringe";
 import { User } from "../entities/user";
 
-export interface UserRequest {
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    email: string;
-    password: string;
+export interface UserBaseRequest {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  image: File | null;
+}
+export interface UserRequest extends UserBaseRequest {
+  password: string;
+  confirmPassword: string;
 }
 
 export interface UserService {

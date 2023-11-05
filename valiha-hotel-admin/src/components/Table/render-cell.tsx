@@ -3,7 +3,7 @@ import { User as UserDataMapper } from "@/domain/entities/user";
 import { DeleteIcon } from "@/icons/table/delete-icon";
 import { EditIcon } from "@/icons/table/edit-icon";
 import { EyeIcon } from "@/icons/table/eye-icon";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip, User } from "@nextui-org/react";
 import React from "react";
 
 interface Props {
@@ -15,6 +15,16 @@ export const RenderCell = ({ user, columnKey }: Props) => {
   // @ts-ignore
   const cellValue = user[columnKey];
   switch (columnKey) {
+    case "firstName":
+      return (
+        <User
+            avatarProps={{radius: "lg", src: user.image}}
+            description={user.lastName}
+            name={cellValue}
+          >
+            {user.lastName}
+          </User>
+      );
     case "actions":
       return (
         <div className="flex items-center gap-4 ">
