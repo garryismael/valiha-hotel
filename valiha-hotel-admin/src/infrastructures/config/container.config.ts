@@ -6,6 +6,8 @@ import { CategoryServiceImpl } from "../services/category";
 import { RoomServiceImpl } from "../services/room";
 import { UserServiceImpl } from "../services/user";
 import { ReservationServiceImpl } from "../services/reservation";
+import { ClientServiceImpl } from "../services/client";
+import { BlogServiceImpl } from "../services/blog";
 
 container.register("CategoryService", {
   useClass: CategoryServiceImpl,
@@ -25,5 +27,13 @@ container.register("UserService", {
 
 container.register("ReservationService", {
   useClass: ReservationServiceImpl,
+});
+
+container.register("ClientService", {
+  useClass: ClientServiceImpl,
+});
+
+container.register("BlogService", {
+  useClass: BlogServiceImpl,
 });
 export default container;

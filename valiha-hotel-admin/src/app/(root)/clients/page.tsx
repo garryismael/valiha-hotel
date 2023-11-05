@@ -1,11 +1,15 @@
-import React from "react";
+import ClientPage from "@/pages/Client";
 
-const Page = () => {
-  return (
-    <main className="my-14 max-w-[96rem] mx-auto w-full flex flex-col gap-4">
-      Page
-    </main>
-  );
+import container from "@/infrastructures/config/container.config";
+import {
+  GetClientsInteractor,
+  GetClientsUseCase,
+} from "@/domain/use-cases/client";
+
+const Page = async () => {
+  const getClients = container.resolve<GetClientsUseCase>(GetClientsInteractor);
+  const clients = await getClients.execute();
+  return <ClientPage clients={clients}/>;
 };
 
 export default Page;

@@ -1,11 +1,11 @@
-import React from "react";
+import { GetBlogsInteractor, GetBlogsUseCase } from "@/domain/use-cases/blog";
+import container from "@/infrastructures/config/container.config";
+import BlogPage from "@/pages/Blog";
 
-const Page = () => {
-  return (
-    <main className="my-14 max-w-[96rem] mx-auto w-full flex flex-col gap-4">
-      Page
-    </main>
-  );
+const Page = async () => {
+  const getBlogs = container.resolve<GetBlogsUseCase>(GetBlogsInteractor);
+  const blogs = await getBlogs.execute();
+  return <BlogPage blogs={blogs}/>;
 };
 
 export default Page;

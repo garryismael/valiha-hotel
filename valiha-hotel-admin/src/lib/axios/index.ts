@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Session, getServerSession } from "next-auth";
-import { getSession, signIn } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { authOptions } from "../auth";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
