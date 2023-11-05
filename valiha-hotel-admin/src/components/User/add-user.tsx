@@ -1,15 +1,15 @@
 'use client';
 import {
-    Button,
-    Input,
-    Modal,
-    ModalBody,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    useDisclosure,
-  } from "@nextui-org/react";
-  import React from "react";
+  Button,
+  Input,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  useDisclosure,
+} from "@nextui-org/react";
+import { FaUserPlus } from "react-icons/fa6";
   
   export const AddUser = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -17,8 +17,8 @@ import {
     return (
       <div>
         <>
-          <Button onPress={onOpen} color="primary">
-            Add User
+          <Button onPress={onOpen} color="primary" startContent={<FaUserPlus size={18}/>}>
+            Administrateur
           </Button>
           <Modal
             isOpen={isOpen}
@@ -29,7 +29,7 @@ import {
               {(onClose) => (
                 <>
                   <ModalHeader className="flex flex-col gap-1">
-                    Add User
+                    Ajouter un Administrateur
                   </ModalHeader>
                   <ModalBody>
                     <Input label="Email" variant="bordered" />
@@ -46,10 +46,10 @@ import {
                   </ModalBody>
                   <ModalFooter>
                     <Button color="danger" variant="flat" onClick={onClose}>
-                      Close
+                      Annuler
                     </Button>
                     <Button color="primary" onPress={onClose}>
-                      Add User
+                      Ajouter
                     </Button>
                   </ModalFooter>
                 </>

@@ -1,24 +1,24 @@
 import { Breadcrumb } from "@/components/BreadCrumbs";
-import { HouseIcon } from "@/icons/breadcrumb/house-icon";
-import { UsersIcon } from "@/icons/breadcrumb/users-icon";
+import { HomeIcon } from "@/icons/sidebar/home-icon";
+import { RiShieldUserFill } from "react-icons/ri";
 
 export const accountBreadcrumbs: Breadcrumb[] = [
   {
     id: 1,
-    icon: <HouseIcon />,
-    text: "Home",
+    icon: <HomeIcon />,
+    text: "Tableau de bord",
     href: "/",
     spacer: "/",
   },
   {
     id: 2,
-    icon: <UsersIcon />,
-    text: "Users",
+    icon: <RiShieldUserFill size={24} className="text-white-gray-500 ml-2"/>,
+    text: "Administrateurs",
     href: "/accounts",
     spacer: "/",
   },
   {
     id: 3,
-    text: "List",
+    text: "Liste",
   },
 ];
