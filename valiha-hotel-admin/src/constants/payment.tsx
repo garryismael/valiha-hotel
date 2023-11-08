@@ -4,7 +4,7 @@ type PaymentType = {
 };
 export const paymentState: Record<string, PaymentType> = {
   pending: {
-    value: "en cours",
+    value: "en attente",
     color: "warning",
   },
   paid: {

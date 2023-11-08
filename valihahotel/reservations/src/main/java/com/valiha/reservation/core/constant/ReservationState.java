@@ -5,7 +5,7 @@ import java.util.List;
 public enum ReservationState {
   PENDING("pending"),
   CONFIRMED("confirmed"),
-  PAID("paid"),
+  PAID("done"),
   CANCELED("canceled"),
   NO_SHOW("no_show");
 
