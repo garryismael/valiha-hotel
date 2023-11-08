@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { TableWrapper } from "@/components/Table/table";
 import { Link } from "@nextui-org/react";
 import dynamic from "next/dynamic";
@@ -9,6 +9,7 @@ import { CardBalance2 } from "./card-balance2";
 import { CardBalance3 } from "./card-balance3";
 import { CardTransactions } from "./card-transactions";
 import { User } from "@/domain/entities/user";
+import { CardDonut } from "./card-donut";
 
 const Chart = dynamic(
   () => import("@/components/Chart/steam").then((mod) => mod.Steam),
@@ -17,9 +18,9 @@ const Chart = dynamic(
   }
 );
 
-export const Content = ({users}: {users: User[]}) => (
+export const Content = ({ users }: { users: User[] }) => (
   <div className=" h-full">
-    <div className="flex justify-center gap-4 xl:gap-12 pt-3 px-4 lg:px-0  flex-wrap xl:flex-nowrap sm:pt-10 max-w-[96rem] mx-auto w-full">
+    <div className="flex justify-center gap-4 xl:gap-12 pt-3 px-4 lg:px-0  flex-wrap xl:flex-nowrap sm:pt-10 max-w-[100rem] mx-auto w-full">
       <div className="mt-6  gap-6 flex flex-col w-full">
         {/* Card Section Top */}
         <div className="flex flex-col gap-2">
@@ -44,26 +45,28 @@ export const Content = ({users}: {users: User[]}) => (
       <div className="mt-4 gap-2 flex flex-col xl:max-w-md w-full">
         <h3 className="text-xl font-semibold">Section</h3>
         <div className="flex flex-col justify-center gap-4 flex-wrap md:flex-nowrap md:flex-col">
-          <CardAgents />
+          <CardDonut />
           <CardTransactions />
         </div>
       </div>
     </div>
 
     {/* Table Latest Users */}
-    <div className="flex flex-col justify-center w-full py-5 px-4 lg:px-0  max-w-[90rem] mx-auto gap-3">
+    <div className="flex flex-col justify-center w-full py-5 px-4 lg:px-0  max-w-[100rem] mx-auto gap-3">
       <div className="flex  flex-wrap justify-between">
-        <h3 className="text-center text-xl font-semibold">Latest Users</h3>
+        <h3 className="text-center text-xl font-semibold">
+          Dernière réservations
+        </h3>
         <Link
-          href="/accounts"
+          href="/transactions"
           as={NextLink}
           color="primary"
           className="cursor-pointer"
         >
-          View All
+          Voir toute
         </Link>
       </div>
-      <TableWrapper users={users}/>
+      <TableWrapper users={users} />
     </div>
   </div>
 );

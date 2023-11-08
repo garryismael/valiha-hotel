@@ -1,15 +1,15 @@
-'use client';
+"use client";
 import React from "react";
 import Chart, { Props } from "react-apexcharts";
 
 const state: Props["series"] = [
   {
-    name: "Series1",
-    data: [31, 40, 28, 51, 42, 109, 100],
+    name: "Réservation de chambres",
+    data: [0, 60, 28, 51, 42, 10, 100, 20, 45, 21, 45, 12],
   },
   {
-    name: "Series2",
-    data: [11, 32, 45, 32, 34, 52, 41],
+    name: "Location de voitures",
+    data: [0, 20, 45, 32, 34, 52, 41, 39, 10, 4, 12, 15],
   },
 ];
 
@@ -36,7 +36,20 @@ const options: Props["options"] = {
   },
 
   xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+    categories: [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre",
+    ],
     labels: {
       // show: false,
       style: {

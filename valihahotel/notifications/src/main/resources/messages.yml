@@ -1,0 +1,42 @@
+object: CONFIRMATION RESERVATION - VALIHA HOTEL
+great: Madame, Monsieur
+hello: Bonjour
+confirmation: Nous accusons réception de votre réservation et vous remercions d'avoir choisi Valiha Hôtel. Vous trouverez plus bas les détails de votre réservation et nous vous contacterons dans les plus brefs délais pour confirmation.
+confirmation_wish: L'équipe de Valiha Hotel vous souhaite de passer une agréable journée et également un agréable séjour dans notre établissement.
+detail_reservation: Détails Réservation
+room: Chambre
+type: Type
+nights: Nuits
+debut: Début
+end: Fin
+roomPrice: Prix chambre
+shuttlePrice: Prix Navette
+shuttleTotal: Total Navette
+breakfastPrice: Prix petit-déjeuner par pax
+breakfastTotal: Total petit-déjeuner
+adults: Adulte(s)
+kids: Enfants
+total: Total
+calling: L'équipe de Valiha Hotel vous appellera bientôt pour de plus amples détails.
+thanks: Madame, Monsieur, l'expression de nos salutations les plus distinguées.
+locationConfirmation: Par la présente, Valiha Hôtel vous permet de confirmer votre location de voiture
+car: Voiture
+for: Pour
+confirmationLocation: Confirmation de votre location de voiture
+contact: Votre contact
+information: Vos informations
+"Hôtel avec petit-déjeuner": Hôtel avec petit-déjeuner
+"Appartement avec Cuisine": Appartement avec Cuisine
+male: Monsieur
+female: Madame
+reception: Réception Valiha Hôtel
+airportToHotel: Aéroport à l'hôtel
+hotelToAirport: Hôtel à l'aéroport
+flight_name: Nom du vol
+direction_navette: Direction
+flight_number: Numéro de vol
+arrival_date: Date d'arrivée
+arrival_time: Heure d'arrivée
+petitDej: Petits-déjeuners
+navettesInfo: Navettes
+dateInfo: Date

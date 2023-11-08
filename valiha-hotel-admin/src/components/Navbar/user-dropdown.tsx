@@ -1,17 +1,27 @@
-'use client';
+"use client";
 import {
   Avatar,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Navbar,
   NavbarItem,
 } from "@nextui-org/react";
+import { signOut, useSession } from "next-auth/react";
 import React from "react";
 import { DarkModeSwitch } from "./darkmodeswitch";
 
 export const UserDropdown = () => {
+  const { data: session } = useSession();
+
+  const onAction = async (key: React.Key) => {
+    if (key.valueOf() === "logout") {
+      await signOut({
+        callbackUrl: "/auth/signin",
+        redirect: true,
+      });
+    }
+  };
   return (
     <Dropdown>
       <NavbarItem>
@@ -20,29 +30,20 @@ export const UserDropdown = () => {
             as="button"
             color="secondary"
             size="md"
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            src={session?.user.image}
           />
         </DropdownTrigger>
       </NavbarItem>
-      <DropdownMenu
-        aria-label="User menu actions"
-        onAction={(actionKey) => console.log({ actionKey })}
-      >
+      <DropdownMenu aria-label="User menu actions" onAction={onAction}>
         <DropdownItem
           key="profile"
           className="flex flex-col justify-start w-full items-start"
         >
-          <p>Signed in as</p>
-          <p>zoey@example.com</p>
+          <p>Connecté en tant que</p>
+          <p>{session?.user.email}</p>
         </DropdownItem>
-        <DropdownItem key="settings">My Settings</DropdownItem>
-        <DropdownItem key="team_settings">Team Settings</DropdownItem>
-        <DropdownItem key="analytics">Analytics</DropdownItem>
-        <DropdownItem key="system">System</DropdownItem>
-        <DropdownItem key="configurations">Configurations</DropdownItem>
-        <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
         <DropdownItem key="logout" color="danger" className="text-danger ">
-          Log Out
+          Se déconnecter
         </DropdownItem>
         <DropdownItem key="switch">
           <DarkModeSwitch />
