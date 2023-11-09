@@ -2,17 +2,13 @@
 
 import { categoryBreadcrumbs } from "@/constants/category";
 import { Category } from "@/domain/entities/category";
-import { DotsIcon } from "@/icons/accounts/dots-icon";
-import { InfoIcon } from "@/icons/accounts/info-icon";
-import { TrashIcon } from "@/icons/accounts/trash-icon";
-import { SettingsIcon } from "@/icons/sidebar/settings-icon";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
+import { setCategories } from "@/lib/store/slices/category-slice";
 import { Input } from "@nextui-org/react";
+import { useEffect } from "react";
 import Breadcrumbs from "../BreadCrumbs";
 import CategoryCard from "./CategoryCard";
 import AddCategory from "./add-category";
-import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
-import { setCategories } from "@/lib/store/slices/category-slice";
-import { useEffect } from "react";
 
 type Props = {
   categories: Category[];
@@ -39,10 +35,6 @@ const CategoryList = ({ categories: data }: Props) => {
             }}
             placeholder="Rechercher des categories"
           />
-          <SettingsIcon />
-          <TrashIcon />
-          <InfoIcon />
-          <DotsIcon />
         </div>
         <div className="flex flex-row gap-3.5 flex-wrap">
           <AddCategory />
