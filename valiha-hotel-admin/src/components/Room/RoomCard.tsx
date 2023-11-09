@@ -59,11 +59,11 @@ const RoomCard = ({ room }: Props) => {
           </div>
         </div>
         <div className="flex flex-col gap-2 p-2">
-          <h1 className="uppercase text-reddish-orange-500 font-semibold text-lg">
-            {room.category.title}
+          <h1 className="uppercase text-reddish-orange-500 font-semibold text-2xl">
+            {room.title}
           </h1>
           <h2 className="text-reddish-orange-500 font-medium text-lg">
-            {room.title}
+            {room.category.title}
           </h2>
           <h3>
             <span className="text-white-gray-500 font-extrabold text-xl">

@@ -18,6 +18,7 @@ public class RoomResponseDto {
   private String id;
   private String title;
   private int price;
+  private boolean isAvailable;
   private String image;
   private CategoryResponseDto category;
 
@@ -27,6 +28,7 @@ public class RoomResponseDto {
       .id(room.getId())
       .title(room.getTitle())
       .price(room.getPrice())
+      .isAvailable(room.isAvailable())
       .image(String.format("%s/%s", ReservationData.BASE_URL, room.getImage()))
       .category(CategoryResponseDto.from(room.getCategory()))
       .build();

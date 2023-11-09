@@ -22,6 +22,7 @@ public class RoomDataMapper {
 
   private String title;
   private int price;
+  private boolean isAvailable;
   private String image;
 
   @DBRef
@@ -33,6 +34,7 @@ public class RoomDataMapper {
       .id(dataMapper.getId())
       .title(dataMapper.getTitle())
       .price(dataMapper.getPrice())
+      .isAvailable(dataMapper.isAvailable)
       .image(dataMapper.getImage())
       .category(CategoryDataMapper.toCategory(dataMapper.getCategory()))
       .build();
@@ -49,6 +51,7 @@ public class RoomDataMapper {
       .title(room.getTitle())
       .price(room.getPrice())
       .image(room.getImage())
+      .isAvailable(room.isAvailable())
       .category(CategoryDataMapper.from(room.getCategory()))
       .build();
   }

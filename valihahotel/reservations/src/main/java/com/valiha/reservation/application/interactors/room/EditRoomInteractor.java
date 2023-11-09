@@ -75,6 +75,7 @@ public class EditRoomInteractor implements RoomEditUseCase {
           id,
           requestDto.getTitle(),
           requestDto.getPrice(),
+          requestDto.isAvailable(),
           image,
           category
         );

@@ -13,6 +13,7 @@ public class Room implements InputValidator {
   private String id;
   private String title;
   private int price;
+  private boolean isAvailable;
   private String image;
   private Category category;
 
@@ -36,6 +37,11 @@ public class Room implements InputValidator {
 
     public Builder price(int price) {
       this.room.price = price;
+      return this;
+    }
+
+    public Builder isAvailable(boolean isAvailable) {
+      this.room.isAvailable = isAvailable;
       return this;
     }
 

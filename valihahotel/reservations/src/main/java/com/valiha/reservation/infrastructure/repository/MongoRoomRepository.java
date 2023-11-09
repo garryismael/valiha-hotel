@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface MongoRoomRepository
   extends MongoRepository<RoomDataMapper, String> {
-  List<RoomDataMapper> findByIdNotIn(List<String> ids);
+  List<RoomDataMapper> findByIsAvailableTrueAndIdNotIn(List<String> ids);
 
   List<RoomDataMapper> findByCategory(String id);
 }

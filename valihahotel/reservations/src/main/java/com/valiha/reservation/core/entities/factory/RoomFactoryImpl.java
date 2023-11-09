@@ -11,6 +11,7 @@ public class RoomFactoryImpl implements RoomFactory {
     String id,
     String title,
     int price,
+    boolean isAvailable,
     String image,
     Category category
   ) {
@@ -19,6 +20,7 @@ public class RoomFactoryImpl implements RoomFactory {
       .id(id)
       .title(title)
       .price(price)
+      .isAvailable(isAvailable)
       .image(image)
       .category(category)
       .build();

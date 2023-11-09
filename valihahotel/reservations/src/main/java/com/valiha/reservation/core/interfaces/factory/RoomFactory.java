@@ -8,6 +8,7 @@ public interface RoomFactory {
     String id,
     String title,
     int price,
+    boolean isAvailable,
     String image,
     Category category
   );

@@ -11,5 +11,6 @@ public class RoomRequestDto {
 
   private String title;
   private int price;
+  private boolean isAvailable;
   private String categoryId;
 }

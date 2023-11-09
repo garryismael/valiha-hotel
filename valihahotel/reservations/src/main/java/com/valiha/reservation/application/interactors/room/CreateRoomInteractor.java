@@ -48,6 +48,7 @@ public class CreateRoomInteractor implements RoomCreateUseCase {
           null,
           requestDto.getTitle(),
           requestDto.getPrice(),
+          requestDto.isAvailable(),
           image,
           category
         );
