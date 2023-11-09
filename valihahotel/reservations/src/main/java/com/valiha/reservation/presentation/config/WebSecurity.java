@@ -49,7 +49,7 @@ public class WebSecurity {
           .requestMatchers(HttpMethod.GET, AUTH_API_GET)
           .permitAll()
           .anyRequest()
-          .authenticated();
+          .permitAll();
       });
 
     http.oauth2ResourceServer(

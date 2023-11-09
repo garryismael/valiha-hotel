@@ -23,12 +23,12 @@ export default function CategoryCard({ category }: { category: Category }) {
     <>
       <div className={styles.card_container}>
         <div className={styles.card__image}>
-          <Image
+          <img
             src={category.image}
             alt="category room"
-            fill={true}
             sizes="100%"
-            className={styles.image}
+            className={`${styles.image} absolute`}
+            loading="eager"
           />
           <div className="actions">
             <Dropdown

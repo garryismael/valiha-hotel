@@ -9,13 +9,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.core.type.filter.TypeFilter;
-import org.springframework.web.servlet.function.RouterFunction;
-import org.springframework.web.servlet.function.RouterFunctions;
-import org.springframework.web.servlet.function.ServerResponse;
 
 @SpringBootApplication
 @EnableFeignClients
@@ -23,14 +19,6 @@ public class LocationsApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(LocationsApplication.class, args);
-  }
-
-  @Bean
-  RouterFunction<ServerResponse> imgRouter() {
-    return RouterFunctions.resources(
-      "/uploads/**",
-      new ClassPathResource("uploads/")
-    );
   }
 
   @Bean
