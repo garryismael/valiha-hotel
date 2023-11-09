@@ -1,7 +1,7 @@
 "use client";
 import { Room } from "@/domain/entities/room";
-import { useApiCategory, useCategoryList } from "@/hooks/useCategory";
-import { useRoomEditForm, useRoomForm } from "@/hooks/useRoom";
+import { useApiCategory } from "@/hooks/useCategory";
+import { useRoomEditForm } from "@/hooks/useRoom";
 import {
   Button,
   Input,
@@ -15,7 +15,7 @@ import {
   Switch,
 } from "@nextui-org/react";
 import { useRef } from "react";
-import { FaPlus, FaUpload } from "react-icons/fa6";
+import { FaUpload } from "react-icons/fa6";
 
 type Props = {
   isOpen: boolean;
@@ -51,6 +51,7 @@ const EditRoom = ({ room, isOpen, onOpenChange }: Props) => {
                 variant="bordered"
                 radius="sm"
                 placeholder="Sélectionner la catégorie de la chambre"
+                defaultSelectedKeys={[room.category.id]}
                 onChange={formik.handleChange}
               >
                 {categories.map((category) => (
@@ -101,7 +102,7 @@ const EditRoom = ({ room, isOpen, onOpenChange }: Props) => {
               </Switch>
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" variant="flat" onClick={onClose}>
+              <Button color="danger" variant="flat" onPress={onClose}>
                 Annuler
               </Button>
               <Button isLoading={loading} color="primary" type="submit">

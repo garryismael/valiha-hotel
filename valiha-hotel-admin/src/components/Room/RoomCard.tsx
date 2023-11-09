@@ -14,6 +14,8 @@ import { FaEllipsisVertical, FaUserGroup } from "react-icons/fa6";
 import { MdOutlineBed } from "react-icons/md";
 import DeleteRoom from "./delete-room";
 import EditRoom from "./edit-room";
+import BlockRoom from "./block-room";
+import { Else, If, Then } from "react-if";
 
 type Props = {
   room: Room;
@@ -52,7 +54,12 @@ const RoomCard = ({ room }: Props) => {
                 aria-label="action room"
                 onAction={(key) => setKey(key.valueOf() as string)}
               >
-                <DropdownItem key={"block"}>Bloquer</DropdownItem>
+                <DropdownItem key={"block"}>
+                  <If condition={room.available}>
+                    <Then>Bloquer</Then>
+                    <Else>Débloquer</Else>
+                  </If>
+                </DropdownItem>
                 <DropdownItem key={"edit"}>Modifier</DropdownItem>
                 <DropdownItem key={"delete"}>Supprimer</DropdownItem>
               </DropdownMenu>
@@ -106,6 +113,11 @@ const RoomCard = ({ room }: Props) => {
       <EditRoom
         room={room}
         isOpen={key === "edit"}
+        onOpenChange={() => setKey("")}
+      />
+      <BlockRoom
+        room={room}
+        isOpen={key === "block"}
         onOpenChange={() => setKey("")}
       />
       <DeleteRoom

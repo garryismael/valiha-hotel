@@ -9,7 +9,12 @@ import {
   RoomRequest,
 } from "@/domain/use-cases/room";
 import container from "@/infrastructures/config/container.config";
-import { addRoom, deleteRoom, editRoom, setRooms } from "@/lib/store/slices/room-slice";
+import {
+  addRoom,
+  deleteRoom,
+  editRoom,
+  setRooms,
+} from "@/lib/store/slices/room-slice";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -56,14 +61,9 @@ export const useRoomForm = () => {
   return { formik, show, loading, handleOpen, handleClose };
 };
 
-export const useRoomEditForm = (
-  room: Room,
-  onOpenChange: () => void
-) => {
+export const useRoomEditForm = (room: Room, onOpenChange: () => void) => {
   const { loading, setLoading } = useFormModal();
-  const editUseCase = container.resolve<EditRoomUseCase>(
-    EditRoomInteractor
-  );
+  const editUseCase = container.resolve<EditRoomUseCase>(EditRoomInteractor);
   const dispatch = useAppDispatch();
 
   const formik = useFormik<RoomRequest & { id: string }>({
@@ -89,6 +89,33 @@ export const useRoomEditForm = (
   });
 
   return { formik, loading };
+};
+
+export const useBlockRoom = (room: Room) => {
+  const { loading, setLoading } = useFormModal();
+  const editUseCase = container.resolve<EditRoomUseCase>(EditRoomInteractor);
+  const dispatch = useAppDispatch();
+
+  const handleBlock = async (callback: () => void) => {
+    setLoading(true);
+    const data = await editUseCase.execute(room.id, {
+      available: !room.available,
+      categoryId: room.category.id,
+      file: null,
+      price: room.price,
+      title: room.title,
+    });
+    dispatch(editRoom(data));
+    setLoading(false);
+    callback();
+    const message = data.available ? "débloquée" : "bloquée";
+    toast.success(`Chambre ${message} avec succès!`, {
+      position: "bottom-right",
+      toastId: "delete-room",
+    });
+  };
+
+  return { loading, handleBlock };
 };
 
 export const useDeleteRoom = (id: string) => {

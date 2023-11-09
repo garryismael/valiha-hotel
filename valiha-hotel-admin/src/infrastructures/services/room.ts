@@ -46,7 +46,7 @@ export class RoomServiceImpl implements RoomService {
     data.append("price", request.price.toString());
     data.append("categoryId", request.categoryId);
     data.append("image", request.file as File);
-    data.append("isAvailable", String(request.available));
+    data.append("available", String(request.available));
     return data;
   }
 }
