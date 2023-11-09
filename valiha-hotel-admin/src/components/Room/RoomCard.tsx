@@ -47,7 +47,10 @@ const RoomCard = ({ room }: Props) => {
                   <FaEllipsisVertical size={18} className="text-white" />
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu onAction={(key) => setKey(key.valueOf() as string)}>
+              <DropdownMenu
+                aria-label="action room"
+                onAction={(key) => setKey(key.valueOf() as string)}
+              >
                 <DropdownItem key={"block"}>Bloquer</DropdownItem>
                 <DropdownItem key={"edit"}>Modifier</DropdownItem>
                 <DropdownItem key={"delete"}>Supprimer</DropdownItem>
@@ -83,14 +86,18 @@ const RoomCard = ({ room }: Props) => {
             <div className="flex items-center gap-2">
               <MdOutlineBed size={18} />
               <p className="text-reddish-orange-500">{room.category.bigBed}</p>
-              <p className="text-medium font-base font-medium">Grand(s) lit(s)</p>
+              <p className="text-medium font-base font-medium">
+                Grand(s) lit(s)
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <MdOutlineBed size={18} />
               <p className="text-reddish-orange-500">
                 {room.category.smallBed}
               </p>
-              <p className="text-medium font-base font-medium">Petit(s) lit(s)</p>
+              <p className="text-medium font-base font-medium">
+                Petit(s) lit(s)
+              </p>
             </div>
           </div>
         </div>

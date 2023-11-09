@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import { Category } from "@/domain/entities/category";
 import {
   CategoryRequest,
@@ -16,31 +15,37 @@ import {
   addCategory,
   deleteCategory,
   editCategory,
+  setCategories,
 } from "@/lib/store/slices/category-slice";
 import { useFormik } from "formik";
-import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "./useStore";
-import useFormModal from "./useFormModal";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import "reflect-metadata";
+import useFormModal from "./useFormModal";
+import { useAppDispatch, useAppSelector } from "./useStore";
 
-export const useCategoryList = () => {
-  const [data, setData] = useState<Array<Category>>([]);
-  let { categories } = useAppSelector((state) => state.category);
-
+export const useApiCategory = () => {
+  const dispatch = useAppDispatch();
+  const { categories } = useAppSelector((state) => state.category);
   useEffect(() => {
     const fetchData = async () => {
       const getCategories = container.resolve<GetCategoriesUseCase>(
         GetCategoriesInteractor
       );
-      setData(await getCategories.execute());
+      const data = await getCategories.execute();
+      dispatch(setCategories(data));
     };
-    if (categories.length <= 0) {
-      fetchData();
-    } else {
-      setData(categories);
-    }
+    fetchData();
   }, []);
+  return categories;
+};
 
+export const useCategoryList = (categories: Category[]) => {
+  const dispatch = useAppDispatch();
+  const { categories: data } = useAppSelector((state) => state.category);
+  useEffect(() => {
+    dispatch(setCategories(categories));
+  }, []);
   return data;
 };
 

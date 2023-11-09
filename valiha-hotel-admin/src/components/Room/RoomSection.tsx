@@ -10,12 +10,14 @@ import { Input } from "@nextui-org/react";
 import Breadcrumbs from "../BreadCrumbs";
 import RoomCard from "./RoomCard";
 import AddRoom from "./add-room";
+import { useRoomList } from "@/hooks/useRoom";
 
 type Props = {
   rooms: Room[];
 };
 
-const RoomSection = ({ rooms }: Props) => {
+const RoomSection = (props: Props) => {
+  const rooms = useRoomList(props.rooms);
   return (
     <section className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={roomBreadcrumbs} />

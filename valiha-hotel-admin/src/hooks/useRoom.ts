@@ -1,3 +1,4 @@
+import { Room } from "@/domain/entities/room";
 import {
   CreateRoomInteractor,
   CreateRoomUseCase,
@@ -6,14 +7,25 @@ import {
   RoomRequest,
 } from "@/domain/use-cases/room";
 import container from "@/infrastructures/config/container.config";
-import { useDisclosure } from "@nextui-org/react";
+import { addRoom, deleteRoom, setRooms } from "@/lib/store/slices/room-slice";
 import { useFormik } from "formik";
-import { useAppDispatch } from "./useStore";
-import { addRoom, deleteRoom } from "@/lib/store/slices/room-slice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import useFormModal from "./useFormModal";
+import { useAppDispatch, useAppSelector } from "./useStore";
+
+export const useRoomList = (rooms: Room[]) => {
+  const dispatch = useAppDispatch();
+  const { rooms: data } = useAppSelector((state) => state.room);
+  useEffect(() => {
+    dispatch(setRooms(rooms));
+  }, []);
+
+  return data;
+};
 
 export const useRoomForm = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { show, loading, setLoading, handleClose, handleOpen } = useFormModal();
 
   const createRoom = container.resolve<CreateRoomUseCase>(CreateRoomInteractor);
   const dispatch = useAppDispatch();
@@ -26,27 +38,36 @@ export const useRoomForm = () => {
       file: null,
     },
     async onSubmit(values: RoomRequest) {
-      onOpenChange();
+      setLoading(true);
       const room = await createRoom.execute(values);
       dispatch(addRoom(room));
+      setLoading(false);
+      handleClose();
+      toast.success("Chambre ajoutée avec succès!", {
+        position: "bottom-right",
+        toastId: "create-category",
+      });
     },
   });
 
-  return { formik, isOpen, onOpen, onOpenChange };
+  return { formik, show, loading, handleOpen, handleClose };
 };
 
 export const useDeleteRoom = (id: string) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const deleteUseCase = container.resolve<DeleteRoomUseCase>(
-    DeleteRoomInteractor
-  );
+  const deleteUseCase =
+    container.resolve<DeleteRoomUseCase>(DeleteRoomInteractor);
 
   const handleDelete = async () => {
     setLoading(true);
     await deleteUseCase.execute(id);
     dispatch(deleteRoom(id));
     setLoading(false);
+    toast.success("Chambre supprimée avec succès!", {
+      position: "bottom-right",
+      toastId: "delete-category",
+    });
   };
 
   return { loading, handleDelete };

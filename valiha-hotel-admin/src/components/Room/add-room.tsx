@@ -1,5 +1,5 @@
 "use client";
-import { useCategoryList } from "@/hooks/useCategory";
+import { useApiCategory, useCategoryList } from "@/hooks/useCategory";
 import { useRoomForm } from "@/hooks/useRoom";
 import {
   Button,
@@ -16,26 +16,22 @@ import { useRef } from "react";
 import { FaPlus, FaUpload } from "react-icons/fa6";
 
 const AddRoom = () => {
-  const { formik, onOpen, isOpen, onOpenChange } = useRoomForm();
-  const categories = useCategoryList();
+  const { formik, show, loading, handleClose, handleOpen } = useRoomForm();
+  const categories = useApiCategory();
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>
       <>
         <Button
-          onPress={onOpen}
+          onPress={handleOpen}
           color="primary"
           radius="sm"
           startContent={<FaPlus size={16} />}
         >
           Chambres
         </Button>
-        <Modal
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-          placement="top-center"
-        >
+        <Modal isOpen={show} onOpenChange={handleClose} placement="top-center">
           <ModalContent>
             {(onClose) => (
               <form onSubmit={formik.handleSubmit}>
@@ -70,6 +66,7 @@ const AddRoom = () => {
                     label="Tarif de la chambre"
                     variant="bordered"
                     radius="sm"
+                    type="number"
                     value={formik.values.price.toString()}
                     onChange={formik.handleChange}
                   />
@@ -100,7 +97,7 @@ const AddRoom = () => {
                   <Button color="danger" variant="flat" onClick={onClose}>
                     Annuler
                   </Button>
-                  <Button color="primary" onPress={onClose} type="submit">
+                  <Button isLoading={loading} color="primary" type="submit">
                     Ajouter
                   </Button>
                 </ModalFooter>

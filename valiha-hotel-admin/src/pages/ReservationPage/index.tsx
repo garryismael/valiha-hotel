@@ -26,7 +26,7 @@ function ReservationPage(props: ReservationProps) {
               input: "w-full",
               mainWrapper: "w-full",
             }}
-            placeholder="Recherches des réservations"
+            placeholder="Rechercher des réservations"
           />
           <SettingsIcon />
           <TrashIcon />

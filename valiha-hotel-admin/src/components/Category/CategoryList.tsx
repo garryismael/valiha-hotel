@@ -2,10 +2,8 @@
 
 import { categoryBreadcrumbs } from "@/constants/category";
 import { Category } from "@/domain/entities/category";
-import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
-import { setCategories } from "@/lib/store/slices/category-slice";
+import { useCategoryList } from "@/hooks/useCategory";
 import { Input } from "@nextui-org/react";
-import { useEffect } from "react";
 import Breadcrumbs from "../BreadCrumbs";
 import CategoryCard from "./CategoryCard";
 import AddCategory from "./add-category";
@@ -15,12 +13,7 @@ type Props = {
 };
 
 const CategoryList = ({ categories: data }: Props) => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(setCategories(data));
-  }, []);
-
-  const { categories } = useAppSelector((state) => state.category);
+  const categories = useCategoryList(data);
 
   return (
     <>
