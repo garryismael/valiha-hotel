@@ -4,7 +4,6 @@ import { Category } from "@/domain/entities/category";
 import { useCategoryEditForm } from "@/hooks/useCategory";
 import {
   Button,
-  DropdownItem,
   Input,
   Modal,
   ModalBody,
@@ -25,27 +24,10 @@ type Props = {
 
 const EditCategory = ({ category, isOpen, onOpenChange }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { formik, show, setShow, handleClose } = useCategoryEditForm(category);
-
-  useEffect(() => {
-    setShow(isOpen);
-    console.log('Hello');
-  }, [show]);
-
-  const handleOpenChange = () => {
-    if (formik.isSubmitting && formik.isValid) {
-      handleClose();
-    } else {
-      onOpenChange();
-    }
-  };
+  const { formik, loading } = useCategoryEditForm(category, onOpenChange);
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onOpenChange={handleOpenChange}
-      placement="top-center"
-    >
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
       <ModalContent>
         {(onClose) => (
           <form onSubmit={formik.handleSubmit}>
@@ -131,7 +113,11 @@ const EditCategory = ({ category, isOpen, onOpenChange }: Props) => {
               <Button color="danger" variant="flat" onClick={onClose}>
                 Annuler
               </Button>
-              <Button color="primary" type="submit">
+              <Button
+                isLoading={loading}
+                color="primary"
+                type="submit"
+              >
                 Modifier
               </Button>
             </ModalFooter>

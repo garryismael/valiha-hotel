@@ -70,9 +70,11 @@ export const useCategoryForm = () => {
   return { formik, show, loading, handleOpen, handleClose };
 };
 
-export const useCategoryEditForm = (category: Category) => {
-  const { show, setShow, loading, setLoading, handleClose, handleOpen } =
-    useFormModal();
+export const useCategoryEditForm = (
+  category: Category,
+  onOpenChange: () => void
+) => {
+  const { loading, setLoading } = useFormModal();
   const editUseCase = container.resolve<EditCategoryUseCase>(
     EditCategoryInteractor
   );
@@ -93,11 +95,11 @@ export const useCategoryEditForm = (category: Category) => {
       const category = await editUseCase.execute(values.id, values);
       dispatch(editCategory(category));
       setLoading(false);
-      handleClose();
+      onOpenChange();
     },
   });
 
-  return { formik, show, setShow, loading, handleOpen, handleClose };
+  return { formik, loading };
 };
 
 export const useDeleteCategory = (id: string) => {
