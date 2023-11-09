@@ -117,7 +117,6 @@ const AddCategory = () => {
                   <Button
                     color="primary"
                     isLoading={loading}
-                    onPress={onClose}
                     type="submit"
                   >
                     Ajouter
