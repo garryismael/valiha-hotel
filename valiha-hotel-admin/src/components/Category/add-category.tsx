@@ -17,23 +17,19 @@ import { FaPlus, FaUpload } from "react-icons/fa6";
 
 const AddCategory = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { formik, onOpen, isOpen, onOpenChange } = useCategoryForm();
+  const { formik, handleClose, handleOpen, loading, show } = useCategoryForm();
 
   return (
     <div>
       <>
         <Button
-          onPress={onOpen}
+          onPress={handleOpen}
           color="primary"
           startContent={<FaPlus size={16} />}
         >
           Catégorie
         </Button>
-        <Modal
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-          placement="top-center"
-        >
+        <Modal isOpen={show} onOpenChange={handleClose} placement="top-center">
           <ModalContent>
             {(onClose) => (
               <form onSubmit={formik.handleSubmit}>
@@ -118,7 +114,12 @@ const AddCategory = () => {
                   <Button color="danger" variant="flat" onClick={onClose}>
                     Annuler
                   </Button>
-                  <Button color="primary" onPress={onClose} type="submit">
+                  <Button
+                    color="primary"
+                    isLoading={loading}
+                    onPress={onClose}
+                    type="submit"
+                  >
                     Ajouter
                   </Button>
                 </ModalFooter>

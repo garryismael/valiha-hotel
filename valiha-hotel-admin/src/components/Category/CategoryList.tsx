@@ -29,11 +29,12 @@ const CategoryList = ({ categories: data }: Props) => {
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
           <Input
+            isClearable
             classNames={{
               input: "w-full",
               mainWrapper: "w-full",
             }}
-            placeholder="Rechercher des categories"
+            placeholder="Rechercher des categories de chambres"
           />
         </div>
         <div className="flex flex-row gap-3.5 flex-wrap">

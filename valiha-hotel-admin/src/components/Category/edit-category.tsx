@@ -14,7 +14,7 @@ import {
   Select,
   SelectItem,
 } from "@nextui-org/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaUpload } from "react-icons/fa6";
 
 type Props = {
@@ -25,12 +25,25 @@ type Props = {
 
 const EditCategory = ({ category, isOpen, onOpenChange }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const formik = useCategoryEditForm(category);
+  const { formik, show, setShow, handleClose } = useCategoryEditForm(category);
+
+  useEffect(() => {
+    setShow(isOpen);
+    console.log('Hello');
+  }, [show]);
+
+  const handleOpenChange = () => {
+    if (formik.isSubmitting && formik.isValid) {
+      handleClose();
+    } else {
+      onOpenChange();
+    }
+  };
 
   return (
     <Modal
       isOpen={isOpen}
-      onOpenChange={onOpenChange}
+      onOpenChange={handleOpenChange}
       placement="top-center"
     >
       <ModalContent>

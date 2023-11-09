@@ -17,10 +17,10 @@ import {
   deleteCategory,
   editCategory,
 } from "@/lib/store/slices/category-slice";
-import { useDisclosure } from "@nextui-org/react";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./useStore";
+import useFormModal from "./useFormModal";
 
 export const useCategoryList = () => {
   const [data, setData] = useState<Array<Category>>([]);
@@ -44,7 +44,7 @@ export const useCategoryList = () => {
 };
 
 export const useCategoryForm = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { show, loading, setLoading, handleClose, handleOpen } = useFormModal();
   const createUseCase = container.resolve<CreateCategoryUseCase>(
     CreateCategoryInteractor
   );
@@ -59,15 +59,20 @@ export const useCategoryForm = () => {
       smallBed: 0,
     },
     onSubmit: async (values) => {
+      setLoading(true);
       const category = await createUseCase.execute(values);
       dispatch(addCategory(category));
+      setLoading(false);
+      handleClose();
     },
   });
 
-  return { formik, isOpen, onOpen, onOpenChange };
+  return { formik, show, loading, handleOpen, handleClose };
 };
 
 export const useCategoryEditForm = (category: Category) => {
+  const { show, setShow, loading, setLoading, handleClose, handleOpen } =
+    useFormModal();
   const editUseCase = container.resolve<EditCategoryUseCase>(
     EditCategoryInteractor
   );
@@ -84,12 +89,15 @@ export const useCategoryEditForm = (category: Category) => {
       smallBed: category.smallBed,
     },
     onSubmit: async (values) => {
+      setLoading(true);
       const category = await editUseCase.execute(values.id, values);
       dispatch(editCategory(category));
+      setLoading(false);
+      handleClose();
     },
   });
 
-  return formik;
+  return { formik, show, setShow, loading, handleOpen, handleClose };
 };
 
 export const useDeleteCategory = (id: string) => {

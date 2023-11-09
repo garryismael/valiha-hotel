@@ -46,7 +46,10 @@ export default function CategoryCard({ category }: { category: Category }) {
                   <FaEllipsisVertical size={18} className="text-white" />
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu onAction={(key) => setKey(key.valueOf() as string)}>
+              <DropdownMenu
+                aria-label="action category"
+                onAction={(key) => setKey(key.valueOf() as string)}
+              >
                 <DropdownItem
                   key={"edit"}
                   color="primary"
