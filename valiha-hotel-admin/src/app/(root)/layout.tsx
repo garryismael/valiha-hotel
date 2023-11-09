@@ -1,12 +1,13 @@
 import { Layout } from "@/components/Layout";
 import "@/infrastructures/config/container.config";
 import "@/styles/global.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 import NextThemesProvider from "@/components/Layout/NextThemesProvider";
-import NextUIWrapper from "@/components/Layout/NextUIWrapper";
 import NextAuthProvider from "@/components/Provider";
-import type { Metadata } from "next";
 import ReduxProvider from "@/components/StoreProvider";
+import ToastProvider from "@/components/ToastProvider";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Valiha Hotel - Admin",
@@ -19,18 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <ReduxProvider>
-          <NextAuthProvider>
+    <NextAuthProvider>
+      <html lang="en">
+        <body>
+          <ReduxProvider>
             <NextThemesProvider>
-              <NextUIWrapper>
+              <ToastProvider>
                 <Layout>{children}</Layout>
-              </NextUIWrapper>
+              </ToastProvider>
             </NextThemesProvider>
-          </NextAuthProvider>
-        </ReduxProvider>
-      </body>
-    </html>
+          </ReduxProvider>
+        </body>
+      </html>
+    </NextAuthProvider>
   );
 }

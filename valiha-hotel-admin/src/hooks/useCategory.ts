@@ -18,9 +18,10 @@ import {
   editCategory,
 } from "@/lib/store/slices/category-slice";
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "./useStore";
 import useFormModal from "./useFormModal";
+import { toast } from "react-toastify";
 
 export const useCategoryList = () => {
   const [data, setData] = useState<Array<Category>>([]);
@@ -64,6 +65,10 @@ export const useCategoryForm = () => {
       dispatch(addCategory(category));
       setLoading(false);
       handleClose();
+      toast.success("Catégorie de chambre ajoutée avec succès!", {
+        position: "bottom-right",
+        toastId: "create-category",
+      });
     },
   });
 
@@ -96,6 +101,10 @@ export const useCategoryEditForm = (
       dispatch(editCategory(category));
       setLoading(false);
       onOpenChange();
+      toast.success("Catégorie de chambre modifiée avec succès!", {
+        position: "bottom-right",
+        toastId: "edit-category",
+      });
     },
   });
 
@@ -114,6 +123,10 @@ export const useDeleteCategory = (id: string) => {
     await deleteUseCase.execute(id);
     dispatch(deleteCategory(id));
     setLoading(false);
+    toast.success("Catégorie de chambre supprimée avec succès!", {
+      position: "bottom-right",
+      toastId: "delete-category",
+    });
   };
 
   return { loading, handleDelete };
