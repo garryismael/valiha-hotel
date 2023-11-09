@@ -4,10 +4,12 @@ import {
   CreateRoomUseCase,
   DeleteRoomInteractor,
   DeleteRoomUseCase,
+  EditRoomInteractor,
+  EditRoomUseCase,
   RoomRequest,
 } from "@/domain/use-cases/room";
 import container from "@/infrastructures/config/container.config";
-import { addRoom, deleteRoom, setRooms } from "@/lib/store/slices/room-slice";
+import { addRoom, deleteRoom, editRoom, setRooms } from "@/lib/store/slices/room-slice";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -34,6 +36,7 @@ export const useRoomForm = () => {
     initialValues: {
       title: "",
       categoryId: "",
+      available: true,
       price: 0,
       file: null,
     },
@@ -45,12 +48,47 @@ export const useRoomForm = () => {
       handleClose();
       toast.success("Chambre ajoutée avec succès!", {
         position: "bottom-right",
-        toastId: "create-category",
+        toastId: "create-room",
       });
     },
   });
 
   return { formik, show, loading, handleOpen, handleClose };
+};
+
+export const useRoomEditForm = (
+  room: Room,
+  onOpenChange: () => void
+) => {
+  const { loading, setLoading } = useFormModal();
+  const editUseCase = container.resolve<EditRoomUseCase>(
+    EditRoomInteractor
+  );
+  const dispatch = useAppDispatch();
+
+  const formik = useFormik<RoomRequest & { id: string }>({
+    initialValues: {
+      id: room.id,
+      title: room.title,
+      available: room.available,
+      categoryId: room.category.id,
+      file: null,
+      price: room.price,
+    },
+    onSubmit: async (values) => {
+      setLoading(true);
+      const data = await editUseCase.execute(values.id, values);
+      dispatch(editRoom(data));
+      setLoading(false);
+      onOpenChange();
+      toast.success("Chambre modifiée avec succès!", {
+        position: "bottom-right",
+        toastId: "edit-room",
+      });
+    },
+  });
+
+  return { formik, loading };
 };
 
 export const useDeleteRoom = (id: string) => {
@@ -66,7 +104,7 @@ export const useDeleteRoom = (id: string) => {
     setLoading(false);
     toast.success("Chambre supprimée avec succès!", {
       position: "bottom-right",
-      toastId: "delete-category",
+      toastId: "delete-room",
     });
   };
 

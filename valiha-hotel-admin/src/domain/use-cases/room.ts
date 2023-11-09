@@ -4,6 +4,7 @@ import { Room } from "../entities/room";
 export interface RoomRequest {
   title: string;
   price: number;
+  available: boolean;
   categoryId: string;
   file: File | null;
 }

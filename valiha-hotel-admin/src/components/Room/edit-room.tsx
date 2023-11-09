@@ -1,6 +1,7 @@
 "use client";
+import { Room } from "@/domain/entities/room";
 import { useApiCategory, useCategoryList } from "@/hooks/useCategory";
-import { useRoomForm } from "@/hooks/useRoom";
+import { useRoomEditForm, useRoomForm } from "@/hooks/useRoom";
 import {
   Button,
   Input,
@@ -16,28 +17,30 @@ import {
 import { useRef } from "react";
 import { FaPlus, FaUpload } from "react-icons/fa6";
 
-const AddRoom = () => {
-  const { formik, show, loading, handleClose, handleOpen } = useRoomForm();
+type Props = {
+  isOpen: boolean;
+  onOpenChange: () => void;
+  room: Room;
+};
+
+const EditRoom = ({ room, isOpen, onOpenChange }: Props) => {
+  const { formik, loading } = useRoomEditForm(room, onOpenChange);
   const categories = useApiCategory();
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>
       <>
-        <Button
-          onPress={handleOpen}
-          color="primary"
-          radius="sm"
-          startContent={<FaPlus size={16} />}
+        <Modal
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          placement="top-center"
         >
-          Chambres
-        </Button>
-        <Modal isOpen={show} onOpenChange={handleClose} placement="top-center">
           <ModalContent>
             {(onClose) => (
               <form onSubmit={formik.handleSubmit}>
                 <ModalHeader className="flex flex-col gap-1">
-                  Ajouter une chambre
+                  Modifier une chambre
                 </ModalHeader>
                 <ModalBody>
                   <Input
@@ -120,4 +123,4 @@ const AddRoom = () => {
   );
 };
 
-export default AddRoom;
+export default EditRoom;

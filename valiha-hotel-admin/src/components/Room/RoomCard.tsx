@@ -13,6 +13,7 @@ import { useState } from "react";
 import { FaEllipsisVertical, FaUserGroup } from "react-icons/fa6";
 import { MdOutlineBed } from "react-icons/md";
 import DeleteRoom from "./delete-room";
+import EditRoom from "./edit-room";
 
 type Props = {
   room: Room;
@@ -29,7 +30,7 @@ const RoomCard = ({ room }: Props) => {
             alt={room.title}
             fill={true}
             sizes="100%"
-            className={styles.image}
+            className={`${styles.image} ${room.available ? "" : "opacity-30"}`}
           />
           <div className="actions">
             <Dropdown
@@ -102,6 +103,11 @@ const RoomCard = ({ room }: Props) => {
           </div>
         </div>
       </div>
+      <EditRoom
+        room={room}
+        isOpen={key === "edit"}
+        onOpenChange={() => setKey("")}
+      />
       <DeleteRoom
         room={room}
         isOpen={key === "delete"}
