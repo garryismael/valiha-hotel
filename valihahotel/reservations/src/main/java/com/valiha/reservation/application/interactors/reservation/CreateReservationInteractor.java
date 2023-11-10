@@ -12,9 +12,11 @@ import com.valiha.reservation.application.service.NotificationService;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
 import com.valiha.reservation.application.utils.DateFormatter;
 import com.valiha.reservation.core.constant.AppReservation;
+import com.valiha.reservation.core.constant.BreakfastState;
 import com.valiha.reservation.core.constant.PaymentState;
 import com.valiha.reservation.core.constant.ReservationState;
 import com.valiha.reservation.core.constant.ReservationValidator;
+import com.valiha.reservation.core.constant.ShuttleState;
 import com.valiha.reservation.core.entities.models.Breakfast;
 import com.valiha.reservation.core.entities.models.Client;
 import com.valiha.reservation.core.entities.models.Payment;
@@ -105,7 +107,8 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
               dto.getDate(),
               AppReservation.DATE_TIME_FORMAT
             ),
-            dto.getDestination()
+            dto.getDestination(),
+            ShuttleState.PENDING.value()
           )
         )
         .toList()
@@ -117,7 +120,11 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
         .map(dto ->
           breakfastFactory.create(
             null,
-            DateFormatter.parseToDate(dto.getDate(), AppReservation.DATE_FORMAT)
+            DateFormatter.parseToDate(
+              dto.getDate(),
+              AppReservation.DATE_FORMAT
+            ),
+            BreakfastState.PENDING.value()
           )
         )
         .toList()

@@ -7,7 +7,7 @@ import java.util.Date;
 public class BreakfastFactoryImpl implements BreakfastFactory {
 
   @Override
-  public Breakfast create(String id, Date date) {
-    return Breakfast.builder().id(id).date(date).build();
+  public Breakfast create(String id, Date date, String state) {
+    return Breakfast.builder().id(id).date(date).state(state).build();
   }
 }

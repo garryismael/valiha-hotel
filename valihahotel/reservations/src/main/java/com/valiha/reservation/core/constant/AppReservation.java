@@ -23,4 +23,18 @@ public class AppReservation {
     PaymentState.EXPIRED.value(),
     PaymentState.REFUNDED.value()
   );
+
+  public static final List<String> BREAKFAST_STATES = List.of(
+    BreakfastState.PENDING.value(),
+    BreakfastState.FAILED.value(),
+    BreakfastState.REFUNDED.value()
+  );
+
+  public static final List<String> SHUTTLE_STATES = List.of(
+    ShuttleState.PENDING.value(),
+    ShuttleState.PAID.value(),
+    ShuttleState.FAILED.value(),
+    ShuttleState.CANCELED.value(),
+    ShuttleState.REFUNDED.value()
+  );
 }

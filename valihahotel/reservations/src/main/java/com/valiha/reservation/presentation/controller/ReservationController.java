@@ -1,11 +1,11 @@
 package com.valiha.reservation.presentation.controller;
 
-import com.valiha.reservation.application.dto.breakfast.BreakfastRequestDto;
+import com.valiha.reservation.application.dto.breakfast.BreakfastBaseRequestDto;
 import com.valiha.reservation.application.dto.breakfast.BreakfastResponseDto;
 import com.valiha.reservation.application.dto.reservation.CommonReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
-import com.valiha.reservation.application.dto.shuttle.ShuttleRequestDto;
+import com.valiha.reservation.application.dto.shuttle.ShuttleBaseRequestDto;
 import com.valiha.reservation.application.dto.shuttle.ShuttleResponseDto;
 import com.valiha.reservation.application.useCase.breakfast.CreateBreakfastUseCase;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
@@ -48,7 +48,7 @@ public class ReservationController {
   @PostMapping("/{id}/breakfasts")
   public BreakfastResponseDto create(
     @PathVariable String id,
-    BreakfastRequestDto request
+    BreakfastBaseRequestDto request
   ) {
     return this.createBreakfast.execute(id, request);
   }
@@ -56,7 +56,7 @@ public class ReservationController {
   @PostMapping("/{id}/shuttles")
   public ShuttleResponseDto create(
     @PathVariable String id,
-    ShuttleRequestDto request
+    ShuttleBaseRequestDto request
   ) {
     return this.createShuttle.execute(id, request);
   }

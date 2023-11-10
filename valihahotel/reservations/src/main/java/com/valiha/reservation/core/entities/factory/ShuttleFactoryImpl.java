@@ -12,7 +12,8 @@ public class ShuttleFactoryImpl implements ShuttleFactory {
     String flightName,
     String flightNumber,
     LocalDateTime arrivalDate,
-    String destination
+    String destination,
+    String state
   ) {
     return Shuttle
       .builder()
@@ -21,6 +22,7 @@ public class ShuttleFactoryImpl implements ShuttleFactory {
       .flightNumber(flightNumber)
       .date(arrivalDate)
       .destination(destination)
+      .state(state)
       .build();
   }
 }

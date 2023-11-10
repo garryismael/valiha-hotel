@@ -1,6 +1,6 @@
 package com.valiha.reservation.application.interactors.shuttle;
 
-import com.valiha.reservation.application.dto.shuttle.ShuttleRequestDto;
+import com.valiha.reservation.application.dto.shuttle.ShuttleBaseRequestDto;
 import com.valiha.reservation.application.dto.shuttle.ShuttleResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.ReservationRepository;
@@ -9,6 +9,7 @@ import com.valiha.reservation.application.useCase.shuttle.CreateShuttleUseCase;
 import com.valiha.reservation.application.utils.DateFormatter;
 import com.valiha.reservation.core.constant.AppReservation;
 import com.valiha.reservation.core.constant.ReservationValidator;
+import com.valiha.reservation.core.constant.ShuttleState;
 import com.valiha.reservation.core.constant.ShuttleValidator;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Shuttle;
@@ -31,7 +32,7 @@ public class CreateShuttleInteractor implements CreateShuttleUseCase {
   @Override
   public ShuttleResponseDto execute(
     String reservationId,
-    ShuttleRequestDto dto
+    ShuttleBaseRequestDto dto
   ) {
     Map<String, String> errors = new HashMap<>();
     Reservation reservation =
@@ -59,7 +60,8 @@ public class CreateShuttleInteractor implements CreateShuttleUseCase {
         dto.getDate(),
         AppReservation.DATE_TIME_FORMAT
       ),
-      dto.getDestination()
+      dto.getDestination(),
+      ShuttleState.PENDING.value()
     );
 
     errors = shuttle.validate();

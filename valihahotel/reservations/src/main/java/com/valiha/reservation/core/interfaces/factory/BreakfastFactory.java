@@ -4,5 +4,5 @@ import com.valiha.reservation.core.entities.models.Breakfast;
 import java.util.Date;
 
 public interface BreakfastFactory {
-  Breakfast create(String id, Date date);
+  Breakfast create(String id, Date date, String state);
 }

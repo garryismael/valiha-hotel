@@ -4,6 +4,7 @@ import com.valiha.reservation.application.repository.ShuttleRepository;
 import com.valiha.reservation.core.entities.models.Shuttle;
 import com.valiha.reservation.infrastructure.data.ShuttleDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoShuttleRepository;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -28,5 +29,12 @@ public class ShuttleRepositoryImpl implements ShuttleRepository {
   @Override
   public void delete(String id) {
     this.shuttleRepository.deleteById(id);
+  }
+
+  @Override
+  public Shuttle findById(String id) {
+    Optional<ShuttleDataMapper> optional = this.shuttleRepository.findById(id);
+
+    return optional.isPresent() ? ShuttleDataMapper.cast(optional.get()) : null;
   }
 }

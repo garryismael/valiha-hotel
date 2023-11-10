@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ShuttleRequestDto {
+public class ShuttleBaseRequestDto {
 
   private String flightName;
   private String flightNumber;
   private String destination;
   private String date;
-  private String state;
 }

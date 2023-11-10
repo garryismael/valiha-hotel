@@ -1,5 +1,7 @@
 package com.valiha.reservation.core.entities.models;
 
+import com.valiha.reservation.core.constant.AppReservation;
+import com.valiha.reservation.core.constant.BreakfastValidator;
 import com.valiha.reservation.core.constant.ShuttleValidator;
 import com.valiha.reservation.core.interfaces.validator.InputValidator;
 import java.time.LocalDateTime;
@@ -15,6 +17,7 @@ public class Shuttle implements InputValidator {
   private String flightNumber;
   private String destination;
   private LocalDateTime date;
+  private String state;
 
   public class Builder {
 
@@ -49,6 +52,11 @@ public class Shuttle implements InputValidator {
       return this;
     }
 
+    public Builder state(String state) {
+      this.shuttle.state = state;
+      return this;
+    }
+
     public Shuttle build() {
       return this.shuttle;
     }
@@ -73,6 +81,12 @@ public class Shuttle implements InputValidator {
 
   public boolean dateIsValid() {
     return date != null && date.isAfter(LocalDateTime.now());
+  }
+
+  public boolean stateIsValid() {
+    return (
+      this.state != null && AppReservation.SHUTTLE_STATES.contains(state)
+    );
   }
 
   @Override
@@ -104,6 +118,13 @@ public class Shuttle implements InputValidator {
       errors.put(
         ShuttleValidator.KEY_DATE,
         ShuttleValidator.INVALID_DATE_ERROR
+      );
+    }
+
+    if (!stateIsValid()) {
+      errors.put(
+        BreakfastValidator.KEY_STATE,
+        BreakfastValidator.INVALID_STATE_ERROR
       );
     }
     return errors;

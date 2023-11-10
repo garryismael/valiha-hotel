@@ -9,6 +9,7 @@ public interface ShuttleFactory {
     String flightName,
     String flightNumber,
     LocalDateTime arrivalDate,
-    String destination
+    String destination,
+    String state
   );
 }

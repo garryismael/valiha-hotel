@@ -1,6 +1,6 @@
 package com.valiha.reservation.application.interactors.breakfast;
 
-import com.valiha.reservation.application.dto.breakfast.BreakfastRequestDto;
+import com.valiha.reservation.application.dto.breakfast.BreakfastBaseRequestDto;
 import com.valiha.reservation.application.dto.breakfast.BreakfastResponseDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
 import com.valiha.reservation.application.repository.BreakfastRepository;
@@ -8,6 +8,7 @@ import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.useCase.breakfast.CreateBreakfastUseCase;
 import com.valiha.reservation.application.utils.DateFormatter;
 import com.valiha.reservation.core.constant.AppReservation;
+import com.valiha.reservation.core.constant.BreakfastState;
 import com.valiha.reservation.core.constant.ReservationValidator;
 import com.valiha.reservation.core.constant.ShuttleValidator;
 import com.valiha.reservation.core.entities.models.Breakfast;
@@ -31,7 +32,7 @@ public class CreateBreakfastInteractor implements CreateBreakfastUseCase {
   @Override
   public BreakfastResponseDto execute(
     String reservationId,
-    BreakfastRequestDto dto
+    BreakfastBaseRequestDto dto
   ) {
     Map<String, String> errors = new HashMap<>();
     Reservation reservation =
@@ -53,7 +54,8 @@ public class CreateBreakfastInteractor implements CreateBreakfastUseCase {
 
     Breakfast breakfast = breakfastFactory.create(
       null,
-      DateFormatter.parseToDate(dto.getDate(), AppReservation.DATE_FORMAT)
+      DateFormatter.parseToDate(dto.getDate(), AppReservation.DATE_FORMAT),
+      BreakfastState.PENDING.value()
     );
 
     errors = breakfast.validate();

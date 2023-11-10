@@ -20,6 +20,7 @@ public class ShuttleResponseDto {
   private String flightNumber;
   private String destination;
   private String date;
+  private String state;
 
   public static final ShuttleResponseDto from(Shuttle shuttle) {
     return ShuttleResponseDto
@@ -31,6 +32,7 @@ public class ShuttleResponseDto {
       .date(
         DateFormatter.parse(shuttle.getDate(), AppReservation.DATE_TIME_FORMAT)
       )
+      .state(shuttle.getState())
       .build();
   }
 

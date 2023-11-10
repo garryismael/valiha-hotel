@@ -4,8 +4,10 @@ public class BreakfastValidator {
 
   public static final String KEY_ID = "id";
   public static final String KEY_DATE = "date";
+  public static final String KEY_STATE = "state";
 
   public static final String INVALID_DATE_ERROR = "invalid date";
+  public static final String INVALID_STATE_ERROR = "invalid state";
 
   public static final String INVALID_DATE_MESSAGE = "invalid breakfast data";
 
