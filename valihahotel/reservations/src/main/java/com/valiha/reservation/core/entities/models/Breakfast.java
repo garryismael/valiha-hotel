@@ -1,10 +1,14 @@
 package com.valiha.reservation.core.entities.models;
 
+import com.valiha.reservation.core.constant.BreakfastValidator;
+import com.valiha.reservation.core.interfaces.validator.InputValidator;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.Getter;
 
 @Getter
-public class Breakfast {
+public class Breakfast implements InputValidator {
 
   private String id;
   private Date date;
@@ -35,5 +39,23 @@ public class Breakfast {
   public static Builder builder() {
     Breakfast breakfast = new Breakfast();
     return breakfast.new Builder(breakfast);
+  }
+
+  public boolean dateIsValid() {
+    return this.date != null;
+  }
+
+  @Override
+  public Map<String, String> validate() {
+    Map<String, String> errors = new HashMap<>();
+
+    if (!dateIsValid()) {
+      errors.put(
+        BreakfastValidator.KEY_DATE,
+        BreakfastValidator.INVALID_DATE_ERROR
+      );
+    }
+
+    return errors;
   }
 }

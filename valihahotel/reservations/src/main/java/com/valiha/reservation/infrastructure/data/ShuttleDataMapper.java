@@ -23,6 +23,21 @@ public class ShuttleDataMapper {
   private String destination;
   private LocalDateTime date;
 
+  public static ShuttleDataMapper from(Shuttle shuttle) {
+    return ShuttleDataMapper
+      .builder()
+      .id(shuttle.getId())
+      .flightName(shuttle.getFlightName())
+      .flightNumber(shuttle.getFlightNumber())
+      .destination(shuttle.getDestination())
+      .date(shuttle.getDate())
+      .build();
+  }
+
+  public static List<ShuttleDataMapper> from(List<Shuttle> shuttles) {
+    return shuttles.stream().map(ShuttleDataMapper::from).toList();
+  }
+
   public static Shuttle cast(ShuttleDataMapper shuttle) {
     return Shuttle
       .builder()

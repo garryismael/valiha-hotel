@@ -24,6 +24,18 @@ public class BreakfastDataMapper {
     return Breakfast.builder().id(dataMapper.id).date(dataMapper.date).build();
   }
 
+  public static BreakfastDataMapper from(Breakfast breakfast) {
+    return BreakfastDataMapper
+      .builder()
+      .id(breakfast.getId())
+      .date(breakfast.getDate())
+      .build();
+  }
+
+  public static List<BreakfastDataMapper> from(List<Breakfast> breakfast) {
+    return breakfast.stream().map(BreakfastDataMapper::from).toList();
+  }
+
   public static List<Breakfast> cast(List<BreakfastDataMapper> dataMappers) {
     if (dataMappers == null) return new ArrayList<>() {};
     return dataMappers.stream().map(BreakfastDataMapper::cast).toList();

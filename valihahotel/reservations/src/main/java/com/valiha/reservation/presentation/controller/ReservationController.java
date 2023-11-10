@@ -1,13 +1,19 @@
 package com.valiha.reservation.presentation.controller;
 
+import com.valiha.reservation.application.dto.breakfast.BreakfastRequestDto;
+import com.valiha.reservation.application.dto.breakfast.BreakfastResponseDto;
 import com.valiha.reservation.application.dto.reservation.CommonReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
+import com.valiha.reservation.application.dto.shuttle.ShuttleRequestDto;
+import com.valiha.reservation.application.dto.shuttle.ShuttleResponseDto;
+import com.valiha.reservation.application.useCase.breakfast.CreateBreakfastUseCase;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
 import com.valiha.reservation.application.useCase.reservation.DeleteReservationUseCase;
 import com.valiha.reservation.application.useCase.reservation.EditReservationUseCase;
 import com.valiha.reservation.application.useCase.reservation.FindAllReservationsUseCase;
 import com.valiha.reservation.application.useCase.reservation.FindOneReservationUseCase;
+import com.valiha.reservation.application.useCase.shuttle.CreateShuttleUseCase;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,12 +35,30 @@ public class ReservationController {
   private final EditReservationUseCase editUseCase;
   private final FindAllReservationsUseCase findAllUseCase;
   private final FindOneReservationUseCase findOneUseCase;
+  private final CreateBreakfastUseCase createBreakfast;
+  private final CreateShuttleUseCase createShuttle;
 
   @PostMapping
   public ReservationResponseDto create(
     @RequestBody ReservationRequestDto requestDto
   ) {
     return this.createUseCase.execute(requestDto);
+  }
+
+  @PostMapping("/{id}/breakfasts")
+  public BreakfastResponseDto create(
+    @PathVariable String id,
+    BreakfastRequestDto request
+  ) {
+    return this.createBreakfast.execute(id, request);
+  }
+
+  @PostMapping("/{id}/shuttles")
+  public ShuttleResponseDto create(
+    @PathVariable String id,
+    ShuttleRequestDto request
+  ) {
+    return this.createShuttle.execute(id, request);
   }
 
   @DeleteMapping("/{id}")
