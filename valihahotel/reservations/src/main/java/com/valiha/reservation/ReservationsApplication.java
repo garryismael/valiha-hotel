@@ -51,6 +51,8 @@ public class ReservationsApplication {
         !className.endsWith("ApiErrorDecoder") &&
         !className.endsWith("ReservationState") &&
         !className.endsWith("PaymentState") &&
+        !className.endsWith("ShuttleState") &&
+        !className.endsWith("BreakfastState") &&
         !className.endsWith("ErrorResponse") &&
         !className.endsWith("FeignConfig") &&
         !className.endsWith("OAuthClientCredentialsFeignManager") &&

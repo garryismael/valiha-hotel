@@ -48,7 +48,7 @@ public class ReservationController {
   @PostMapping("/{id}/breakfasts")
   public BreakfastResponseDto create(
     @PathVariable String id,
-    BreakfastBaseRequestDto request
+    @RequestBody BreakfastBaseRequestDto request
   ) {
     return this.createBreakfast.execute(id, request);
   }
@@ -56,7 +56,7 @@ public class ReservationController {
   @PostMapping("/{id}/shuttles")
   public ShuttleResponseDto create(
     @PathVariable String id,
-    ShuttleBaseRequestDto request
+    @RequestBody ShuttleBaseRequestDto request
   ) {
     return this.createShuttle.execute(id, request);
   }

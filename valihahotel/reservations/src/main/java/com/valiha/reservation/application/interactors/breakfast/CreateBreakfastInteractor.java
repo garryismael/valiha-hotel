@@ -71,6 +71,8 @@ public class CreateBreakfastInteractor implements CreateBreakfastUseCase {
 
     List<Breakfast> breakfasts = reservation.getBreakfasts();
 
+    breakfasts.add(breakfast);
+
     reservation =
       reservationFactory.create(
         reservation.getId(),
@@ -84,6 +86,7 @@ public class CreateBreakfastInteractor implements CreateBreakfastUseCase {
         reservation.getShuttles(),
         breakfasts
       );
+
     reservationRepository.update(reservationId, reservation);
 
     return this.breakfastPresenter.prepareSuccessView(

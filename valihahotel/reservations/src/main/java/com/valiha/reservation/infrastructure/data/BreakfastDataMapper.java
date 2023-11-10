@@ -19,9 +19,15 @@ public class BreakfastDataMapper {
 
   private String id;
   private Date date;
+  private String state;
 
   public static Breakfast cast(BreakfastDataMapper dataMapper) {
-    return Breakfast.builder().id(dataMapper.id).date(dataMapper.date).build();
+    return Breakfast
+      .builder()
+      .id(dataMapper.id)
+      .date(dataMapper.date)
+      .state(dataMapper.state)
+      .build();
   }
 
   public static BreakfastDataMapper from(Breakfast breakfast) {
@@ -29,6 +35,7 @@ public class BreakfastDataMapper {
       .builder()
       .id(breakfast.getId())
       .date(breakfast.getDate())
+      .state(breakfast.getState())
       .build();
   }
 

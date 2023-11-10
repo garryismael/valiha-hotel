@@ -22,6 +22,7 @@ public class ShuttleDataMapper {
   private String flightNumber;
   private String destination;
   private LocalDateTime date;
+  private String state;
 
   public static ShuttleDataMapper from(Shuttle shuttle) {
     return ShuttleDataMapper
@@ -31,6 +32,7 @@ public class ShuttleDataMapper {
       .flightNumber(shuttle.getFlightNumber())
       .destination(shuttle.getDestination())
       .date(shuttle.getDate())
+      .state(shuttle.getState())
       .build();
   }
 
@@ -46,6 +48,7 @@ public class ShuttleDataMapper {
       .flightNumber(shuttle.flightNumber)
       .destination(shuttle.destination)
       .date(shuttle.date)
+      .state(shuttle.state)
       .build();
   }
 

@@ -74,8 +74,8 @@ public class CreateShuttleInteractor implements CreateShuttleUseCase {
     }
 
     shuttle = this.shuttleRepository.create(shuttle);
-
     List<Shuttle> shuttles = reservation.getShuttles();
+    shuttles.add(shuttle);
 
     reservation =
       reservationFactory.create(
