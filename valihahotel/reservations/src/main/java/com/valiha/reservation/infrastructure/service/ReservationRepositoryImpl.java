@@ -60,9 +60,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
   @Override
   public Reservation update(String id, Reservation reservation) {
     ReservationDataMapper dataMapper = ReservationDataMapper.from(reservation);
-
     dataMapper = reservationRepository.save(dataMapper);
-
     return ReservationDataMapper.toReservation(dataMapper);
   }
 

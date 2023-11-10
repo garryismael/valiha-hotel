@@ -94,6 +94,8 @@ public class ReservationDataMapper {
       .clientId(reservation.getClient().getId())
       .payment(PaymentDataMapper.from(reservation.getPayment()))
       .paymentId(reservation.getPayment().getId())
+      .breakfasts(BreakfastDataMapper.from(reservation.getBreakfasts()))
+      .shuttles(ShuttleDataMapper.from(reservation.getShuttles()))
       .build();
   }
 
@@ -114,6 +116,8 @@ public class ReservationDataMapper {
       .clientId(clientDataMapper.getId())
       .payment(paymentDataMapper)
       .paymentId(paymentDataMapper.getId())
+      .breakfasts(BreakfastDataMapper.from(reservation.getBreakfasts()))
+      .shuttles(ShuttleDataMapper.from(reservation.getShuttles()))
       .build();
   }
 

@@ -15,6 +15,7 @@ import com.valiha.reservation.core.entities.models.Breakfast;
 import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.interfaces.factory.BreakfastFactory;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,8 +70,7 @@ public class CreateBreakfastInteractor implements CreateBreakfastUseCase {
 
     breakfast = this.breakfastRepository.create(breakfast);
 
-    List<Breakfast> breakfasts = reservation.getBreakfasts();
-
+    List<Breakfast> breakfasts = new ArrayList<>(reservation.getBreakfasts());
     breakfasts.add(breakfast);
 
     reservation =
@@ -86,7 +86,6 @@ public class CreateBreakfastInteractor implements CreateBreakfastUseCase {
         reservation.getShuttles(),
         breakfasts
       );
-
     reservationRepository.update(reservationId, reservation);
 
     return this.breakfastPresenter.prepareSuccessView(
