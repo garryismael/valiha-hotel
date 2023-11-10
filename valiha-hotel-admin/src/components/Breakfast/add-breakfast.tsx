@@ -34,17 +34,17 @@ type Props = {
                 </ModalHeader>
                 <ModalBody>
                   <ReactDatePicker
+                    minDate={props.reservation.checkIn}
+                    maxDate={props.reservation.checkOut}
                     selected={formik.values.date}
                     onChange={(date: Date) => formik.setFieldValue(`date`, date)}
-                    dateFormat="dd/MM/yyyy HH:mm"
+                    dateFormat="dd/MM/yyyy"
                     className="w-full"
-                    showTimeSelect
-                    timeFormat="HH:mm"
                     wrapperClassName="w-full"
                     customInput={
                       <Input
                         onChange={formik.handleChange}
-                        label="Date de la Navette"
+                        label="Date du petit-déjeuner"
                         variant="bordered"
                         radius="sm"
                         className="w-1/2"
