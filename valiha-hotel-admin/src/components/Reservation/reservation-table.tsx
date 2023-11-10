@@ -18,7 +18,7 @@ const ReservationTable = (props: ReservationProps) => {
   const [page, setPage] = useState(1);
   const rowsPerPage = 4;
   const pages = Math.ceil(props.reservations.length / rowsPerPage);
-  
+
   const reservations = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
@@ -56,7 +56,10 @@ const ReservationTable = (props: ReservationProps) => {
             </TableColumn>
           )}
         </TableHeader>
-        <TableBody items={reservations}>
+        <TableBody
+          items={reservations}
+          emptyContent={"Aucune données à afficher."}
+        >
           {(reservation) => (
             <TableRow>
               {(columnKey) => (

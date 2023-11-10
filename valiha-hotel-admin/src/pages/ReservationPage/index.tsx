@@ -4,6 +4,7 @@ import Breadcrumbs from "@/components/BreadCrumbs";
 import ReservationTable from "@/components/Reservation/reservation-table";
 import { reservationBreadcrumbs } from "@/constants/reservation";
 import { Reservation } from "@/domain/entities/reservation";
+import { useReservationList } from "@/hooks/useReservation";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
 import { InfoIcon } from "@/icons/accounts/info-icon";
 import { TrashIcon } from "@/icons/accounts/trash-icon";
@@ -15,6 +16,7 @@ export type ReservationProps = {
 };
 
 function ReservationPage(props: ReservationProps) {
+  const reservations = useReservationList(props.reservations);
   return (
     <main className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={reservationBreadcrumbs} />
@@ -34,7 +36,7 @@ function ReservationPage(props: ReservationProps) {
           <DotsIcon />
         </div>
       </div>
-      <ReservationTable {...props} />
+      <ReservationTable reservations={reservations} />
     </main>
   );
 }
