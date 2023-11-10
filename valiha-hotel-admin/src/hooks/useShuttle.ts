@@ -12,6 +12,10 @@ import { toast } from "react-toastify";
 import useFormModal from "./useFormModal";
 import { useAppDispatch } from "./useStore";
 
+interface ShuttleForm extends ShuttleBaseRequest {
+  selection: string;
+}
+
 export const useCreateShuttle = (reservation: Reservation) => {
   const { show, loading, setLoading, handleClose, handleOpen } = useFormModal();
 
@@ -20,12 +24,22 @@ export const useCreateShuttle = (reservation: Reservation) => {
   );
   const dispatch = useAppDispatch();
 
-  const formik = useFormik<ShuttleBaseRequest>({
+  const onDestinationChanged = (value: string) => {
+    formik.setFieldValue("selection", value);
+    if (value === "other") {
+      value = "";
+    }
+    
+    formik.setFieldValue("destination", value);
+  };
+
+  const formik = useFormik<ShuttleForm>({
     initialValues: {
       date: toDate(reservation.checkIn),
       destination: "",
       flightName: "",
       flightNumber: "",
+      selection: "",
     },
     async onSubmit(values: ShuttleBaseRequest) {
       setLoading(true);
@@ -45,5 +59,12 @@ export const useCreateShuttle = (reservation: Reservation) => {
     },
   });
 
-  return { formik, show, loading, handleOpen, handleClose };
+  return {
+    formik,
+    show,
+    loading,
+    handleOpen,
+    handleClose,
+    onDestinationChanged,
+  };
 };

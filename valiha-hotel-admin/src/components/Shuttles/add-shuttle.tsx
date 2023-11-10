@@ -8,7 +8,9 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
-  ModalHeader
+  ModalHeader,
+  Select,
+  SelectItem,
 } from "@nextui-org/react";
 import ReactDatePicker from "react-datepicker";
 import { FaCalendarDays } from "react-icons/fa6";
@@ -19,9 +21,14 @@ type Props = {
 };
 
 const AddShuttle = (props: Props) => {
-  const { formik, handleOpen, handleClose, loading, show } = useCreateShuttle(
-    props.reservation
-  );
+  const {
+    formik,
+    loading,
+    show,
+    handleOpen,
+    handleClose,
+    onDestinationChanged,
+  } = useCreateShuttle(props.reservation);
   return (
     <>
       <Button
@@ -59,20 +66,42 @@ const AddShuttle = (props: Props) => {
                 <Input
                   name="pax"
                   label="Numéro du vol"
-                  type="number"
                   variant="bordered"
                   radius="sm"
                   value={formik.values.flightNumber}
                   onChange={formik.handleChange}
                 />
-                <Input
-                  name="bigBed"
-                  label="Destination"
-                  type="number"
+                <Select
+                  name="selection"
                   variant="bordered"
                   radius="sm"
+                  label="Destination"
                   value={formik.values.destination}
+                  onChange={(e) => onDestinationChanged(e.target.value)}
+                  classNames={{
+                    label: "z-1",
+                  }}
+                >
+                  <SelectItem key="airport-to-hotel" value="airport-to-hotel">
+                    Aéroport à l'hôtel
+                  </SelectItem>
+                  <SelectItem key="hotel-to-airport" value="hotel-to-airport">
+                    Hôtel à l'aéroport
+                  </SelectItem>
+                  <SelectItem key="other" value="other">
+                    Autre
+                  </SelectItem>
+                </Select>
+                <Input
+                  name="destination"
                   onChange={formik.handleChange}
+                  value={formik.values.destination}
+                  label="Autre destination"
+                  variant="bordered"
+                  radius="sm"
+                  className={`w-full ${
+                    formik.values.selection !== "other" ? "hidden" : "block"
+                  }`}
                 />
                 <ReactDatePicker
                   selected={formik.values.date}
