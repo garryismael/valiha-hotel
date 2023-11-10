@@ -3,7 +3,7 @@ import { ReservationService } from "@/domain/use-cases/reservation";
 import http from "@/lib/axios";
 import { injectable } from "tsyringe";
 
-const RESERVATION_PATH = "/RESERVATIONS-SERVICE/reservations";
+export const RESERVATION_PATH = "/RESERVATIONS-SERVICE/reservations";
 @injectable()
 export class ReservationServiceImpl implements ReservationService {
   async findAll(): Promise<Reservation[]> {

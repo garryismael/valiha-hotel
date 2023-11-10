@@ -7,3 +7,7 @@ export const getDays = (checkIn: string, checkOut: string) => {
     "days"
   );
 };
+
+export const dateToString = (date: Date) => {
+  return moment(date).format(DATE_FORMAT);
+};

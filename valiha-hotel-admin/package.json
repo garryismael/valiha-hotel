@@ -44,6 +44,7 @@
     "@babel/plugin-proposal-decorators": "^7.23.2",
     "@types/node": "^20",
     "@types/react": "^18",
+    "@types/react-datepicker": "^4.19.2",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",

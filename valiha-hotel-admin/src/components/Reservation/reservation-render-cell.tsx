@@ -9,6 +9,8 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { getReservationState } from "@/lib/utils/reservation";
 import { MdAdd, MdOpenInNew } from "react-icons/md";
 import { If, Then, Else } from "react-if";
+import AddShuttle from "../Shuttles/add-shuttle";
+import AddBreakfast from "../Breakfast/add-breakfast";
 
 interface Props {
   reservation: Reservation;
@@ -98,13 +100,7 @@ export const ReservationRenderCell = ({ reservation, columnKey }: Props) => {
             </Chip>
           </Then>
           <Else>
-            <Chip
-              color="primary"
-              variant="bordered"
-              endContent={<MdAdd size={18} />}
-            >
-              aucun
-            </Chip>
+            <AddShuttle reservation={reservation} />
           </Else>
         </If>
       );
@@ -122,13 +118,7 @@ export const ReservationRenderCell = ({ reservation, columnKey }: Props) => {
             </Chip>
           </Then>
           <Else>
-            <Chip
-              color="primary"
-              variant="bordered"
-              endContent={<MdAdd size={18} />}
-            >
-              aucun
-            </Chip>
+            <AddBreakfast reservation={reservation} />
           </Else>
         </If>
       );
