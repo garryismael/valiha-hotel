@@ -80,7 +80,7 @@ public class Shuttle implements InputValidator {
   }
 
   public boolean dateIsValid() {
-    return date != null && date.isAfter(LocalDateTime.now());
+    return date != null;
   }
 
   public boolean stateIsValid() {
