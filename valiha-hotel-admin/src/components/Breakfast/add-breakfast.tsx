@@ -1,6 +1,7 @@
 import { DATE_FORMAT } from "@/constants/date";
 import { Reservation } from "@/domain/entities/reservation";
 import { useCreateBreakfast } from "@/hooks/useBreakfast";
+import { toDate } from "@/lib/utils/date";
 import {
   Button,
   Input,
@@ -35,7 +36,12 @@ const AddBreakfast = (props: Props) => {
       >
         petit-déjeuner
       </Button>
-      <Modal isOpen={show} onOpenChange={handleClose} placement="top-center">
+      <Modal
+        isOpen={show}
+        onOpenChange={handleClose}
+        placement="top-center"
+        isDismissable={false}
+      >
         <ModalContent>
           {(onClose) => (
             <form onSubmit={formik.handleSubmit}>
@@ -44,14 +50,9 @@ const AddBreakfast = (props: Props) => {
               </ModalHeader>
               <ModalBody>
                 <ReactDatePicker
-                  minDate={moment(
-                    props.reservation.checkIn,
-                    DATE_FORMAT
-                  ).toDate()}
-                  maxDate={moment(
-                    props.reservation.checkOut,
-                    DATE_FORMAT
-                  ).toDate()}
+                  portalId="breakfasts"
+                  minDate={toDate(props.reservation.checkIn)}
+                  maxDate={toDate(props.reservation.checkOut)}
                   selected={formik.values.date}
                   onChange={(date: Date) => formik.setFieldValue(`date`, date)}
                   dateFormat="dd/MM/yyyy"
@@ -63,7 +64,6 @@ const AddBreakfast = (props: Props) => {
                       label="Date du petit-déjeuner"
                       variant="bordered"
                       radius="sm"
-                      className="w-1/2"
                       startContent={<FaCalendarDays />}
                     />
                   }

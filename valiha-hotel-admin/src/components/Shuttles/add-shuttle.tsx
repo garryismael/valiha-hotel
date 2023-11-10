@@ -1,5 +1,6 @@
 import { Reservation } from "@/domain/entities/reservation";
 import { useCreateShuttle } from "@/hooks/useShuttle";
+import { toDate } from "@/lib/utils/date";
 import {
   Button,
   Input,
@@ -7,11 +8,10 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
-  ModalHeader,
-  Select,
+  ModalHeader
 } from "@nextui-org/react";
-import { FaCalendarDays, FaPlus } from "react-icons/fa6";
 import ReactDatePicker from "react-datepicker";
+import { FaCalendarDays } from "react-icons/fa6";
 import { MdAdd } from "react-icons/md";
 
 type Props = {
@@ -34,7 +34,12 @@ const AddShuttle = (props: Props) => {
       >
         navette
       </Button>
-      <Modal isOpen={show} onOpenChange={handleClose} placement="top-center">
+      <Modal
+        isOpen={show}
+        onOpenChange={handleClose}
+        placement="top-center"
+        isDismissable={false}
+      >
         <ModalContent>
           {(onClose) => (
             <form onSubmit={formik.handleSubmit}>
@@ -77,6 +82,9 @@ const AddShuttle = (props: Props) => {
                   showTimeSelect
                   timeFormat="HH:mm"
                   wrapperClassName="w-full"
+                  minDate={toDate(props.reservation.checkIn)}
+                  maxDate={toDate(props.reservation.checkOut)}
+                  portalId="shuttles"
                   customInput={
                     <Input
                       onChange={formik.handleChange}

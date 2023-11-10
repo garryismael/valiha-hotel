@@ -1,15 +1,16 @@
+import { Reservation } from "@/domain/entities/reservation";
 import {
-    CreateShuttleInteractor,
-    CreateShuttleUseCase,
-    ShuttleBaseRequest,
+  CreateShuttleInteractor,
+  CreateShuttleUseCase,
+  ShuttleBaseRequest,
 } from "@/domain/use-cases/shuttle";
 import container from "@/infrastructures/config/container.config";
 import { addShuttle } from "@/lib/store/slices/reservation-slide";
+import { toDate } from "@/lib/utils/date";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import useFormModal from "./useFormModal";
 import { useAppDispatch } from "./useStore";
-import { Reservation } from "@/domain/entities/reservation";
 
 export const useCreateShuttle = (reservation: Reservation) => {
   const { show, loading, setLoading, handleClose, handleOpen } = useFormModal();
@@ -21,7 +22,7 @@ export const useCreateShuttle = (reservation: Reservation) => {
 
   const formik = useFormik<ShuttleBaseRequest>({
     initialValues: {
-      date: new Date(),
+      date: toDate(reservation.checkIn),
       destination: "",
       flightName: "",
       flightNumber: "",

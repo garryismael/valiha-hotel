@@ -10,6 +10,7 @@ import { useAppDispatch } from "./useStore";
 import { useFormik } from "formik";
 import { addBreakfast } from "@/lib/store/slices/reservation-slide";
 import { toast } from "react-toastify";
+import { toDate } from "@/lib/utils/date";
 
 export const useCreateBreakfast = (reservation: Reservation) => {
   const { show, loading, setLoading, handleClose, handleOpen } = useFormModal();
@@ -21,7 +22,7 @@ export const useCreateBreakfast = (reservation: Reservation) => {
 
   const formik = useFormik<BreakfastBaseRequest>({
     initialValues: {
-      date: new Date(),
+      date: toDate(reservation.checkIn),
     },
     async onSubmit(values: BreakfastBaseRequest) {
       setLoading(true);
