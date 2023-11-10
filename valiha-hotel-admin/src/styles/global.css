@@ -60,3 +60,7 @@ input[type="file"]::file-selector-button {
 .input-file {
   display: none !important;
 }
+
+.react-datepicker-popper {
+  z-index: 100;
+}
