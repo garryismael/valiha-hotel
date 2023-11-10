@@ -55,7 +55,7 @@ const AddShuttle = (props: Props) => {
               </ModalHeader>
               <ModalBody>
                 <Input
-                  name="title"
+                  name="flightName"
                   label="Nom du vol"
                   variant="bordered"
                   radius="sm"
@@ -64,7 +64,7 @@ const AddShuttle = (props: Props) => {
                 />
 
                 <Input
-                  name="pax"
+                  name="flightNumber"
                   label="Numéro du vol"
                   variant="bordered"
                   radius="sm"

@@ -7,6 +7,7 @@ import {
 import http from "@/lib/axios";
 import { dateToString } from "@/lib/utils/date";
 import { RESERVATION_PATH } from "./reservation";
+import { DATE_TIME_FORMAT } from "@/constants/date";
 
 const SHUTTLE_PATH = "/RESERVATIONS-SERVICE/shuttles";
 
@@ -36,7 +37,7 @@ export class ShuttleServiceImpl implements ShuttleService {
 
   private castBaseRequest(request: ShuttleBaseRequest) {
     return {
-      date: dateToString(request.date),
+      date: dateToString(request.date, DATE_TIME_FORMAT),
       destination: request.destination,
       flightName: request.flightName,
       flightNumber: request.flightNumber,

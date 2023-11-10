@@ -8,8 +8,8 @@ export const getDays = (checkIn: string, checkOut: string) => {
   );
 };
 
-export const dateToString = (date: Date) => {
-  return moment(date).format(DATE_FORMAT);
+export const dateToString = (date: Date, format = DATE_FORMAT) => {
+  return moment(date).format(format);
 };
 
 export const toDate = (date: string, format = DATE_FORMAT) => {

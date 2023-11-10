@@ -15,6 +15,7 @@ import com.valiha.reservation.core.entities.models.Reservation;
 import com.valiha.reservation.core.entities.models.Shuttle;
 import com.valiha.reservation.core.interfaces.factory.ReservationFactory;
 import com.valiha.reservation.core.interfaces.factory.ShuttleFactory;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,7 +75,7 @@ public class CreateShuttleInteractor implements CreateShuttleUseCase {
     }
 
     shuttle = this.shuttleRepository.create(shuttle);
-    List<Shuttle> shuttles = reservation.getShuttles();
+    List<Shuttle> shuttles = new ArrayList<>(reservation.getShuttles());
     shuttles.add(shuttle);
 
     reservation =
