@@ -4,7 +4,8 @@ import { Reservation } from "@/domain/entities/reservation";
 import { DeleteIcon } from "@/icons/table/delete-icon";
 import { EditIcon } from "@/icons/table/edit-icon";
 import { EyeIcon } from "@/icons/table/eye-icon";
-import { Tooltip } from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
+import Link from "next/link";
 import React from "react";
 
 const ReservationActions = ({ reservation }: { reservation: Reservation }) => {
@@ -12,9 +13,13 @@ const ReservationActions = ({ reservation }: { reservation: Reservation }) => {
     <div className="flex items-center gap-4 ">
       <div>
         <Tooltip content="Details">
-          <button onClick={() => console.log("detail", reservation.id)}>
-            <EyeIcon size={20} fill="#979797" />
-          </button>
+          <Link href={`/reservations/${reservation.id}`}>
+            <Button
+              isIconOnly
+              variant="light"
+              startContent={<EyeIcon size={20} fill="#979797" />}
+            />
+          </Link>
         </Tooltip>
       </div>
       <div>

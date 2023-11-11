@@ -51,6 +51,27 @@ export const reservationBreadcrumbs: Breadcrumb[] = [
   },
 ];
 
+export const reservationDetailBreadcrumbs: Breadcrumb[] = [
+  {
+    id: 1,
+    icon: <HomeIcon />,
+    text: "Tableau de bord",
+    href: "/",
+    spacer: "/",
+  },
+  {
+    id: 2,
+    icon: <FaCalendarCheck size={24} className="text-white-gray-500 ml-2" />,
+    text: "Reservations",
+    href: "/reservations",
+    spacer: "/",
+  },
+  {
+    id: 3,
+    text: "Detail",
+  },
+];
+
 export const reservationColumns = [
   { name: "CLIENT", uid: "client" },
   { name: "ÉTAT", uid: "state" },
