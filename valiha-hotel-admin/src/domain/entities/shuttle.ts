@@ -4,4 +4,5 @@ export interface Shuttle {
   flightNumber: string;
   destination: string;
   date: string;
+  state: string;
 }

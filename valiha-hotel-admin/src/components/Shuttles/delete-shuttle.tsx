@@ -1,24 +1,24 @@
-import { Breakfast } from "@/domain/entities/breakfast";
 import { Reservation } from "@/domain/entities/reservation";
-import { useDeleteBreakfast } from "@/hooks/useBreakfast";
+import { Shuttle } from "@/domain/entities/shuttle";
+import { useDeleteShuttle } from "@/hooks/useShuttle";
 import { DeleteIcon } from "@/icons/table/delete-icon";
 import {
-    Button,
-    Modal,
-    ModalBody,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
+  Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
 } from "@nextui-org/react";
 
 type Props = {
-  breakfast: Breakfast;
+  shuttle: Shuttle;
   reservation: Reservation;
 };
 
-const DeleteBreakfast = ({ reservation, breakfast }: Props) => {
+const DeleteShuttle = ({ reservation, shuttle }: Props) => {
   const { show, loading, handleDelete, handleOpen, handleClose } =
-    useDeleteBreakfast(reservation, breakfast);
+    useDeleteShuttle(reservation, shuttle);
   return (
     <>
       <Button
@@ -38,12 +38,12 @@ const DeleteBreakfast = ({ reservation, breakfast }: Props) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Supprimer un petit-déjeuner
+                Supprimer une navette
               </ModalHeader>
               <ModalBody>
                 <p>
-                  Êtes-vous sur de supprimer le petit-déjeuner datant du{" "}
-                  {breakfast.date}?
+                  Êtes-vous sur de supprimer la navette datant du {shuttle.date}
+                  ?
                 </p>
               </ModalBody>
               <ModalFooter>
@@ -68,4 +68,4 @@ const DeleteBreakfast = ({ reservation, breakfast }: Props) => {
   );
 };
 
-export default DeleteBreakfast;
+export default DeleteShuttle;

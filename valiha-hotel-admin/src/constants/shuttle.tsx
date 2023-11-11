@@ -32,5 +32,11 @@ export const shuttleColumns = [
   { name: "DESTINATION", uid: "destination" },
   { name: "DATE", uid: "date" },
   { name: "ÉTAT", uid: "state" },
-  { name: "ACTIONS", uid: "actions"}
+  { name: "ACTIONS", uid: "actions" },
 ];
+
+export const shuttleDestinations = () => ({
+  "hotel-to-airport": "Hôtel à l'aéroport",
+  "airport-to-hotel": "Aéroport à l’hôtel",
+  autre: "Autre",
+});

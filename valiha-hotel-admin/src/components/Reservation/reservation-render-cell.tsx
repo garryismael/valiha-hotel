@@ -1,17 +1,17 @@
 "use client";
 
 import { Reservation } from "@/domain/entities/reservation";
-import ReservationActions from "./reservation-action";
-import { getPaymentState } from "@/lib/utils/payment";
-import { Chip } from "@nextui-org/react";
 import { getDays } from "@/lib/utils/date";
-import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { getPaymentState } from "@/lib/utils/payment";
 import { getReservationState } from "@/lib/utils/reservation";
-import { MdAdd, MdOpenInNew } from "react-icons/md";
-import { If, Then, Else } from "react-if";
-import AddShuttle from "../Shuttles/add-shuttle";
+import { Chip } from "@nextui-org/react";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { Else, If, Then } from "react-if";
 import AddBreakfast from "../Breakfast/add-breakfast";
 import BreakfastModalTable from "../Breakfast/breakfast-modal-table";
+import AddShuttle from "../Shuttles/add-shuttle";
+import ShuttleModalTable from "../Shuttles/shuttle-modal-table";
+import ReservationActions from "./reservation-action";
 
 interface Props {
   reservation: Reservation;
@@ -92,13 +92,7 @@ export const ReservationRenderCell = ({ reservation, columnKey }: Props) => {
       return (
         <If condition={shuttles.length > 0}>
           <Then>
-            <Chip
-              color="primary"
-              variant="bordered"
-              endContent={<MdOpenInNew size={18} />}
-            >
-              {shuttles.length}
-            </Chip>
+            <ShuttleModalTable reservation={reservation} />
           </Then>
           <Else>
             <AddShuttle reservation={reservation} />
