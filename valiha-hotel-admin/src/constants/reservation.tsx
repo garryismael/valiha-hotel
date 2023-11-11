@@ -52,10 +52,10 @@ export const reservationBreadcrumbs: Breadcrumb[] = [
 ];
 
 export const reservationColumns = [
-  { name: "CLIENTS", uid: "client" },
-  { name: "ÉTATS", uid: "state" },
+  { name: "CLIENT", uid: "client" },
+  { name: "ÉTAT", uid: "state" },
   { name: "DATES", uid: "date" },
-  { name: "PAIEMENTS", uid: "payment" },
+  { name: "PAIEMENT", uid: "payment" },
   { name: "CHAMBRES", uid: "rooms" },
   { name: "PARKING", uid: "parking" },
   { name: "NAVETTES", uid: "shuttles"},
