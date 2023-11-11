@@ -17,6 +17,7 @@ public class Reservation implements InputValidator {
   private Date checkOut;
   private String state;
   private boolean parking;
+  private int pax;
   private Client client;
   private Payment payment;
   private List<Room> rooms;
@@ -53,6 +54,11 @@ public class Reservation implements InputValidator {
 
     public Builder parking(boolean parking) {
       reservation.parking = parking;
+      return this;
+    }
+
+    public Builder pax(int pax) {
+      reservation.pax = pax;
       return this;
     }
 
@@ -105,6 +111,10 @@ public class Reservation implements InputValidator {
       this.checkOut != null &&
       this.checkOut.after(checkIn)
     );
+  }
+
+  public boolean paxIsValid() {
+    return this.pax > 0;
   }
 
   public boolean stateIsValid() {
@@ -171,6 +181,13 @@ public class Reservation implements InputValidator {
       );
     } else {
       errors.putAll(payment.validate());
+    }
+
+    if (!paxIsValid()) {
+      errors.put(
+        ReservationValidator.KEY_PAX,
+        ReservationValidator.INVALID_PAX_ERROR
+      );
     }
 
     return errors;

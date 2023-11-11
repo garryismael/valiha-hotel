@@ -25,6 +25,7 @@ public class ReservationDataMapper {
   private Date checkOut;
   private String state;
   private boolean parking;
+  private int pax;
 
   @Transient
   private ClientDataMapper client;
@@ -53,6 +54,7 @@ public class ReservationDataMapper {
       .checkOut(dataMapper.checkOut)
       .state(dataMapper.state)
       .parking(dataMapper.parking)
+      .pax(dataMapper.pax)
       .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(dataMapper.client))
       .payment(PaymentDataMapper.toPayment(dataMapper.payment))
@@ -73,6 +75,7 @@ public class ReservationDataMapper {
       .checkOut(dataMapper.checkOut)
       .state(dataMapper.state)
       .parking(dataMapper.parking)
+      .pax(dataMapper.pax)
       .rooms(RoomDataMapper.cast(dataMapper.rooms))
       .client(ClientDataMapper.toClient(clientResponseDto))
       .payment(PaymentDataMapper.toPayment(paymentResponseDto))
@@ -89,6 +92,7 @@ public class ReservationDataMapper {
       .checkOut(reservation.getCheckOut())
       .state(reservation.getState())
       .parking(reservation.isParking())
+      .pax(reservation.getPax())
       .rooms(RoomDataMapper.from(reservation.getRooms()))
       .client(ClientDataMapper.from(reservation.getClient()))
       .clientId(reservation.getClient().getId())
@@ -111,6 +115,7 @@ public class ReservationDataMapper {
       .checkOut(reservation.getCheckOut())
       .state(reservation.getState())
       .parking(reservation.isParking())
+      .pax(reservation.getPax())
       .rooms(RoomDataMapper.from(reservation.getRooms()))
       .client(clientDataMapper)
       .clientId(clientDataMapper.getId())

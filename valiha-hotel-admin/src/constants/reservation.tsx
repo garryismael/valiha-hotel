@@ -57,6 +57,7 @@ export const reservationColumns = [
   { name: "DATES", uid: "date" },
   { name: "PAIEMENT", uid: "payment" },
   { name: "CHAMBRES", uid: "rooms" },
+  { name: "PAX", uid: "pax"},
   { name: "PARKING", uid: "parking" },
   { name: "NAVETTES", uid: "shuttles"},
   { name: "PETIT-DÉJEUNERS", uid: "breakfasts"},

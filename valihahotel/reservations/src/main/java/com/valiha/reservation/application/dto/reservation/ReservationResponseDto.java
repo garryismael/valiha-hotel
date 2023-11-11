@@ -26,6 +26,7 @@ public class ReservationResponseDto {
   private String checkOut;
   private String state;
   private boolean parking;
+  private int pax;
   private ClientResponseDto client;
   private PaymentResponseDto payment;
   private List<RoomResponseDto> rooms;
@@ -49,6 +50,7 @@ public class ReservationResponseDto {
       )
       .state(reservation.getState())
       .parking(reservation.isParking())
+      .pax(reservation.getPax())
       .rooms(RoomResponseDto.from(reservation.getRooms()))
       .client(ClientResponseDto.from(reservation.getClient()))
       .payment(PaymentResponseDto.from(reservation.getPayment()))

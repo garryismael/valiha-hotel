@@ -153,6 +153,7 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
       checkOut,
       ReservationState.PENDING.value(),
       requestDto.isParking(),
+      requestDto.getPax(),
       client,
       payment,
       rooms,

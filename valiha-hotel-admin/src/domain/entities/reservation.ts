@@ -10,6 +10,7 @@ export interface Reservation {
   checkOut: string;
   state: string;
   parking: boolean;
+  pax: number;
   client: Client;
   payment: Payment;
   rooms: Room[];

@@ -22,6 +22,7 @@ public class ReservationRequestDto {
   private String checkIn;
   private String checkOut;
   private boolean parking;
+  private int pax;
   private ClientRequestDto client;
   private List<ShuttleRequestDto> shuttles;
   private List<BreakfastRequestDto> breakfasts;

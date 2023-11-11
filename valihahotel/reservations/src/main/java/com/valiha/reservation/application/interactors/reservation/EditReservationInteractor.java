@@ -73,6 +73,7 @@ public class EditReservationInteractor implements EditReservationUseCase {
         ),
         requestDto.getState(),
         requestDto.isParking(),
+        requestDto.getPax(),
         reservation.getClient(),
         reservation.getPayment(),
         rooms,

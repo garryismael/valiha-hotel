@@ -19,6 +19,7 @@ public class ReservationFactoryImpl implements ReservationFactory {
     Date checkOut,
     String state,
     boolean useParking,
+    int pax,
     Client client,
     Payment payment,
     List<Room> room,
@@ -32,6 +33,7 @@ public class ReservationFactoryImpl implements ReservationFactory {
       .checkOut(checkOut)
       .state(state)
       .parking(useParking)
+      .pax(pax)
       .client(client)
       .payment(payment)
       .rooms(room)

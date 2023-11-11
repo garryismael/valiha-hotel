@@ -16,6 +16,7 @@ public interface ReservationFactory {
     Date checkOut,
     String state,
     boolean useParking,
+    int pax,
     Client client,
     Payment payment,
     List<Room> rooms,

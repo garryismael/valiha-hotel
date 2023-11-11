@@ -80,6 +80,7 @@ public class CreateBreakfastInteractor implements CreateBreakfastUseCase {
         reservation.getCheckOut(),
         reservation.getState(),
         reservation.isParking(),
+        reservation.getPax(),
         reservation.getClient(),
         reservation.getPayment(),
         reservation.getRooms(),

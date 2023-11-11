@@ -85,6 +85,7 @@ public class CreateShuttleInteractor implements CreateShuttleUseCase {
         reservation.getCheckOut(),
         reservation.getState(),
         reservation.isParking(),
+        reservation.getPax(),
         reservation.getClient(),
         reservation.getPayment(),
         reservation.getRooms(),

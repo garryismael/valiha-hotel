@@ -17,4 +17,5 @@ public class CommonReservationRequestDto {
   private String checkOut;
   private String state;
   private boolean parking;
+  private int pax;
 }

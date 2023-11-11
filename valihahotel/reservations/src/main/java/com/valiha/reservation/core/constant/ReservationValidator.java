@@ -10,6 +10,7 @@ public class ReservationValidator {
   public static final String KEY_ROOMS = "room";
   public static final String KEY_CLIENT = "client";
   public static final String KEY_PAYMENT = "payment";
+  public static final String KEY_PAX = "pax";
   public static final String RESERVATION_DATE_RANGE = "dateRange";
 
   public static final String INVALID_CHECK_IN_ERROR = "invalid check in ";
@@ -19,6 +20,7 @@ public class ReservationValidator {
   public static final String INVALID_ROOMS_ERROR = "invalid room";
   public static final String INVALID_CLIENT_ERROR = "invalid client";
   public static final String INVALID_PAYMENT_ERROR = "invalid payment";
+  public static final String INVALID_PAX_ERROR = "invalid pax";
   public static final String RESERVATION_EXISTS_ERRORS = "reservation exists";
 
   public static final String RESERVATION_NOT_FOUND_ERROR =
