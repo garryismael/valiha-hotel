@@ -1,7 +1,7 @@
 import { Reservation } from "@/domain/entities/reservation";
 import { useAppDispatch, useAppSelector } from "./useStore";
 import { useEffect } from "react";
-import { setReservations } from "@/lib/store/slices/reservation-slide";
+import { setReservations } from "@/lib/store/slices/reservation-slice";
 
 export const useReservationList = (reservations: Reservation[]) => {
   const dispatch = useAppDispatch();

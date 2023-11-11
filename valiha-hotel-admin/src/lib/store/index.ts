@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { CategorySlice } from "./slices/category-slice";
-import { ReservationSlice } from "./slices/reservation-slide";
+import { ReservationSlice } from "./slices/reservation-slice";
 import { RoomSlice } from "./slices/room-slice";
 import { UserSlice } from "./slices/user-slide";
 

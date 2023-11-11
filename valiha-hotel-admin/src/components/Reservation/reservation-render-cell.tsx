@@ -11,6 +11,7 @@ import { MdAdd, MdOpenInNew } from "react-icons/md";
 import { If, Then, Else } from "react-if";
 import AddShuttle from "../Shuttles/add-shuttle";
 import AddBreakfast from "../Breakfast/add-breakfast";
+import BreakfastModalTable from "../Breakfast/breakfast-modal-table";
 
 interface Props {
   reservation: Reservation;
@@ -109,13 +110,7 @@ export const ReservationRenderCell = ({ reservation, columnKey }: Props) => {
       return (
         <If condition={breakfasts.length > 0}>
           <Then>
-            <Chip
-              color="primary"
-              variant="bordered"
-              endContent={<MdOpenInNew size={18} />}
-            >
-              {breakfasts.length}
-            </Chip>
+            <BreakfastModalTable reservation={reservation} />
           </Then>
           <Else>
             <AddBreakfast reservation={reservation} />

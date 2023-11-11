@@ -17,6 +17,7 @@ public class BreakfastResponseDto {
 
   String id;
   String date;
+  String state;
 
   public static BreakfastResponseDto from(Breakfast breakfast) {
     return BreakfastResponseDto
@@ -25,6 +26,7 @@ public class BreakfastResponseDto {
       .date(
         DateFormatter.parse(breakfast.getDate(), AppReservation.DATE_FORMAT)
       )
+      .state(breakfast.getState())
       .build();
   }
 

@@ -5,7 +5,7 @@ import {
   ShuttleBaseRequest,
 } from "@/domain/use-cases/shuttle";
 import container from "@/infrastructures/config/container.config";
-import { addShuttle } from "@/lib/store/slices/reservation-slide";
+import { addShuttle } from "@/lib/store/slices/reservation-slice";
 import { toDate } from "@/lib/utils/date";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";

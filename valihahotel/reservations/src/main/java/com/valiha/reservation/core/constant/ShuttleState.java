@@ -2,10 +2,10 @@ package com.valiha.reservation.core.constant;
 
 public enum ShuttleState {
   PENDING("pending"),
-  PAID("in-progress"),
-  FAILED("completed"),
-  CANCELED("failed"),
-  REFUNDED("canceled");
+  PROGRESS("in-progress"),
+  DONE("completed"),
+  FAILED("failed"),
+  CANCELED("canceled");
 
   private final String state;
 

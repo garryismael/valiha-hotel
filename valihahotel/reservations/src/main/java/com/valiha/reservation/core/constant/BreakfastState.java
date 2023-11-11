@@ -2,8 +2,8 @@ package com.valiha.reservation.core.constant;
 
 public enum BreakfastState {
   PENDING("pending"),
-  FAILED("completed"),
-  REFUNDED("canceled");
+  COMPLETED("completed"),
+  CANCELED("canceled");
 
   private final String state;
 
