@@ -9,7 +9,7 @@ export const breakfastState: Record<string, BreakfastType> = {
     color: "danger",
   },
   completed: {
-    value: "Fait",
+    value: "fait",
     color: "success",
   },
   canceled: {
