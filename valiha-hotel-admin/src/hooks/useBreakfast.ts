@@ -82,7 +82,7 @@ export const useEditBreakfast = (
       );
       setLoading(false);
       handleClose();
-      toast.success("Petit-déjeuner ajouté avec succès!", {
+      toast.success("Petit-déjeuner modifié avec succès!", {
         position: "bottom-right",
         toastId: "create-breakfast",
       });
