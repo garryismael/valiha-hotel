@@ -40,7 +40,7 @@ const BreakfastModalTable = ({ reservation }: Props) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Liste de petit-déjeuners de {reservation.client.firstName}
+                Liste de petit-déjeuner de {reservation.client.firstName}
               </ModalHeader>
               <ModalBody>
                 <div className="w-fit">
