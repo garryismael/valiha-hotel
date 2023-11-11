@@ -8,7 +8,7 @@ export const shuttleState: Record<string, ShuttleType> = {
     value: "en attente",
     color: "danger",
   },
-  progress: {
+  "in-progress": {
     value: "en cours",
     color: "primary",
   },
