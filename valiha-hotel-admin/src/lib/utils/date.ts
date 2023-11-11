@@ -1,4 +1,4 @@
-import { DATE_FORMAT } from "@/constants/date";
+import { DATE_FORMAT, DATE_TIME_FORMAT } from "@/constants/date";
 import moment from "moment";
 
 export const getDays = (checkIn: string, checkOut: string) => {
@@ -14,4 +14,8 @@ export const dateToString = (date: Date, format = DATE_FORMAT) => {
 
 export const toDate = (date: string, format = DATE_FORMAT) => {
   return moment(date, format).startOf("days").toDate();
+};
+
+export const toDateTime = (date: string, format = DATE_TIME_FORMAT) => {
+  return moment(date, format).toDate();
 };

@@ -1,4 +1,4 @@
-import { shuttleState } from "@/constants/shuttle";
+import { shuttleDestinations, shuttleState } from "@/constants/shuttle";
 import { Reservation } from "@/domain/entities/reservation";
 import { Shuttle } from "@/domain/entities/shuttle";
 import { useEditShuttle } from "@/hooks/useShuttle";
@@ -52,7 +52,7 @@ const EditShuttle = (props: Props) => {
           {(onClose) => (
             <form onSubmit={formik.handleSubmit}>
               <ModalHeader className="flex flex-col gap-1">
-                Modifier un petit-déjeuner
+                Modifier une navette
               </ModalHeader>
               <ModalBody>
                 <Input
@@ -78,20 +78,21 @@ const EditShuttle = (props: Props) => {
                   radius="sm"
                   label="Destination"
                   value={formik.values.destination}
+                  defaultSelectedKeys={[formik.values.destination]}
                   onChange={(e) => onDestinationChanged(e.target.value)}
                   classNames={{
                     label: "z-1",
                   }}
                 >
-                  <SelectItem key="airport-to-hotel" value="airport-to-hotel">
-                    Aéroport à l'hôtel
-                  </SelectItem>
-                  <SelectItem key="hotel-to-airport" value="hotel-to-airport">
-                    Hôtel à l'aéroport
-                  </SelectItem>
-                  <SelectItem key="other" value="other">
-                    Autre
-                  </SelectItem>
+                  {Object.keys(shuttleDestinations).map((key) => (
+                    <SelectItem key={key} value={key}>
+                      {
+                        shuttleDestinations[
+                          key as keyof typeof shuttleDestinations
+                        ]
+                      }
+                    </SelectItem>
+                  ))}
                 </Select>
                 <Input
                   name="destination"
@@ -108,7 +109,7 @@ const EditShuttle = (props: Props) => {
                   name="state"
                   variant="bordered"
                   radius="sm"
-                  label="État du petit-déjeuner"
+                  label="État de la navette"
                   defaultSelectedKeys={[formik.values.state]}
                   onChange={formik.handleChange}
                   classNames={{

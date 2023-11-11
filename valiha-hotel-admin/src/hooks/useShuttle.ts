@@ -1,4 +1,5 @@
 import { Reservation } from "@/domain/entities/reservation";
+import { Shuttle } from "@/domain/entities/shuttle";
 import {
   CreateShuttleInteractor,
   CreateShuttleUseCase,
@@ -15,13 +16,11 @@ import {
   editShuttle,
   removeShuttle,
 } from "@/lib/store/slices/reservation-slice";
-import { toDate } from "@/lib/utils/date";
+import { toDate, toDateTime } from "@/lib/utils/date";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import useFormModal from "./useFormModal";
 import { useAppDispatch } from "./useStore";
-import { Breakfast } from "@/domain/entities/breakfast";
-import { Shuttle } from "@/domain/entities/shuttle";
 
 interface ShuttleForm extends ShuttleBaseRequest {
   selection: string;
@@ -93,7 +92,7 @@ export const useEditShuttle = (reservation: Reservation, shuttle: Shuttle) => {
 
   const formik = useFormik<ShuttleEditForm>({
     initialValues: {
-      date: toDate(reservation.checkIn),
+      date: toDateTime(shuttle.date),
       destination: shuttle.destination,
       flightName: shuttle.flightName,
       flightNumber: shuttle.flightNumber,

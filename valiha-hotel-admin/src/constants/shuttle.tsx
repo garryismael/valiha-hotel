@@ -35,8 +35,8 @@ export const shuttleColumns = [
   { name: "ACTIONS", uid: "actions" },
 ];
 
-export const shuttleDestinations = () => ({
+export const shuttleDestinations = {
   "hotel-to-airport": "Hôtel à l'aéroport",
   "airport-to-hotel": "Aéroport à l’hôtel",
-  autre: "Autre",
-});
+  other: "Autre",
+};
