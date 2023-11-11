@@ -37,7 +37,7 @@ export const RenderBreakfastCell = ({
         <div className="flex items-center gap-4 ">
           <div>
             <Tooltip content="Modifier" color="secondary">
-              <EditBreakfast reservation={reservation} />
+              <EditBreakfast reservation={reservation} breakfast={breakfast} />
             </Tooltip>
           </div>
           <div>
