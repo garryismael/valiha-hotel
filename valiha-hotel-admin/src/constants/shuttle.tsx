@@ -13,7 +13,7 @@ export const shuttleState: Record<string, ShuttleType> = {
     color: "primary",
   },
   completed: {
-    value: "complété",
+    value: "terminée",
     color: "success",
   },
   canceled: {

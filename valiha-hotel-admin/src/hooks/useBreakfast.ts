@@ -74,10 +74,10 @@ export const useEditBreakfast = (
     },
     async onSubmit(values) {
       setLoading(true);
-      const breakfast = await editUseCase.execute(reservation.id, values);
+      const data = await editUseCase.execute(breakfast.id, values);
       dispatch(
         editBreakfast({
-          breakfast,
+          breakfast: data,
           reservationId: reservation.id,
         })
       );

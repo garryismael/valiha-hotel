@@ -63,7 +63,7 @@ const EditBreakfast = (props: Props) => {
                   }}
                 >
                   {Object.keys(breakfastState).map((key) => (
-                    <SelectItem key="airport-to-hotel" value="airport-to-hotel">
+                    <SelectItem key={key} value={key}>
                       {breakfastState[key].value}
                     </SelectItem>
                   ))}
