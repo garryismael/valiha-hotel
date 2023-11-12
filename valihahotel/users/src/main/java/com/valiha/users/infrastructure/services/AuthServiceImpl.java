@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
         jwt.getClaimAsString("family_name"),
         jwt.getClaimAsString("phone_number"),
         jwt.getClaimAsString("email"),
-        jwt.getClaimAsString("image"),
+        jwt.getClaimAsString("picture"),
         null
       );
       return user;
