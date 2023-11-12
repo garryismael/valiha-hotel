@@ -26,7 +26,7 @@ public class LocationResponseDto {
   private String destination;
   private String reason;
   private ClientResponseDto client;
-  private CarResponseDto car;
+  private List<CarResponseDto> cars;
   private PaymentResponseDto payment;
 
   public static LocationResponseDto from(Location location) {
@@ -39,7 +39,7 @@ public class LocationResponseDto {
       .destination(location.getDestination())
       .reason(location.getReason())
       .client(ClientResponseDto.from(location.getClient()))
-      .car(CarResponseDto.from(location.getCar()))
+      .cars(CarResponseDto.from(location.getCars()))
       .payment(PaymentResponseDto.from(location.getPayment()))
       .build();
   }
