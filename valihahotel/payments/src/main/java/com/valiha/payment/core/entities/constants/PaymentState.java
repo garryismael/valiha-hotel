@@ -1,4 +1,4 @@
-package com.valiha.payment.core.constants;
+package com.valiha.payment.core.entities.constants;
 
 public enum PaymentState {
   PENDING("pending"),

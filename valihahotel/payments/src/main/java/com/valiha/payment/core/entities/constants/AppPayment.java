@@ -1,10 +1,10 @@
-package com.valiha.payment.core.constants;
+package com.valiha.payment.core.entities.constants;
 
 import java.util.List;
 
 public class AppPayment {
 
-  public static final String DATE_FORMAT = "dd/MM/yyyy";
+  public static final String DATE_TIME_FORMAT = "dd/MM/yyyy HH:mm";
 
   public static final List<String> PAYMENT_STATES = List.of(
     PaymentState.PENDING.value(),

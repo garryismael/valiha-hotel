@@ -4,7 +4,7 @@ import com.valiha.payment.application.dto.payment.PaymentResponseDto;
 import com.valiha.payment.application.presenter.GenericPresenter;
 import com.valiha.payment.application.repository.PaymentRepository;
 import com.valiha.payment.application.useCase.payment.FindOnePaymentUseCase;
-import com.valiha.payment.core.constants.PaymentValidator;
+import com.valiha.payment.core.entities.constants.PaymentValidator;
 import com.valiha.payment.core.entities.models.Payment;
 import java.util.HashMap;
 import java.util.Map;

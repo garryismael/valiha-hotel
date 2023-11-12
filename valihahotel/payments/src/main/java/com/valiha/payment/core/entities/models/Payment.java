@@ -1,7 +1,7 @@
 package com.valiha.payment.core.entities.models;
 
-import com.valiha.payment.core.constants.AppPayment;
-import com.valiha.payment.core.constants.PaymentValidator;
+import com.valiha.payment.core.entities.constants.AppPayment;
+import com.valiha.payment.core.entities.constants.PaymentValidator;
 import com.valiha.payment.core.interfaces.models.IPayment;
 import com.valiha.payment.core.interfaces.validator.InputValidator;
 import java.util.HashMap;
