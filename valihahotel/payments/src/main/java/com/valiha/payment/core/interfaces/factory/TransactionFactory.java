@@ -1,5 +1,6 @@
 package com.valiha.payment.core.interfaces.factory;
 
+import com.valiha.payment.core.entities.models.Payment;
 import com.valiha.payment.core.entities.models.Transaction;
 import com.valiha.payment.core.entities.models.User;
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ public interface TransactionFactory {
     LocalDateTime date,
     int amount,
     String paymentType,
-    User user
+    User user,
+    Payment payment
   );
 }

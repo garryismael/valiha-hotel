@@ -3,10 +3,12 @@ package com.valiha.payment.application.interactor.transaction;
 import com.valiha.payment.application.dto.transaction.TransactionRequestDto;
 import com.valiha.payment.application.dto.transaction.TransactionResponseDto;
 import com.valiha.payment.application.presenter.GenericPresenter;
+import com.valiha.payment.application.repository.PaymentRepository;
 import com.valiha.payment.application.repository.TransactionRepository;
 import com.valiha.payment.application.services.AuthService;
 import com.valiha.payment.application.useCase.transaction.CreateTransactionUseCase;
 import com.valiha.payment.core.entities.constants.TransactionValidator;
+import com.valiha.payment.core.entities.models.Payment;
 import com.valiha.payment.core.entities.models.Transaction;
 import com.valiha.payment.core.entities.models.User;
 import com.valiha.payment.core.interfaces.factory.TransactionFactory;
@@ -21,6 +23,7 @@ public class CreateTransactionInteractor implements CreateTransactionUseCase {
   private final AuthService authService;
   private final GenericPresenter<TransactionResponseDto> transactionPresenter;
   private final TransactionRepository transactionRepository;
+  private final PaymentRepository paymentRepository;
   private final TransactionFactory transactionFactory;
 
   @Override
@@ -28,13 +31,16 @@ public class CreateTransactionInteractor implements CreateTransactionUseCase {
     Map<String, String> errors = new HashMap<>();
 
     User user = this.authService.getUser();
+    Payment payment =
+      this.paymentRepository.findOneById(requestDto.getPaymentId());
 
     Transaction transaction = transactionFactory.create(
       null,
       LocalDateTime.now(),
       requestDto.getAmount(),
       requestDto.getPaymentType(),
-      user
+      user,
+      payment
     );
 
     errors = transaction.validate();

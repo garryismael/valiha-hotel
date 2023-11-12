@@ -19,14 +19,14 @@ public class PaymentRepositoryImpl implements PaymentRepository {
   public Payment create(Payment payment) {
     PaymentDataMapper dataMapper = PaymentDataMapper.from(payment);
     dataMapper = this.paymentRepository.save(dataMapper);
-    return toPayment(dataMapper);
+    return PaymentDataMapper.cast(dataMapper);
   }
 
   @Override
   public Payment update(String id, Payment payment) {
     PaymentDataMapper dataMapper = PaymentDataMapper.from(payment);
     dataMapper = this.paymentRepository.save(dataMapper);
-    return toPayment(dataMapper);
+    return PaymentDataMapper.cast(dataMapper);
   }
 
   @Override
@@ -34,7 +34,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
     Optional<PaymentDataMapper> optionalDataMapper =
       this.paymentRepository.findById(id);
     if (optionalDataMapper.isPresent()) {
-      return toPayment(optionalDataMapper.get());
+      return PaymentDataMapper.cast(optionalDataMapper.get());
     }
     return null;
   }
@@ -42,22 +42,13 @@ public class PaymentRepositoryImpl implements PaymentRepository {
   @Override
   public List<Payment> findAll() {
     List<PaymentDataMapper> dataMappers = this.paymentRepository.findAll();
-    return dataMappers.stream().map(PaymentRepositoryImpl::toPayment).toList();
+    return dataMappers.stream().map(PaymentDataMapper::cast).toList();
   }
 
   @Override
   public List<Payment> findAllByIds(List<String> ids) {
     List<PaymentDataMapper> dataMappers =
       this.paymentRepository.findAllById(ids);
-    return dataMappers.stream().map(PaymentRepositoryImpl::toPayment).toList();
-  }
-
-  public static Payment toPayment(PaymentDataMapper dataMapper) {
-    return Payment
-      .builder()
-      .id(dataMapper.getId())
-      .discount(dataMapper.getDiscount())
-      .state(dataMapper.getState())
-      .build();
+    return dataMappers.stream().map(PaymentDataMapper::cast).toList();
   }
 }

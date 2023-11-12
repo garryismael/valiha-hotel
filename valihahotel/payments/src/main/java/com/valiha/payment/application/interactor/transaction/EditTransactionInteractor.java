@@ -45,7 +45,8 @@ public class EditTransactionInteractor implements EditTransactionUseCase {
         transaction.getDate(),
         requestDto.getAmount(),
         requestDto.getPaymentType(),
-        transaction.getUser()
+        transaction.getUser(),
+        transaction.getPayment()
       );
 
     errors = transaction.validate();

@@ -1,5 +1,6 @@
 package com.valiha.payment.core.entities.factory;
 
+import com.valiha.payment.core.entities.models.Payment;
 import com.valiha.payment.core.entities.models.Transaction;
 import com.valiha.payment.core.entities.models.User;
 import com.valiha.payment.core.interfaces.factory.TransactionFactory;
@@ -13,7 +14,8 @@ public class TransactionFactoryImpl implements TransactionFactory {
     LocalDateTime date,
     int amount,
     String paymentType,
-    User user
+    User user,
+    Payment payment
   ) {
     return Transaction
       .builder()
@@ -22,6 +24,7 @@ public class TransactionFactoryImpl implements TransactionFactory {
       .amount(amount)
       .paymentType(paymentType)
       .user(user)
+      .payment(payment)
       .build();
   }
 }

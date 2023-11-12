@@ -33,4 +33,13 @@ public class PaymentDataMapper {
   public static List<PaymentDataMapper> from(List<Payment> payments) {
     return payments.stream().map(PaymentDataMapper::from).toList();
   }
+
+  public static Payment cast(PaymentDataMapper dataMapper) {
+    return Payment
+      .builder()
+      .id(dataMapper.getId())
+      .discount(dataMapper.getDiscount())
+      .state(dataMapper.getState())
+      .build();
+  }
 }

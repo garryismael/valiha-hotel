@@ -9,4 +9,5 @@ public class TransactionRequestDto {
 
   int amount;
   String paymentType;
+  String paymentId;
 }
