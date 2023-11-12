@@ -1,4 +1,4 @@
-package com.valiha.payment.application.dto;
+package com.valiha.payment.application.dto.payment;
 
 import com.valiha.payment.core.entities.models.Payment;
 import java.util.List;

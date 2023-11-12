@@ -1,7 +1,7 @@
 package com.valiha.payment.application.interactor.payment;
 
-import com.valiha.payment.application.dto.PaymentRequestDto;
-import com.valiha.payment.application.dto.PaymentResponseDto;
+import com.valiha.payment.application.dto.payment.PaymentRequestDto;
+import com.valiha.payment.application.dto.payment.PaymentResponseDto;
 import com.valiha.payment.application.presenter.GenericPresenter;
 import com.valiha.payment.application.repository.PaymentRepository;
 import com.valiha.payment.application.useCase.payment.EditPaymentUseCase;

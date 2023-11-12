@@ -1,7 +1,7 @@
 package com.valiha.payment.presentation.controller;
 
-import com.valiha.payment.application.dto.PaymentRequestDto;
-import com.valiha.payment.application.dto.PaymentResponseDto;
+import com.valiha.payment.application.dto.payment.PaymentRequestDto;
+import com.valiha.payment.application.dto.payment.PaymentResponseDto;
 import com.valiha.payment.application.useCase.payment.CreatePaymentUseCase;
 import com.valiha.payment.application.useCase.payment.EditPaymentUseCase;
 import com.valiha.payment.application.useCase.payment.FindAllPaymentsByIdsUseCase;

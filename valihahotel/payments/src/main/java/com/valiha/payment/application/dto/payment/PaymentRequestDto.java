@@ -1,4 +1,4 @@
-package com.valiha.payment.application.dto;
+package com.valiha.payment.application.dto.payment;
 
 import lombok.Getter;
 import lombok.Setter;
