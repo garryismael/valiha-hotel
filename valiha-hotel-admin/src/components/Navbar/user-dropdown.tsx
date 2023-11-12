@@ -30,7 +30,7 @@ export const UserDropdown = () => {
             as="button"
             color="secondary"
             size="md"
-            src={session?.user.image}
+            src={session?.user.picture}
           />
         </DropdownTrigger>
       </NavbarItem>

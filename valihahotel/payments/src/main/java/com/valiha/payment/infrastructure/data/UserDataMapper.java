@@ -42,7 +42,7 @@ public class UserDataMapper {
       .lastName(user.getLastName())
       .phoneNumber(user.firstAttribute("phoneNumber"))
       .email(user.getEmail())
-      .image(user.firstAttribute("image"))
+      .image(user.firstAttribute("picture"))
       .build();
   }
 

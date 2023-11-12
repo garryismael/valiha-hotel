@@ -9,7 +9,8 @@ declare module "next-auth" {
     user: {
       name?: string;
       email?: string;
-      image?: string;
+      phone_number?: string;
+      picture?: string;
       access_token?: string;
       refresh_token?: string;
     };
