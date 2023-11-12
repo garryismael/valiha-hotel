@@ -21,16 +21,28 @@ const CarCard = ({ car }: Props) => {
         />
       </div>
       <div className="flex flex-col gap-2 p-2">
-        <h1 className="uppercase text-reddish-orange-500 font-semibold text-lg">
+        <p className="uppercase text-reddish-orange-500 font-semibold text-lg">
           {car.mark}
-        </h1>
-        <h1 className="font-semibold text-lg">
-          <span>{car.mileage}</span> <span>liters per 100 km</span>
-        </h1>
-        <h1>
-          <span>{car.place}</span> {" "}
-          <span>places</span>
-        </h1>
+        </p>
+        <p className="text-base font-semibold">
+          {car.price} MGA/jour
+        </p>
+        <p>
+          <span>Entraînement: </span> <span>{car.training} roues motrices</span>
+        </p>
+        <p>
+          <span>Kilométrage: </span>{" "}
+          <span>{car.mileage} litres aux 100 km</span>
+        </p>
+        <p>
+          <span>Portes</span>: <span>{car.door} </span>
+        </p>
+        <p>
+          <span>Places</span>: <span>{car.place}</span>
+        </p>
+        <p>
+          <span>Modèle / Année</span>: <span>{car.year}</span>
+        </p>
       </div>
     </div>
   );

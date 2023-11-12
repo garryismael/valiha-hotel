@@ -1,6 +1,6 @@
 "use client";
 
-import { roomBreadcrumbs } from "@/constants/room";
+import { carBreadcrumbs } from "@/constants/car";
 import { Car } from "@/domain/entities/car";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
 import { InfoIcon } from "@/icons/accounts/info-icon";
@@ -17,9 +17,9 @@ type Props = {
 
 const CarSection = ({ cars }: Props) => {
   return (
-    <section className="my-14 max-w-[96rem] mx-auto w-full flex flex-col gap-4">
-      <Breadcrumbs breadcrumbs={roomBreadcrumbs} />
-      <h3 className="title">Rooms</h3>
+    <section className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
+      <Breadcrumbs breadcrumbs={carBreadcrumbs} />
+      <h3 className="title">Liste des voitures</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
           <Input
@@ -27,7 +27,7 @@ const CarSection = ({ cars }: Props) => {
               input: "w-full",
               mainWrapper: "w-full",
             }}
-            placeholder="Search users"
+            placeholder="Recherche des voitures"
           />
           <SettingsIcon />
           <TrashIcon />
@@ -38,7 +38,7 @@ const CarSection = ({ cars }: Props) => {
           <AddCar />
         </div>
       </div>
-      <div className="max-w-[95rem] mx-auto w-full flex items-center justify-between content-between gap-8 flex-wrap">
+      <div className="max-w-[100rem] mx-auto w-full flex items-center justify-between content-between gap-8 flex-wrap">
         {cars.map((car) => (
           <CarCard key={car.id} car={car} />
         ))}
