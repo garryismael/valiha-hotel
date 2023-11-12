@@ -78,9 +78,20 @@ export const reservationColumns = [
   { name: "DATES", uid: "date" },
   { name: "PAIEMENT", uid: "payment" },
   { name: "CHAMBRES", uid: "rooms" },
-  { name: "PAX", uid: "pax"},
+  { name: "PAX", uid: "pax" },
   { name: "PARKING", uid: "parking" },
-  { name: "NAVETTES", uid: "shuttles"},
-  { name: "PETIT-DÉJEUNERS", uid: "breakfasts"},
+  { name: "NAVETTES", uid: "shuttles" },
+  { name: "PETIT-DÉJEUNERS", uid: "breakfasts" },
   { name: "ACTIONS", uid: "actions" },
+];
+
+export const reservationDetailColumns = [
+  { name: "CLIENT", uid: "client" },
+  { name: "ÉTAT", uid: "state" },
+  { name: "DATES", uid: "date" },
+  { name: "PAIEMENT", uid: "payment" },
+  { name: "REMISE", uid: "discount" },
+  { name: "CHAMBRES", uid: "rooms" },
+  { name: "PAX", uid: "pax" },
+  { name: "PARKING", uid: "parking" },
 ];

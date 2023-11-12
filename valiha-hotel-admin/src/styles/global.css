@@ -64,3 +64,7 @@ input[type="file"]::file-selector-button {
 .react-datepicker-popper {
   z-index: 100!important;
 }
+
+.z-index-modal {
+  z-index: 100!important;
+}

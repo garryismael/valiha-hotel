@@ -6,9 +6,6 @@ import { reservationBreadcrumbs } from "@/constants/reservation";
 import { Reservation } from "@/domain/entities/reservation";
 import { useReservationList } from "@/hooks/useReservation";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
-import { InfoIcon } from "@/icons/accounts/info-icon";
-import { TrashIcon } from "@/icons/accounts/trash-icon";
-import { SettingsIcon } from "@/icons/sidebar/settings-icon";
 import { Input } from "@nextui-org/react";
 
 export type ReservationProps = {
@@ -30,9 +27,6 @@ function ReservationPage(props: ReservationProps) {
             }}
             placeholder="Rechercher des réservations"
           />
-          <SettingsIcon />
-          <TrashIcon />
-          <InfoIcon />
           <DotsIcon />
         </div>
       </div>

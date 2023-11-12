@@ -1,3 +1,5 @@
+"use client";
+
 import { Reservation } from "@/domain/entities/reservation";
 import React from "react";
 import Invoice from ".";

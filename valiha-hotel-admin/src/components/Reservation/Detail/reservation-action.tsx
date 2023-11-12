@@ -4,16 +4,10 @@ import { Reservation } from "@/domain/entities/reservation";
 import { DeleteIcon } from "@/icons/table/delete-icon";
 import { EditIcon } from "@/icons/table/edit-icon";
 import { Tooltip } from "@nextui-org/react";
-import ReservationDetailModal from "./Detail/reservation-detail-modal";
 
 const ReservationActions = ({ reservation }: { reservation: Reservation }) => {
   return (
     <div className="flex items-center gap-4 ">
-      <div>
-        <Tooltip content="Details">
-          <ReservationDetailModal reservation={reservation} />
-        </Tooltip>
-      </div>
       <div>
         <Tooltip content="Modifier" color="secondary">
           <button

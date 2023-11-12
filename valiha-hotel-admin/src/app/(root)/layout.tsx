@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import "@/infrastructures/config/container.config";
 import "@/styles/global.css";
+import "@/styles/invoice.css";
 import 'react-toastify/dist/ReactToastify.css';
 
 import NextThemesProvider from "@/components/Layout/NextThemesProvider";

@@ -1,107 +1,163 @@
+import { DATE_TIME_FORMAT } from "@/constants/date";
 import { Reservation } from "@/domain/entities/reservation";
-import { User } from "@/domain/entities/user";
+import { getReservationPrice } from "@/lib/utils/reservation";
+import { displayDestination } from "@/lib/utils/shuttle";
+import moment from "moment";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import React from "react";
-import styles from "@/styles/invoice.module.css";
 
 type Props = {
   reservation: Reservation;
-  user: User;
 };
 
 const InvoiceTemplate = (props: Props) => {
-  const { reservation, user } = props;
+  const { reservation } = props;
+  const now = moment().format(DATE_TIME_FORMAT);
+  const shuttle = process.env.NEXT_PUBLIC_SHUTTLE_PRICE;
+  const breakfast = process.env.NEXT_PUBLIC_BREAKFAST_PRICE;
+
   return (
-    <div className={styles.facture}>
-      <header>
-        <h1>Facture</h1>
-        <address>
-          <p>
-            Client:{reservation.client.firstName} {reservation.client.lastName}
-          </p>
-          <p>Email: {reservation.client.email}</p>
-          <p>Téléphone: {reservation.client.phoneNumber}</p>
-        </address>
-        <section>
-          <div className={styles.logo}>
-            <Image alt="logo" src="/images/logo.png" height={150} width={120}/>
-            <span className={styles.title}>Valiha Hotel</span>
-          </div>
-        </section>
-      </header>
-      <article>
-        <address>
-          <p>
-            Employé: {user.firstName}{" "}
-            {user.lastName}
-          </p>
-          <p>Email: {user.email}</p>
-          <p>Contact: {user.phoneNumber}</p>
-        </address>
-        <table className={styles.meta}>
-          <tr>
-            <th>
-              <span>Facture N° #</span>
-            </th>
-            <td>
-              <span>{reservation.id}</span>
-            </td>
+    <div className="invoice-box !w-full">
+      <table cellPadding="0" cellSpacing="0">
+        <tr className="top">
+          <td colSpan={2}>
+            <table>
+              <tr>
+                <td className="title relative">
+                  <Image
+                    src="/images/logo.png"
+                    alt="logo"
+                    width={100}
+                    height={100}
+                    className="w-100 h-[100]"
+                  />
+                </td>
+
+                <td>
+                  Reservation #: {reservation.id}
+                  <br />
+                  Crée le: {now}
+                  <br />
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr className="information">
+          <td colSpan={2}>
+            <table>
+              <tr>
+                <td>
+                  Valiha Hôtel
+                  <br />
+                  IMMEUBLE VALIHA ANTANIMENA,
+                  <br />
+                  IVG 204 Antananarivo, 101
+                </td>
+
+                <td>
+                  {reservation.client.firstName}
+                  <br />
+                  {reservation.client.lastName}
+                  <br />
+                  {reservation.client.phoneNumber}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr className="information">
+          <td className="text-lg font-bold" colSpan={2}>
+            Réservation de chambre
+          </td>
+        </tr>
+        <tr className="information">
+          <td colSpan={2}>
+            <table>
+              <tr>
+                <td>
+                  Nombre de Pax
+                  <br />
+                  Date de départ
+                  <br />
+                  Date d'arrivée
+                </td>
+                <td>
+                  {reservation.pax}
+                  <br />
+                  {reservation.checkIn}
+                  <br />
+                  {reservation.checkOut}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr className="heading">
+          <td>Méthode de paiement</td>
+          <td>Orange Money</td>
+        </tr>
+        <tr className="detail">
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr className="heading mt-2">
+          <td>Chambres</td>
+          <td>Prix</td>
+        </tr>
+
+        {reservation.rooms.map((room) => (
+          <tr className="item">
+            <td>{room.category.title}</td>
+
+            <td>{room.price}</td>
           </tr>
-          <tr>
-            <th>
-              <span>Date de départ</span>
-              <span>Date d'arrivée</span>
-            </th>
-            <td>
-              <span>{reservation.checkIn}</span>
-              <span>{reservation.checkOut}</span>
-            </td>
+        ))}
+
+        <tr className="heading !my-4">
+          <td>Navettes</td>
+          <td>Prix</td>
+        </tr>
+
+        {reservation.shuttles.map((data) => (
+          <tr className="item">
+            <td>{displayDestination(data.destination)}</td>
+            <td>{shuttle}</td>
           </tr>
-        </table>
-        <table className={styles.inventory}>
-          <thead>
-            <tr>
-              <th>
-                <span>Activité</span>
-              </th>
-              <th>
-                <span>N°PAV</span>
-              </th>
-              <th>
-                <span>Frais</span>
-              </th>
-              <th>
-                <span>Total mois payés</span>
-              </th>
-              <th>
-                <span>Total Frais</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <span>{reservation.parking}</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table className={styles.balance}>
-          <tr>
-            <th>
-              <span>Total</span>
-            </th>
-            <td>
-              <span>{reservation.payment.discount}</span> Ar
-            </td>
+        ))}
+
+        <tr className="heading !my-4">
+          <td>Petit-déjeuner</td>
+          <td>Prix</td>
+        </tr>
+
+        {reservation.breakfasts.map((data) => (
+          <tr className="item last">
+            <td>{data.date}</td>
+            <td>{parseInt(breakfast as string) * reservation.pax}</td>
           </tr>
-        </table>
-      </article>
-      <aside>
-        <div>
-          <p className={styles.divider}>Merci beaucoup</p>
-        </div>
-      </aside>
+        ))}
+
+        <tr className="heading">
+          <td>Remise</td>
+          <td>{reservation.payment.discount} %</td>
+        </tr>
+        <tr className="detail">
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td className="font-bold text-lg">
+            Total: {getReservationPrice(reservation)} MGA
+          </td>
+        </tr>
+      </table>
     </div>
   );
 };

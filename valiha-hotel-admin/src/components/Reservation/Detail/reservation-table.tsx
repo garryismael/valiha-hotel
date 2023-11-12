@@ -1,8 +1,7 @@
 "use client";
 
-import { reservationColumns } from "@/constants/reservation";
-import { ReservationProps } from "@/pages/ReservationPage";
-import { Pagination } from "@nextui-org/react";
+import { reservationDetailColumns } from "@/constants/reservation";
+import { Reservation } from "@/domain/entities/reservation";
 import {
   Table,
   TableBody,
@@ -11,40 +10,21 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/table";
-import { useMemo, useState } from "react";
 import { ReservationRenderCell } from "./reservation-render-cell";
 
-const ReservationTable = (props: ReservationProps) => {
-  const [page, setPage] = useState(1);
-  const rowsPerPage = 4;
-  const pages = Math.ceil(props.reservations.length / rowsPerPage);
+type Props = {
+  reservation: Reservation;
+}
 
-  const reservations = useMemo(() => {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-    return props.reservations.slice(start, end);
-  }, [page, props.reservations]);
+const ReservationTableDetail = (props: Props) => {
 
   return (
     <div className=" w-full flex flex-col gap-4">
       <Table
         isStriped
         aria-label="Reservation Table"
-        bottomContent={
-          <div className="flex w-full justify-center">
-            <Pagination
-              isCompact
-              showControls
-              showShadow
-              color="secondary"
-              page={page}
-              total={pages}
-              onChange={(page) => setPage(page)}
-            />
-          </div>
-        }
       >
-        <TableHeader columns={reservationColumns}>
+        <TableHeader columns={reservationDetailColumns}>
           {(column) => (
             <TableColumn
               key={column.uid}
@@ -57,7 +37,7 @@ const ReservationTable = (props: ReservationProps) => {
           )}
         </TableHeader>
         <TableBody
-          items={reservations}
+          items={[props.reservation]}
           emptyContent={"Aucune données à afficher."}
         >
           {(reservation) => (
@@ -78,4 +58,4 @@ const ReservationTable = (props: ReservationProps) => {
   );
 };
 
-export default ReservationTable;
+export default ReservationTableDetail;

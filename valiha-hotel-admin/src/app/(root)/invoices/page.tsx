@@ -1,7 +1,7 @@
-import InvoiceTransaction from "@/components/InvoiceTransaction";
 
-const Page = () => {
-  return <InvoiceTransaction />;
+
+const Page = async () => {
+  return <p>Hello</p>;
 };
 
 export default Page;
