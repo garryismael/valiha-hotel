@@ -24,7 +24,7 @@ public class LocationDataMapper {
   private String destination;
   private String reason;
 
-  private CarDataMapper car;
+  private List<CarDataMapper> cars;
 
   @Transient
   private ClientDataMapper client;
@@ -45,7 +45,7 @@ public class LocationDataMapper {
       .end(dataMapper.end)
       .destination(dataMapper.destination)
       .reason(dataMapper.reason)
-      .car(CarDataMapper.toCar(dataMapper.car))
+      .cars(CarDataMapper.toCar(dataMapper.cars))
       .client(ClientDataMapper.toClient(dataMapper.client))
       .payment(PaymentDataMapper.toPayment(dataMapper.payment))
       .build();
@@ -60,7 +60,7 @@ public class LocationDataMapper {
       .end(location.getEnd())
       .destination(location.getDestination())
       .reason(location.getReason())
-      .car(CarDataMapper.from(location.getCars()))
+      .cars(CarDataMapper.from(location.getCars()))
       .client(ClientDataMapper.from(location.getClient()))
       .clientId(location.getClient().getId())
       .payment(PaymentDataMapper.from(location.getPayment()))

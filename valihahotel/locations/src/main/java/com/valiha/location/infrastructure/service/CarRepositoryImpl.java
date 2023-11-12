@@ -52,4 +52,12 @@ public class CarRepositoryImpl implements GenericRepository<Car> {
   public void deleteById(String id) {
     this.carRepository.deleteById(id);
   }
+
+  @Override
+  public List<Car> findAllByIds(List<String> ids) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException(
+      "Unimplemented method 'findAllByIds'"
+    );
+  }
 }

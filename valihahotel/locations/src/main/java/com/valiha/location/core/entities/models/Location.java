@@ -69,7 +69,7 @@ public class Location implements ILocation, InputValidator {
       return this;
     }
 
-    public Builder car(List<Car> car) {
+    public Builder cars(List<Car> car) {
       this.location.cars = car;
       return this;
     }

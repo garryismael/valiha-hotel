@@ -86,22 +86,6 @@ public class LocationRepositoryImpl implements LocationRepository {
   }
 
   @Override
-  public boolean existsByLocationIdWithinDateRange(
-    String locationId,
-    Date checkIn,
-    Date checkOut
-  ) {
-    List<Criteria> criterias = this.getDateRangeCriterias(checkIn, checkOut);
-    Criteria roomCriteria = Criteria.where("room.id").in(locationId);
-
-    Criteria reservationCriteria = new Criteria()
-      .orOperator(criterias)
-      .andOperator(roomCriteria);
-    Query query = new Query(reservationCriteria);
-    return mongoTemplate.exists(query, LocationDataMapper.class);
-  }
-
-  @Override
   public void deleteById(String id) {
     this.locationRepository.deleteById(id);
   }
@@ -153,7 +137,7 @@ public class LocationRepositoryImpl implements LocationRepository {
       .destination(dataMapper.getDestination())
       .reason(dataMapper.getReason())
       .client(ClientDataMapper.toClient(clientResponseDto))
-      .car(CarDataMapper.toCar(dataMapper.getCar()))
+      .cars(CarDataMapper.toCar(dataMapper.getCars()))
       .payment(PaymentDataMapper.toPayment(paymentResponseDto))
       .build();
   }
@@ -168,8 +152,24 @@ public class LocationRepositoryImpl implements LocationRepository {
       .destination(dataMapper.getDestination())
       .reason(dataMapper.getReason())
       .client(ClientDataMapper.toClient(dataMapper.getClient()))
-      .car(CarDataMapper.toCar(dataMapper.getCar()))
+      .cars(CarDataMapper.toCar(dataMapper.getCars()))
       .payment(PaymentDataMapper.toPayment(dataMapper.getPayment()))
       .build();
+  }
+
+  @Override
+  public boolean existsByLocationIdWithinDateRange(
+    List<String> carIds,
+    Date checkIn,
+    Date checkOut
+  ) {
+    List<Criteria> criterias = this.getDateRangeCriterias(checkIn, checkOut);
+    Criteria roomCriteria = Criteria.where("cars.id").in(carIds);
+
+    Criteria reservationCriteria = new Criteria()
+      .orOperator(criterias)
+      .andOperator(roomCriteria);
+    Query query = new Query(reservationCriteria);
+    return mongoTemplate.exists(query, LocationDataMapper.class);
   }
 }

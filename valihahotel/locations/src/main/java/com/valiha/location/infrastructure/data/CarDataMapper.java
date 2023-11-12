@@ -41,6 +41,10 @@ public class CarDataMapper {
       .build();
   }
 
+  public static List<Car> toCar(List<CarDataMapper> dataMappers) {
+    return dataMappers.stream().map(CarDataMapper::toCar).toList();
+  }
+
   public static CarDataMapper from(Car car) {
     return CarDataMapper
       .builder()
