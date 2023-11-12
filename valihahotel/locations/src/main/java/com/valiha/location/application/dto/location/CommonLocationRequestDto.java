@@ -1,5 +1,6 @@
 package com.valiha.location.application.dto.location;
 
+import java.util.List;
 import lombok.Getter;
 
 @Getter
@@ -10,5 +11,5 @@ public class CommonLocationRequestDto {
   private String end;
   private String destination;
   private String reason;
-  private String carId;
+  private List<String> carIds;
 }

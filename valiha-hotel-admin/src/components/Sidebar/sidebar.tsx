@@ -84,14 +84,14 @@ export const SidebarWrapper = () => {
                 }
                 href="/locations"
               />
-              <SidebarItem
+              {/* <SidebarItem
                 isActive={pathname === "/payments"}
                 title="Paiements"
                 icon={
                   <FaCreditCard size={24} className="text-white-gray-500" />
                 }
                 href="/payments"
-              />
+              /> */}
               <SidebarItem
                 isActive={pathname === "/transactions"}
                 title="Transactions"

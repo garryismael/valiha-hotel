@@ -4,6 +4,7 @@ import com.valiha.location.application.dto.client.ClientRequestDto;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import lombok.Getter;
 
 @Getter
@@ -14,7 +15,7 @@ public class LocationRequestDto {
   private String destination;
   private String reason;
   private ClientRequestDto client;
-  private String carId;
+  private List<String> carId;
 
   public static Date convert(String dateString, String pattern) {
     SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);

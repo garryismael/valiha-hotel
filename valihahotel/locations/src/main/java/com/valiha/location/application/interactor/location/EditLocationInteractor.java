@@ -13,6 +13,7 @@ import com.valiha.location.core.entities.models.Car;
 import com.valiha.location.core.entities.models.Location;
 import com.valiha.location.core.interfaces.factory.LocationFactory;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 
@@ -31,7 +32,7 @@ public class EditLocationInteractor implements EditLocationUseCase {
   ) {
     Map<String, String> errors = new HashMap<>();
     Location location = this.locationRepository.findOneById(id);
-    Car car = this.carRepository.findOneById(requestDto.getCarId());
+    List<Car> cars = this.carRepository.findAllByIds(requestDto.getCarIds());
 
     if (location == null) {
       errors.put(
@@ -59,7 +60,7 @@ public class EditLocationInteractor implements EditLocationUseCase {
           requestDto.getDestination(),
           requestDto.getReason(),
           location.getClient(),
-          car,
+          cars,
           location.getPayment()
         );
 

@@ -24,6 +24,7 @@ import com.valiha.location.core.interfaces.factory.LocationFactory;
 import com.valiha.location.core.interfaces.factory.PaymentFactory;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 
@@ -43,7 +44,7 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
   public LocationResponseDto execute(LocationRequestDto requestDto) {
     Map<String, String> errors = new HashMap<>();
 
-    Car car = this.carRepository.findOneById(requestDto.getCarId());
+    List<Car> cars = this.carRepository.findAllByIds(requestDto.getCarId());
     Date start = LocationRequestDto.convert(
       requestDto.getStart(),
       AppLocation.DATE_FORMAT
@@ -78,12 +79,12 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
           requestDto.getDestination(),
           requestDto.getReason(),
           client,
-          car,
+          cars,
           payment
         );
     boolean locationExists =
       this.locationRepository.existsByLocationIdWithinDateRange(
-          car.getId(),
+          cars.stream().map(car -> car.getId()).toList(),
           start,
           end
         );
@@ -141,7 +142,7 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
           location.getDestination(),
           location.getDestination(),
           client,
-          car,
+          cars,
           payment
         );
 

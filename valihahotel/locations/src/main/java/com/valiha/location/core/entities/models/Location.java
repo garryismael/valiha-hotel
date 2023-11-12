@@ -5,6 +5,7 @@ import com.valiha.location.core.interfaces.models.ILocation;
 import com.valiha.location.core.interfaces.validator.InputValidator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public class Location implements ILocation, InputValidator {
   private String destination;
   private String reason;
   private Client client;
-  private Car car;
+  private List<Car> cars;
   private Payment payment;
 
   public class Builder {
@@ -68,8 +69,8 @@ public class Location implements ILocation, InputValidator {
       return this;
     }
 
-    public Builder car(Car car) {
-      this.location.car = car;
+    public Builder car(List<Car> car) {
+      this.location.cars = car;
       return this;
     }
 
@@ -120,7 +121,7 @@ public class Location implements ILocation, InputValidator {
 
   @Override
   public boolean carIsValid() {
-    return this.car != null;
+    return this.cars != null;
   }
 
   @Override

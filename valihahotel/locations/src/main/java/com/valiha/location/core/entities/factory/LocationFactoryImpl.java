@@ -6,6 +6,7 @@ import com.valiha.location.core.entities.models.Location;
 import com.valiha.location.core.entities.models.Payment;
 import com.valiha.location.core.interfaces.factory.LocationFactory;
 import java.util.Date;
+import java.util.List;
 
 public class LocationFactoryImpl implements LocationFactory {
 
@@ -18,7 +19,7 @@ public class LocationFactoryImpl implements LocationFactory {
     String destination,
     String reason,
     Client client,
-    Car car,
+    List<Car> car,
     Payment payment
   ) {
     return Location

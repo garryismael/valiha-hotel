@@ -60,7 +60,7 @@ public class LocationDataMapper {
       .end(location.getEnd())
       .destination(location.getDestination())
       .reason(location.getReason())
-      .car(CarDataMapper.from(location.getCar()))
+      .car(CarDataMapper.from(location.getCars()))
       .client(ClientDataMapper.from(location.getClient()))
       .clientId(location.getClient().getId())
       .payment(PaymentDataMapper.from(location.getPayment()))

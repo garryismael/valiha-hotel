@@ -4,6 +4,7 @@ import com.valiha.location.core.entities.models.Car;
 import com.valiha.location.core.entities.models.Client;
 import com.valiha.location.core.entities.models.Payment;
 import java.util.Date;
+import java.util.List;
 
 public interface ILocation {
   String getId();
@@ -20,7 +21,7 @@ public interface ILocation {
 
   Client getClient();
 
-  Car getCar();
+  List<Car> getCars();
 
   Payment getPayment();
 

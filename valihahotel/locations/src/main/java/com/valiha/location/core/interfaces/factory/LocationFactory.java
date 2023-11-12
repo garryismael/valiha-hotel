@@ -5,6 +5,7 @@ import com.valiha.location.core.entities.models.Client;
 import com.valiha.location.core.entities.models.Location;
 import com.valiha.location.core.entities.models.Payment;
 import java.util.Date;
+import java.util.List;
 
 public interface LocationFactory {
   Location create(
@@ -15,7 +16,7 @@ public interface LocationFactory {
     String destination,
     String reason,
     Client client,
-    Car car,
+    List<Car> car,
     Payment payment
   );
 }

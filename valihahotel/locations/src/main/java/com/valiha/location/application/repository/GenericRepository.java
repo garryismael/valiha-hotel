@@ -9,6 +9,8 @@ public interface GenericRepository<T> {
 
   T findOneById(String id);
 
+  List<T> findAllByIds(List<String> ids);
+
   List<T> findAll();
 
   void deleteById(String id);
