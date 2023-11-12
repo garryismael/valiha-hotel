@@ -4,6 +4,7 @@ import { Input, Navbar, NavbarContent } from "@nextui-org/react";
 import React from "react";
 import { BurgerButton } from "./burger-button";
 import { UserDropdown } from "./user-dropdown";
+import { DarkModeSwitch } from "./darkmodeswitch";
 
 interface Props {
   children: React.ReactNode;
@@ -29,7 +30,7 @@ export const NavbarWrapper = ({ children }: Props) => {
             className="w-full"
             classNames={{
               input: "w-full",
-              mainWrapper: "w-4/5",
+              mainWrapper: "w-full",
             }}
             placeholder="Rechercher..."
           />
@@ -38,6 +39,9 @@ export const NavbarWrapper = ({ children }: Props) => {
           justify="end"
           className="w-fit data-[justify=end]:flex-grow-0"
         >
+          <NavbarContent>
+            <DarkModeSwitch />
+          </NavbarContent>
           <NavbarContent>
             <UserDropdown />
           </NavbarContent>

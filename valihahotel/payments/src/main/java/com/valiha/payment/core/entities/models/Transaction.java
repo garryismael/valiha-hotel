@@ -1,6 +1,6 @@
 package com.valiha.payment.core.entities.models;
 
-import com.valiha.payment.core.entities.constants.PaymentTypeState;
+import com.valiha.payment.core.entities.constants.PaymentTypeName;
 import com.valiha.payment.core.entities.constants.TransactionValidator;
 import com.valiha.payment.core.interfaces.models.ITransaction;
 import com.valiha.payment.core.interfaces.validator.InputValidator;
@@ -73,7 +73,7 @@ public class Transaction implements ITransaction, InputValidator {
 
   @Override
   public boolean isValidPaymentType() {
-    return this.paymentType != null && PaymentTypeState.contains(paymentType);
+    return this.paymentType != null && PaymentTypeName.contains(paymentType);
   }
 
   @Override

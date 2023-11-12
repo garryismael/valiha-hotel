@@ -56,7 +56,7 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async jwt({ token, account, user }) {
+    async jwt({ token, account }) {
       if (account) {
         token.access_token = account.access_token;
         token.refresh_token = account.refresh_token;
@@ -68,6 +68,8 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.user.access_token = token.access_token;
       session.user.refresh_token = token.refresh_token;
+      session.user.picture = token.picture;
+      session.user.phone_number = token.phone_number;
       return session;
     },
   },

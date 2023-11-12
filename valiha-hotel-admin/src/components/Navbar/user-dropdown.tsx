@@ -1,4 +1,5 @@
 "use client";
+import { getUserPicture } from "@/lib/utils/image";
 import {
   Avatar,
   Dropdown,
@@ -9,7 +10,6 @@ import {
 } from "@nextui-org/react";
 import { signOut, useSession } from "next-auth/react";
 import React from "react";
-import { DarkModeSwitch } from "./darkmodeswitch";
 
 export const UserDropdown = () => {
   const { data: session } = useSession();
@@ -30,7 +30,7 @@ export const UserDropdown = () => {
             as="button"
             color="secondary"
             size="md"
-            src={session?.user.picture}
+            src={getUserPicture(session?.user.picture as string)}
           />
         </DropdownTrigger>
       </NavbarItem>
@@ -44,9 +44,6 @@ export const UserDropdown = () => {
         </DropdownItem>
         <DropdownItem key="logout" color="danger" className="text-danger ">
           Se déconnecter
-        </DropdownItem>
-        <DropdownItem key="switch">
-          <DarkModeSwitch />
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

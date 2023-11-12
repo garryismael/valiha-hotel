@@ -51,13 +51,13 @@ export const SidebarWrapper = () => {
                 isActive={pathname === "/categories"}
                 title="Catégories"
                 icon={<FaBed size={24} className="text-white-gray-500" />}
-                href="categories"
+                href="/categories"
               />
               <SidebarItem
                 isActive={pathname === "/rooms"}
                 title="Chambres"
                 icon={<FaDoorOpen size={24} className="text-white-gray-500" />}
-                href="rooms"
+                href="/rooms"
               />
               <SidebarItem
                 isActive={pathname === "/reservations"}
@@ -65,13 +65,13 @@ export const SidebarWrapper = () => {
                 icon={
                   <FaCalendarCheck size={24} className="text-white-gray-500" />
                 }
-                href="reservations"
+                href="/reservations"
               />
               <SidebarItem
                 isActive={pathname === "/cars"}
                 title="Véhicules"
                 icon={<FaCar size={24} className="text-white-gray-500" />}
-                href="cars"
+                href="/cars"
               />
               <SidebarItem
                 isActive={pathname === "/locations"}
@@ -82,7 +82,7 @@ export const SidebarWrapper = () => {
                     className="text-white-gray-500"
                   />
                 }
-                href="locations"
+                href="/locations"
               />
               <SidebarItem
                 isActive={pathname === "/payments"}
@@ -90,13 +90,13 @@ export const SidebarWrapper = () => {
                 icon={
                   <FaCreditCard size={24} className="text-white-gray-500" />
                 }
-                href="payments"
+                href="/payments"
               />
               <SidebarItem
                 isActive={pathname === "/transactions"}
                 title="Transactions"
                 icon={<FaClockRotateLeft size={24} className="text-white-gray-500" />}
-                href="transactions"
+                href="/transactions"
               />
             </SidebarMenu>
 
@@ -105,13 +105,13 @@ export const SidebarWrapper = () => {
                 isActive={pathname === "/blogs"}
                 title="Blogs"
                 icon={<FaNewspaper size={24} className="text-white-gray-500" />}
-                href="blogs"
+                href="/blogs"
               />
               <SidebarItem
                 isActive={pathname === "/clients"}
                 title="Clients"
                 icon={<FaUsers size={24} className="text-white-gray-500" />}
-                href="clients"
+                href="/clients"
               />
               <SidebarItem
                 isActive={pathname === "/accounts"}
@@ -119,7 +119,7 @@ export const SidebarWrapper = () => {
                 icon={
                   <RiShieldUserFill size={24} className="text-white-gray-500" />
                 }
-                href="accounts"
+                href="/accounts"
               />
             </SidebarMenu>
           </div>

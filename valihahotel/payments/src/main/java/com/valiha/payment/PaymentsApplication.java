@@ -47,7 +47,7 @@ public class PaymentsApplication {
         !className.endsWith("Dto") &&
         !className.endsWith("ApiErrorException") &&
         !className.endsWith("PaymentState") &&
-        !className.endsWith("PaymentTypeState") &&
+        !className.endsWith("PaymentTypeName") &&
         !className.endsWith("ErrorResponse")
       );
     };

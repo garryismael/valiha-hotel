@@ -1,10 +1,8 @@
-import React from "react";
+import TransactionPage from "@/pages/Transaction";
 
-const Page = () => {
+const Page = async () => {
   return (
-    <main className="my-14 max-w-[96rem] mx-auto w-full flex flex-col gap-4">
-      Page
-    </main>
+    <TransactionPage/>
   );
 };
 

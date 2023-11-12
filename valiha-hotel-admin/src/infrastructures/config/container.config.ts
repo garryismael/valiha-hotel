@@ -1,15 +1,17 @@
 import "reflect-metadata";
 
 import { container } from "tsyringe";
+import { BlogServiceImpl } from "../services/blog";
+import { BreakfastServiceImpl } from "../services/breakfast";
 import { CarServiceImpl } from "../services/car";
 import { CategoryServiceImpl } from "../services/category";
-import { RoomServiceImpl } from "../services/room";
-import { UserServiceImpl } from "../services/user";
-import { ReservationServiceImpl } from "../services/reservation";
 import { ClientServiceImpl } from "../services/client";
-import { BlogServiceImpl } from "../services/blog";
+import { ReservationServiceImpl } from "../services/reservation";
+import { RoomServiceImpl } from "../services/room";
 import { ShuttleServiceImpl } from "../services/shuttle";
-import { BreakfastServiceImpl } from "../services/breakfast";
+import { TransactionServiceImpl } from "../services/transaction";
+import { UserServiceImpl } from "../services/user";
+import { PaymentServiceImpl } from "../services/payment";
 
 container.register("CategoryService", {
   useClass: CategoryServiceImpl,
@@ -45,6 +47,14 @@ container.register("ShuttleService", {
 
 container.register("BreakfastService", {
   useClass: BreakfastServiceImpl,
+});
+
+container.register("TransactionService", {
+  useClass: TransactionServiceImpl,
+});
+
+container.register("PaymentService", {
+  useClass: PaymentServiceImpl,
 });
 
 export default container;

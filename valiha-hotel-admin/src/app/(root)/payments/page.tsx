@@ -1,11 +1,17 @@
-import React from "react";
+import PaymentPage from "@/pages/Payment";
+import container from "@/infrastructures/config/container.config";
+import {
+  GetPaymentsInteractor,
+  GetPaymentsUseCase,
+} from "@/domain/use-cases/payment";
 
-const Page = () => {
-  return (
-    <main className="my-14 max-w-[96rem] mx-auto w-full flex flex-col gap-4">
-      Page
-    </main>
+const Page = async () => {
+  const getUseCase = container.resolve<GetPaymentsUseCase>(
+    GetPaymentsInteractor
   );
+  const payments = await getUseCase.execute();
+
+  return <PaymentPage payments={payments} />;
 };
 
 export default Page;
