@@ -6,12 +6,7 @@ import { getPaymentState } from "@/lib/utils/payment";
 import { getReservationState } from "@/lib/utils/reservation";
 import { Chip } from "@nextui-org/react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import { Else, If, Then } from "react-if";
 import ReservationActions from "./reservation-action";
-import ShuttleModalTable from "@/components/Shuttles/shuttle-modal-table";
-import AddShuttle from "@/components/Shuttles/add-shuttle";
-import BreakfastModalTable from "@/components/Breakfast/breakfast-modal-table";
-import AddBreakfast from "@/components/Breakfast/add-breakfast";
 
 interface Props {
   reservation: Reservation;

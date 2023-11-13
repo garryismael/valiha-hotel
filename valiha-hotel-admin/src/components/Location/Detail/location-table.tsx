@@ -1,5 +1,7 @@
 "use client";
 
+import { locationColumns } from "@/constants/location";
+import { Location } from "@/domain/entities/location";
 import {
   Table,
   TableBody,
@@ -9,8 +11,6 @@ import {
   TableRow,
 } from "@nextui-org/table";
 import { LocationRenderCell } from "./location-render-cell";
-import { Location } from "@/domain/entities/location";
-import { locationColumns } from "@/constants/location";
 
 type Props = {
   location: Location;
@@ -22,7 +22,7 @@ const LocationTableDetail = (props: Props) => {
     <div className=" w-full flex flex-col gap-4">
       <Table
         isStriped
-        aria-label="Reservation Table"
+        aria-label="Location Table"
       >
         <TableHeader columns={locationColumns}>
           {(column) => (

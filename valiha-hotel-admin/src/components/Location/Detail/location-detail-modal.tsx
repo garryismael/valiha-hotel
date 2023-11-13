@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import Link from "next/link";
 import LocationTotalAmount from "./location-amount";
+import LocationDetail from "./location-detail";
 
 const LocationDetailModal = ({ location }: { location: Location }) => {
   const { handleOpen, handleClose, show } = useFormModal();
@@ -37,7 +38,7 @@ const LocationDetailModal = ({ location }: { location: Location }) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex items-center justify-between gap-1 pt-14">
-                <h1>Detail d'une réservation</h1>
+                <h1>Detail d'une location</h1>
                 <Link href={`/invoices/locations/${location.id}`}>
                   <Button variant="bordered" color="primary">
                     Facturer
@@ -45,7 +46,7 @@ const LocationDetailModal = ({ location }: { location: Location }) => {
                 </Link>
               </ModalHeader>
               <ModalBody>
-                <div>Location Detail</div>
+              <LocationDetail location={location} />
               </ModalBody>
               <ModalFooter>
                 <LocationTotalAmount location={location} />
