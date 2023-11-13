@@ -19,9 +19,11 @@ const InvoiceTemplate = (props: Props) => {
   return (
     <div className="invoice-box !w-full">
       <table cellPadding="0" cellSpacing="0">
+        <tbody>
         <tr className="top">
           <td colSpan={2}>
             <table>
+              <tbody>
               <tr>
                 <td className="title relative">
                   <Image
@@ -40,6 +42,7 @@ const InvoiceTemplate = (props: Props) => {
                   <br />
                 </td>
               </tr>
+              </tbody>
             </table>
           </td>
         </tr>
@@ -47,6 +50,7 @@ const InvoiceTemplate = (props: Props) => {
         <tr className="information">
           <td colSpan={2}>
             <table>
+              <tbody>
               <tr>
                 <td>
                   Valiha Hôtel
@@ -64,6 +68,7 @@ const InvoiceTemplate = (props: Props) => {
                   {reservation.client.phoneNumber}
                 </td>
               </tr>
+              </tbody>
             </table>
           </td>
         </tr>
@@ -76,6 +81,7 @@ const InvoiceTemplate = (props: Props) => {
         <tr className="information">
           <td colSpan={2}>
             <table>
+              <tbody>
               <tr>
                 <td>
                   Nombre de Pax
@@ -92,6 +98,7 @@ const InvoiceTemplate = (props: Props) => {
                   {reservation.checkOut}
                 </td>
               </tr>
+              </tbody>
             </table>
           </td>
         </tr>
@@ -111,7 +118,7 @@ const InvoiceTemplate = (props: Props) => {
         </tr>
 
         {reservation.rooms.map((room) => (
-          <tr className="item">
+          <tr key={room.id} className="item">
             <td>{room.category.title}</td>
 
             <td>{room.price}</td>
@@ -124,7 +131,7 @@ const InvoiceTemplate = (props: Props) => {
         </tr>
 
         {reservation.shuttles.map((data) => (
-          <tr className="item">
+          <tr key={data.id} className="item">
             <td>{displayDestination(data.destination)}</td>
             <td>{shuttle}</td>
           </tr>
@@ -136,7 +143,7 @@ const InvoiceTemplate = (props: Props) => {
         </tr>
 
         {reservation.breakfasts.map((data) => (
-          <tr className="item last">
+          <tr key={data.id} className="item last">
             <td>{data.date}</td>
             <td>{parseInt(breakfast as string) * reservation.pax}</td>
           </tr>
@@ -157,6 +164,7 @@ const InvoiceTemplate = (props: Props) => {
             Total: {getReservationPrice(reservation)} MGA
           </td>
         </tr>
+        </tbody>
       </table>
     </div>
   );

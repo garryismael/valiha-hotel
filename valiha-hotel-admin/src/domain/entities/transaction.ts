@@ -1,3 +1,4 @@
+import { Payment } from "./payment";
 import { User } from "./user";
 
 export interface Transaction {
@@ -5,5 +6,6 @@ export interface Transaction {
   amount: number;
   date: string;
   paymentType: string;
+  payment: Payment;
   user: User;
 }

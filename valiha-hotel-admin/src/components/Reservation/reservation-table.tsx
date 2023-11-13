@@ -16,7 +16,7 @@ import { ReservationRenderCell } from "./reservation-render-cell";
 
 const ReservationTable = (props: ReservationProps) => {
   const [page, setPage] = useState(1);
-  const rowsPerPage = 4;
+  const rowsPerPage = 5;
   const pages = Math.ceil(props.reservations.length / rowsPerPage);
 
   const reservations = useMemo(() => {

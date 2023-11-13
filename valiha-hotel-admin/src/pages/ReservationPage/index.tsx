@@ -17,7 +17,7 @@ function ReservationPage(props: ReservationProps) {
   return (
     <main className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={reservationBreadcrumbs} />
-      <h3 className="title">Reservations</h3>
+      <h3 className="title">Liste de Reservations</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
           <Input
@@ -25,7 +25,7 @@ function ReservationPage(props: ReservationProps) {
               input: "w-full",
               mainWrapper: "w-full",
             }}
-            placeholder="Rechercher des réservations"
+            placeholder="Recherche des réservations"
           />
           <DotsIcon />
         </div>

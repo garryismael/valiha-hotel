@@ -1,5 +1,6 @@
 package com.valiha.payment.application.dto.transaction;
 
+import com.valiha.payment.application.dto.payment.PaymentResponseDto;
 import com.valiha.payment.application.dto.user.UserResponseDto;
 import com.valiha.payment.application.utils.DateFormatter;
 import com.valiha.payment.core.entities.constants.AppPayment;
@@ -16,6 +17,7 @@ public class TransactionResponseDto {
   int amount;
   String date;
   String paymentType;
+  PaymentResponseDto payment;
   UserResponseDto user;
 
   public static TransactionResponseDto from(Transaction transaction) {
@@ -27,6 +29,7 @@ public class TransactionResponseDto {
         DateFormatter.parse(transaction.getDate(), AppPayment.DATE_TIME_FORMAT)
       )
       .paymentType(transaction.getPaymentType())
+      .payment(PaymentResponseDto.from(transaction.getPayment()))
       .user(UserResponseDto.from(transaction.getUser()))
       .build();
   }

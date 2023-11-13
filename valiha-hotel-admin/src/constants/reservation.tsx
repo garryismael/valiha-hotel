@@ -47,7 +47,7 @@ export const reservationBreadcrumbs: Breadcrumb[] = [
   },
   {
     id: 3,
-    text: "List",
+    text: "Liste",
   },
 ];
 
