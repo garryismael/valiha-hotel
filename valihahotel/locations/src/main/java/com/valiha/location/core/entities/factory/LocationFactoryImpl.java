@@ -19,7 +19,7 @@ public class LocationFactoryImpl implements LocationFactory {
     String destination,
     String reason,
     Client client,
-    List<Car> car,
+    List<Car> cars,
     Payment payment
   ) {
     return Location
@@ -31,7 +31,7 @@ public class LocationFactoryImpl implements LocationFactory {
       .destination(destination)
       .reason(reason)
       .client(client)
-      .car(car)
+      .cars(cars)
       .payment(payment)
       .build();
   }
