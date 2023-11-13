@@ -1,11 +1,7 @@
-import React from "react";
+import LocationPage from "@/pages/LocationPage";
 
 const Page = () => {
-  return (
-    <main className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
-      Page
-    </main>
-  );
+  return <LocationPage/>
 };
 
 export default Page;

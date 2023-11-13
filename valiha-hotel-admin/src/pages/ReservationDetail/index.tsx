@@ -1,12 +1,10 @@
 "use client";
 
-import Breadcrumbs from "@/components/BreadCrumbs";
 import AddBreakfast from "@/components/Breakfast/add-breakfast";
 import BreakfastTable from "@/components/Breakfast/breakfast-table";
 import ReservationTableDetail from "@/components/Reservation/Detail/reservation-table";
 import AddShuttle from "@/components/Shuttles/add-shuttle";
 import ShuttleTable from "@/components/Shuttles/shuttle-table";
-import { reservationDetailBreadcrumbs } from "@/constants/reservation";
 import { Reservation } from "@/domain/entities/reservation";
 
 type Props = {

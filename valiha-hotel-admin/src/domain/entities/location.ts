@@ -10,6 +10,6 @@ export interface Location {
   destination: string;
   reason: string;
   client: Client;
-  car: Car;
+  cars: Car[];
   payment: Payment;
 }
