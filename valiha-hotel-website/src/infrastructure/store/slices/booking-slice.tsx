@@ -3,14 +3,16 @@ import {
   ClientRequestDto,
   ReservationRequestDto,
 } from "@/domain/use-cases/reservation";
+import { dateToString } from "@/infrastructure/utils/date";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: ReservationRequestDto = {
   rooms: [],
-  checkIn: new Date(),
-  checkOut: new Date(),
+  checkIn: dateToString(new Date()),
+  checkOut: dateToString(new Date()),
   parking: false,
+  pax: 1,
   client: {
     firstName: "",
     lastName: "",
@@ -25,10 +27,10 @@ export const BookingSlice = createSlice({
   name: "booking",
   initialState,
   reducers: {
-    setCheckIn: (state, action: PayloadAction<Date>) => {
+    setCheckIn: (state, action: PayloadAction<string>) => {
       state.checkIn = action.payload;
     },
-    setCheckOut: (state, action: PayloadAction<Date>) => {
+    setCheckOut: (state, action: PayloadAction<string>) => {
       state.checkOut = action.payload;
     },
     addRoom: (state, action: PayloadAction<Room>) => {

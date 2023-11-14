@@ -1,13 +1,11 @@
-import { DATE_FORMAT } from "@/domain/entities";
 import {
   setCheckIn,
   setCheckOut,
 } from "@/infrastructure/store/slices/booking-slice";
+import { dateToString } from "@/infrastructure/utils/date";
 import { useFormik } from "formik";
-import moment from "moment";
 import { useRouter } from "next/router";
 import { useAppDispatch } from "./store";
-import { setFormat } from "@/infrastructure/utils/date";
 
 export interface SearchRoomsSchema {
   checkIn: Date;
@@ -23,13 +21,13 @@ export const useSearchRoom = () => {
       checkOut: new Date(),
     },
     onSubmit(values: SearchRoomsSchema) {
-      dispatch(setCheckIn(values.checkIn));
-      dispatch(setCheckOut(values.checkOut));
+      dispatch(setCheckIn(dateToString(values.checkIn)));
+      dispatch(setCheckOut(dateToString(values.checkOut)));
       router.push({
         pathname: "/rooms/available",
         query: {
-          checkIn: setFormat(values.checkIn),
-          checkOut: setFormat(values.checkOut)
+          checkIn: dateToString(values.checkIn),
+          checkOut: dateToString(values.checkOut),
         },
       });
     },

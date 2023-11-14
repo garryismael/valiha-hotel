@@ -1,10 +1,13 @@
+import { ClientRequestDto } from "@/domain/use-cases/contact";
 import {
   BreakfastRequestDto,
+  CreateReservationInteractor,
+  CreateReservationUseCase,
 } from "@/domain/use-cases/reservation";
+import { dateToString, stringToDate } from "@/infrastructure/utils/date";
 import { useFormik } from "formik";
 import { useAppSelector } from "./store";
-import { ClientRequestDto } from "@/domain/use-cases/contact";
-
+import container from "@/infrastructure/config/container.config";
 
 type ShuttleForm = {
   flightName: string;
@@ -22,7 +25,7 @@ type ReservationForm = {
   client: ClientRequestDto;
   shuttles: {
     checked: boolean;
-    data: ShuttleForm[]
+    data: ShuttleForm[];
   };
   breakfasts: {
     checked: boolean;
@@ -32,12 +35,15 @@ type ReservationForm = {
 
 export const useBookingForm = () => {
   const booking = useAppSelector((state) => state.booking);
+  const createUseCase = container.resolve<CreateReservationUseCase>(
+    CreateReservationInteractor
+  );
   const formik = useFormik<ReservationForm>({
     initialValues: {
-      checkIn: booking.checkIn,
-      checkOut: booking.checkOut,
+      checkIn: stringToDate(booking.checkIn),
+      checkOut: stringToDate(booking.checkOut),
       parking: false,
-      pax: 0,
+      pax: 1,
       client: {
         firstName: "",
         lastName: "",
@@ -53,14 +59,25 @@ export const useBookingForm = () => {
         data: [],
       },
     },
-    onSubmit(values) {
-      console.log(values);
+    async onSubmit(values) {
+      await createUseCase.execute({
+        rooms: booking.rooms,
+        breakfasts: values.breakfasts.data,
+        checkIn: dateToString(values.checkIn),
+        checkOut: dateToString(values.checkOut),
+        client: values.client,
+        parking: values.parking,
+        pax: values.pax,
+        shuttles: values.shuttles.data,
+      });
     },
   });
 
   const handleCheckBreakfast = (checked: boolean) => {
     if (checked) {
-      formik.setFieldValue("breakfasts.data", [{ date: booking.checkIn }]);
+      formik.setFieldValue("breakfasts.data", [
+        { date: stringToDate(booking.checkIn) },
+      ]);
     } else {
       formik.setFieldValue("breakfasts.data", []);
     }
@@ -72,7 +89,7 @@ export const useBookingForm = () => {
       formik.setFieldValue("parking", false);
       formik.setFieldValue("shuttles.data", [
         {
-          date: booking.checkIn,
+          date: stringToDate(booking.checkIn),
           destination: "",
           selection: "",
           flightName: "",
@@ -91,7 +108,7 @@ export const useBookingForm = () => {
     const updatedBreakfasts = [
       ...fieldValue.data,
       {
-        date: booking.checkIn,
+        date: stringToDate(booking.checkIn),
       },
     ];
     formik.setFieldValue("breakfasts.data", updatedBreakfasts);
@@ -109,7 +126,7 @@ export const useBookingForm = () => {
     const updatedShuttles = [
       ...shuttles.data,
       {
-        date: booking.checkIn,
+        date: stringToDate(booking.checkIn),
         destination: "",
         selection: "",
         flightName: "",

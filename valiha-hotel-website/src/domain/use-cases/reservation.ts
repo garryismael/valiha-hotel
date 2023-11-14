@@ -3,9 +3,10 @@ import { Room } from "../entities/room";
 
 export interface ReservationRequestDto {
   rooms: Room[];
-  checkIn: Date;
-  checkOut: Date;
+  checkIn: string;
+  checkOut: string;
   parking: boolean;
+  pax: number;
   client: ClientRequestDto;
   shuttles: ShuttleRequestDto[];
   breakfasts: BreakfastRequestDto[];

@@ -72,9 +72,8 @@ const BookingForm = () => {
             type="number"
             radius="sm"
             className="w-full"
-            
           />
-          <div className="w-full"/>
+          <div className="w-full" />
         </div>
         <Checkbox
           name="parking"
@@ -101,10 +100,11 @@ const BookingForm = () => {
               {formik.values.breakfasts.data.map((breakfast, index) => (
                 <ReactDatePicker
                   key={index}
-                  selected={breakfast.date}
+                  selected={new Date()}
                   onChange={(date: Date) =>
                     formik.setFieldValue(`breakfasts.data.${index}.date`, date)
                   }
+                  portalId={`breakfast-${index}`}
                   dateFormat="dd/MM/yyyy"
                   wrapperClassName="w-1/3"
                   customInput={
@@ -235,6 +235,7 @@ const BookingForm = () => {
                       showTimeSelect
                       timeFormat="HH:mm"
                       wrapperClassName="w-full"
+                      portalId={`shuttles-${index}`}
                       customInput={
                         <Input
                           onChange={formik.handleChange}
