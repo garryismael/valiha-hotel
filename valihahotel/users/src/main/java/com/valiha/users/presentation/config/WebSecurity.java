@@ -36,7 +36,7 @@ public class WebSecurity {
         authz
           .requestMatchers(AUTH_WHITELIST)
           .permitAll()
-          .requestMatchers(HttpMethod.POST, "/clients/")
+          .requestMatchers(HttpMethod.POST, "/clients/**")
           .permitAll()
           .anyRequest()
           .authenticated();

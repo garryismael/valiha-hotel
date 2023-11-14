@@ -22,11 +22,12 @@ public class SecurityConfig {
     "/RESERVATIONS-SERVICE/api-docs/**",
     "/RESERVATIONS-SERVICE/categories/**",
     "/USERS-SERVICE/uploads/**",
-    "/USERS-SERVICE/blogs/**"
+    "/USERS-SERVICE/blogs/**",
   };
   private static final String[] AUTH_RESERVATION = {
     "/RESERVATIONS-SERVICE/reservations/**",
     "/RESERVATIONS-SERVICE/categories/**",
+    "/USERS-SERVICE/clients/**",
   };
 
   @Bean

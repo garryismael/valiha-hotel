@@ -1,13 +1,22 @@
 import { ClientRequestDto } from "@/domain/use-cases/contact";
 import {
-    BreakfastRequestDto,
-    ReservationRequestDto,
-    ReservationService,
-    ShuttleRequestDto,
+  ReservationRequestDto,
+  ReservationService,
 } from "@/domain/use-cases/reservation";
 import { injectable } from "tsyringe";
 import http from "../config/axios";
+import { dateToString } from "../utils/date";
 
+export interface ShuttleRequest {
+  flightName: string;
+  flightNumber: string;
+  destination: string;
+  date: string;
+}
+
+export interface BreakfastRequest {
+  date: string;
+}
 export type ReservationRequest = {
   roomIds: string[];
   checkIn: string;
@@ -15,8 +24,8 @@ export type ReservationRequest = {
   parking: boolean;
   pax: number;
   client: ClientRequestDto;
-  shuttles: ShuttleRequestDto[];
-  breakfasts: BreakfastRequestDto[];
+  shuttles: ShuttleRequest[];
+  breakfasts: BreakfastRequest[];
 };
 
 const RESERVATION_PATH = "/RESERVATIONS-SERVICE/reservations";
@@ -34,8 +43,15 @@ export class ReservationServiceImpl implements ReservationService {
       parking: request.parking,
       pax: request.pax,
       client: request.client,
-      shuttles: request.shuttles,
-      breakfasts: request.breakfasts,
+      shuttles: request.shuttles.map((shuttle) => ({
+        destination: shuttle.destination,
+        date: dateToString(shuttle.date),
+        flightName: shuttle.flightName,
+        flightNumber: shuttle.flightNumber,
+      })),
+      breakfasts: request.breakfasts.map((breakfast) => ({
+        date: dateToString(breakfast.date),
+      })),
     };
   }
 }

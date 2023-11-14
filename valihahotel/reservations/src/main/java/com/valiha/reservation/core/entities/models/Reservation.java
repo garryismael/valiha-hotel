@@ -137,6 +137,42 @@ public class Reservation implements InputValidator {
   public Map<String, String> validate() {
     Map<String, String> errors = new HashMap<>();
 
+    List<Map<String, String>> shuttleErrors = shuttles
+      .stream()
+      .map(shuttle -> shuttle.validate())
+      .toList();
+
+    for (int i = 0; i < shuttleErrors.size(); i++) {
+      int index = i; // Use a separate effectively final variable
+      Map<String, String> currentErrorMap = shuttleErrors.get(i);
+      Map<String, String> modifiedErrorMap = new HashMap<>();
+
+      currentErrorMap.forEach((key, value) -> {
+        String modifiedKey = "shuttles.data." + key + "." + index;
+        modifiedErrorMap.put(modifiedKey, value);
+      });
+
+      errors.putAll(modifiedErrorMap);
+    }
+
+    List<Map<String, String>> breakfastErrors = breakfasts
+      .stream()
+      .map(breakfast -> breakfast.validate())
+      .toList();
+
+    for (int i = 0; i < breakfastErrors.size(); i++) {
+      int index = i; // Use a separate effectively final variable
+      Map<String, String> currentErrorMap = breakfastErrors.get(i);
+      Map<String, String> modifiedErrorMap = new HashMap<>();
+
+      currentErrorMap.forEach((key, value) -> {
+        String modifiedKey = "breakfasts.data." + key + "." + index;
+        modifiedErrorMap.put(modifiedKey, value);
+      });
+
+      errors.putAll(modifiedErrorMap);
+    }
+
     if (!checkInIsValid()) {
       errors.put(
         ReservationValidator.KEY_CHECK_IN,

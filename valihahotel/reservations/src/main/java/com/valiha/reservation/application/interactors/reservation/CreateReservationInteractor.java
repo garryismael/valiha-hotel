@@ -6,8 +6,10 @@ import com.valiha.reservation.application.dto.reservation.ReservationRequestDto;
 import com.valiha.reservation.application.dto.reservation.ReservationResponseDto;
 import com.valiha.reservation.application.dto.shuttle.ShuttleRequestDto;
 import com.valiha.reservation.application.presenter.GenericPresenter;
+import com.valiha.reservation.application.repository.BreakfastRepository;
 import com.valiha.reservation.application.repository.ReservationRepository;
 import com.valiha.reservation.application.repository.RoomRepository;
+import com.valiha.reservation.application.repository.ShuttleRepository;
 import com.valiha.reservation.application.service.NotificationService;
 import com.valiha.reservation.application.useCase.reservation.CreateReservationUseCase;
 import com.valiha.reservation.application.utils.DateFormatter;
@@ -47,6 +49,8 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
   private final ShuttleFactory shuttleFactory;
   private final BreakfastFactory breakfastFactory;
   private final NotificationService notificationService;
+  private final ShuttleRepository shuttleRepository;
+  private final BreakfastRepository breakfastRepository;
 
   @Override
   public ReservationResponseDto execute(ReservationRequestDto requestDto) {
@@ -169,6 +173,24 @@ public class CreateReservationInteractor implements CreateReservationUseCase {
           errors
         );
     }
+
+    shuttles = this.shuttleRepository.create(shuttles);
+    breakfasts = this.breakfastRepository.create(breakfasts);
+
+    reservation =
+      reservationFactory.create(
+        null,
+        checkIn,
+        checkOut,
+        ReservationState.PENDING.value(),
+        requestDto.isParking(),
+        requestDto.getPax(),
+        client,
+        payment,
+        rooms,
+        shuttles,
+        breakfasts
+      );
 
     reservation = this.reservationRepository.save(reservation);
 

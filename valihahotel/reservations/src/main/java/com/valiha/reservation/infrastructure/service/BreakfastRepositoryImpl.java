@@ -4,6 +4,7 @@ import com.valiha.reservation.application.repository.BreakfastRepository;
 import com.valiha.reservation.core.entities.models.Breakfast;
 import com.valiha.reservation.infrastructure.data.BreakfastDataMapper;
 import com.valiha.reservation.infrastructure.repository.MongoBreakfastRepository;
+import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 
@@ -40,5 +41,15 @@ public class BreakfastRepositoryImpl implements BreakfastRepository {
     return optional.isPresent()
       ? BreakfastDataMapper.cast(optional.get())
       : null;
+  }
+
+  @Override
+  public List<Breakfast> create(List<Breakfast> breakfasts) {
+    List<BreakfastDataMapper> dataMappers = BreakfastDataMapper.from(
+      breakfasts
+    );
+    dataMappers = this.breakfastRepository.insert(dataMappers);
+
+    return BreakfastDataMapper.cast(dataMappers);
   }
 }
