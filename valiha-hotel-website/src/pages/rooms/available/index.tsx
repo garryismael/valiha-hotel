@@ -5,7 +5,9 @@ import {
   GetAvailableRoomsInteractor,
   GetAvailableRoomsUseCase,
 } from "@/domain/use-cases/room";
+import { useAppDispatch } from "@/hooks/store";
 import container from "@/infrastructure/config/container.config";
+import { clearRooms } from "@/infrastructure/store/slices/booking-slice";
 import { NextPageWithLayout } from "@/pages/_app";
 import { NextPageContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -16,6 +18,8 @@ type Props = {
 };
 
 const Page: NextPageWithLayout<Props> = ({ rooms }) => {
+  const dispatch = useAppDispatch();
+  dispatch(clearRooms());
   return (
     <section className="container mx-auto">
       <h1 className="title">Chambres disponibles</h1>

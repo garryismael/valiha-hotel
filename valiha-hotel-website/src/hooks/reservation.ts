@@ -1,13 +1,10 @@
+import { Room } from "@/domain/entities/room";
 import { ClientRequestDto } from "@/domain/use-cases/contact";
-import {
-  BreakfastRequestDto,
-  CreateReservationInteractor,
-  CreateReservationUseCase,
-} from "@/domain/use-cases/reservation";
-import { dateToString, stringToDate } from "@/infrastructure/utils/date";
+import { BreakfastRequestDto } from "@/domain/use-cases/reservation";
+import { stringToDate } from "@/infrastructure/utils/date";
 import { useFormik } from "formik";
+import { useRef } from "react";
 import { useAppSelector } from "./store";
-import container from "@/infrastructure/config/container.config";
 
 type ShuttleForm = {
   flightName: string;
@@ -17,7 +14,8 @@ type ShuttleForm = {
   date: Date;
 };
 
-type ReservationForm = {
+export type ReservationForm = {
+  rooms: Room[];
   checkIn: Date;
   checkOut: Date;
   parking: boolean;
@@ -34,12 +32,12 @@ type ReservationForm = {
 };
 
 export const useBookingForm = () => {
+  const btnRef = useRef<HTMLButtonElement>(null);
   const booking = useAppSelector((state) => state.booking);
-  const createUseCase = container.resolve<CreateReservationUseCase>(
-    CreateReservationInteractor
-  );
+
   const formik = useFormik<ReservationForm>({
     initialValues: {
+      rooms: booking.rooms,
       checkIn: stringToDate(booking.checkIn),
       checkOut: stringToDate(booking.checkOut),
       parking: false,
@@ -59,17 +57,8 @@ export const useBookingForm = () => {
         data: [],
       },
     },
-    async onSubmit(values) {
-      await createUseCase.execute({
-        rooms: booking.rooms,
-        breakfasts: values.breakfasts.data,
-        checkIn: dateToString(values.checkIn),
-        checkOut: dateToString(values.checkOut),
-        client: values.client,
-        parking: values.parking,
-        pax: values.pax,
-        shuttles: values.shuttles.data,
-      });
+    async onSubmit() {
+      btnRef.current?.click();
     },
   });
 
@@ -154,6 +143,7 @@ export const useBookingForm = () => {
   };
 
   return {
+    btnRef,
     formik,
     handleCheckBreakfast,
     handleCheckShuttle,

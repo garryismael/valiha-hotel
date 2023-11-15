@@ -28,11 +28,11 @@
   }
 
   .btn {
-    @apply px-6 py-3;
+    @apply !px-6 !py-3;
   }
 
   .btn-orange {
-    @apply bg-reddish-orange-500 hover:bg-reddish-orange-400 text-white;
+    @apply !bg-reddish-orange-500 hover:!bg-reddish-orange-400 !text-white;
   }
 }
 

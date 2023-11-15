@@ -1,4 +1,5 @@
 import BaseLayout from "@/components/Layout/BaseLayout";
+import ToastProvider from "@/components/ToastProvider";
 import "@/infrastructure/config/container.config";
 import { store } from "@/infrastructure/store";
 import "@/styles/globals.css";
@@ -8,6 +9,7 @@ import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
 import { Provider } from "react-redux";
+import 'react-toastify/dist/ReactToastify.css';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -25,7 +27,9 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <NextUIProvider>
       <Provider store={store}>
-        <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+        <ToastProvider>
+          <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+        </ToastProvider>
       </Provider>
     </NextUIProvider>
   );

@@ -148,7 +148,7 @@ public class Reservation implements InputValidator {
       Map<String, String> modifiedErrorMap = new HashMap<>();
 
       currentErrorMap.forEach((key, value) -> {
-        String modifiedKey = "shuttles.data." + key + "." + index;
+        String modifiedKey = String.format("shuttles.data.%d.%s", index, key);
         modifiedErrorMap.put(modifiedKey, value);
       });
 
@@ -166,7 +166,7 @@ public class Reservation implements InputValidator {
       Map<String, String> modifiedErrorMap = new HashMap<>();
 
       currentErrorMap.forEach((key, value) -> {
-        String modifiedKey = "breakfasts.data." + key + "." + index;
+        String modifiedKey = String.format("breakfasts.data.%d.%s", index, key);
         modifiedErrorMap.put(modifiedKey, value);
       });
 

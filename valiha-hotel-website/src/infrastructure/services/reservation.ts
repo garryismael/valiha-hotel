@@ -6,6 +6,7 @@ import {
 import { injectable } from "tsyringe";
 import http from "../config/axios";
 import { dateToString } from "../utils/date";
+import { DATE_FORMAT, DATE_TIME_FORMAT } from "@/domain/entities";
 
 export interface ShuttleRequest {
   flightName: string;
@@ -45,12 +46,12 @@ export class ReservationServiceImpl implements ReservationService {
       client: request.client,
       shuttles: request.shuttles.map((shuttle) => ({
         destination: shuttle.destination,
-        date: dateToString(shuttle.date),
+        date: dateToString(shuttle.date, DATE_TIME_FORMAT),
         flightName: shuttle.flightName,
         flightNumber: shuttle.flightNumber,
       })),
       breakfasts: request.breakfasts.map((breakfast) => ({
-        date: dateToString(breakfast.date),
+        date: dateToString(breakfast.date, DATE_FORMAT),
       })),
     };
   }
