@@ -40,7 +40,7 @@ const CarLocation = (props: CarProps) => {
       <section className="shadow-lg w-2/3 mx-auto">
         <form onSubmit={formik.handleSubmit}>
           <div className="flex flex-col p-8 justify-center flex-wrap gap-2">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-4 my-6">
               <Input
                 size="lg"
                 name="client.lastName"

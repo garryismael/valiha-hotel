@@ -1,4 +1,7 @@
+import InputErrorMessage from "@/components/ErrorMessage";
 import NestedLayout from "@/components/Layout/NestedLayout";
+import useContactForm from "@/hooks/contact";
+import { isInvalid } from "@/utils/input";
 import { Button, Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { NextPageContext } from "next";
 import { useTranslation } from "next-i18next";
@@ -8,6 +11,7 @@ import { FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 
 const Page = () => {
   const { t } = useTranslation();
+  const formik = useContactForm();
   return (
     <section className="container mx-auto">
       <h1 className="title my-4 text-center">Contactez-nous</h1>
@@ -34,7 +38,7 @@ const Page = () => {
           <p>+261 34 50 741 52</p>
         </div>
       </div>
-      <div className="my-4">
+      <form onSubmit={formik.handleSubmit} className="my-4">
         <h1 className="title text-2xl text-center">Avez-vous des questions?</h1>
         <div className="flex flex-col p-8 shadow-lg justify-center flex-wrap gap-2 w-2/3 mx-auto">
           <div className="flex items-center justify-between gap-4">
@@ -45,6 +49,11 @@ const Page = () => {
               variant="bordered"
               className="w-full"
               radius="sm"
+              onChange={formik.handleChange}
+              isInvalid={isInvalid(formik, "client.lastName")}
+              errorMessage={
+                <InputErrorMessage name="client.lastName" formik={formik} />
+              }
             />
             <Input
               size="lg"
@@ -53,6 +62,11 @@ const Page = () => {
               variant="bordered"
               className="w-full"
               radius="sm"
+              onChange={formik.handleChange}
+              isInvalid={isInvalid(formik, "client.firstName")}
+              errorMessage={
+                <InputErrorMessage name="client.firstName" formik={formik} />
+              }
             />
           </div>
           <div className="flex items-center justify-between gap-4">
@@ -63,6 +77,11 @@ const Page = () => {
               variant="bordered"
               className="w-full"
               radius="sm"
+              onChange={formik.handleChange}
+              isInvalid={isInvalid(formik, "client.phoneNumber")}
+              errorMessage={
+                <InputErrorMessage name="client.phoneNumber" formik={formik} />
+              }
             />
             <Input
               size="lg"
@@ -71,6 +90,11 @@ const Page = () => {
               variant="bordered"
               className="w-full"
               radius="sm"
+              onChange={formik.handleChange}
+              isInvalid={isInvalid(formik, "client.email")}
+              errorMessage={
+                <InputErrorMessage name="client.email" formik={formik} />
+              }
             />
           </div>
           <Select
@@ -82,6 +106,9 @@ const Page = () => {
             }}
             radius="sm"
             size="lg"
+            onChange={formik.handleChange}
+            isInvalid={isInvalid(formik, "subject")}
+            errorMessage={<InputErrorMessage name="subject" formik={formik} />}
           >
             <SelectItem key="room-service" value="room-service">
               Service de chambre
@@ -102,6 +129,9 @@ const Page = () => {
             }}
             radius="sm"
             size="lg"
+            onChange={formik.handleChange}
+            isInvalid={isInvalid(formik, "message")}
+            errorMessage={<InputErrorMessage name="message" formik={formik} />}
           />
           <Button
             type="submit"
@@ -112,7 +142,7 @@ const Page = () => {
             Envoyer maintenant
           </Button>
         </div>
-      </div>
+      </form>
     </section>
   );
 };

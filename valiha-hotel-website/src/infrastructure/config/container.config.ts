@@ -4,9 +4,10 @@ import { container } from "tsyringe";
 import { BlogServiceImpl } from "../services/blog";
 import { CarServiceImpl } from "../services/car";
 import { CategoryServiceImpl } from "../services/category";
-import { LocationServiceImpl } from '../services/location';
-import { RoomServiceImpl } from "../services/room";
+import { ContactServiceImpl } from "../services/contact";
+import { LocationServiceImpl } from "../services/location";
 import { ReservationServiceImpl } from "../services/reservation";
+import { RoomServiceImpl } from "../services/room";
 
 container.register("BlogService", {
   useClass: BlogServiceImpl,
@@ -25,10 +26,14 @@ container.register("CarService", {
 });
 
 container.register("LocationService", {
-  useClass: LocationServiceImpl
-})
+  useClass: LocationServiceImpl,
+});
 
 container.register("ReservationService", {
-  useClass: ReservationServiceImpl
-})
+  useClass: ReservationServiceImpl,
+});
+
+container.register("ContactService", {
+  useClass: ContactServiceImpl,
+});
 export default container;

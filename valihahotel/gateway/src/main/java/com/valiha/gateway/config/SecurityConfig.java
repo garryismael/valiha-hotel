@@ -28,6 +28,7 @@ public class SecurityConfig {
     "/RESERVATIONS-SERVICE/reservations/**",
     "/RESERVATIONS-SERVICE/categories/**",
     "/USERS-SERVICE/clients/**",
+    "/USERS-SERVICE/contacts/**",
     "/LOCATIONS-SERVICE/locations/**",
   };
 

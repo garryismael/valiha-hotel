@@ -27,6 +27,11 @@ public class WebSecurity {
     "/blogs/**",
   };
 
+  private static final String[] POST_AUTH_WHITELIST = {
+    "/clients/**",
+    "/contacts/**",
+  };
+
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http
@@ -38,7 +43,7 @@ public class WebSecurity {
           .permitAll()
           .requestMatchers(AUTH_WHITELIST)
           .permitAll()
-          .requestMatchers(HttpMethod.POST, "/clients/**")
+          .requestMatchers(HttpMethod.POST, POST_AUTH_WHITELIST)
           .permitAll()
           .anyRequest()
           .authenticated();
