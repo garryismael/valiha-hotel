@@ -1,9 +1,8 @@
-import { LocationRequest, LocationService } from "@/domain/use-cases/location";
-import { injectable } from "tsyringe";
-import http from "../config/axios";
 import { ClientRequestDto } from "@/domain/use-cases/contact";
-import { dateToString } from "../utils/date";
+import { LocationRequest, LocationService } from "@/domain/use-cases/location";
 import axios from "axios";
+import { injectable } from "tsyringe";
+import { dateToString } from "../utils/date";
 
 export interface LocationForm {
   start: string;
@@ -11,17 +10,19 @@ export interface LocationForm {
   destination: string;
   reason: string;
   client: ClientRequestDto;
-  carId: string;
+  carIds: string[];
 }
+
+const LOCATION_PATH = "http://localhost:5001/locations";
 @injectable()
 export class LocationServiceImpl implements LocationService {
   async create(request: LocationRequest): Promise<void> {
-    await axios.post("http://localhost:5001/locations", this.cast(request));
+    await axios.post(LOCATION_PATH, this.cast(request));
   }
 
   private cast(request: LocationRequest): LocationForm {
     return {
-      carId: request.carId,
+      carIds: [request.carId],
       client: request.client,
       destination: request.destination,
       end: dateToString(request.end),

@@ -90,13 +90,13 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
                   <div className="flex items-center justify-between">
                     <h4 className="text-base font-medium">Chambres</h4>
                     <span>
-                      {form.rooms.map((room, index) => (
+                      {booking.rooms.map((room, index) => (
                         <span
                           key={room.id}
                           className="text-small text-default-400"
                         >
                           {room.category.title}
-                          {index === form.rooms.length - 1 ? "" : ", "}
+                          {index === booking.rooms.length - 1 ? "" : ", "}
                         </span>
                       ))}
                     </span>
@@ -162,7 +162,7 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
                   <div className="flex items-center justify-between">
                     <h4 className="text-base font-medium">Total</h4>
                     <p className="flex flex-col text-base font-bold">
-                      {getTotalPrice(form)} MGA
+                      {getTotalPrice(form, booking.rooms)} MGA
                     </p>
                   </div>
                   <Divider className="my-1 w-full" />

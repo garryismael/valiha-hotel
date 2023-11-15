@@ -1,9 +1,11 @@
 import { useBookingForm } from "@/hooks/reservation";
+import { isInvalid } from "@/utils/input";
 import { Button, Checkbox, Input, Select, SelectItem } from "@nextui-org/react";
 import { useTranslation } from "next-i18next";
 import ReactDatePicker from "react-datepicker";
 import { FaCalendarDays, FaPlus, FaTrash } from "react-icons/fa6";
 import { If, Then } from "react-if";
+import InputErrorMessage from "../ErrorMessage";
 import BookingConfirm from "./booking-confirm";
 
 const BookingForm = () => {
@@ -38,6 +40,10 @@ const BookingForm = () => {
               variant="bordered"
               className="w-full"
               radius="sm"
+              isInvalid={isInvalid(formik, "client.lastName")}
+              errorMessage={
+                <InputErrorMessage name="client.lastName" formik={formik} />
+              }
             />
             <Input
               name="client.firstName"
@@ -46,6 +52,10 @@ const BookingForm = () => {
               variant="bordered"
               radius="sm"
               className="w-full"
+              isInvalid={isInvalid(formik, "client.lastName")}
+              errorMessage={
+                <InputErrorMessage name="client.firstName" formik={formik} />
+              }
             />
           </div>
           <div className="flex items-center justify-between gap-4">
@@ -56,6 +66,10 @@ const BookingForm = () => {
               variant="bordered"
               radius="sm"
               className="w-full"
+              isInvalid={isInvalid(formik, "client.phoneNumber")}
+              errorMessage={
+                <InputErrorMessage name="client.phoneNumber" formik={formik} />
+              }
             />
             <Input
               name="client.email"
@@ -64,6 +78,10 @@ const BookingForm = () => {
               variant="bordered"
               radius="sm"
               className="w-full"
+              isInvalid={isInvalid(formik, "client.email")}
+              errorMessage={
+                <InputErrorMessage name="client.email" formik={formik} />
+              }
             />
           </div>
           <div className="flex items-center justify-between gap-4">
@@ -75,6 +93,15 @@ const BookingForm = () => {
               type="number"
               radius="sm"
               className="w-full"
+              value={formik.values.pax.toString()}
+              isInvalid={isInvalid(formik, "pax")}
+              errorMessage={
+                <InputErrorMessage
+                  name="pax"
+                  formik={formik}
+                  data={{ min: "1" }}
+                />
+              }
             />
             <div className="w-full" />
           </div>
@@ -127,6 +154,16 @@ const BookingForm = () => {
                             onClick={() => deleteBreakfast(index)}
                           />
                         }
+                        isInvalid={isInvalid(
+                          formik,
+                          `breakfasts.data.${index}.date`
+                        )}
+                        errorMessage={
+                          <InputErrorMessage
+                            name={`breakfasts.data.${index}.date`}
+                            formik={formik}
+                          />
+                        }
                       />
                     }
                   />
@@ -173,6 +210,16 @@ const BookingForm = () => {
                         classNames={{
                           label: "z-1",
                         }}
+                        isInvalid={isInvalid(
+                          formik,
+                          `shuttles.data.${index}.flightName`
+                        )}
+                        errorMessage={
+                          <InputErrorMessage
+                            name={`shuttles.data.${index}.flightName`}
+                            formik={formik}
+                          />
+                        }
                       />
                       <Input
                         name={`shuttles.data.${index}.flightNumber`}
@@ -181,6 +228,16 @@ const BookingForm = () => {
                         variant="bordered"
                         radius="sm"
                         className="w-full"
+                        isInvalid={isInvalid(
+                          formik,
+                          `shuttles.data.${index}.flightNumber`
+                        )}
+                        errorMessage={
+                          <InputErrorMessage
+                            name={`shuttles.data.${index}.flightNumber`}
+                            formik={formik}
+                          />
+                        }
                       />
                     </div>
                     <div className="flex items-center justify-between gap-4">
@@ -196,6 +253,16 @@ const BookingForm = () => {
                         classNames={{
                           label: "z-1",
                         }}
+                        isInvalid={isInvalid(
+                          formik,
+                          `shuttles.data.${index}.selection`
+                        )}
+                        errorMessage={
+                          <InputErrorMessage
+                            name={`shuttles.data.${index}.selection`}
+                            formik={formik}
+                          />
+                        }
                       >
                         <SelectItem
                           key="airport-to-hotel"
@@ -231,6 +298,16 @@ const BookingForm = () => {
                             ? "invisible"
                             : "visible"
                         }`}
+                        isInvalid={isInvalid(
+                          formik,
+                          `shuttles.data.${index}.destination`
+                        )}
+                        errorMessage={
+                          <InputErrorMessage
+                            name={`shuttles.data.${index}.destination`}
+                            formik={formik}
+                          />
+                        }
                       />
                     </div>
                     <div className="flex items-center justify-between gap-4">
@@ -256,6 +333,16 @@ const BookingForm = () => {
                             radius="sm"
                             className="w-1/2"
                             startContent={<FaCalendarDays />}
+                            isInvalid={isInvalid(
+                              formik,
+                              `shuttles.data.${index}.date`
+                            )}
+                            errorMessage={
+                              <InputErrorMessage
+                                name={`shuttles.data.${index}.date`}
+                                formik={formik}
+                              />
+                            }
                           />
                         }
                       />

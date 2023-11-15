@@ -50,13 +50,13 @@ const ConfirmLocation = ({ request, car, btnRef }: Props) => {
       reason: request.reason,
     });
     setLoading(false);
-    onClose();
-    router.push("/locations/cars/", "/locations/cars/", {
-      locale: i18n.language,
-    });
     toast.success("Location ajoutée avec succès!", {
       position: "bottom-center",
       toastId: "create-breakfast",
+    });
+    onClose();
+    router.push("/locations/cars/", "/locations/cars/", {
+      locale: i18n.language,
     });
   };
 

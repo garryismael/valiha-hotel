@@ -1,5 +1,6 @@
 import { ReservationForm } from "@/hooks/reservation";
 import { getDays } from "./date";
+import { Room } from "@/domain/entities/room";
 
 const breakfast = parseInt(process.env.NEXT_PUBLIC_BREAKFAST_PRICE as string);
 const shuttle = parseInt(process.env.NEXT_PUBLIC_SHUTTLE_PRICE as string);
@@ -12,8 +13,8 @@ export const getShuttlePrice = (form: ReservationForm) => {
   return form.shuttles.data.length * shuttle;
 };
 
-export const getTotalPrice = (form: ReservationForm) => {
-  const price = form.rooms.reduce((prev, acc) => acc.price + prev, 0);
+export const getTotalPrice = (form: ReservationForm, rooms: Room[]) => {
+  const price = rooms.reduce((prev, acc) => acc.price + prev, 0);
   return (
     price * getDays(form.checkIn, form.checkOut) +
     getBreakfastPrice(form) +

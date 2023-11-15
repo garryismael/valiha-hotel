@@ -55,9 +55,10 @@ public class CarRepositoryImpl implements GenericRepository<Car> {
 
   @Override
   public List<Car> findAllByIds(List<String> ids) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException(
-      "Unimplemented method 'findAllByIds'"
-    );
+    List<CarDataMapper> dataMappers = this.carRepository.findAllById(ids);
+    return dataMappers
+      .stream()
+      .map(dataMapper -> CarDataMapper.toCar(dataMapper))
+      .toList();
   }
 }

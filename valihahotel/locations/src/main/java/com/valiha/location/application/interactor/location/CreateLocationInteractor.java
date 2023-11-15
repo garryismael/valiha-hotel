@@ -22,6 +22,7 @@ import com.valiha.location.core.entities.models.Payment;
 import com.valiha.location.core.interfaces.factory.ClientFactory;
 import com.valiha.location.core.interfaces.factory.LocationFactory;
 import com.valiha.location.core.interfaces.factory.PaymentFactory;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +45,11 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
   public LocationResponseDto execute(LocationRequestDto requestDto) {
     Map<String, String> errors = new HashMap<>();
 
-    List<Car> cars = this.carRepository.findAllByIds(requestDto.getCarIds());
+    List<String> carIds = requestDto.getCarIds() != null
+      ? requestDto.getCarIds()
+      : new ArrayList<>();
+
+    List<Car> cars = this.carRepository.findAllByIds(carIds);
     Date start = LocationRequestDto.convert(
       requestDto.getStart(),
       AppLocation.DATE_FORMAT

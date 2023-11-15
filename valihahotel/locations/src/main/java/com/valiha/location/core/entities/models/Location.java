@@ -121,7 +121,7 @@ public class Location implements ILocation, InputValidator {
 
   @Override
   public boolean carIsValid() {
-    return this.cars != null;
+    return this.cars != null && this.cars.size() > 0;
   }
 
   @Override

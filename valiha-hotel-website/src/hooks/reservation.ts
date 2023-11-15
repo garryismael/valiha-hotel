@@ -1,10 +1,10 @@
-import { Room } from "@/domain/entities/room";
 import { ClientRequestDto } from "@/domain/use-cases/contact";
 import { BreakfastRequestDto } from "@/domain/use-cases/reservation";
 import { stringToDate } from "@/infrastructure/utils/date";
 import { useFormik } from "formik";
 import { useRef } from "react";
 import { useAppSelector } from "./store";
+import { reservationSchema } from "@/utils/validators/reservation-schema";
 
 type ShuttleForm = {
   flightName: string;
@@ -15,7 +15,6 @@ type ShuttleForm = {
 };
 
 export type ReservationForm = {
-  rooms: Room[];
   checkIn: Date;
   checkOut: Date;
   parking: boolean;
@@ -37,7 +36,6 @@ export const useBookingForm = () => {
 
   const formik = useFormik<ReservationForm>({
     initialValues: {
-      rooms: booking.rooms,
       checkIn: stringToDate(booking.checkIn),
       checkOut: stringToDate(booking.checkOut),
       parking: false,
@@ -57,6 +55,10 @@ export const useBookingForm = () => {
         data: [],
       },
     },
+    validationSchema: reservationSchema(
+      stringToDate(booking.checkIn),
+      stringToDate(booking.checkOut)
+    ),
     onSubmit() {
       btnRef.current?.click();
     },
