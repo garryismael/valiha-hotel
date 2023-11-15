@@ -8,6 +8,9 @@ import ReactDatePicker from "react-datepicker";
 import { FaCalendarDays } from "react-icons/fa6";
 import ConfirmLocation from "./confirm-location";
 import moment from "moment";
+import { locationValidationSchema } from "@/utils/validators/location-schema";
+import { isInvalid } from "@/utils/input";
+import InputErrorMessage from "../ErrorMessage";
 
 const CarLocation = (props: CarProps) => {
   const { t } = useTranslation();
@@ -27,6 +30,7 @@ const CarLocation = (props: CarProps) => {
       start: today,
       end: moment(today).add(1, "days").toDate(),
     },
+    validationSchema: locationValidationSchema,
     onSubmit() {
       btnRef.current?.click();
     },
@@ -45,6 +49,10 @@ const CarLocation = (props: CarProps) => {
                 variant="bordered"
                 className="w-full"
                 radius="sm"
+                isInvalid={isInvalid(formik, "client.lastName")}
+                errorMessage={
+                  <InputErrorMessage name="client.lastName" formik={formik} />
+                }
               />
               <Input
                 size="lg"
@@ -54,6 +62,10 @@ const CarLocation = (props: CarProps) => {
                 variant="bordered"
                 className="w-full"
                 radius="sm"
+                isInvalid={isInvalid(formik, "client.firstName")}
+                errorMessage={
+                  <InputErrorMessage name="client.firstName" formik={formik} />
+                }
               />
             </div>
             <div className="flex items-center justify-between gap-4">
@@ -65,6 +77,13 @@ const CarLocation = (props: CarProps) => {
                 variant="bordered"
                 className="w-full"
                 radius="sm"
+                isInvalid={isInvalid(formik, "client.phoneNumber")}
+                errorMessage={
+                  <InputErrorMessage
+                    name="client.phoneNumber"
+                    formik={formik}
+                  />
+                }
               />
               <Input
                 size="lg"
@@ -74,6 +93,10 @@ const CarLocation = (props: CarProps) => {
                 variant="bordered"
                 className="w-full"
                 radius="sm"
+                isInvalid={isInvalid(formik, "client.email")}
+                errorMessage={
+                  <InputErrorMessage name="client.email" formik={formik} />
+                }
               />
             </div>
             <div className="relative flex items-center justify-between gap-4">
@@ -94,6 +117,10 @@ const CarLocation = (props: CarProps) => {
                     className="w-1/2"
                     radius="sm"
                     startContent={<FaCalendarDays />}
+                    isInvalid={isInvalid(formik, "start")}
+                    errorMessage={
+                      <InputErrorMessage name="start" formik={formik} />
+                    }
                   />
                 }
               />
@@ -114,6 +141,10 @@ const CarLocation = (props: CarProps) => {
                     className="w-1/2"
                     radius="sm"
                     startContent={<FaCalendarDays />}
+                    isInvalid={isInvalid(formik, "end")}
+                    errorMessage={
+                      <InputErrorMessage name="end" formik={formik} />
+                    }
                   />
                 }
               />
@@ -129,6 +160,10 @@ const CarLocation = (props: CarProps) => {
               }}
               radius="sm"
               size="lg"
+              isInvalid={isInvalid(formik, "destination")}
+              errorMessage={
+                <InputErrorMessage name="destination" formik={formik} />
+              }
             >
               <SelectItem key="Antananarivo" value="Antananarivo">
                 Antananarivo
@@ -147,6 +182,10 @@ const CarLocation = (props: CarProps) => {
               radius="sm"
               size="lg"
               onChange={formik.handleChange}
+              isInvalid={isInvalid(formik, "reason")}
+              errorMessage={
+                <InputErrorMessage name="reason" formik={formik} />
+              }
             />
             <Button
               type="submit"
