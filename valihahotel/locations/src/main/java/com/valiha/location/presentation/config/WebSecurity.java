@@ -26,6 +26,8 @@ public class WebSecurity {
     "/static/**",
   };
 
+  private static final String[] AUTH_LOCATION = { "/locations/**" };
+
   private static final String[] AUTH_CARS = { "/cars/**" };
 
   @Bean
@@ -35,9 +37,13 @@ public class WebSecurity {
       .cors(c -> c.disable())
       .authorizeHttpRequests(authz -> {
         authz
+          .requestMatchers(HttpMethod.OPTIONS, "/**")
+          .permitAll()
           .requestMatchers(AUTH_WHITELIST)
           .permitAll()
           .requestMatchers(HttpMethod.GET, AUTH_CARS)
+          .permitAll()
+          .requestMatchers(HttpMethod.POST, AUTH_LOCATION)
           .permitAll()
           .anyRequest()
           .authenticated();

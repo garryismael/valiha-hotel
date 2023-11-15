@@ -126,7 +126,10 @@
       "sub_title": "Location de voiture 4x4 à Madagascar",
       "paragraph": "Valiha hôtel dispose de son propre parc véhicule et fait aussi appel à des sous traitants sélectionnés par nos soins avec des critères très stricts. Vous nous communiquez vos dates, l’itinéraire souhaité, nous vous confirmerons la faisabilité selon la période et la praticabilité des pistes. Les temps de trajet sont généralement assez longs, il ne faut pas raisonner en kilomètres mais en temps de route.",
       "models": "Les modèles de véhicule en location",
-      "button": "Tarifs et Condition De Location"
+      "button": "Tarifs et Condition De Location",
+      "form": {
+        "button": "Confirmer la location"
+      }
     }
   }
 }

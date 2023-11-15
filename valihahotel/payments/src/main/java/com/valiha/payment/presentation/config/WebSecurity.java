@@ -33,6 +33,8 @@ public class WebSecurity {
       .cors(c -> c.disable())
       .authorizeHttpRequests(authz -> {
         authz
+          .requestMatchers(HttpMethod.OPTIONS, "/**")
+          .permitAll()
           .requestMatchers(AUTH_WHITELIST)
           .permitAll()
           .requestMatchers(HttpMethod.POST, "/payments/**")

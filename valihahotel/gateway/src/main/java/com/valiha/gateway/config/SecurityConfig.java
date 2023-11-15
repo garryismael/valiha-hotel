@@ -24,10 +24,11 @@ public class SecurityConfig {
     "/USERS-SERVICE/uploads/**",
     "/USERS-SERVICE/blogs/**",
   };
-  private static final String[] AUTH_RESERVATION = {
+  private static final String[] PATH_POST_ALLOWED = {
     "/RESERVATIONS-SERVICE/reservations/**",
     "/RESERVATIONS-SERVICE/categories/**",
     "/USERS-SERVICE/clients/**",
+    "/LOCATIONS-SERVICE/locations/**",
   };
 
   @Bean
@@ -41,7 +42,7 @@ public class SecurityConfig {
           .permitAll()
           .pathMatchers(HttpMethod.GET, AUTH_API_GET)
           .permitAll()
-          .pathMatchers(HttpMethod.POST, AUTH_RESERVATION)
+          .pathMatchers(HttpMethod.POST, PATH_POST_ALLOWED)
           .permitAll()
           .anyExchange()
           .authenticated()

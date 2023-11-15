@@ -15,7 +15,7 @@ public class LocationRequestDto {
   private String destination;
   private String reason;
   private ClientRequestDto client;
-  private List<String> carId;
+  private List<String> carIds;
 
   public static Date convert(String dateString, String pattern) {
     SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);

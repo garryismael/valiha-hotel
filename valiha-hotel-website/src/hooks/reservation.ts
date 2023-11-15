@@ -57,7 +57,7 @@ export const useBookingForm = () => {
         data: [],
       },
     },
-    async onSubmit() {
+    onSubmit() {
       btnRef.current?.click();
     },
   });

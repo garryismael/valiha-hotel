@@ -44,7 +44,7 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
   public LocationResponseDto execute(LocationRequestDto requestDto) {
     Map<String, String> errors = new HashMap<>();
 
-    List<Car> cars = this.carRepository.findAllByIds(requestDto.getCarId());
+    List<Car> cars = this.carRepository.findAllByIds(requestDto.getCarIds());
     Date start = LocationRequestDto.convert(
       requestDto.getStart(),
       AppLocation.DATE_FORMAT
