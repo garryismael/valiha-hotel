@@ -6,7 +6,6 @@ import lombok.Getter;
 @Getter
 public class ContactRequestDto {
 
-  private String id;
   private ClientRequestDto client;
   private String subject;
   private String message;

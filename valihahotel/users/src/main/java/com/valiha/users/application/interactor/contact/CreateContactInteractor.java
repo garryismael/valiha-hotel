@@ -13,7 +13,9 @@ import com.valiha.users.core.interfaces.factory.ClientFactory;
 import com.valiha.users.core.interfaces.factory.ContactFactory;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CreateContactInteractor implements CreateContactUseCase {
 
   private final ContactRepository contactRepository;
@@ -21,20 +23,6 @@ public class CreateContactInteractor implements CreateContactUseCase {
   private final GenericPresenter<ContactResponseDto> contactPresenter;
   private final ContactFactory contactFactory;
   private final ClientFactory clientFactory;
-
-  public CreateContactInteractor(
-    ContactRepository contactRepository,
-    ClientRepository clientRepository,
-    GenericPresenter<ContactResponseDto> contactPresenter,
-    ContactFactory contactFactory,
-    ClientFactory clientFactory
-  ) {
-    this.contactRepository = contactRepository;
-    this.clientRepository = clientRepository;
-    this.contactPresenter = contactPresenter;
-    this.contactFactory = contactFactory;
-    this.clientFactory = clientFactory;
-  }
 
   @Override
   public ContactResponseDto execute(ContactRequestDto requestDto) {
