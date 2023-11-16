@@ -4,6 +4,7 @@ import { useLocationEdit } from "@/hooks/useLocation";
 import { EditIcon } from "@/icons/table/edit-icon";
 import {
   Button,
+  Input,
   Modal,
   ModalBody,
   ModalContent,
@@ -11,6 +12,7 @@ import {
   ModalHeader,
   Select,
   SelectItem,
+  Textarea,
 } from "@nextui-org/react";
 
 type Props = {
@@ -43,6 +45,25 @@ const LocationEdit = ({ location }: Props) => {
               </ModalHeader>
               <ModalBody>
                 <Select
+                  name="destination"
+                  variant="bordered"
+                  label="Destination"
+                  defaultSelectedKeys={[formik.values.destination]}
+                  onChange={formik.handleChange}
+                  classNames={{
+                    label: "z-1",
+                  }}
+                  radius="sm"
+                  size="lg"
+                >
+                  <SelectItem key="Antananarivo" value="Antananarivo">
+                    Antananarivo
+                  </SelectItem>
+                  <SelectItem key="hotel-to-airport" value="hotel-to-airport">
+                    Hors Antananarivo
+                  </SelectItem>
+                </Select>
+                <Select
                   name="state"
                   variant="bordered"
                   radius="sm"
@@ -59,6 +80,18 @@ const LocationEdit = ({ location }: Props) => {
                     </SelectItem>
                   ))}
                 </Select>
+                <Textarea
+                  name="reason"
+                  label="Raison du trajet"
+                  variant="bordered"
+                  classNames={{
+                    label: "z-1 text-medium",
+                  }}
+                  radius="sm"
+                  size="lg"
+                  value={formik.values.reason}
+                  onChange={formik.handleChange}
+                />
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="flat" onClick={onClose}>

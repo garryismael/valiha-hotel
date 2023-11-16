@@ -19,7 +19,7 @@ export const locationState: Record<string, LocationType> = {
   },
   in_progress: {
     value: "en cours",
-    color: "default"
+    color: "default",
   },
   done: {
     value: "terminée",
@@ -27,11 +27,11 @@ export const locationState: Record<string, LocationType> = {
   },
   canceled: {
     value: "annulée",
-    color: "secondary",
+    color: "primary",
   },
   no_show: {
     value: "échouée",
-    color: "danger",
+    color: "secondary",
   },
 };
 
@@ -83,6 +83,8 @@ export const locationColumns = [
   { name: "DATES", uid: "date" },
   { name: "PAIEMENT", uid: "payment" },
   { name: "VOITURES", uid: "cars" },
+  { name: "DESTINATION", uid: "destination" },
+  { name: "RAISON", uid: "reason" },
   { name: "ACTIONS", uid: "actions" },
 ];
 
