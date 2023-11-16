@@ -31,8 +31,8 @@ export class ShuttleServiceImpl implements ShuttleService {
     return response.data;
   }
 
-  async delete(id: string): Promise<void> {
-    await http.delete(`${SHUTTLE_PATH}/${id}`);
+  async delete(id: string, reservationId: string): Promise<void> {
+    await http.delete(`${SHUTTLE_PATH}/${id}/${reservationId}`);
   }
 
   private castBaseRequest(request: ShuttleBaseRequest) {

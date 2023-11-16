@@ -104,7 +104,7 @@ export const useDeleteBreakfast = (
 
   const handleDelete = async () => {
     setLoading(true);
-    await deleteUseCase.execute(breakfast.id);
+    await deleteUseCase.execute(breakfast.id, reservation.id);
     dispatch(
       removeBreakfast({
         reservationId: reservation.id,

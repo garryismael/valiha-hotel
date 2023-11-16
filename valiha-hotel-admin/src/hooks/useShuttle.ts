@@ -155,7 +155,7 @@ export const useDeleteShuttle = (
 
   const handleDelete = async () => {
     setLoading(true);
-    await deleteUseCase.execute(shuttle.id);
+    await deleteUseCase.execute(shuttle.id, reservation.id);
     dispatch(
       removeShuttle({
         reservationId: reservation.id,

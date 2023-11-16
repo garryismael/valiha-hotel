@@ -31,7 +31,7 @@ export class BreakfastServiceImpl implements BreakfastService {
     return response.data;
   }
 
-  async delete(id: string): Promise<void> {
-    await http.delete(`${BREAKFASTS_PATH}/${id}`); 
+  async delete(id: string, reservationId: string): Promise<void> {
+    await http.delete(`${BREAKFASTS_PATH}/${id}/${reservationId}`); 
   }
 }

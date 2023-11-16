@@ -1,15 +1,13 @@
 "use client";
-import { TableWrapper } from "@/components/Table/table";
+import { User } from "@/domain/entities/user";
 import { Link } from "@nextui-org/react";
 import dynamic from "next/dynamic";
 import NextLink from "next/link";
-import { CardAgents } from "./card-agents";
 import { CardBalance1 } from "./card-balance1";
 import { CardBalance2 } from "./card-balance2";
 import { CardBalance3 } from "./card-balance3";
-import { CardTransactions } from "./card-transactions";
-import { User } from "@/domain/entities/user";
 import { CardDonut } from "./card-donut";
+import { CardTransactions } from "./card-transactions";
 
 const Chart = dynamic(
   () => import("@/components/Chart/steam").then((mod) => mod.Steam),
@@ -24,7 +22,7 @@ export const Content = ({ users }: { users: User[] }) => (
       <div className="mt-6  gap-6 flex flex-col w-full">
         {/* Card Section Top */}
         <div className="flex flex-col gap-2">
-          <h3 className="text-xl font-semibold">Available Balance</h3>
+          <h3 className="text-xl font-semibold">Les balances</h3>
           <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-3 gap-5  justify-center w-full">
             <CardBalance1 />
             <CardBalance2 />
@@ -34,7 +32,7 @@ export const Content = ({ users }: { users: User[] }) => (
 
         {/* Chart */}
         <div className="h-full flex flex-col gap-2">
-          <h3 className="text-xl font-semibold">Statistics</h3>
+          <h3 className="text-xl font-semibold">Statistiques</h3>
           <div className="w-full bg-default-50 shadow-lg rounded-2xl p-6 ">
             <Chart />
           </div>
@@ -49,24 +47,6 @@ export const Content = ({ users }: { users: User[] }) => (
           <CardTransactions />
         </div>
       </div>
-    </div>
-
-    {/* Table Latest Users */}
-    <div className="flex flex-col justify-center w-full py-5 px-4 lg:px-0  max-w-[100rem] mx-auto gap-3">
-      <div className="flex  flex-wrap justify-between">
-        <h3 className="text-center text-xl font-semibold">
-          Dernière réservations
-        </h3>
-        <Link
-          href="/transactions"
-          as={NextLink}
-          color="primary"
-          className="cursor-pointer"
-        >
-          Voir toute
-        </Link>
-      </div>
-      <TableWrapper users={users} />
     </div>
   </div>
 );

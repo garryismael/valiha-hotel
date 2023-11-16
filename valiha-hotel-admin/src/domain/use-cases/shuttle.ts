@@ -15,7 +15,7 @@ export interface ShuttleRequest extends ShuttleBaseRequest {
 export interface ShuttleService {
   create(reservationId: string, request: ShuttleBaseRequest): Promise<Shuttle>;
   edit(id: string, request: ShuttleRequest): Promise<Shuttle>;
-  delete(id: string): Promise<void>;
+  delete(id: string, reservationId: string): Promise<void>;
 }
 
 export interface CreateShuttleUseCase {
@@ -27,7 +27,7 @@ export interface EditShuttleUseCase {
 }
 
 export interface DeleteShuttleUseCase {
-  execute(id: string): Promise<void>;
+  execute(id: string, reservationId: string): Promise<void>;
 }
 
 @injectable()
@@ -59,7 +59,7 @@ export class DeleteShuttleInteractor implements DeleteShuttleUseCase {
   constructor(
     @inject("ShuttleService") private shuttleService: ShuttleService
   ) {}
-  execute(id: string): Promise<void> {
-    return this.shuttleService.delete(id);
+  execute(id: string, reservationId: string): Promise<void> {
+    return this.shuttleService.delete(id, reservationId);
   }
 }

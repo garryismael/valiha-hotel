@@ -11,7 +11,7 @@ import { FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 
 const Page = () => {
   const { t } = useTranslation();
-  const formik = useContactForm();
+  const {loading, formik} = useContactForm();
   return (
     <section className="container mx-auto">
       <h1 className="title my-4 text-center">Contactez-nous</h1>
@@ -135,9 +135,10 @@ const Page = () => {
           />
           <Button
             type="submit"
-            className="bg-reddish-orange-500 w-fit text-white self-center px-16"
+            className="bg-reddish-orange-500 w-fit text-white self-center"
             radius="sm"
             size="lg"
+            isLoading={loading}
           >
             Envoyer maintenant
           </Button>

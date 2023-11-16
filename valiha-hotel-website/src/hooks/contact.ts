@@ -7,6 +7,8 @@ import {
 import container from "@/infrastructure/config/container.config";
 import { contactValidationSchema } from "@/utils/validators/contact-schema";
 import { useFormik } from "formik";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 export type ContactForm = {
   client: ClientRequestDto;
@@ -15,6 +17,7 @@ export type ContactForm = {
 };
 
 const useContactForm = () => {
+  const [loading, setLoading] = useState(false);
   const contactUseCase = container.resolve<CreateContactUseCase>(
     CreateContactInteractor
   );
@@ -31,11 +34,17 @@ const useContactForm = () => {
     },
     validationSchema: contactValidationSchema,
     async onSubmit(values) {
+      setLoading(true);
       contactUseCase.execute(values);
+      setLoading(false);
+      toast.success("Réservation ajoutée avec succès!", {
+        position: "bottom-center",
+        toastId: "create-breakfast",
+      });
     },
   });
 
-  return formik;
+  return { loading, formik };
 };
 
 export default useContactForm;

@@ -63,15 +63,6 @@ const RoomCard = ({ room }: Props) => {
             </p>
           </div>
         </div>
-        <Link href="#" className="self-center justify-self-center py-2">
-          <Button
-            variant="bordered"
-            radius="sm"
-            className="border-reddish-orange-500 text-reddish-orange-500 text-lg px-10 py-5 hover:text-white hover:bg-reddish-orange-500"
-          >
-            {t("room.detail")}
-          </Button>
-        </Link>
       </div>
     </div>
   );

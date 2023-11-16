@@ -15,7 +15,7 @@ export interface BreakfastService {
     request: BreakfastBaseRequest
   ): Promise<Breakfast>;
   edit(id: string, request: BreakfastRequest): Promise<Breakfast>;
-  delete(id: string): Promise<void>;
+  delete(id: string, reservationId: string): Promise<void>;
 }
 
 export interface CreateBreakfastUseCase {
@@ -30,7 +30,7 @@ export interface EditBreakfastUseCase {
 }
 
 export interface DeleteBreakfastUseCase {
-  execute(id: string): Promise<void>;
+  execute(id: string, reservationId: string): Promise<void>;
 }
 
 @injectable()
@@ -62,7 +62,7 @@ export class DeleteBreakfastInteractor implements DeleteBreakfastUseCase {
   constructor(
     @inject("BreakfastService") private breakfastService: BreakfastService
   ) {}
-  execute(id: string): Promise<void> {
-    return this.breakfastService.delete(id);
+  execute(id: string, reservationId: string): Promise<void> {
+    return this.breakfastService.delete(id, reservationId);
   }
 }

@@ -28,8 +28,11 @@ public class BreakfastController {
     return this.editUseCase.execute(id, requestDto);
   }
 
-  @DeleteMapping("/{id}")
-  public void delete(@PathVariable String id) {
-    this.deleteUseCase.execute(id);
+  @DeleteMapping("/{id}/${reservationId}")
+  public void delete(
+    @PathVariable String id,
+    @PathVariable("reservationId") String reservationId
+  ) {
+    this.deleteUseCase.execute(id, reservationId);
   }
 }
