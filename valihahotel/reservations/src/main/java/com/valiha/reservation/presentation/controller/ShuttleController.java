@@ -28,7 +28,7 @@ public class ShuttleController {
     return this.editUseCase.execute(id, requestDto);
   }
 
-  @DeleteMapping("/{id}/${reservationId}")
+  @DeleteMapping("/{id}/{reservationId}")
   public void delete(
     @PathVariable String id,
     @PathVariable("reservationId") String reservationId

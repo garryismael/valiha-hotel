@@ -12,6 +12,7 @@ import { ShuttleServiceImpl } from "../services/shuttle";
 import { TransactionServiceImpl } from "../services/transaction";
 import { UserServiceImpl } from "../services/user";
 import { PaymentServiceImpl } from "../services/payment";
+import { LocationServiceImpl } from "../services/locations";
 
 container.register("CategoryService", {
   useClass: CategoryServiceImpl,
@@ -55,6 +56,10 @@ container.register("TransactionService", {
 
 container.register("PaymentService", {
   useClass: PaymentServiceImpl,
+});
+
+container.register("LocationService", {
+  useClass: LocationServiceImpl,
 });
 
 export default container;

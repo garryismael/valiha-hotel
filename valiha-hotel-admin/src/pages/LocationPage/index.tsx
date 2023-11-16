@@ -1,11 +1,15 @@
 "use client";
 import Breadcrumbs from "@/components/BreadCrumbs";
 import LocationTable from "@/components/Location/location-table";
-import { locationBreadcrumbs, locationsData } from "@/constants/location";
+import { locationBreadcrumbs } from "@/constants/location";
+import { Location } from "@/domain/entities/location";
 import { DotsIcon } from "@/icons/accounts/dots-icon";
 import { Input } from "@nextui-org/react";
 
-function LocationPage() {
+type Props = {
+  locations: Location[];
+};
+function LocationPage({ locations }: Props) {
   return (
     <main className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={locationBreadcrumbs} />
@@ -22,7 +26,7 @@ function LocationPage() {
           <DotsIcon />
         </div>
       </div>
-      <LocationTable locations={locationsData} />
+      <LocationTable locations={locations} />
     </main>
   );
 }
