@@ -10,22 +10,14 @@ import com.valiha.payment.core.entities.models.Payment;
 import com.valiha.payment.core.interfaces.factory.PaymentFactory;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class EditPaymentInteractor implements EditPaymentUseCase {
 
   private final PaymentRepository paymentRepository;
   private final GenericPresenter<PaymentResponseDto> paymentPresenter;
   private final PaymentFactory paymentFactory;
-
-  public EditPaymentInteractor(
-    PaymentRepository paymentRepository,
-    GenericPresenter<PaymentResponseDto> paymentPresenter,
-    PaymentFactory paymentFactory
-  ) {
-    this.paymentRepository = paymentRepository;
-    this.paymentPresenter = paymentPresenter;
-    this.paymentFactory = paymentFactory;
-  }
 
   @Override
   public PaymentResponseDto execute(String id, PaymentRequestDto requestDto) {
@@ -42,7 +34,7 @@ public class EditPaymentInteractor implements EditPaymentUseCase {
 
     payment =
       paymentFactory.create(
-        id,
+        payment.getId(),
         requestDto.getDiscount(),
         requestDto.getState()
       );
@@ -57,9 +49,7 @@ public class EditPaymentInteractor implements EditPaymentUseCase {
     }
 
     payment = this.paymentRepository.update(id, payment);
-
-    return this.paymentPresenter.prepareSuccessView(
-        PaymentResponseDto.from(payment)
-      );
+    PaymentResponseDto response = PaymentResponseDto.from(payment);
+    return this.paymentPresenter.prepareSuccessView(response);
   }
 }

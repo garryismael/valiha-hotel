@@ -12,6 +12,7 @@ import BreakfastModalTable from "../Breakfast/breakfast-modal-table";
 import AddShuttle from "../Shuttles/add-shuttle";
 import ShuttleModalTable from "../Shuttles/shuttle-modal-table";
 import ReservationActions from "./reservation-action";
+import ReservationPaymentEdit from "./reservation-edit-payment";
 
 interface Props {
   reservation: Reservation;
@@ -42,13 +43,8 @@ export const ReservationRenderCell = ({ reservation, columnKey }: Props) => {
         </Chip>
       );
     case "payment":
-      const paymentState = getPaymentState(reservation.payment.state);
       return (
-        <div className="inline-flex flex-col items-start gap-2">
-          <Chip color={paymentState.color} size="sm" variant="flat">
-            {paymentState.value}
-          </Chip>
-        </div>
+        <ReservationPaymentEdit reservation={reservation}/>
       );
     case "rooms":
       return (

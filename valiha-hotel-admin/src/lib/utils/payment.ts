@@ -2,6 +2,7 @@ import { paymentState } from "@/constants/payment";
 import { paymentType } from "@/constants/transactions";
 
 export const getPaymentState = (key: string) => {
+  console.log(key);
   return paymentState[key as keyof typeof paymentState];
 };
 

@@ -1,4 +1,5 @@
 import { Breakfast } from "@/domain/entities/breakfast";
+import { Payment } from "@/domain/entities/payment";
 import { Reservation } from "@/domain/entities/reservation";
 import { Shuttle } from "@/domain/entities/shuttle";
 import type { PayloadAction } from "@reduxjs/toolkit";
@@ -112,6 +113,17 @@ export const ReservationSlice = createSlice({
         (reservation) => reservation.id !== action.payload
       );
     },
+    editPayment: (state, action: PayloadAction<Payment>) => {
+      const index = state.reservations.findIndex(
+        (reservation) => reservation.payment.id === action.payload.id
+      );
+      console.log(index);
+      if (index >= 0) {
+        const reservation = state.reservations[index];
+        reservation.payment = action.payload;
+        state.reservations[index] = reservation;
+      }
+    },
   },
 });
 
@@ -125,7 +137,8 @@ export const {
   removeBreakfast,
   removeShuttle,
   editBreakfast,
-  editShuttle
+  editShuttle,
+  editPayment,
 } = ReservationSlice.actions;
 
 export default ReservationSlice.reducer;
