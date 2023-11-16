@@ -68,14 +68,14 @@ const ConfirmLocation = ({ request, car, btnRef }: Props) => {
         onPress={onOpen}
         className="btn btn-orange w-fit self-start invisible"
       >
-        Confirmer
+        {t("confirmer")}
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="2xl">
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Confirmation de la location
+                {t("confirm_location")}
               </ModalHeader>
               <ModalBody>
                 <div className="w-full">
@@ -138,7 +138,7 @@ const ConfirmLocation = ({ request, car, btnRef }: Props) => {
                     onClose();
                   }}
                 >
-                  Annuler
+                  {t("annuler")}
                 </Button>
                 <Button
                   variant="light"
@@ -146,7 +146,7 @@ const ConfirmLocation = ({ request, car, btnRef }: Props) => {
                   isLoading={loading}
                   onPress={handleConfirm}
                 >
-                  Confirmer
+                  {t("confirmer")}
                 </Button>
               </ModalFooter>
             </>

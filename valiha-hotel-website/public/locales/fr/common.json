@@ -133,114 +133,181 @@
     }
   },
   "form_validation": {
-		"required": "Champ requis. Veuillez le compléter.",
-		"firstName": {
-			"required": "Champ requis. Veuillez le compléter.",
-			"min": "Ce champ doit comporter au moins 2 caractères."
-		},
-		"lastName": {
-			"required": "Champ requis. Veuillez le compléter.",
-			"min": "Ce champ doit comporter au moins 2 caractères."
-		},
-		"email": {
-			"required": "Champ requis. Veuillez le compléter.",
-			"invalid": "Veuillez saisir une adresse e-mail valide."
-		},
-		"phoneNumber": {
-			"required": "Champ requis. Veuillez le compléter."
-		},
-		"subject": {
-			"required": "Champ requis. Veuillez le compléter.",
-			"min": "Ce champ doit comporter au moins 2 caractères."
-		},
-		"message": {
-			"required": "Champ requis. Veuillez le compléter.",
-			"min": "Le message doit comporter au moins 4 caractères."
-		},
-		"date": {
-			"required": "Champ requis. Veuillez le compléter.",
-			"min": "Ce champ doit être postérieure ou égale à aujourd'hui.",
-			"refStartDate": "La date doit être supérieure ou égale à la date de début",
-			"refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
-		},
-		"endDate": {
-			"graterThanStart": "Ce champ doit être au moins 5 jours après la date de début de location."
-		},
-		"string": {
-			"min": "Ce champ doit comporter au moins {{min}} caractères.",
-			"max": "Ce champ ne peut pas comporter plus de {{max}} caractères"
-		},
-		"number": {
-			"min": "Cette valeur doit être d'au moins {{min}}.",
-			"max": "Cette valeur ne peut pas dépasser {{max}}."
-		},
-		"reservation": {
-			"firstName": {
-				"min": "Le prénom doit contenir au moins 2 caractères",
-				"required": "Le prénom est requis"
-			},
-			"lastName": {
-				"min": "Le nom de famille doit contenir au moins 2 caractères",
-				"required": "Le nom de famille est requis"
-			},
-			"email": {
-				"required": "L'adresse e-mail est requise",
-				"invalid": "L'adresse e-mail est invalide"
-			},
-			"adults": {
-				"min": "Le nombre d'adultes doit être au moins 1",
-				"required": "Le nombre d'adultes est requis"
-			},
-			"kids": {
-				"required": "Le nombre d'enfants est requis",
-				"min": "Le nombre d'enfants doit être d'au moins zéro"
-			},
-			"phoneNumber": {
-				"min": "Le numéro de téléphone doit contenir au moins 5 caractère",
-				"required": "Le numéro de téléphone est requis"
-			},
-			"breakfast": {
-				"check": {
-					"required": "La sélection du petit-déjeuner est requise"
-				},
-				"date": {
-					"required": "La date du petit-déjeuner est requise",
-					"dateArrival": {
-						"required": "La date d'arrivée est requise",
-						"refStartDate": "La date doit être supérieure ou égale à la date de début",
-						"refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
-					}
-				}
-			},
-			"navette": {
-				"check": {
-					"required": "La sélection de la navette est requise"
-				},
-				"name": {
-					"required": "Le nom de la navette est requis"
-				},
-				"selection": {
-					"required": "La sélection de la navette est requise"
-				},
-				"direction": {
-					"required": "La direction de la navette est requise"
-				},
-				"flightNumber": {
-					"required": "Le numéro de vol est requis"
-				},
-				"timeArrival": {
-					"required": "L'heure d'arrivée est requise"
-				},
-				"dateArrival": {
-					"required": "La date d'arrivée est requise",
-					"refStartDate": "La date doit être supérieure ou égale à la date de début",
-					"refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
-				}
-			}
-		},
-		"type": "Type de chambre invalide.",
-		"sexe": "Votre sexe",
-		"masculin": "Homme",
-		"feminin": "Femme"
-	}
+    "required": "Champ requis. Veuillez le compléter.",
+    "firstName": {
+      "required": "Champ requis. Veuillez le compléter.",
+      "min": "Ce champ doit comporter au moins 2 caractères."
+    },
+    "lastName": {
+      "required": "Champ requis. Veuillez le compléter.",
+      "min": "Ce champ doit comporter au moins 2 caractères."
+    },
+    "email": {
+      "required": "Champ requis. Veuillez le compléter.",
+      "invalid": "Veuillez saisir une adresse e-mail valide."
+    },
+    "phoneNumber": {
+      "required": "Champ requis. Veuillez le compléter."
+    },
+    "subject": {
+      "required": "Champ requis. Veuillez le compléter.",
+      "min": "Ce champ doit comporter au moins 2 caractères."
+    },
+    "message": {
+      "required": "Champ requis. Veuillez le compléter.",
+      "min": "Le message doit comporter au moins 4 caractères."
+    },
+    "date": {
+      "required": "Champ requis. Veuillez le compléter.",
+      "min": "Ce champ doit être postérieure ou égale à aujourd'hui.",
+      "refStartDate": "La date doit être supérieure ou égale à la date de début",
+      "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+    },
+    "endDate": {
+      "graterThanStart": "Ce champ doit être au moins 5 jours après la date de début de location."
+    },
+    "string": {
+      "min": "Ce champ doit comporter au moins {{min}} caractères.",
+      "max": "Ce champ ne peut pas comporter plus de {{max}} caractères"
+    },
+    "number": {
+      "min": "Cette valeur doit être d'au moins {{min}}.",
+      "max": "Cette valeur ne peut pas dépasser {{max}}."
+    },
+    "reservation": {
+      "firstName": {
+        "min": "Le prénom doit contenir au moins 2 caractères",
+        "required": "Le prénom est requis"
+      },
+      "lastName": {
+        "min": "Le nom de famille doit contenir au moins 2 caractères",
+        "required": "Le nom de famille est requis"
+      },
+      "email": {
+        "required": "L'adresse e-mail est requise",
+        "invalid": "L'adresse e-mail est invalide"
+      },
+      "adults": {
+        "min": "Le nombre d'adultes doit être au moins 1",
+        "required": "Le nombre d'adultes est requis"
+      },
+      "kids": {
+        "required": "Le nombre d'enfants est requis",
+        "min": "Le nombre d'enfants doit être d'au moins zéro"
+      },
+      "phoneNumber": {
+        "min": "Le numéro de téléphone doit contenir au moins 5 caractère",
+        "required": "Le numéro de téléphone est requis"
+      },
+      "breakfast": {
+        "check": {
+          "required": "La sélection du petit-déjeuner est requise"
+        },
+        "date": {
+          "required": "La date du petit-déjeuner est requise",
+          "dateArrival": {
+            "required": "La date d'arrivée est requise",
+            "refStartDate": "La date doit être supérieure ou égale à la date de début",
+            "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+          }
+        }
+      },
+      "navette": {
+        "check": {
+          "required": "La sélection de la navette est requise"
+        },
+        "name": {
+          "required": "Le nom de la navette est requis"
+        },
+        "selection": {
+          "required": "La sélection de la navette est requise"
+        },
+        "direction": {
+          "required": "La direction de la navette est requise"
+        },
+        "flightNumber": {
+          "required": "Le numéro de vol est requis"
+        },
+        "timeArrival": {
+          "required": "L'heure d'arrivée est requise"
+        },
+        "dateArrival": {
+          "required": "La date d'arrivée est requise",
+          "refStartDate": "La date doit être supérieure ou égale à la date de début",
+          "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+        }
+      }
+    },
+    "type": "Type de chambre invalide.",
+    "sexe": "Votre sexe",
+    "masculin": "Homme",
+    "feminin": "Femme",
+    "quelque_destination": "Quelques Destinations",
+    "palais_reine": "Palais de la reine",
+    "services": "Services",
+    "tag": "Tag",
+    "voyage": "Voyage",
+    "tour_madagascar": "Tour de Madagascar",
+    "chambre_hotel": "Chambre d'hôtel",
+    "site_touristique": "Site touristique",
+    "guide": "Guide",
+    "blog_how_to_help": "Comment nous pouvons vous aider?",
+    "blog_any_question": "Si vous avez besoin d'aide ou d'informations complémentaires, nous vous invitons à nous contacter.",
+    "blog_contact": "Contactez-nous",
+    "blog_detail": "Plus de Detail",
+    "reservation_added": "Réservation ajoutée avec succès!",
+    "reservation_confirmation": "Confirmation de réservation",
+    "chambres": "Chambres",
+    "client": "Client",
+    "date_confirmation": "Date",
+    "nombre_de_pax": "Nombre de pax",
+    "par_nuit": "nuit(s)",
+    "parking": "Parking",
+    "non": "oui",
+    "oui": "non",
+    "breakfasts_title": "Petit-déjeuners",
+    "navettes": "Navettes",
+    "total": "Total",
+    "nb_email_send": "NB: Un email sera envoyé pour confirmer votre réservation.",
+    "annuler": "Annuler",
+    "confirmer": "Confirmer",
+    "at_antananarivo": "Antananarivo",
+    "hors_antananarivo": "Hors Antananarivo",
+    "proceed": "Procéder",
+    "travel_reason": "Raison du trajet",
+    "destination": "Destination",
+    "end_location": "Fin de location",
+    "start_location": "Début de location",
+    "car_possibility": "Possibilités routières : routes principales et quelques hors route",
+    "motrice": "roues motrices",
+    "litre_100": "litres aux 100 km",
+    "training": "Entraînement",
+    "kilometrage": "Kilométrage",
+    "portes": "Portes",
+    "places": "Places",
+    "model": "Modèle",
+    "year": "Années",
+    "per_day": "Prix par jour",
+    "chauffeur_inclut": "Chauffeur: inclus",
+    "louer_voiture": "Louer Cette Voiture",
+    "confirm_location": "Confirmation de la location",
+    "voiture": "Voiture",
+    "tarif": "Tarif",
+    "date_location": "Date location",
+    "note": "NB: Un email sera envoyé pour confirmer votre location.",
+    "why_choose_us": "Pourquoi Nous Choisir ?",
+    "contact": {
+      "email": "contact@valihahotel.com",
+      "phone": "+261 34 50 741 52",
+      "address": "Immeuble Valiha Antanimena, IVG 204 Antananarivo"
+    },
+    "languages": {
+      "fr": "Français",
+      "en": "Anglais",
+      "zh": "Chinois"
+    },
+    "nuit": "Nuit",
+    "form_title": "Formulaire de location",
+    "available_rooms_title": "Chambres disponibles"
+  }
 }

@@ -59,7 +59,7 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
       shuttles: form.shuttles.data,
     });
     setLoading(false);
-    toast.success("Réservation ajoutée avec succès!", {
+    toast.success(t("reservation_added"), {
       position: "bottom-center",
       toastId: "create-breakfast",
     });
@@ -83,12 +83,12 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Confirmation de réservation
+                {t("reservation_confirmation")}
               </ModalHeader>
               <ModalBody>
                 <div className="w-full">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Chambres</h4>
+                    <h4 className="text-base font-medium">{t("chambres")}</h4>
                     <span>
                       {booking.rooms.map((room, index) => (
                         <span
@@ -103,7 +103,7 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
                   </div>
                   <Divider className="my-3 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Client</h4>
+                    <h4 className="text-base font-medium">{t("client")}</h4>
                     <p className="flex flex-col text-right text-small text-default-400">
                       <span>
                         {form.client.firstName} {form.client.lastName}
@@ -114,60 +114,64 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
                   </div>
                   <Divider className="my-1 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Date</h4>{" "}
+                    <h4 className="text-base font-medium">
+                      {t("date_confirmation")}
+                    </h4>{" "}
                     <p className="flex flex-col text-right text-small text-default-400">
                       <span>
                         {dateToString(form.checkIn)} -{" "}
                         {dateToString(form.checkOut)}
                       </span>
                       <span>
-                        {getDays(form.checkIn, form.checkOut)} nuit(s)
+                        {getDays(form.checkIn, form.checkOut)} {t("par_nuit")}
                       </span>
                     </p>
                   </div>
                   <Divider className="my-1 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Nombre de pax</h4>
+                    <h4 className="text-base font-medium">
+                      {t("nombre_de_pax")}
+                    </h4>
                     <p className="flex flex-col text-small text-default-400">
                       {form.pax}
                     </p>
                   </div>
                   <Divider className="my-1 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Parking</h4>
+                    <h4 className="text-base font-medium">{t("parking")}</h4>
                     <p className="flex flex-col text-small text-default-400">
                       <Chip
                         variant="solid"
                         color={form.parking ? "success" : "secondary"}
                       >
-                        {form.parking ? "oui" : "non"}
+                        {form.parking ? t("oui") : t("non")}
                       </Chip>
                     </p>
                   </div>
                   <Divider className="my-1 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Petit-déjeuners</h4>
+                    <h4 className="text-base font-medium">{t("breakfasts_title")}</h4>
                     <p className="flex flex-col text-small text-default-400">
                       {getBreakfastPrice(form)} MGA
                     </p>
                   </div>
                   <Divider className="my-1 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Navettes</h4>
+                    <h4 className="text-base font-medium">{t("navettes")}</h4>
                     <p className="flex flex-col text-small text-default-400">
                       {getShuttlePrice(form)} MGA
                     </p>
                   </div>
                   <Divider className="my-1 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">Total</h4>
+                    <h4 className="text-base font-medium">{t("total")}</h4>
                     <p className="flex flex-col text-base font-bold">
                       {getTotalPrice(form, booking.rooms)} MGA
                     </p>
                   </div>
                   <Divider className="my-1 w-full" />
                   <p className="text-sm text-primary-500">
-                    NB: Un email sera envoyé pour confirmer votre réservation.
+                    {t("nb_email_send")}
                   </p>
                 </div>
               </ModalBody>
@@ -180,7 +184,7 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
                     onClose();
                   }}
                 >
-                  Annuler
+                  t("annuler")
                 </Button>
                 <Button
                   variant="light"
@@ -188,7 +192,7 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
                   isLoading={loading}
                   onPress={handleConfirm}
                 >
-                  Confirmer
+                  {t("confirmer")}
                 </Button>
               </ModalFooter>
             </>

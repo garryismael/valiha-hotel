@@ -112,7 +112,7 @@ const CarLocation = (props: CarProps) => {
                   <Input
                     size="lg"
                     onChange={formik.handleChange}
-                    label="Début de location"
+                    label={t("start_location")}
                     variant="bordered"
                     className="w-1/2"
                     radius="sm"
@@ -136,7 +136,7 @@ const CarLocation = (props: CarProps) => {
                   <Input
                     size="lg"
                     onChange={formik.handleChange}
-                    label="Fin de location"
+                    label={t("end_location")}
                     variant="bordered"
                     className="w-1/2"
                     radius="sm"
@@ -152,7 +152,7 @@ const CarLocation = (props: CarProps) => {
             <Select
               name="destination"
               variant="bordered"
-              label="Destination"
+              label={t("destination")}
               value={formik.values.destination}
               onChange={formik.handleChange}
               classNames={{
@@ -166,15 +166,15 @@ const CarLocation = (props: CarProps) => {
               }
             >
               <SelectItem key="Antananarivo" value="Antananarivo">
-                Antananarivo
+                {t("at_antananarivo")}
               </SelectItem>
               <SelectItem key="hotel-to-airport" value="hotel-to-airport">
-                Hors Antananarivo
+                {t("hors_antananarivo")}
               </SelectItem>
             </Select>
             <Textarea
               name="reason"
-              label="Raison du trajet"
+              label={t("travel_reason")}
               variant="bordered"
               classNames={{
                 label: "z-1 text-medium",
@@ -193,7 +193,7 @@ const CarLocation = (props: CarProps) => {
               radius="sm"
               size="lg"
             >
-              Procéder
+              {t("proceed")}
             </Button>
           </div>
         </form>

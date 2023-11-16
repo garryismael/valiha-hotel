@@ -1,5 +1,6 @@
 import { Blog } from "@/domain/entities/blog";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,6 +9,7 @@ type Props = {
 };
 
 const BlogItem = (props: Props) => {
+  const { t } = useTranslation();
   return (
     <Card shadow="sm" className="w-[500px]">
       <CardBody className="overflow-visible py-2 relative h-[300px]">
@@ -21,8 +23,12 @@ const BlogItem = (props: Props) => {
       </CardBody>
       <CardFooter className="flex flex-col h-24 pb-2">
         <h1 className="font-bold text-xl w-full">{props.blog.title}</h1>
-        <p className="truncate text-base overflow-hidden w-[480px] ">{props.blog.text}</p>
-        <Link href="#" className="w-full text-sm text-blue-500">Plus de Detail</Link>
+        <p className="truncate text-base overflow-hidden w-[480px] ">
+          {props.blog.text}
+        </p>
+        <Link href="#" className="w-full text-sm text-blue-500">
+          {t("blog_detail")}
+        </Link>
       </CardFooter>
     </Card>
   );

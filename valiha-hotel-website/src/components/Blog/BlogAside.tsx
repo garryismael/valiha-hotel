@@ -2,13 +2,15 @@ import styles from "@/styles/blog.module.css";
 import { Chip } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import { FaArrowRight } from "react-icons/fa6";
 
 const BlogAside = () => {
+  const {t} = useTranslation();
   return (
     <div className="col-span-1 flex flex-col gap-8">
       <div>
-        <h1 className={styles.aside__title}>Quelques Destinations</h1>
+        <h1 className={styles.aside__title}>t("quelque_destination")</h1>
         <ul className="flex flex-col gap-2 text-sm">
           <li>
             <a href="#" className={styles.links}>
@@ -38,7 +40,7 @@ const BlogAside = () => {
         </ul>
       </div>
       <div>
-        <h1 className={styles.aside__title}>Services</h1>
+        <h1 className={styles.aside__title}>{t("services")}</h1>
         <div className="flex items-center justify-between">
           <Image
             src="/assets/images/services/parking.webp"
@@ -64,60 +66,52 @@ const BlogAside = () => {
         </div>
       </div>
       <div>
-        <h1 className={styles.aside__title}>Tag</h1>
+        <h1 className={styles.aside__title}>{t(t("tag"))}</h1>
         <div className="flex items-center justify-start content-between gap-3 flex-wrap text-dark-500">
           <Chip
             classNames={{
               base: "bg-[#ecf4fb] text-dark-500 hover:bg-reddish-orange-500 hover:text-white",
             }}
           >
-            Voyage
+            {t("voyage")}
           </Chip>
           <Chip
             classNames={{
               base: "bg-[#ecf4fb] text-dark-500 hover:bg-reddish-orange-500 hover:text-white",
             }}
           >
-            Voyage
+            {t("tour_madagascar")}
           </Chip>
           <Chip
             classNames={{
               base: "bg-[#ecf4fb] text-dark-500 hover:bg-reddish-orange-500 hover:text-white",
             }}
           >
-            Tour de Madagascar
+            {t("chambre_hotel")}
           </Chip>
           <Chip
             classNames={{
               base: "bg-[#ecf4fb] text-dark-500 hover:bg-reddish-orange-500 hover:text-white",
             }}
           >
-            Chambre d'hôtel
+            {t("site_touristique")}
           </Chip>
           <Chip
             classNames={{
               base: "bg-[#ecf4fb] text-dark-500 hover:bg-reddish-orange-500 hover:text-white",
             }}
           >
-            Site touristique
-          </Chip>
-          <Chip
-            classNames={{
-              base: "bg-[#ecf4fb] text-dark-500 hover:bg-reddish-orange-500 hover:text-white",
-            }}
-          >
-            Guide
+            {t("guide")}
           </Chip>
         </div>
       </div>
       <div className={styles.contact}>
-        <h1 className="text-4xl font-bold mb-5">Comment nous pouvons vous aider?</h1>
+        <h1 className="text-4xl font-bold mb-5">{t("blog_how_to_help")}</h1>
         <p className="text-lg">
-          Si vous avez besoin d'aide ou d'informations complémentaires, nous
-          vous invitons à nous contacter.
+          {t("blog_any_question")}
         </p>
         <Link href="#" className="flex items-center gap-2 border-1 border-white solid w-fit px-4 py-3 mt-3">
-          <span>Contactez-nous</span>
+          <span>{t("blog_contact")}</span>
           <FaArrowRight/>
         </Link>
       </div>

@@ -2,6 +2,7 @@
 
 import { Car } from "@/domain/entities/car";
 import styles from "@/styles/car.module.css";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const CarCard = ({ car }: Props) => {
+  const {t} = useTranslation();
   return (
     <div className={styles.card_container}>
       <div className={styles.card__image}>
@@ -26,28 +28,28 @@ const CarCard = ({ car }: Props) => {
           {car.mark}
         </p>
         <h1>
-          Possibilités routières : routes principales et quelques hors route
+          {t("car_possibility")}
         </h1>
         <p>
-          <span>Entraînement: </span> <span>{car.training} roues motrices</span>
+          <span>t{"training"}: </span> <span>{car.training} {t("motrice")}</span>
         </p>
         <p>
-          <span>Kilométrage: </span>{" "}
-          <span>{car.mileage} litres aux 100 km</span>
+          <span>{t("kilometrage")}: </span>{" "}
+          <span>{car.mileage} {t("litres_100")}</span>
         </p>
         <p>
-          <span>Portes</span>: <span>{car.door} </span>
+          <span>{t("portes")}</span>: <span>{car.door} </span>
         </p>
         <p>
-          <span>Places</span>: <span>{car.place}</span>
+          <span>{t("places")}</span>: <span>{car.place}</span>
         </p>
         <p>
-          <span>Modèle / Année</span>: <span>{car.year}</span>
+          <span>{t("model")} / {t("year")}</span>: <span>{car.year}</span>
         </p>
         <p>
-          <span>Prix par jour: </span>: <span>{car.price} MGA </span>
+          <span>{t("per_day")}: </span>: <span>{car.price} MGA </span>
         </p>
-        <p>Chauffeur: inclus</p>
+        <p>{t("chauffeur_inclut")}</p>
         <Link
           href={{
             pathname: "/locations",
@@ -57,7 +59,7 @@ const CarCard = ({ car }: Props) => {
           }}
           className="py-6 self-center justify-center"
         >
-          <span className="btn btn-orange w-fit">Louer Cette Voiture</span>
+          <span className="btn btn-orange w-fit">{"louer_voiture"}</span>
         </Link>
       </div>
     </div>
