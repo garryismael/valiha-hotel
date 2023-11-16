@@ -17,7 +17,7 @@ export const reservationState: Record<string, ReservationType> = {
     color: "warning",
   },
   done: {
-    value: "payé",
+    value: "payée",
     color: "success",
   },
   canceled: {

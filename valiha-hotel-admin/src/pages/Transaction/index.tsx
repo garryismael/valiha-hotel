@@ -3,11 +3,12 @@
 import Breadcrumbs from "@/components/BreadCrumbs";
 import TransactionTable from "@/components/Transaction/transaction-table";
 import {
-  transactionBreadcrumbs, transactionData
+  transactionBreadcrumbs
 } from "@/constants/transactions";
+import { Transaction } from "@/domain/entities/transaction";
 import { Input } from "@nextui-org/react";
 
-const TransactionPage = () => {
+const TransactionPage = ({ transactions }: { transactions: Transaction[] }) => {
   return (
     <main className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
       <Breadcrumbs breadcrumbs={transactionBreadcrumbs} />
@@ -24,7 +25,7 @@ const TransactionPage = () => {
           />
         </div>
       </div>
-      <TransactionTable transactions={transactionData}/>
+      <TransactionTable transactions={transactions} />
     </main>
   );
 };

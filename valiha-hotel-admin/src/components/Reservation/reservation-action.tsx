@@ -5,6 +5,7 @@ import { DeleteIcon } from "@/icons/table/delete-icon";
 import { EditIcon } from "@/icons/table/edit-icon";
 import { Tooltip } from "@nextui-org/react";
 import ReservationDetailModal from "./Detail/reservation-detail-modal";
+import ReservationEdit from "./reservation-edit";
 
 const ReservationActions = ({ reservation }: { reservation: Reservation }) => {
   return (
@@ -16,11 +17,7 @@ const ReservationActions = ({ reservation }: { reservation: Reservation }) => {
       </div>
       <div>
         <Tooltip content="Modifier" color="secondary">
-          <button
-            onClick={() => console.log("modifier réservation", reservation.id)}
-          >
-            <EditIcon size={20} fill="#979797" />
-          </button>
+          <ReservationEdit reservation={reservation} />
         </Tooltip>
       </div>
       <div>

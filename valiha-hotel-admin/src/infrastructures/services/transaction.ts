@@ -5,7 +5,7 @@ import {
 } from "@/domain/use-cases/transaction";
 import http from "@/lib/axios";
 
-const TRANSACTION_PATH = "/RESERVATIONS-SERVICE/transactions";
+const TRANSACTION_PATH = "/PAYMENTS-SERVICE/transactions";
 
 export class TransactionServiceImpl implements TransactionService {
   async create(request: TransactionRequest): Promise<Transaction> {

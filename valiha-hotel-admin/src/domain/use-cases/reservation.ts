@@ -31,6 +31,7 @@ export interface DeleteReservationUseCase {
   execute(id: string): Promise<void>;
 }
 
+@injectable()
 export class EditReservationInteractor implements EditReservationUseCase {
   constructor(
     @inject("ReservationService") private reservationService: ReservationService
