@@ -52,12 +52,15 @@ public class LocationRepositoryImpl implements LocationRepository {
 
     if (optionalDataMapper.isPresent()) {
       LocationDataMapper dataMapper = optionalDataMapper.get();
+
       PaymentResponseDto paymentResponseDto = paymentService.findOneById(
         dataMapper.getPaymentId()
       );
+
       ClientResponseDto clientResponseDto = clientService.findOneById(
         dataMapper.getClientId()
       );
+      System.out.println(optionalDataMapper.get().getState());
       return toLocation(dataMapper, clientResponseDto, paymentResponseDto);
     }
     return null;

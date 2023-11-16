@@ -4,6 +4,7 @@ import { getLocationState } from "@/lib/utils/location";
 import { getPaymentState, getPaymentType } from "@/lib/utils/payment";
 import { Chip, User } from "@nextui-org/react";
 import LocationTableAction from "./location-table-action";
+import ReservationPaymentEdit from "../Reservation/reservation-edit-payment";
 
 interface Props {
   location: Location;
@@ -44,14 +45,7 @@ export const LocationRenderCell = ({ location, columnKey }: Props) => {
         </div>
       );
     case "payment":
-      const paymentState = getPaymentState(location.payment.state);
-      return (
-        <div className="inline-flex flex-col items-start gap-2">
-          <Chip color={paymentState.color} size="sm" variant="flat">
-            {paymentState.value}
-          </Chip>
-        </div>
-      );
+      return <ReservationPaymentEdit payment={location.payment} />;
     case "cars":
       return (
         <div className="flex gap-2 flex-wrap">

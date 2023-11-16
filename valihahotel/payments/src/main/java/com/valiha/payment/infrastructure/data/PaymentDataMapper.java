@@ -25,6 +25,7 @@ public class PaymentDataMapper {
   public static PaymentDataMapper from(Payment payment) {
     return PaymentDataMapper
       .builder()
+      .id(payment.getId())
       .discount(payment.getDiscount())
       .state(payment.getState())
       .build();

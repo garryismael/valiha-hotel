@@ -1,5 +1,6 @@
 package com.valiha.location.core.entities.models;
 
+import com.valiha.location.core.constants.LocationState;
 import com.valiha.location.core.constants.LocationValidator;
 import com.valiha.location.core.interfaces.models.ILocation;
 import com.valiha.location.core.interfaces.validator.InputValidator;
@@ -91,7 +92,7 @@ public class Location implements ILocation, InputValidator {
 
   @Override
   public boolean stateIsValid() {
-    return this.state != null && this.state.length() > 2;
+    return this.state != null && LocationState.contains(state);
   }
 
   @Override
@@ -135,7 +136,7 @@ public class Location implements ILocation, InputValidator {
     if (!stateIsValid()) {
       errors.put(
         LocationValidator.KEY_STATE,
-        LocationValidator.INVALID_START_ERROR
+        LocationValidator.INVALID_STATE_ERROR
       );
     }
 
@@ -167,13 +168,6 @@ public class Location implements ILocation, InputValidator {
       );
     }
 
-    if (!clientIsValid()) {
-      errors.put(
-        LocationValidator.KEY_CLIENT,
-        LocationValidator.INVALID_CLIENT_ERROR
-      );
-    }
-
     if (!carIsValid()) {
       errors.put(
         LocationValidator.KEY_CAR,
@@ -187,6 +181,8 @@ public class Location implements ILocation, InputValidator {
         LocationValidator.INVALID_PAYMENT_ERROR
       );
     }
+
+    errors.putAll(client.validate());
     return errors;
   }
 }

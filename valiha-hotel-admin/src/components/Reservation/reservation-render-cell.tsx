@@ -44,7 +44,7 @@ export const ReservationRenderCell = ({ reservation, columnKey }: Props) => {
       );
     case "payment":
       return (
-        <ReservationPaymentEdit reservation={reservation}/>
+        <ReservationPaymentEdit payment={reservation.payment}/>
       );
     case "rooms":
       return (

@@ -6,7 +6,5 @@ import com.valiha.reservation.application.service.NotificationService;
 public class NotificationServiceImpl implements NotificationService {
 
   @Override
-  public void execute(ReservationResponseDto responseDto) {
-    System.out.println("Notified");
-  }
+  public void execute(ReservationResponseDto responseDto) {}
 }

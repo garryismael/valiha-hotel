@@ -76,9 +76,7 @@ public class MailServiceImpl implements MailService {
       );
       return content.toString();
     } catch (Exception e) {
-      System.out.println(
-        "Exception occurred while processing template:" + e.getMessage()
-      );
+      e.printStackTrace();
     }
     return "";
   }

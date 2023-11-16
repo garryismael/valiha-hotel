@@ -28,8 +28,8 @@ public class ApiErrorDecoder implements ErrorDecoder {
     } catch (Exception e) {
       errorResponse =
         new ErrorResponse(
-          UUID.randomUUID().toString(),
           "Invalid Request",
+          UUID.randomUUID().toString(),
           OffsetDateTime.now(),
           response.status(),
           null

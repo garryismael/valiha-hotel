@@ -1,10 +1,9 @@
-import { paymentState } from "@/constants/payment";
-import { Payment } from "@/domain/entities/payment";
-import { usePaymentEdit } from "@/hooks/useReservation";
-import { getPaymentState } from "@/lib/utils/payment";
+import { locationState } from "@/constants/location";
+import { Location } from "@/domain/entities/location";
+import { useLocationEdit } from "@/hooks/useLocation";
+import { EditIcon } from "@/icons/table/edit-icon";
 import {
   Button,
-  Input,
   Modal,
   ModalBody,
   ModalContent,
@@ -15,25 +14,21 @@ import {
 } from "@nextui-org/react";
 
 type Props = {
-  payment: Payment;
+  location: Location;
 };
 
-const ReservationPaymentEdit = ({ payment }: Props) => {
+const LocationEdit = ({ location }: Props) => {
   const { formik, show, loading, handleOpen, handleClose } =
-    usePaymentEdit(payment);
-
-  const payState = getPaymentState(formik.values.state);
+    useLocationEdit(location);
   return (
     <>
       <Button
-        color={payState.color}
-        variant="flat"
-        size="sm"
-        radius="full"
+        isIconOnly
+        startContent={<EditIcon size={20} fill="#979797" />}
+        variant="light"
+        color="default"
         onPress={handleOpen}
-      >
-        {payState.value}
-      </Button>
+      ></Button>
       <Modal
         isOpen={show}
         onOpenChange={handleClose}
@@ -44,30 +39,23 @@ const ReservationPaymentEdit = ({ payment }: Props) => {
           {(onClose) => (
             <form onSubmit={formik.handleSubmit}>
               <ModalHeader className="flex flex-col gap-1">
-                Modifier un paiement
+                Modifier une location
               </ModalHeader>
               <ModalBody>
-                <Input
-                  name="discount"
-                  variant="bordered"
-                  label="Remise"
-                  value={formik.values.discount.toString()}
-                  onChange={formik.handleChange}
-                />
                 <Select
                   name="state"
                   variant="bordered"
                   radius="sm"
-                  label="État de la réservation"
+                  label="État de la location"
                   defaultSelectedKeys={[formik.values.state]}
                   onChange={formik.handleChange}
                   classNames={{
                     label: "z-1",
                   }}
                 >
-                  {Object.keys(paymentState).map((key) => (
+                  {Object.keys(locationState).map((key) => (
                     <SelectItem key={key} value={key}>
-                      {paymentState[key].value}
+                      {locationState[key].value}
                     </SelectItem>
                   ))}
                 </Select>
@@ -88,4 +76,4 @@ const ReservationPaymentEdit = ({ payment }: Props) => {
   );
 };
 
-export default ReservationPaymentEdit;
+export default LocationEdit;

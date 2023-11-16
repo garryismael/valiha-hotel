@@ -2,9 +2,9 @@
 
 import { Location } from "@/domain/entities/location";
 import { DeleteIcon } from "@/icons/table/delete-icon";
-import { EditIcon } from "@/icons/table/edit-icon";
 import { Tooltip } from "@nextui-org/react";
 import LocationDetailModal from "./Detail/location-detail-modal";
+import LocationEdit from "./location-edit";
 
 const LocationTableAction = ({ location }: { location: Location }) => {
   return (
@@ -16,11 +16,7 @@ const LocationTableAction = ({ location }: { location: Location }) => {
       </div>
       <div>
         <Tooltip content="Modifier" color="secondary">
-          <button
-            onClick={() => console.log("modifier réservation", location.id)}
-          >
-            <EditIcon size={20} fill="#979797" />
-          </button>
+          <LocationEdit location={location} />
         </Tooltip>
       </div>
       <div>

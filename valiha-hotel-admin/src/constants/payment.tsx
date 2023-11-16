@@ -13,7 +13,7 @@ export const paymentState: Record<string, PaymentType> = {
     color: "warning",
   },
   paid: {
-    value: "payé",
+    value: "payée",
     color: "success",
   },
   failed: {

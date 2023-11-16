@@ -2,6 +2,7 @@ package com.valiha.location.infrastructure.service;
 
 import com.valiha.location.application.dto.payment.PaymentRequestDto;
 import com.valiha.location.application.dto.payment.PaymentResponseDto;
+import com.valiha.location.infrastructure.config.FeignConfig;
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("PAYMENTS-SERVICE")
+@FeignClient(name = "PAYMENTS-SERVICE", configuration = FeignConfig.class)
 public interface ApiPaymentService {
   @GetMapping(
     value = "/payments/ids",
@@ -22,6 +23,9 @@ public interface ApiPaymentService {
   @PostMapping(value = "/payments", consumes = MediaType.APPLICATION_JSON_VALUE)
   PaymentResponseDto create(@RequestBody PaymentRequestDto requestDto);
 
-  @GetMapping(value = "/payments", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @GetMapping(
+    value = "/payments/{id}",
+    consumes = MediaType.APPLICATION_JSON_VALUE
+  )
   PaymentResponseDto findOneById(@PathVariable String id);
 }

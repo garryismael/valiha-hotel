@@ -1,5 +1,8 @@
 package com.valiha.location.core.constants;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum LocationState {
   CONFIRMED("confirmed"),
   PENDING("pending"),
@@ -14,5 +17,20 @@ public enum LocationState {
 
   public String value() {
     return this.state;
+  }
+
+  public String getValue() {
+    return state;
+  }
+
+  public static List<String> getStates() {
+    return Arrays
+      .stream(LocationState.values())
+      .map(LocationState::getValue)
+      .toList();
+  }
+
+  public static boolean contains(String state) {
+    return LocationState.getStates().contains(state);
   }
 }
