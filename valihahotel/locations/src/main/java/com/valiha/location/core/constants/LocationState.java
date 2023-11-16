@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum LocationState {
-  CONFIRMED("confirmed"),
   PENDING("pending"),
+  CONFIRMED("confirmed"),
+  DONE("done"),
+  IN_PROGRESS("in_progress"),
   CANCELED("canceled"),
   NO_SHOW("no_show");
 

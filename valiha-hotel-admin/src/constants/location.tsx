@@ -17,8 +17,12 @@ export const locationState: Record<string, LocationType> = {
     value: "confirmée",
     color: "warning",
   },
+  in_progress: {
+    value: "en cours",
+    color: "default"
+  },
   done: {
-    value: "Terminé",
+    value: "terminée",
     color: "success",
   },
   canceled: {
