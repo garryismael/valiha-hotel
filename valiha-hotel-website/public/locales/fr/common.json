@@ -310,5 +310,20 @@
   "nuit": "Nuit",
   "form_title": "Formulaire de location",
   "available_rooms_title": "Chambres disponibles",
-  "location exists": "La date de Location existe"
+  "location exists": "La date de Location existe",
+  "address": "Adresse",
+  "address_value": "Immeuble Valiha Antanimena, IVG 204 Antananarivo",
+  "email": "Email",
+  "phone": "Téléphone",
+  "questions": "Avez-vous des questions?",
+  "subject": "Sujet",
+  "message": "Votre message",
+  "service_room": "Service de chambre",
+  "responsable": "Responsable",
+  "help": "Centre d'aide",
+  "send_now": "Envoyer maintenant",
+  "location_title": "Location de voitures",
+  "location_form": "Formulaire de location",
+  "room_disponible": "Chambres disponibles",
+  "book_now": "Réserver maintenant"
 }

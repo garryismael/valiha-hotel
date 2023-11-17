@@ -1,20 +1,22 @@
 import CarLocation from "@/components/Car/car-form";
 import NestedLayout from "@/components/Layout/NestedLayout";
+import { Car } from "@/domain/entities/car";
+import { GetCarInteractor, GetCarUseCase } from "@/domain/use-cases/car";
+import container from "@/infrastructure/config/container.config";
 import { NextPageContext } from "next";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ReactElement } from "react";
-import container from "@/infrastructure/config/container.config";
-import { GetCarInteractor, GetCarUseCase } from "@/domain/use-cases/car";
-import { Car } from "@/domain/entities/car";
 
 export type CarProps = {
   car: Car;
 }
 
 const Page = (props: CarProps) => {
+  const {t} = useTranslation();
   return (
     <section className="flex flex-col justify-between">
-      <h1 className="title text-center">Formulaire de location</h1>
+      <h1 className="title text-center">{t("location_form")}</h1>
       <CarLocation car={props.car}/>
     </section>
   );

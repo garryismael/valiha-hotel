@@ -50,13 +50,13 @@ const MenuHeader = () => {
               onChange={(e) => onSwitch(e.target.value)}
             >
               <option value="fr" className="text-slate-500">
-                Français
+                {t("languages.fr")}
               </option>
               <option value="en" className="text-slate-500">
-                Anglais
+                {t("languages.en")}
               </option>
               <option value="zh" className="text-slate-500">
-                Chinois
+                {t("languages.zh")}
               </option>
             </select>
           </div>

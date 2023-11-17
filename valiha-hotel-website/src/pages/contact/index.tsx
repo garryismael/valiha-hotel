@@ -20,26 +20,26 @@ const Page = () => {
           <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
             <FaLocationDot size={32} className="text-gray-400" />
           </div>
-          <h1 className="text-2xl font-bold">Adresse</h1>
-          <p>Immeuble Valiha Antanimena, IVG 204 Antananarivo</p>
+          <h1 className="text-2xl font-bold">{t("address")}</h1>
+          <p>{t("address_value")}</p>
         </div>
         <div className="flex flex-col items-center justify-center shadow-lg p-4 w-full gap-8">
           <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
             <FaEnvelope size={32} className="text-gray-400" />
           </div>
-          <h1 className="text-2xl font-bold">Email</h1>
+          <h1 className="text-2xl font-bold">{t("email")}</h1>
           <p>contact@valihahotel.com</p>
         </div>
         <div className="flex flex-col items-center justify-center shadow-lg p-4 w-full gap-8">
           <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
             <FaPhone size={32} className="text-gray-400" />
           </div>
-          <h1 className="text-2xl font-bold">Téléphone</h1>
+          <h1 className="text-2xl font-bold">{t("phone")}</h1>
           <p>+261 34 50 741 52</p>
         </div>
       </div>
       <form onSubmit={formik.handleSubmit} className="my-4">
-        <h1 className="title text-2xl text-center">Avez-vous des questions?</h1>
+        <h1 className="title text-2xl text-center">{t("questions")}</h1>
         <div className="flex flex-col p-8 shadow-lg justify-center flex-wrap gap-2 w-2/3 mx-auto">
           <div className="flex items-center justify-between gap-4">
             <Input
@@ -100,7 +100,7 @@ const Page = () => {
           <Select
             name="subject"
             variant="bordered"
-            label="Sujet"
+            label={t("subject")}
             classNames={{
               label: "z-1 text-medium",
             }}
@@ -111,18 +111,18 @@ const Page = () => {
             errorMessage={<InputErrorMessage name="subject" formik={formik} />}
           >
             <SelectItem key="room-service" value="room-service">
-              Service de chambre
+              {t("service_room")}
             </SelectItem>
             <SelectItem key="responsable" value="responsable">
-              Responsable
+              {t("responsable")}
             </SelectItem>
             <SelectItem key="help-center" value="help-center">
-              Centre d'aide
+              {t("help")}
             </SelectItem>
           </Select>
           <Textarea
             name="message"
-            label="Votre message"
+            label={t("message")}
             variant="bordered"
             classNames={{
               label: "z-1 text-medium",
@@ -140,7 +140,7 @@ const Page = () => {
             size="lg"
             isLoading={loading}
           >
-            Envoyer maintenant
+            {t("send_now")}
           </Button>
         </div>
       </form>

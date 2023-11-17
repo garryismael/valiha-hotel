@@ -1,314 +1,329 @@
 {
-  "hello": "Bonjour",
+  "hello": "Hello",
   "menu": {
-    "home": "Accueil",
-    "reservation": "Réservation",
+    "home": "Home",
+    "reservation": "Reservation",
     "blog": "Blog",
-    "room": "Hébergement",
-    "rent_car": "Location de voiture",
+    "room": "Accommodation",
+    "rent_car": "Car Rental",
     "contact": "Contact"
   },
   "home": {
     "hero": {
-      "title": "Chambre moderne",
-      "book": "Réserver maintenant"
+      "title": "Modern Room",
+      "book": "Book Now"
     },
     "search": {
-      "button": "Voir disponibilités",
-      "check_in": "Date de départ",
-      "check_out": "Date d'arrivée"
+      "button": "Check Availability",
+      "check_in": "Check-out Date",
+      "check_out": "Check-in Date"
     },
     "category": {
-      "title": "Nos Chambres Et Appartements",
-      "big_bed": "Grand(s) lit(s)",
-      "small_bed": "Petit(s) lit(s)",
-      "bathroom": "Salle de bain"
+      "title": "Our Rooms and Apartments",
+      "big_bed": "Big Bed(s)",
+      "small_bed": "Small Bed(s)",
+      "bathroom": "Bathroom"
     },
     "service": {
       "parking": "Parking",
-      "breakfast": "Petit-déjeuner",
+      "breakfast": "Breakfast",
       "wifi": "Wifi"
     },
-    "gallery": "Galerie Photos",
+    "gallery": "Photo Gallery",
     "choice": {
-      "title": "Pourquoi Nous Choisir ?",
+      "title": "Why Choose Us?",
       "building": {
-        "title": "Immeuble entièrement neuf et moderne",
-        "paragraph": "Tout l'immeuble est entièrement neuf avec un style moderne dans tout l'enceinte tant à l'extérieur qu'à l'intérieur des chambres."
+        "title": "Brand New and Modern Building",
+        "paragraph": "The entire building is brand new with a modern style both outside and inside the rooms."
       },
       "room": {
-        "title": "Chambres confortables avec climatisation",
-        "paragraph": "Toutes nos chambres sont équipées d'un climatiseur de qualité pour vous offrir des séjours agréables en hiver comme en été."
+        "title": "Comfortable Rooms with Air Conditioning",
+        "paragraph": "All our rooms are equipped with quality air conditioning to provide you with pleasant stays in both winter and summer."
       },
       "terrace": {
-        "title": "Terrasse avec une vue magnifique",
-        "paragraph": "Une terrasse avec une vue imprenable pour vous permettre d'admirer le coucher du soleil pour bien finir la journée."
+        "title": "Terrace with a Magnificent View",
+        "paragraph": "A terrace with a breathtaking view to allow you to admire the sunset and end the day beautifully."
       },
       "internet": {
-        "title": "Connexion internet à haut débit (fibre optique)",
-        "paragraph": "Une connexion internet à haut débit est à votre disposition avec la fibre optique pour vous permettre d'être connectés en permanence."
+        "title": "High-Speed Internet Connection (Optical Fiber)",
+        "paragraph": "A high-speed internet connection is available to you with optical fiber to keep you connected at all times."
       },
       "shower": {
-        "title": "Douche avec eau chaude disponible 24 / 7",
-        "paragraph": "Équipées de douche avec eau chaude, toutes nos chambres remplissent les critères pour vous offrir des séjours relaxants."
+        "title": "Shower with Hot Water Available 24/7",
+        "paragraph": "Equipped with showers with hot water, all our rooms meet the criteria to offer you relaxing stays."
       },
       "location": {
-        "title": "Emplacement en centre-ville (facilité d'accès)",
-        "paragraph": "Situé en plein centre ville, l'accès est facile et vous serez à quelques mètres des centres commerciaux pour faire du shopping."
+        "title": "City Center Location (Easy Access)",
+        "paragraph": "Located in the city center, access is easy, and you will be just meters away from shopping malls for shopping."
       }
     },
     "footer": {
       "service": {
         "title": "Services",
-        "breakfast": "Petit-déjeuner",
+        "breakfast": "Breakfast",
         "parking": "Parking",
-        "shuttle": "Navette aéroport"
+        "shuttle": "Airport Shuttle"
       },
       "partners": {
-        "title": "Les partenaires"
+        "title": "Partners"
       },
       "contact": {
         "title": "Contact",
-        "address": "Immeuble Valiha Antanimena, IVG 204 Antananarivo"
+        "address": "Valiha Antanimena Building, IVG 204 Antananarivo"
       }
     }
   },
   "reservation": {
     "booking": {
-      "title": "Formulaire de Réservation",
-      "first_name": "Prénom",
-      "last_name": "Nom",
-      "phone_number": "Numéro téléphone",
-      "email": "E-mail",
-      "use_parking": "Utiliser un parking?",
+      "title": "Reservation Form",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "phone_number": "Phone Number",
+      "email": "Email",
+      "use_parking": "Use Parking?",
       "breakfast": {
-        "title": "Petit-déjeuner?",
-        "date": "Date du petit-déjeuner"
+        "title": "Breakfast?",
+        "date": "Breakfast Date"
       },
       "shuttle": {
-        "title": "Navette?",
-        "name": "Nom du vol",
-        "number": "Numéro du vol",
+        "title": "Shuttle?",
+        "name": "Flight Name",
+        "number": "Flight Number",
         "destination": {
           "label": "Destination",
-          "airport_to_hotel": "Aéroport à l'hôtel",
-          "hotel_to_airport": "Hotel à l'aéroport",
-          "other": "Autre"
+          "airport_to_hotel": "Airport to Hotel",
+          "hotel_to_airport": "Hotel to Airport",
+          "other": "Other"
         },
-        "date": "Date de la Navette"
+        "date": "Shuttle Date"
       },
       "payment": {
-        "title": "Mode de paiement",
+        "title": "Payment Method",
         "mastercard": "Via Mastercard",
         "on_the_spot": "On the spot",
-        "card_number": "Numéro de la carte"
+        "card_number": "Card Number"
       },
-      "button": "Procéder"
+      "button": "Proceed"
     }
   },
   "blog": {
-    "title": "Dernières nouvelles"
+    "title": "Latest News"
   },
   "room": {
-    "title": "Nos chambres et appartements",
-    "hotel-with-breakfast": "Hôtel avec petit-déjeuner",
-    "apartment-with-kitchen": "Appartement avec cuisine",
-    "big_bed": "Grand(s) lit(s)",
-    "small_bed": "Petit(s) lit(s)",
-    "bathroom": "Salle de bain",
-    "night": "Nuit",
-    "detail": "Detail de la chambre",
+    "title": "Our Rooms and Apartments",
+    "hotel-with-breakfast": "Hotel with Breakfast",
+    "apartment-with-kitchen": "Apartment with Kitchen",
+    "big_bed": "Big Bed(s)",
+    "small_bed": "Small Bed(s)",
+    "bathroom": "Bathroom",
+    "night": "Night",
+    "detail": "Room Details",
     "pax": "Pax"
   },
   "location": {
     "info": {
-      "title": "Location de voitures",
-      "sub_title": "Location de voiture 4x4 à Madagascar",
-      "paragraph": "Valiha hôtel dispose de son propre parc véhicule et fait aussi appel à des sous traitants sélectionnés par nos soins avec des critères très stricts. Vous nous communiquez vos dates, l’itinéraire souhaité, nous vous confirmerons la faisabilité selon la période et la praticabilité des pistes. Les temps de trajet sont généralement assez longs, il ne faut pas raisonner en kilomètres mais en temps de route.",
-      "models": "Les modèles de véhicule en location",
-      "button": "Tarifs et Condition De Location",
+      "title": "Car Rental",
+      "sub_title": "4x4 Car Rental in Madagascar",
+      "paragraph": "Valiha hotel has its own vehicle fleet and also collaborates with subcontractors selected by us with very strict criteria. You provide us with your dates and the desired itinerary, and we will confirm feasibility based on the period and road conditions. Travel times are generally quite long, so it's essential to consider travel time rather than just kilometers.",
+      "models": "Vehicle Models for Rent",
+      "button": "Rates and Rental Conditions",
       "form": {
-        "button": "Confirmer la location"
+        "button": "Confirm Rental"
       }
     }
   },
   "form_validation": {
-    "required": "Champ requis. Veuillez le compléter.",
+    "required": "This field is required. Please complete it.",
     "firstName": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit comporter au moins 2 caractères."
+      "required": "This field is required. Please complete it.",
+      "min": "This field must have at least 2 characters."
     },
     "lastName": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit comporter au moins 2 caractères."
+      "required": "This field is required. Please complete it.",
+      "min": "This field must have at least 2 characters."
     },
     "email": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "invalid": "Veuillez saisir une adresse e-mail valide."
+      "required": "This field is required. Please complete it.",
+      "invalid": "Please enter a valid email address."
     },
     "phoneNumber": {
-      "required": "Champ requis. Veuillez le compléter."
+      "required": "This field is required. Please complete it."
     },
     "subject": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit comporter au moins 2 caractères."
+      "required": "This field is required. Please complete it.",
+      "min": "This field must have at least 2 characters."
     },
     "message": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Le message doit comporter au moins 4 caractères."
+      "required": "This field is required. Please complete it.",
+      "min": "The message must have at least 4 characters."
     },
     "date": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit être postérieure ou égale à aujourd'hui.",
-      "refStartDate": "La date doit être supérieure ou égale à la date de début",
-      "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+      "required": "This field is required. Please complete it.",
+      "min": "This field must be on or after today.",
+      "refStartDate": "The date must be on or after the start date",
+      "refEndDate": "This field must be on or before the end date"
     },
     "endDate": {
-      "graterThanStart": "Ce champ doit être au moins 5 jours après la date de début de location."
+      "graterThanStart": "This field must be at least 5 days after the start date of the rental."
     },
     "string": {
-      "min": "Ce champ doit comporter au moins {{min}} caractères.",
-      "max": "Ce champ ne peut pas comporter plus de {{max}} caractères"
+      "min": "This field must have at least {{min}} characters.",
+      "max": "This field cannot have more than {{max}} characters."
     },
     "number": {
-      "min": "Cette valeur doit être d'au moins {{min}}.",
-      "max": "Cette valeur ne peut pas dépasser {{max}}."
+      "min": "This value must be at least {{min}}.",
+      "max": "This value cannot exceed {{max}}."
     },
     "reservation": {
       "firstName": {
-        "min": "Le prénom doit contenir au moins 2 caractères",
-        "required": "Le prénom est requis"
+        "min": "First name must have at least 2 characters",
+        "required": "First name is required"
       },
       "lastName": {
-        "min": "Le nom de famille doit contenir au moins 2 caractères",
-        "required": "Le nom de famille est requis"
+        "min": "Last name must have at least 2 characters",
+        "required": "Last name is required"
       },
       "email": {
-        "required": "L'adresse e-mail est requise",
-        "invalid": "L'adresse e-mail est invalide"
+        "required": "Email address is required",
+        "invalid": "Email address is invalid"
       },
       "adults": {
-        "min": "Le nombre d'adultes doit être au moins 1",
-        "required": "Le nombre d'adultes est requis"
+        "min": "The number of adults must be at least 1",
+        "required": "The number of adults is required"
       },
       "kids": {
-        "required": "Le nombre d'enfants est requis",
-        "min": "Le nombre d'enfants doit être d'au moins zéro"
+        "required": "The number of kids is required",
+        "min": "The number of kids must be at least zero"
       },
       "phoneNumber": {
-        "min": "Le numéro de téléphone doit contenir au moins 5 caractère",
-        "required": "Le numéro de téléphone est requis"
+        "min": "Phone number must have at least 5 characters",
+        "required": "Phone number is required"
       },
       "breakfast": {
         "check": {
-          "required": "La sélection du petit-déjeuner est requise"
+          "required": "Breakfast selection is required"
         },
         "date": {
-          "required": "La date du petit-déjeuner est requise",
+          "required": "Breakfast date is required",
           "dateArrival": {
-            "required": "La date d'arrivée est requise",
-            "refStartDate": "La date doit être supérieure ou égale à la date de début",
-            "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+            "required": "Arrival date is required",
+            "refStartDate": "The date must be on or after the start date",
+            "refEndDate": "This field must be on or before the end date"
           }
         }
       },
-      "navette": {
+      "shuttle": {
         "check": {
-          "required": "La sélection de la navette est requise"
+          "required": "Shuttle selection is required"
         },
         "name": {
-          "required": "Le nom de la navette est requis"
+          "required": "Shuttle name is required"
         },
         "selection": {
-          "required": "La sélection de la navette est requise"
+          "required": "Shuttle selection is required"
         },
         "direction": {
-          "required": "La direction de la navette est requise"
+          "required": "Shuttle direction is required"
         },
         "flightNumber": {
-          "required": "Le numéro de vol est requis"
+          "required": "Flight number is required"
         },
         "timeArrival": {
-          "required": "L'heure d'arrivée est requise"
+          "required": "Arrival time is required"
         },
         "dateArrival": {
-          "required": "La date d'arrivée est requise",
-          "refStartDate": "La date doit être supérieure ou égale à la date de début",
-          "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+          "required": "Arrival date is required",
+          "refStartDate": "The date must be on or after the start date",
+          "refEndDate": "This field must be on or before the end date"
         }
       }
     }
   },
-  "type": "Type de chambre invalide.",
-  "sexe": "Votre sexe",
-  "masculin": "Homme",
-  "feminin": "Femme",
-  "quelque_destination": "Quelques Destinations",
-  "palais_reine": "Palais de la reine",
+  "type": "Invalid room type.",
+  "gender": "Your gender",
+  "male": "Male",
+  "female": "Female",
+  "some_destinations": "Some Destinations",
+  "queen_palace": "Queen's Palace",
   "services": "Services",
   "tag": "Tag",
-  "voyage": "Voyage",
-  "tour_madagascar": "Tour de Madagascar",
-  "chambre_hotel": "Chambre d'hôtel",
-  "site_touristique": "Site touristique",
+  "travel": "Travel",
+  "madagascar_tour": "Madagascar Tour",
+  "hotel_room": "Hotel Room",
+  "tourist_site": "Tourist Site",
   "guide": "Guide",
-  "blog_how_to_help": "Comment nous pouvons vous aider?",
-  "blog_any_question": "Si vous avez besoin d'aide ou d'informations complémentaires, nous vous invitons à nous contacter.",
-  "blog_contact": "Contactez-nous",
-  "blog_detail": "Plus de Detail",
-  "reservation_added": "Réservation ajoutée avec succès!",
-  "reservation_confirmation": "Confirmation de réservation",
-  "chambres": "Chambres",
+  "blog_how_to_help": "How can we help you?",
+  "blog_any_question": "If you need assistance or additional information, feel free to contact us.",
+  "blog_contact": "Contact Us",
+  "blog_detail": "More Details",
+  "reservation_added": "Reservation added successfully!",
+  "reservation_confirmation": "Reservation Confirmation",
+  "rooms": "Rooms",
   "client": "Client",
-  "date_confirmation": "Date",
-  "nombre_de_pax": "Nombre de pax",
-  "par_nuit": "nuit(s)",
+  "confirmation_date": "Date",
+  "number_of_pax": "Number of Pax",
+  "per_night": "night(s)",
   "parking": "Parking",
-  "non": "oui",
-  "oui": "non",
-  "breakfasts_title": "Petit-déjeuners",
-  "navettes": "Navettes",
+  "no": "Yes",
+  "yes": "No",
+  "breakfasts_title": "Breakfasts",
+  "shuttles": "Shuttles",
   "total": "Total",
-  "nb_email_send": "NB: Un email sera envoyé pour confirmer votre réservation.",
-  "annuler": "Annuler",
-  "confirmer": "Confirmer",
+  "nb_email_send": "NB: An email will be sent to confirm your reservation.",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
   "at_antananarivo": "Antananarivo",
-  "hors_antananarivo": "Hors Antananarivo",
-  "proceed": "Procéder",
-  "travel_reason": "Raison du trajet",
+  "outside_antananarivo": "Outside Antananarivo",
+  "proceed": "Proceed",
+  "travel_reason": "Travel Reason",
   "destination": "Destination",
-  "end_location": "Fin de location",
-  "start_location": "Début de location",
-  "car_possibility": "Possibilités routières : routes principales et quelques hors route",
-  "motrice": "roues motrices",
-  "litre_100": "litres aux 100 km",
-  "training": "Entraînement",
-  "kilometrage": "Kilométrage",
-  "portes": "Portes",
-  "places": "Places",
-  "model": "Modèle",
-  "year": "Années",
-  "per_day": "Prix par jour",
-  "chauffeur_inclut": "Chauffeur: inclus",
-  "louer_voiture": "Louer Cette Voiture",
-  "confirm_location": "Confirmation de la location",
-  "voiture": "Voiture",
-  "tarif": "Tarif",
-  "date_location": "Date location",
-  "note": "NB: Un email sera envoyé pour confirmer votre location.",
-  "why_choose_us": "Pourquoi Nous Choisir ?",
+  "end_location": "End of Rental",
+  "start_location": "Start of Rental",
+  "car_possibility": "Road possibilities: main roads and some off-road",
+  "drive": "drive",
+  "liters_100": "liters per 100 km",
+  "training": "Training",
+  "mileage": "Mileage",
+  "doors": "Doors",
+  "seats": "Seats",
+  "model": "Model",
+  "year": "Year",
+  "per_day": "Price per day",
+  "driver_included": "Driver: included",
+  "rent_car": "Rent This Car",
+  "confirm_location": "Rental Confirmation",
+  "car": "Car",
+  "rate": "Rate",
+  "rental_date": "Rental Date",
+  "note": "NB: An email will be sent to confirm your rental.",
+  "why_choose_us": "Why Choose Us?",
   "contact": {
     "email": "contact@valihahotel.com",
     "phone": "+261 34 50 741 52",
-    "address": "Immeuble Valiha Antanimena, IVG 204 Antananarivo"
+    "address": "Valiha Building Antanimena, IVG 204 Antananarivo"
   },
   "languages": {
-    "fr": "Français",
-    "en": "Anglais",
-    "zh": "Chinois"
+    "fr": "French",
+    "en": "English",
+    "zh": "Chinese"
   },
-  "nuit": "Nuit",
-  "form_title": "Formulaire de location",
-  "available_rooms_title": "Chambres disponibles",
-  "location exists": "La date de Location existe"
+  "night": "Night",
+  "form_title": "Rental Form",
+  "available_rooms_title": "Available Rooms",
+  "location_exists": "The Rental Date already exists",
+  "address": "Address",
+  "address_value": "Valiha Building Antanimena, IVG 204 Antananarivo",
+  "email": "Email",
+  "phone": "Phone",
+  "questions": "Any questions?",
+  "subject": "Subject",
+  "message": "Your message",
+  "room_service": "Room Service",
+  "responsible": "Responsible",
+  "help": "Help Center",
+  "send_now": "Send Now",
+  "location_title": "Car Rental",
+  "location_form": "Rental Form",
+  "room_available": "Available Rooms",
+  "book_now": "Book Now"
 }

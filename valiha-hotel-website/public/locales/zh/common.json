@@ -1,314 +1,330 @@
 {
   "hello": "Bonjour",
+  "hello": "你好",
   "menu": {
-    "home": "Accueil",
-    "reservation": "Réservation",
-    "blog": "Blog",
-    "room": "Hébergement",
-    "rent_car": "Location de voiture",
-    "contact": "Contact"
+    "home": "主页",
+    "reservation": "预订",
+    "blog": "博客",
+    "room": "住宿",
+    "rent_car": "租车",
+    "contact": "联系我们"
   },
   "home": {
     "hero": {
-      "title": "Chambre moderne",
-      "book": "Réserver maintenant"
+      "title": "现代客房",
+      "book": "立即预订"
     },
     "search": {
-      "button": "Voir disponibilités",
-      "check_in": "Date de départ",
-      "check_out": "Date d'arrivée"
+      "button": "查看空房情况",
+      "check_in": "入住日期",
+      "check_out": "退房日期"
     },
     "category": {
-      "title": "Nos Chambres Et Appartements",
-      "big_bed": "Grand(s) lit(s)",
-      "small_bed": "Petit(s) lit(s)",
-      "bathroom": "Salle de bain"
+      "title": "我们的客房和公寓",
+      "big_bed": "大床",
+      "small_bed": "小床",
+      "bathroom": "浴室"
     },
     "service": {
-      "parking": "Parking",
-      "breakfast": "Petit-déjeuner",
-      "wifi": "Wifi"
+      "parking": "停车场",
+      "breakfast": "早餐",
+      "wifi": "无线网络"
     },
-    "gallery": "Galerie Photos",
+    "gallery": "照片库",
     "choice": {
-      "title": "Pourquoi Nous Choisir ?",
+      "title": "为什么选择我们？",
       "building": {
-        "title": "Immeuble entièrement neuf et moderne",
-        "paragraph": "Tout l'immeuble est entièrement neuf avec un style moderne dans tout l'enceinte tant à l'extérieur qu'à l'intérieur des chambres."
+        "title": "全新现代建筑",
+        "paragraph": "整个建筑都是全新的，外部和内部的房间都采用现代风格。"
       },
       "room": {
-        "title": "Chambres confortables avec climatisation",
-        "paragraph": "Toutes nos chambres sont équipées d'un climatiseur de qualité pour vous offrir des séjours agréables en hiver comme en été."
+        "title": "舒适客房，配有空调",
+        "paragraph": "我们所有的客房都配备有优质的空调，为您提供冬夏宜人的住宿体验。"
       },
       "terrace": {
-        "title": "Terrasse avec une vue magnifique",
-        "paragraph": "Une terrasse avec une vue imprenable pour vous permettre d'admirer le coucher du soleil pour bien finir la journée."
+        "title": "带美丽景色的露台",
+        "paragraph": "一个带有令人惊叹景色的露台，让您欣赏日落，美好结束一天。"
       },
       "internet": {
-        "title": "Connexion internet à haut débit (fibre optique)",
-        "paragraph": "Une connexion internet à haut débit est à votre disposition avec la fibre optique pour vous permettre d'être connectés en permanence."
+        "title": "高速互联网连接（光纤）",
+        "paragraph": "提供光纤高速互联网连接，让您随时保持联网状态。"
       },
       "shower": {
-        "title": "Douche avec eau chaude disponible 24 / 7",
-        "paragraph": "Équipées de douche avec eau chaude, toutes nos chambres remplissent les critères pour vous offrir des séjours relaxants."
+        "title": "24/7提供热水淋浴",
+        "paragraph": "所有客房都配备有提供24/7热水的淋浴，满足您的放松住宿需求。"
       },
       "location": {
-        "title": "Emplacement en centre-ville (facilité d'accès)",
-        "paragraph": "Situé en plein centre ville, l'accès est facile et vous serez à quelques mètres des centres commerciaux pour faire du shopping."
+        "title": "市中心位置（便捷访问）",
+        "paragraph": "位于市中心，交通便利，距离购物商场仅有几米之遥。"
       }
     },
     "footer": {
       "service": {
-        "title": "Services",
-        "breakfast": "Petit-déjeuner",
-        "parking": "Parking",
-        "shuttle": "Navette aéroport"
+        "title": "服务",
+        "breakfast": "早餐",
+        "parking": "停车场",
+        "shuttle": "机场班车"
       },
       "partners": {
-        "title": "Les partenaires"
+        "title": "合作伙伴"
       },
       "contact": {
-        "title": "Contact",
-        "address": "Immeuble Valiha Antanimena, IVG 204 Antananarivo"
+        "title": "联系我们",
+        "address": "Valiha Antanimena大厦，IVG 204，塔那那利佛"
       }
     }
   },
   "reservation": {
     "booking": {
-      "title": "Formulaire de Réservation",
-      "first_name": "Prénom",
-      "last_name": "Nom",
-      "phone_number": "Numéro téléphone",
-      "email": "E-mail",
-      "use_parking": "Utiliser un parking?",
+      "title": "预订表格",
+      "first_name": "名字",
+      "last_name": "姓氏",
+      "phone_number": "电话号码",
+      "email": "电子邮件",
+      "use_parking": "使用停车场？",
       "breakfast": {
-        "title": "Petit-déjeuner?",
-        "date": "Date du petit-déjeuner"
+        "title": "早餐？",
+        "date": "早餐日期"
       },
       "shuttle": {
-        "title": "Navette?",
-        "name": "Nom du vol",
-        "number": "Numéro du vol",
+        "title": "班车？",
+        "name": "航班名称",
+        "number": "航班号码",
         "destination": {
-          "label": "Destination",
-          "airport_to_hotel": "Aéroport à l'hôtel",
-          "hotel_to_airport": "Hotel à l'aéroport",
-          "other": "Autre"
+          "label": "目的地",
+          "airport_to_hotel": "机场到酒店",
+          "hotel_to_airport": "酒店到机场",
+          "other": "其他"
         },
-        "date": "Date de la Navette"
+        "date": "班车日期"
       },
       "payment": {
-        "title": "Mode de paiement",
-        "mastercard": "Via Mastercard",
-        "on_the_spot": "On the spot",
-        "card_number": "Numéro de la carte"
+        "title": "付款方式",
+        "mastercard": "通过万事达卡",
+        "on_the_spot": "现场付款",
+        "card_number": "卡号"
       },
-      "button": "Procéder"
+      "button": "继续"
     }
   },
   "blog": {
-    "title": "Dernières nouvelles"
+    "title": "最新消息"
   },
   "room": {
-    "title": "Nos chambres et appartements",
-    "hotel-with-breakfast": "Hôtel avec petit-déjeuner",
-    "apartment-with-kitchen": "Appartement avec cuisine",
-    "big_bed": "Grand(s) lit(s)",
-    "small_bed": "Petit(s) lit(s)",
-    "bathroom": "Salle de bain",
-    "night": "Nuit",
-    "detail": "Detail de la chambre",
-    "pax": "Pax"
+    "title": "我们的客房和公寓",
+    "hotel-with-breakfast": "含早餐的酒店",
+    "apartment-with-kitchen": "带厨房的公寓",
+    "big_bed": "大床",
+    "small_bed": "小床",
+    "bathroom": "浴室",
+    "night": "晚上",
+    "detail": "客房详情",
+    "pax": "人数"
   },
   "location": {
     "info": {
-      "title": "Location de voitures",
-      "sub_title": "Location de voiture 4x4 à Madagascar",
-      "paragraph": "Valiha hôtel dispose de son propre parc véhicule et fait aussi appel à des sous traitants sélectionnés par nos soins avec des critères très stricts. Vous nous communiquez vos dates, l’itinéraire souhaité, nous vous confirmerons la faisabilité selon la période et la praticabilité des pistes. Les temps de trajet sont généralement assez longs, il ne faut pas raisonner en kilomètres mais en temps de route.",
-      "models": "Les modèles de véhicule en location",
-      "button": "Tarifs et Condition De Location",
+      "title": "汽车租赁",
+      "sub_title": "马达加斯加的4x4汽车租赁",
+      "paragraph": "Valiha酒店拥有自己的车队，并与我们精心挑选的分包商合作，具有非常严格的标准。您提供您的日期和所需行程，我们将根据期间和道路条件确认可行性。通常行车时间相当长，因此必须考虑行车时间而不仅仅是公里数。",
+      "models": "可租赁的车型",
+      "button": "租赁费率和条件",
       "form": {
-        "button": "Confirmer la location"
+        "button": "确认租赁"
       }
     }
   },
   "form_validation": {
-    "required": "Champ requis. Veuillez le compléter.",
+    "required": "此字段为必填项。请填写。",
     "firstName": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit comporter au moins 2 caractères."
+      "required": "此字段为必填项。请填写。",
+      "min": "此字段必须至少包含2个字符。"
     },
     "lastName": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit comporter au moins 2 caractères."
+      "required": "此字段为必填项。请填写。",
+      "min": "此字段必须至少包含2个字符。"
     },
     "email": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "invalid": "Veuillez saisir une adresse e-mail valide."
+      "required": "此字段为必填项。请填写。",
+      "invalid": "请输入有效的电子邮件地址。"
     },
     "phoneNumber": {
-      "required": "Champ requis. Veuillez le compléter."
+      "required": "此字段为必填项。请填写。"
     },
     "subject": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit comporter au moins 2 caractères."
+      "required": "此字段为必填项。请填写。",
+      "min": "此字段必须至少包含2个字符。"
     },
     "message": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Le message doit comporter au moins 4 caractères."
+      "required": "此字段为必填项。请填写。",
+      "min": "消息必须至少包含4个字符。"
     },
     "date": {
-      "required": "Champ requis. Veuillez le compléter.",
-      "min": "Ce champ doit être postérieure ou égale à aujourd'hui.",
-      "refStartDate": "La date doit être supérieure ou égale à la date de début",
-      "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+      "required": "此字段为必填项。请填写。",
+      "min": "此字段必须晚于或等于今天。",
+      "refStartDate": "日期必须晚于或等于开始日期",
+      "refEndDate": "此字段必须早于或等于结束日期"
     },
     "endDate": {
-      "graterThanStart": "Ce champ doit être au moins 5 jours après la date de début de location."
+      "graterThanStart": "此字段必须至少晚于租赁开始日期5天。"
     },
     "string": {
-      "min": "Ce champ doit comporter au moins {{min}} caractères.",
-      "max": "Ce champ ne peut pas comporter plus de {{max}} caractères"
+      "min": "此字段必须至少包含{{min}}个字符。",
+      "max": "此字段不能超过{{max}}个字符。"
     },
     "number": {
-      "min": "Cette valeur doit être d'au moins {{min}}.",
-      "max": "Cette valeur ne peut pas dépasser {{max}}."
+      "min": "此值必须至少为{{min}}。",
+      "max": "此值不能超过{{max}}。"
     },
     "reservation": {
       "firstName": {
-        "min": "Le prénom doit contenir au moins 2 caractères",
-        "required": "Le prénom est requis"
+        "min": "名字必须至少包含2个字符",
+        "required": "名字是必需的"
       },
       "lastName": {
-        "min": "Le nom de famille doit contenir au moins 2 caractères",
-        "required": "Le nom de famille est requis"
+        "min": "姓氏必须至少包含2个字符",
+        "required": "姓氏是必需的"
       },
       "email": {
-        "required": "L'adresse e-mail est requise",
-        "invalid": "L'adresse e-mail est invalide"
+        "required": "电子邮件地址是必需的",
+        "invalid": "电子邮件地址无效"
       },
       "adults": {
-        "min": "Le nombre d'adultes doit être au moins 1",
-        "required": "Le nombre d'adultes est requis"
+        "min": "成年人数量必须至少为1",
+        "required": "成年人数量是必需的"
       },
       "kids": {
-        "required": "Le nombre d'enfants est requis",
-        "min": "Le nombre d'enfants doit être d'au moins zéro"
+        "required": "儿童数量是必需的",
+        "min": "儿童数量必须至少为零"
       },
       "phoneNumber": {
-        "min": "Le numéro de téléphone doit contenir au moins 5 caractère",
-        "required": "Le numéro de téléphone est requis"
+        "min": "电话号码必须至少包含5个字符",
+        "required": "电话号码是必需的"
       },
       "breakfast": {
         "check": {
-          "required": "La sélection du petit-déjeuner est requise"
+          "required": "早餐选择是必需的"
         },
         "date": {
-          "required": "La date du petit-déjeuner est requise",
+          "required": "早餐日期是必需的",
           "dateArrival": {
-            "required": "La date d'arrivée est requise",
-            "refStartDate": "La date doit être supérieure ou égale à la date de début",
-            "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+            "required": "到达日期是必需的",
+            "refStartDate": "日期必须晚于或等于开始日期",
+            "refEndDate": "此字段必须早于或等于结束日期"
           }
         }
       },
-      "navette": {
+      "shuttle": {
         "check": {
-          "required": "La sélection de la navette est requise"
+          "required": "班车选择是必需的"
         },
         "name": {
-          "required": "Le nom de la navette est requis"
+          "required": "班车名称是必需的"
         },
         "selection": {
-          "required": "La sélection de la navette est requise"
+          "required": "班车选择是必需的"
         },
         "direction": {
-          "required": "La direction de la navette est requise"
+          "required": "班车方向是必需的"
         },
         "flightNumber": {
-          "required": "Le numéro de vol est requis"
+          "required": "飞行号码是必需的"
         },
         "timeArrival": {
-          "required": "L'heure d'arrivée est requise"
+          "required": "到达时间是必需的"
         },
         "dateArrival": {
-          "required": "La date d'arrivée est requise",
-          "refStartDate": "La date doit être supérieure ou égale à la date de début",
-          "refEndDate": "Ce champ doit être inférieur ou égal à la date de fin"
+          "required": "到达日期是必需的",
+          "refStartDate": "日期必须晚于或等于开始日期",
+          "refEndDate": "此字段必须早于或等于结束日期"
         }
       }
     }
   },
-  "type": "Type de chambre invalide.",
-  "sexe": "Votre sexe",
-  "masculin": "Homme",
-  "feminin": "Femme",
-  "quelque_destination": "Quelques Destinations",
-  "palais_reine": "Palais de la reine",
-  "services": "Services",
-  "tag": "Tag",
-  "voyage": "Voyage",
-  "tour_madagascar": "Tour de Madagascar",
-  "chambre_hotel": "Chambre d'hôtel",
-  "site_touristique": "Site touristique",
-  "guide": "Guide",
-  "blog_how_to_help": "Comment nous pouvons vous aider?",
-  "blog_any_question": "Si vous avez besoin d'aide ou d'informations complémentaires, nous vous invitons à nous contacter.",
-  "blog_contact": "Contactez-nous",
-  "blog_detail": "Plus de Detail",
-  "reservation_added": "Réservation ajoutée avec succès!",
-  "reservation_confirmation": "Confirmation de réservation",
-  "chambres": "Chambres",
-  "client": "Client",
-  "date_confirmation": "Date",
-  "nombre_de_pax": "Nombre de pax",
-  "par_nuit": "nuit(s)",
-  "parking": "Parking",
-  "non": "oui",
-  "oui": "non",
-  "breakfasts_title": "Petit-déjeuners",
-  "navettes": "Navettes",
-  "total": "Total",
-  "nb_email_send": "NB: Un email sera envoyé pour confirmer votre réservation.",
-  "annuler": "Annuler",
-  "confirmer": "Confirmer",
-  "at_antananarivo": "Antananarivo",
-  "hors_antananarivo": "Hors Antananarivo",
-  "proceed": "Procéder",
-  "travel_reason": "Raison du trajet",
-  "destination": "Destination",
-  "end_location": "Fin de location",
-  "start_location": "Début de location",
-  "car_possibility": "Possibilités routières : routes principales et quelques hors route",
-  "motrice": "roues motrices",
-  "litre_100": "litres aux 100 km",
-  "training": "Entraînement",
-  "kilometrage": "Kilométrage",
-  "portes": "Portes",
-  "places": "Places",
-  "model": "Modèle",
-  "year": "Années",
-  "per_day": "Prix par jour",
-  "chauffeur_inclut": "Chauffeur: inclus",
-  "louer_voiture": "Louer Cette Voiture",
-  "confirm_location": "Confirmation de la location",
-  "voiture": "Voiture",
-  "tarif": "Tarif",
-  "date_location": "Date location",
-  "note": "NB: Un email sera envoyé pour confirmer votre location.",
-  "why_choose_us": "Pourquoi Nous Choisir ?",
+  "type": "房间类型无效。",
+  "gender": "您的性别",
+  "male": "男性",
+  "female": "女性",
+  "some_destinations": "一些目的地",
+  "queen_palace": "皇后宫",
+  "services": "服务",
+  "tag": "标签",
+  "travel": "旅行",
+  "madagascar_tour": "马达加斯加之旅",
+  "hotel_room": "酒店客房",
+  "tourist_site": "旅游景点",
+  "guide": "导游",
+  "blog_how_to_help": "我们如何帮助您？",
+  "blog_any_question": "如果您需要帮助或额外信息，请随时联系我们。",
+  "blog_contact": "联系我们",
+  "blog_detail": "更多详情",
+  "reservation_added": "预订成功添加！",
+  "reservation_confirmation": "预订确认",
+  "rooms": "客房",
+  "client": "客户",
+  "confirmation_date": "日期",
+  "number_of_pax": "人数",
+  "per_night": "晚（夜）",
+  "parking": "停车",
+  "no": "是",
+  "yes": "否",
+  "breakfasts_title": "早餐",
+  "shuttles": "班车",
+  "total": "总计",
+  "nb_email_send": "注意：将发送电子邮件以确认您的预订。",
+  "cancel": "取消",
+  "confirm": "确认",
+  "at_antananarivo": "塔那那利佛",
+  "outside_antananarivo": "塔那那利佛之外",
+  "proceed": "继续",
+  "travel_reason": "旅行原因",
+  "destination": "目的地",
+  "end_location": "租赁结束",
+  "start_location": "租赁开始",
+  "car_possibility": "道路可能性：主要道路和一些越野路线",
+  "drive": "驱动",
+  "liters_100": "每100公里升数",
+  "training": "培训",
+  "mileage": "里程",
+  "doors": "车门",
+  "seats": "座位",
+  "model": "型号",
+  "year": "年份",
+  "per_day": "每天价格",
+  "driver_included": "司机：包含",
+  "rent_car": "租用此汽车",
+  "confirm_location": "租赁确认",
+  "car": "汽车",
+  "rate": "费率",
+  "rental_date": "租赁日期",
+  "note": "注意：将发送电子邮件以确认您的租赁。",
+  "why_choose_us": "为什么选择我们？",
   "contact": {
     "email": "contact@valihahotel.com",
     "phone": "+261 34 50 741 52",
-    "address": "Immeuble Valiha Antanimena, IVG 204 Antananarivo"
+    "address": "Valiha大厦 Antanimena，IVG 204 Antananarivo"
   },
   "languages": {
-    "fr": "Français",
-    "en": "Anglais",
-    "zh": "Chinois"
+    "fr": "法语",
+    "en": "英语",
+    "zh": "中文"
   },
-  "nuit": "Nuit",
-  "form_title": "Formulaire de location",
-  "available_rooms_title": "Chambres disponibles",
-  "location exists": "La date de Location existe"
+  "night": "晚",
+  "form_title": "租赁表格",
+  "available_rooms_title": "可用客房",
+  "location_exists": "租赁日期已存在",
+  "address": "地址",
+  "address_value": "Valiha大厦 Antanimena，IVG 204 Antananarivo",
+  "email": "电子邮件",
+  "phone": "电话",
+  "questions": "有问题吗？",
+  "subject": "主题",
+  "message": "您的消息",
+  "room_service": "客房服务",
+  "responsible": "负责人",
+  "help": "帮助中心",
+  "send_now": "立即发送",
+  "location_title": "汽车租赁",
+  "location_form": "租赁表格",
+  "room_available": "可用客房",
+  "book_now": "立即预订"
 }

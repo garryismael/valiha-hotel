@@ -1,19 +1,21 @@
+import CarCard from "@/components/Car/CarCard";
 import NestedLayout from "@/components/Layout/NestedLayout";
+import { Car } from "@/domain/entities/car";
 import { GetCarsInteractor, GetCarsUseCase } from "@/domain/use-cases/car";
+import container from "@/infrastructure/config/container.config";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ReactElement } from "react";
-import container from "@/infrastructure/config/container.config";
-import { Car } from "@/domain/entities/car";
-import CarCard from "@/components/Car/CarCard";
 
 type Props = {
   cars: Car[];
 };
 
 const Page = ({ cars }: Props) => {
+  const {t} = useTranslation();
   return (
     <section className="container mx-auto">
-      <h1 className="title">Location de voitures</h1>
+      <h1 className="title">{t("location_title")}</h1>
       <div className="flex items-center justify-between flex-wrap gap-3 content-between">
         {cars.map((car) => (
           <CarCard key={car.id} car={car} />

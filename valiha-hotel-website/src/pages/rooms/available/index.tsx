@@ -10,6 +10,7 @@ import container from "@/infrastructure/config/container.config";
 import { clearRooms } from "@/infrastructure/store/slices/booking-slice";
 import { NextPageWithLayout } from "@/pages/_app";
 import { NextPageContext } from "next";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ReactElement } from "react";
 
@@ -18,11 +19,12 @@ type Props = {
 };
 
 const Page: NextPageWithLayout<Props> = ({ rooms }) => {
+  const {t} = useTranslation();
   const dispatch = useAppDispatch();
   dispatch(clearRooms());
   return (
     <section className="container mx-auto">
-      <h1 className="title">Chambres disponibles</h1>
+      <h1 className="title">{t("room_disponible")}</h1>
       <AvailableRoomList rooms={rooms} />
     </section>
   );

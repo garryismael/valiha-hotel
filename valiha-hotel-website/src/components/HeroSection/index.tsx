@@ -3,8 +3,10 @@ import Image from "next/image";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SearchRooms from "../SearchRooms";
+import { useTranslation } from "next-i18next";
 
 const HeroSection = () => {
+  const {t} = useTranslation();
   return (
     <section className="relative h-screen z-0">
       <Swiper
@@ -28,7 +30,7 @@ const HeroSection = () => {
             />
             <div className="absolute top-1/2 left-[15%] -translate-y-1/2">
               <h1 className="text-7xl text-reddish-orange-500 w-2/3 mb-16">{image.title}</h1>
-              <button className="btn btn-orange">Réserver Maintenant</button>
+              <button className="btn btn-orange">{t("book_now")}</button>
             </div>
           </SwiperSlide>
         ))}
