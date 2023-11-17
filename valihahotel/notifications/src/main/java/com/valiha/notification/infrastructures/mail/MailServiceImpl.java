@@ -34,14 +34,6 @@ public class MailServiceImpl implements MailService {
     helper.setSubject(messageService.getMessage("object"));
     String emailContent = getEmailContent(reservation);
     helper.setText(emailContent, true);
-    helper.addAttachment(
-      "valihahotel-logo.png",
-      new ClassPathResource("valihahotel-logo.png")
-    );
-    helper.addAttachment(
-      "localisation-valihahotel.jpg",
-      new ClassPathResource("localisation-valihahotel.jpg")
-    );
     emailSender.send(message);
   }
 

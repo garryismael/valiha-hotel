@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "NOTIFICATIONS-SERVICE")
 public interface ApiNotification {
   @PostMapping(
-    value = "/reservations",
+    value = "/locations",
     consumes = MediaType.APPLICATION_JSON_VALUE
   )
   void notifyReservation(@RequestBody LocationResponseDto request);

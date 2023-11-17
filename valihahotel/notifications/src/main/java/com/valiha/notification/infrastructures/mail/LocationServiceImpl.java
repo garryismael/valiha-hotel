@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
@@ -67,14 +66,6 @@ public class LocationServiceImpl implements LocationService {
     helper.setSubject(messageService.getMessage("object"));
     String emailContent = getEmailContent(location);
     helper.setText(emailContent, true);
-    helper.addAttachment(
-      "valihahotel-logo.png",
-      new ClassPathResource("valihahotel-logo.png")
-    );
-    helper.addAttachment(
-      "localisation-valihahotel.jpg",
-      new ClassPathResource("localisation-valihahotel.jpg")
-    );
     emailSender.send(message);
   }
 }
