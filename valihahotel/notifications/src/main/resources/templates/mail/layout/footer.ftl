@@ -1,6 +1,6 @@
 <div class='image'>
-    <img src='cid:valihahotel-logo' alt='logo' width='10%' height='10%' />
-    <img src='cid:localisation-valihahotel' alt='localisation' width='20%' height='100%' />
+    <img src='cid:valihahotel-logo.png' alt='logo' width='10%' height='10%' />
+    <img src='cid:localisation-valihahotel.png' alt='localisation' width='20%' height='100%' />
 </div>
 <div class='adresse'>
     <p>
