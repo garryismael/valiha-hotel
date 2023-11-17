@@ -31,11 +31,11 @@ const CarCard = ({ car }: Props) => {
           {t("car_possibility")}
         </h1>
         <p>
-          <span>t{"training"}: </span> <span>{car.training} {t("motrice")}</span>
+          <span>{t("training")}: </span> <span>{car.training} {t("motrice")}</span>
         </p>
         <p>
           <span>{t("kilometrage")}: </span>{" "}
-          <span>{car.mileage} {t("litres_100")}</span>
+          <span>{car.mileage} {t("litre_100")}</span>
         </p>
         <p>
           <span>{t("portes")}</span>: <span>{car.door} </span>
@@ -59,7 +59,7 @@ const CarCard = ({ car }: Props) => {
           }}
           className="py-6 self-center justify-center"
         >
-          <span className="btn btn-orange w-fit">{"louer_voiture"}</span>
+          <span className="btn btn-orange w-fit">{t("louer_voiture")}</span>
         </Link>
       </div>
     </div>

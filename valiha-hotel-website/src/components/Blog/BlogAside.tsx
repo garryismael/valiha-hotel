@@ -10,7 +10,7 @@ const BlogAside = () => {
   return (
     <div className="col-span-1 flex flex-col gap-8">
       <div>
-        <h1 className={styles.aside__title}>t("quelque_destination")</h1>
+        <h1 className={styles.aside__title}>{t("quelque_destination")}</h1>
         <ul className="flex flex-col gap-2 text-sm">
           <li>
             <a href="#" className={styles.links}>

@@ -4,7 +4,7 @@
     "home": "Home",
     "reservation": "Reservation",
     "blog": "Blog",
-    "room": "Accommodation",
+    "room": "Rooms",
     "rent_car": "Car Rental",
     "contact": "Contact"
   },
@@ -325,5 +325,6 @@
   "location_title": "Car Rental",
   "location_form": "Rental Form",
   "room_available": "Available Rooms",
-  "book_now": "Book Now"
+  "book_now": "Book Now",
+  "quelque_destination": "Some Destinations"
 }

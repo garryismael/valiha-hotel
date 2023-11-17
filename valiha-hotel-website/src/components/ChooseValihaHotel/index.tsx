@@ -1,9 +1,11 @@
 import { choices } from "@/constants/choice";
+import { useTranslation } from "next-i18next";
 
 const ChooseValihaHotel = () => {
+  const {t} = useTranslation();
   return (
     <section className="container mx-auto">
-      <h1 className="title">Pourquoi Nous Choisir ?</h1>
+      <h1 className="title">{t("choice.title")}</h1>
       <div className="flex items-center flex-wrap justify-between content-between gap-4">
         {choices.map(({ id, Icon, title, paragraph }) => (
           <div
@@ -15,8 +17,8 @@ const ChooseValihaHotel = () => {
               size={48}
             />
             <div className="mt-8 text-center flex-auto">
-              <h1 className="text-lg font-bold">{title}</h1>
-              <p className="text-base">{paragraph}</p>
+              <h1 className="text-lg font-bold">{t(title)}</h1>
+              <p className="text-base">{t(paragraph)}</p>
             </div>
           </div>
         ))}

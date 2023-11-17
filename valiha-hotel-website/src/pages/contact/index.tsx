@@ -14,7 +14,7 @@ const Page = () => {
   const {loading, formik} = useContactForm();
   return (
     <section className="container mx-auto">
-      <h1 className="title my-4 text-center">Contactez-nous</h1>
+      <h1 className="title my-4 text-center">{t("blog_contact")}</h1>
       <div className="grid grid-cols-3 gap-4 h-[300px]">
         <div className="flex flex-col items-center justify-center shadow-lg p-4 w-full gap-8">
           <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">

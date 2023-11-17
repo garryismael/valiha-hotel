@@ -18,7 +18,6 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
-import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";

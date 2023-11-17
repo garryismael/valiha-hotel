@@ -4,43 +4,40 @@ export const choices = [
     {
       id: 1,
       Icon: FaBuilding,
-      title: "Immeuble entièrement neuf et moderne",
-      paragraph:
-        "Tout l'immeuble est entièrement neuf avec un style moderne dans tout l'enceinte tant à l'extérieur qu'à l'intérieur des chambres.",
+      title: "choice.building.title",
+      paragraph: "choice.building.paragraph",
     },
     {
       id: 2,
       Icon: FaFan,
-      title: "Chambres confortables avec climatisation",
+      title: "choice.room.title",
       paragraph:
-        "Toutes nos chambres sont équipées d'un climatiseur de qualité pour vous offrir des séjours agréables en hiver comme en été.",
+        "choice.room.paragraph",
     },
     {
       id: 3,
       Icon: FaEye,
-      title: "Terrasse avec une vue magnifique",
-      paragraph:
-        "Une terrasse avec une vue imprenable pour vous permettre d'admirer le coucher du soleil pour bien finir la journée.",
+      title: "choice.terrace.title",
+      paragraph:"choice.terrace.paragraph",
     },
     {
       id: 4,
       Icon: FaWifi,
-      title: "Connexion internet à haut débit (fibre optique)",
-      paragraph:
-        "Une connexion internet à haut débit est à votre disposition avec la fibre optique pour vous permettre d'être connectés en permanence.",
+      title: "choice.internet.title",
+      paragraph: "choice.internet.paragraph",
     },
     {
       id: 5,
       Icon: FaShower,
-      title: "Douche avec eau chaude disponible 24 / 7",
+      title: "choice.shower.title",
       paragraph:
-        "Equipées de douche avec eau chaude, toutes nos chambres remplissent les critères pour vous offrir des séjours relaxants.",
+        "choice.shower.paragraph",
     },
     {
       id: 6,
       Icon: FaMap,
-      title: "Emplacement en centre-ville (facilité d'accès)",
+      title: "choice.location.title",
       paragraph:
-        "Situé en plein centre ville, l'accès est facile et vous serez à quelques mètres des centres commerciaux pour faire du shopping.",
+        "choice.location.paragraph",
     },
   ];
