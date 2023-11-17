@@ -49,7 +49,7 @@ const ReservationPaymentEdit = ({ payment, amount }: Props) => {
           {(onClose) => (
             <form onSubmit={formik.handleSubmit}>
               <ModalHeader className="flex flex-col gap-1">
-                Modifier un paiement ({amount})
+                Modifier un paiement
               </ModalHeader>
               <ModalBody>
                 <Input

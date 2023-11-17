@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 import ReservationTotalAmount from "./reservation-amount";
 import Link from "next/link";
+import { If, Then } from "react-if";
 
 const ReservationDetailModal = ({
   reservation,
@@ -43,11 +44,15 @@ const ReservationDetailModal = ({
             <>
               <ModalHeader className="flex items-center justify-between gap-1 pt-14">
                 <h1>Detail d'une réservation</h1>
-                <Link href={`/invoices/reservations/${reservation.id}`}>
-                  <Button variant="bordered" color="primary">
-                    Facturer
-                  </Button>
-                </Link>
+                <If condition={reservation.payment.state == "paid"}>
+                  <Then>
+                    <Link href={`/invoices/reservations/${reservation.id}`}>
+                      <Button variant="bordered" color="primary">
+                        Facturer
+                      </Button>
+                    </Link>
+                  </Then>
+                </If>
               </ModalHeader>
               <ModalBody>
                 <ReservationDetailPage reservation={reservation} />

@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import LocationTotalAmount from "./location-amount";
 import LocationDetail from "./location-detail";
+import { If, Then } from "react-if";
 
 const LocationDetailModal = ({ location }: { location: Location }) => {
   const { handleOpen, handleClose, show } = useFormModal();
@@ -39,14 +40,18 @@ const LocationDetailModal = ({ location }: { location: Location }) => {
             <>
               <ModalHeader className="flex items-center justify-between gap-1 pt-14">
                 <h1>Detail d'une location</h1>
-                <Link href={`/invoices/locations/${location.id}`}>
-                  <Button variant="bordered" color="primary">
-                    Facturer
-                  </Button>
-                </Link>
+                <If condition={location.payment.state === "paid"}>
+                  <Then>
+                    <Link href={`/invoices/locations/${location.id}`}>
+                      <Button variant="bordered" color="primary">
+                        Facturer
+                      </Button>
+                    </Link>
+                  </Then>
+                </If>
               </ModalHeader>
               <ModalBody>
-              <LocationDetail location={location} />
+                <LocationDetail location={location} />
               </ModalBody>
               <ModalFooter>
                 <LocationTotalAmount location={location} />
