@@ -11,6 +11,7 @@ export interface TransactionService {
   create(request: TransactionRequest): Promise<Transaction>;
   findAll(): Promise<Transaction[]>;
   findById(id: string): Promise<Transaction>;
+  findByPaymentId(id: string): Promise<Transaction>;
   edit(id: string, request: TransactionRequest): Promise<Transaction>;
 }
 
@@ -23,6 +24,10 @@ export interface EditTransactionUseCase {
 }
 
 export interface FindTransactionUseCase {
+  execute(id: string): Promise<Transaction>;
+}
+
+export interface FindTransactionByPaymentUseCase {
   execute(id: string): Promise<Transaction>;
 }
 
@@ -57,6 +62,16 @@ export class FindTransactionInteractor implements FindTransactionUseCase {
   ) {}
   execute(id: string): Promise<Transaction> {
     return this.transactionService.findById(id);
+  }
+}
+
+@injectable()
+export class FindTransactionByPaymentIdInteractor implements FindTransactionByPaymentUseCase {
+  constructor(
+    @inject("TransactionService") private transactionService: TransactionService
+  ) {}
+  execute(id: string): Promise<Transaction> {
+    return this.transactionService.findByPaymentId(id);
   }
 }
 

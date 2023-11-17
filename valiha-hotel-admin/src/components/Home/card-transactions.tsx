@@ -1,41 +1,14 @@
 'use client';
+import { Transaction } from "@/domain/entities/transaction";
 import { Avatar, Card, CardBody } from "@nextui-org/react";
 import React from "react";
 
-const items = [
-  {
-    name: "Jose Perez",
-    picture: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-    amount: "4500 USD",
-    date: "9/20/2021",
-  },
-  {
-    name: "Jose Perez",
-    picture: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-    amount: "4500 USD",
-    date: "9/20/2021",
-  },
-  {
-    name: "Jose Perez",
-    picture: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-    amount: "4500 USD",
-    date: "9/20/2021",
-  },
-  {
-    name: "Jose Perez",
-    picture: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-    amount: "4500 USD",
-    date: "9/20/2021",
-  },
-  {
-    name: "Jose Perez",
-    picture: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-    amount: "4500 USD",
-    date: "9/20/2021",
-  },
-];
+type Props =  {
+  transactions: Transaction[];
+}
 
-export const CardTransactions = () => {
+
+export const CardTransactions = ({transactions}: Props) => {
   return (
     <Card className=" bg-default-50 rounded-xl shadow-md px-3">
       <CardBody className="py-5 gap-4">
@@ -48,21 +21,20 @@ export const CardTransactions = () => {
         </div>
 
         <div className="flex flex-col gap-6 ">
-          {items.map((item) => (
-            <div key={item.name} className="grid grid-cols-4 w-full">
-              <div className="w-full">
+          {transactions.slice(0, 5).map((item) => (
+            <div key={item.user.lastName} className="grid grid-cols-4 w-full">
+              <div className="">
                 <Avatar
                   isBordered
                   color="secondary"
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                  src={item.user.image}
                 />
               </div>
-
               <span className="text-default-900  font-semibold">
-                {item.name}
+                {item.user.lastName}
               </span>
               <div>
-                <span className="text-success text-xs">{item.amount}</span>
+                <span className="text-success text-xs">{item.amount} MGA</span>
               </div>
               <div>
                 <span className="text-default-500 text-xs">{item.date}</span>

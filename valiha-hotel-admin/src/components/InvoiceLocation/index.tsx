@@ -1,18 +1,18 @@
 "use client";
 
-import { FunctionalComponentToPrint } from "@/components/Invoice/ComponentToPrint";
-import { Reservation } from "@/domain/entities/reservation";
+import { Location } from "@/domain/entities/location";
 import { Transaction } from "@/domain/entities/transaction";
 import usePrint from "@/hooks/usePrint";
 import { Button } from "@nextui-org/react";
 import { FaPrint } from "react-icons/fa6";
+import { FunctionalLocationComponentToPrint } from "./ComponentToPrint";
 
 type Props = {
-  reservation: Reservation;
+  location: Location;
   transaction: Transaction;
 };
 
-const InvoiceReservation = ({ reservation, transaction }: Props) => {
+const InvoiceLocation = (props: Props) => {
   const [componentRef, loading, handlePrint] = usePrint();
   return (
     <main className="my-14 max-w-[100rem] mx-auto w-full flex flex-col gap-4">
@@ -26,13 +26,13 @@ const InvoiceReservation = ({ reservation, transaction }: Props) => {
       >
         Imprimer
       </Button>
-      <FunctionalComponentToPrint
-        reservation={reservation}
-        transaction={transaction}
+      <FunctionalLocationComponentToPrint
+        location={props.location}
+        transaction={props.transaction}
         ref={componentRef}
       />
     </main>
   );
 };
 
-export default InvoiceReservation;
+export default InvoiceLocation;

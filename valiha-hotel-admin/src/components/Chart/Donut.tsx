@@ -7,7 +7,7 @@ const options: ApexOptions = {
     width: 380,
     type: "pie",
   },
-  labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+  labels: ["Standard", "Deluxe Twin", "Deluxe Double", "Chambre Triple", "Chambre Familiale"],
   responsive: [
     {
       breakpoint: 480,

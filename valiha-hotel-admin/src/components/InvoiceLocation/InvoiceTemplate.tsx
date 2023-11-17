@@ -1,22 +1,20 @@
 import { DATE_TIME_FORMAT } from "@/constants/date";
-import { Reservation } from "@/domain/entities/reservation";
+import { Location } from "@/domain/entities/location";
 import { Transaction } from "@/domain/entities/transaction";
+import { getLocationPrice } from "@/lib/utils/location";
 import { getPaymentType } from "@/lib/utils/payment";
-import { getReservationPrice } from "@/lib/utils/reservation";
 import { displayDestination } from "@/lib/utils/shuttle";
 import moment from "moment";
 import Image from "next/image";
 
 type Props = {
-  reservation: Reservation;
+  location: Location;
   transaction: Transaction;
 };
 
-const InvoiceTemplate = (props: Props) => {
-  const { reservation } = props;
+const InvoiceLocationTemplate = (props: Props) => {
+  const { location } = props;
   const now = moment().format(DATE_TIME_FORMAT);
-  const shuttle = process.env.NEXT_PUBLIC_SHUTTLE_PRICE;
-  const breakfast = process.env.NEXT_PUBLIC_BREAKFAST_PRICE;
 
   return (
     <div className="invoice-box !w-full">
@@ -38,7 +36,7 @@ const InvoiceTemplate = (props: Props) => {
                     </td>
 
                     <td>
-                      Reservation #: {reservation.id}
+                      Location #: {location.id}
                       <br />
                       Crée le: {now}
                       <br />
@@ -63,11 +61,11 @@ const InvoiceTemplate = (props: Props) => {
                     </td>
 
                     <td>
-                      {reservation.client.firstName}
+                      {location.client.firstName}
                       <br />
-                      {reservation.client.lastName}
+                      {location.client.lastName}
                       <br />
-                      {reservation.client.phoneNumber}
+                      {location.client.phoneNumber}
                     </td>
                   </tr>
                 </tbody>
@@ -86,18 +84,15 @@ const InvoiceTemplate = (props: Props) => {
                 <tbody>
                   <tr>
                     <td>
-                      Nombre de Pax
+                      Date de début
                       <br />
-                      Date de départ
-                      <br />
-                      Date d'arrivée
+                      Date de fin
                     </td>
                     <td>
-                      {reservation.pax}
                       <br />
-                      {reservation.checkIn}
+                      {location.start}
                       <br />
-                      {reservation.checkOut}
+                      {location.end}
                     </td>
                   </tr>
                 </tbody>
@@ -114,46 +109,22 @@ const InvoiceTemplate = (props: Props) => {
             <td></td>
           </tr>
 
-          <tr className="heading mt-2">
-            <td>Chambres</td>
-            <td>Prix</td>
-          </tr>
-
-          {reservation.rooms.map((room) => (
-            <tr key={room.id} className="item">
-              <td>{room.category.title}</td>
-
-              <td>{room.price}</td>
-            </tr>
-          ))}
-
           <tr className="heading !my-4">
-            <td>Navettes</td>
+            <td>Voitures</td>
             <td>Prix</td>
           </tr>
 
-          {reservation.shuttles.map((data) => (
-            <tr key={data.id} className="item">
-              <td>{displayDestination(data.destination)}</td>
-              <td>{shuttle}</td>
+          {location.cars.map((car) => (
+            <tr key={car.id} className="item">
+              <td>{displayDestination(car.mark)}</td>
+              <td>{car.price}</td>
             </tr>
           ))}
 
-          <tr className="heading !my-4">
-            <td>Petit-déjeuner</td>
-            <td>Prix</td>
-          </tr>
-
-          {reservation.breakfasts.map((data) => (
-            <tr key={data.id} className="item last">
-              <td>{data.date}</td>
-              <td>{parseInt(breakfast as string) * reservation.pax}</td>
-            </tr>
-          ))}
 
           <tr className="heading">
             <td>Remise</td>
-            <td>{reservation.payment.discount} %</td>
+            <td>{location.payment.discount} %</td>
           </tr>
           <tr className="detail">
             <td></td>
@@ -163,7 +134,7 @@ const InvoiceTemplate = (props: Props) => {
           <tr>
             <td></td>
             <td className="font-bold text-lg">
-              Total: {getReservationPrice(reservation)} MGA
+              Total: {getLocationPrice(location)} MGA
             </td>
           </tr>
         </tbody>
@@ -172,4 +143,4 @@ const InvoiceTemplate = (props: Props) => {
   );
 };
 
-export default InvoiceTemplate;
+export default InvoiceLocationTemplate;
