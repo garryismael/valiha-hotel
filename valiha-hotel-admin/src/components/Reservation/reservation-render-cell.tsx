@@ -3,7 +3,10 @@
 import { Reservation } from "@/domain/entities/reservation";
 import { getDays } from "@/lib/utils/date";
 import { getPaymentState } from "@/lib/utils/payment";
-import { getReservationState } from "@/lib/utils/reservation";
+import {
+  getReservationPrice,
+  getReservationState,
+} from "@/lib/utils/reservation";
 import { Chip } from "@nextui-org/react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { Else, If, Then } from "react-if";
@@ -44,7 +47,10 @@ export const ReservationRenderCell = ({ reservation, columnKey }: Props) => {
       );
     case "payment":
       return (
-        <ReservationPaymentEdit payment={reservation.payment}/>
+        <ReservationPaymentEdit
+          payment={reservation.payment}
+          amount={getReservationPrice(reservation)}
+        />
       );
     case "rooms":
       return (

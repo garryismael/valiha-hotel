@@ -10,5 +10,7 @@ public interface TransactionRepository {
 
   Transaction findOneById(String id);
 
+  Transaction findOneByPayment(String id);
+
   List<Transaction> findAll();
 }

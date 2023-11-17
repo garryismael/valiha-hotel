@@ -4,6 +4,7 @@ import com.valiha.payment.application.dto.transaction.TransactionRequestDto;
 import com.valiha.payment.application.dto.transaction.TransactionResponseDto;
 import com.valiha.payment.application.useCase.transaction.CreateTransactionUseCase;
 import com.valiha.payment.application.useCase.transaction.EditTransactionUseCase;
+import com.valiha.payment.application.useCase.transaction.FindTransactionByPaymentUseCase;
 import com.valiha.payment.application.useCase.transaction.FindTransactionUseCase;
 import com.valiha.payment.application.useCase.transaction.GetTransactionsUseCase;
 import java.util.List;
@@ -24,6 +25,7 @@ public class TransactionController {
   private final EditTransactionUseCase editUseCase;
   private final FindTransactionUseCase findUseCase;
   private final GetTransactionsUseCase getUseCase;
+  private final FindTransactionByPaymentUseCase findByPaymentUseCase;
 
   @PostMapping
   public TransactionResponseDto create(
@@ -43,6 +45,11 @@ public class TransactionController {
   @GetMapping("/{id}")
   public TransactionResponseDto find(@PathVariable String id) {
     return this.findUseCase.execute(id);
+  }
+
+  @GetMapping("payments/{id}")
+  public TransactionResponseDto findByPayment(@PathVariable String id) {
+    return this.findByPaymentUseCase.execute(id);
   }
 
   @GetMapping

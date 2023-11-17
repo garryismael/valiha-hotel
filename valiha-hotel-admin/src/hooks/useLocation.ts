@@ -32,7 +32,7 @@ export const useLocationList = (locations: Location[]) => {
   return data;
 };
 
-export const usePaymentEdit = (payment: Payment) => {
+export const usePaymentEdit = (payment: Payment, amount: number) => {
   const { show, loading, setLoading, handleClose, handleOpen } = useFormModal();
   const editUseCase = container.resolve<EditPaymentUseCase>(
     EditPaymentInteractor
@@ -42,6 +42,8 @@ export const usePaymentEdit = (payment: Payment) => {
     initialValues: {
       discount: payment.discount,
       state: payment.state,
+      amount,
+      paymentType: ""
     },
     async onSubmit(values) {
       setLoading(true);

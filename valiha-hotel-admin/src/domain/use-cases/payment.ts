@@ -5,7 +5,10 @@ import { Reservation } from "../entities/reservation";
 export interface PaymentRequest {
   discount: number;
   state: string;
+  amount: number;
+  paymentType: string;
 }
+
 export interface PaymentService {
   findAll(): Promise<Payment[]>;
   findReservation(id: string): Promise<Reservation>;

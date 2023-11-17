@@ -1,6 +1,6 @@
 import { Location } from "@/domain/entities/location";
 import { getDays } from "@/lib/utils/date";
-import { getLocationState } from "@/lib/utils/location";
+import { getLocationPrice, getLocationState } from "@/lib/utils/location";
 import { getPaymentState, getPaymentType } from "@/lib/utils/payment";
 import { Chip, User } from "@nextui-org/react";
 import LocationTableAction from "./location-table-action";
@@ -45,7 +45,12 @@ export const LocationRenderCell = ({ location, columnKey }: Props) => {
         </div>
       );
     case "payment":
-      return <ReservationPaymentEdit payment={location.payment} />;
+      return (
+        <ReservationPaymentEdit
+          payment={location.payment}
+          amount={getLocationPrice(location)}
+        />
+      );
     case "cars":
       return (
         <div className="flex gap-2 flex-wrap">
