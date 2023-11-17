@@ -41,23 +41,30 @@ const ConfirmLocation = ({ request, car, btnRef }: Props) => {
       CreateLocationInteractor
     );
 
-    await createUseCase.execute({
-      carId: car.id,
-      client: request.client,
-      end: request.end,
-      start: request.start,
-      destination: request.destination,
-      reason: request.reason,
-    });
-    setLoading(false);
-    toast.success("Location ajoutée avec succès!", {
-      position: "bottom-center",
-      toastId: "create-breakfast",
-    });
-    onClose();
-    router.push("/locations/cars/", "/locations/cars/", {
-      locale: i18n.language,
-    });
+    try {
+      await createUseCase.execute({
+        carId: car.id,
+        client: request.client,
+        end: request.end,
+        start: request.start,
+        destination: request.destination,
+        reason: request.reason,
+      });
+      setLoading(false);
+      toast.success("Location ajoutée avec succès!", {
+        position: "bottom-center",
+        toastId: "create-breakfast",
+      });
+      onClose();
+      router.push("/locations/cars/", "/locations/cars/", {
+        locale: i18n.language,
+      });
+    } catch (err) {
+      toast.error("Veuillez ressayer", {
+        position: "bottom-center",
+        toastId: "create-breakfast",
+      });
+    }
   };
 
   return (
