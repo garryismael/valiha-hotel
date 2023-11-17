@@ -10,6 +10,7 @@ import com.valiha.location.application.presenter.GenericPresenter;
 import com.valiha.location.application.repository.GenericRepository;
 import com.valiha.location.application.repository.LocationRepository;
 import com.valiha.location.application.service.GenericService;
+import com.valiha.location.application.service.NotificationService;
 import com.valiha.location.application.useCase.location.CreateLocationUseCase;
 import com.valiha.location.core.constants.AppLocation;
 import com.valiha.location.core.constants.LocationState;
@@ -40,6 +41,7 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
   private final LocationFactory locationFactory;
   private final ClientFactory clientFactory;
   private final PaymentFactory paymentFactory;
+  private final NotificationService notificationService;
 
   @Override
   public LocationResponseDto execute(LocationRequestDto requestDto) {
@@ -153,8 +155,10 @@ public class CreateLocationInteractor implements CreateLocationUseCase {
 
     location = this.locationRepository.save(location);
 
-    return this.locationPresenter.prepareSuccessView(
-        LocationResponseDto.from(location)
-      );
+    LocationResponseDto dto = LocationResponseDto.from(location);
+
+    notificationService.execute(dto);
+
+    return this.locationPresenter.prepareSuccessView(dto);
   }
 }
