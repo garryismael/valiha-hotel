@@ -18,6 +18,7 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
+import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -59,8 +60,9 @@ const ConfirmLocation = ({ request, car, btnRef }: Props) => {
       router.push("/locations/cars/", "/locations/cars/", {
         locale: i18n.language,
       });
-    } catch (err) {
-      toast.error("Veuillez ressayer", {
+    } catch (err: any) {
+      
+      toast.error(err.response.data.message, {
         position: "bottom-center",
         toastId: "create-breakfast",
       });
