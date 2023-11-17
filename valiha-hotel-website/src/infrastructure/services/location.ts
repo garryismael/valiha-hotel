@@ -13,7 +13,7 @@ export interface LocationForm {
   carIds: string[];
 }
 
-const LOCATION_PATH = "http://localhost:5001/locations";
+const LOCATION_PATH = "LOCATIONS-SERVICE/locations";
 @injectable()
 export class LocationServiceImpl implements LocationService {
   async create(request: LocationRequest): Promise<void> {

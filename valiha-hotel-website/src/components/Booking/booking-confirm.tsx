@@ -48,24 +48,31 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
       CreateReservationInteractor
     );
 
-    await createUseCase.execute({
-      rooms: booking.rooms,
-      breakfasts: form.breakfasts.data,
-      checkIn: dateToString(form.checkIn),
-      checkOut: dateToString(form.checkOut),
-      client: form.client,
-      parking: form.parking,
-      pax: form.pax,
-      shuttles: form.shuttles.data,
-    });
-    setLoading(false);
-    toast.success(t("reservation_added"), {
-      position: "bottom-center",
-      toastId: "create-breakfast",
-    });
-    dispatch(clearRooms());
-    onClose();
-    router.push("/rooms/find/", "/rooms/find/", { locale: i18n.language });
+    try {
+      await createUseCase.execute({
+        rooms: booking.rooms,
+        breakfasts: form.breakfasts.data,
+        checkIn: dateToString(form.checkIn),
+        checkOut: dateToString(form.checkOut),
+        client: form.client,
+        parking: form.parking,
+        pax: form.pax,
+        shuttles: form.shuttles.data,
+      });
+      setLoading(false);
+      toast.success(t("reservation_added"), {
+        position: "bottom-center",
+        toastId: "create-breakfast",
+      });
+      dispatch(clearRooms());
+      onClose();
+      router.push("/rooms/find/", "/rooms/find/", { locale: i18n.language });
+    } catch (er) {
+      toast.error("Veuillez ressayer", {
+        position: "bottom-center",
+        toastId: "create-breakfast",
+      });
+    }
   };
 
   return (
@@ -150,7 +157,9 @@ const BookingConfirm = ({ form, btnRef }: Props) => {
                   </div>
                   <Divider className="my-1 w-full" />
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base font-medium">{t("breakfasts_title")}</h4>
+                    <h4 className="text-base font-medium">
+                      {t("breakfasts_title")}
+                    </h4>
                     <p className="flex flex-col text-small text-default-400">
                       {getBreakfastPrice(form)} MGA
                     </p>
