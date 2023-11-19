@@ -1,4 +1,5 @@
 "use client";
+import "reflect-metadata";
 import Breadcrumbs from "@/components/BreadCrumbs";
 import LocationTable from "@/components/Location/location-table";
 import { locationBreadcrumbs } from "@/constants/location";
